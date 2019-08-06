@@ -1,0 +1,67 @@
+<div id="faq">
+{% for block in section.blocks limit: section.blocks.size%}
+  	{%- case block.type -%}
+  		{%- when 'title' -%}
+  			<h2 class="title h2">{{ block.settings.title}}</h2>
+		{%- when 'faqs' -%}
+			<div class="faq-body">
+              	<h4 class="panel-title"><i class="ad ad-plus-r"></i>{{ block.settings.question}}</h4>
+	    		<div id="{{ block.id }}" class="panel-content">{{ block.settings.answer}}</div>
+  			</div>
+  	{%- endcase -%}
+{% endfor %}
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+  		//$("#faq .faq-body:first-child .panel-title").addClass("active");
+      	//$("#faq .faq-body:first-child .panel-title").find('.ad').addClass("ad-minus-r");
+  		$("#faq .panel-title").click(function() {
+    		$(this).toggleClass("active");
+          	$(this).next().slideToggle();
+      		$(this).find('.ad').toggleClass("ad-plus-r ad-minus-r");
+  		});
+	});
+</script>
+
+{% schema %}
+  {
+    "name": "FAQ Page",
+	"max_blocks":50,
+    "settings": [
+	  {
+        "type": "paragraph",
+       	"content":"Add more content on this page from pages => Faqs page"
+      }      
+	],
+   "blocks":[
+	  {
+        "type": "title",
+        "name": "Section Title",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "FAQ title text"
+          }
+        ]
+      },
+	  {
+	    "type":"faqs",
+		"name":"FAQs",
+		"settings":[			
+			{
+			"type":"text",
+			"id":"question",
+			"label":"Question"
+			},
+			{
+			"type":"textarea",
+			"id":"answer",
+			"label":"Answer"
+			}
+		 ]
+      }
+	]
+ }
+{% endschema %} 

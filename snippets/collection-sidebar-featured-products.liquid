@@ -1,0 +1,24 @@
+{%- assign grid_image_width = '80x' -%}
+<div class="sidebar_widget wow fadeInUp">
+	<div class="widget-title">
+		<h2>{{ settings.sidebar_products_title }}</h2>
+	</div>
+	<div class="widget-content">
+       {% if settings.products_list_collection != blank %}
+		<div class="list list-sidebar-products">			
+				<div class="grid-products"> {% assign product_grid = 1 %}
+					{% assign columns = true %}			
+					{% for product in collections[settings.products_list_collection].products limit:settings.num_of_products_in_carosel %}
+  {% if product.object_type == 'product' and product.type == 'SHOPSTORM_HIDDEN_PRODUCT' %}{% continue %}{% endif %}
+
+						{% include 'product-card-grid',grid_image_width %}
+					{% endfor %} 
+                </div>
+		</div>
+      	{% else %}
+			<p>Please select collection from store admin sidebar</p>
+		{% endif %} 
+	</div>
+</div>
+
+

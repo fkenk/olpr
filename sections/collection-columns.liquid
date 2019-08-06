@@ -1,0 +1,115 @@
+<div class="page-width collection-columns" id="{{ section.id }}"   data-section-id="{{ section.id }}">
+		
+	<!-- collection Column start -->	
+          	{% case section.settings.grid %}
+  	     	{% when '2' %}
+              {%- assign grid_item_ds = 'large-up--one-half' -%}   			 
+            {% when '3' %}
+              {%- assign grid_item_ds = 'large-up--one-third' -%}      			  
+            {% when '4' %}
+              {%- assign grid_item_ds = 'large-up--one-quarter' -%}  
+    		{% when '5' %}
+              {%- assign grid_item_ds = 'large-up--one-fifth' -%} 
+            {% endcase %}
+
+          
+   			<div class="grid grid--uniform">
+          	{% for block in section.blocks limit: section.blocks.size %}
+              
+              {%- assign collection_col = forloop.index | minus:1 -%}
+  			  {%- assign delay_time = 100 | times : collection_col -%}
+              
+              <div class="grid__item {{grid_item_ds}} wow fadeIn" data-wow-delay="{{delay_time}}ms">
+              {%- assign collection = collections[block.settings.collection] -%}
+          		<h3 class="column-ttl"><a class="tablink" href="#collection-{{ block.id }}">{{ block.settings.tab_name }}</a></h3>
+          		<div id="collection-{{ block.id }}" class="grid-products"> {% if block.settings.collection != blank %}
+                  <div class="grid">
+                    {% for product in collection.products limit: section.settings.rows %}
+  {% if product.object_type == 'product' and product.type == 'SHOPSTORM_HIDDEN_PRODUCT' %}{% continue %}{% endif %}
+
+                      	<div class="grid__item item">{% include 'product-mini-list', grid_image_width: image_size %}</div>
+                      {% else %}
+                        {% for i in (1..section.settings.rows) %}
+                        <div class="grid__item item">
+                            <div class="grid-view-item"> <a href="#" class="grid-view-item__link">
+                                <div class="grid-view-item__image"> {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                                    {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }} </div>
+                                <div class="h4 grid-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+                                <div class="grid-view-item__meta"> {% include 'product-price' %} </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                      {% endfor %}
+                  </div>
+                  {% else %}
+                  <p class="text-left">Please select a collection in Featured Collection to display the products</p>
+                  {% endif %}
+              </div>
+              </div>
+			{% endfor %}
+  			</div>
+      	
+	<!-- collection tab end --> 
+	
+</div>
+{% schema %}
+  {
+    "name": "Collection Columns",
+    "class": "index-section",
+    "max_blocks": 8,
+    "settings": [            
+	  {
+        "type": "select",
+        "id": "grid",
+        "label": "Desktop",
+        "default": "2",
+        "options": [        
+          { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" },
+          { "value": "5", "label": "5" } 
+        ]
+      },
+	 {
+        "type": "text",
+        "id": "rows",
+        "label": "Number of Product to show",
+        "default": "8"
+      }      
+	 ],
+	"blocks": [
+      {
+        "type": "collection_column",
+        "name": "Collection",
+        "settings": [	 
+ 		{
+          "type": "text",
+          "id": "tab_name",
+          "label": "Collection Tab Name",
+          "default": "Column Name"
+        },
+       	 {
+          "id": "collection",
+          "type": "collection",
+          "label": "Select Collection"
+    	  }          
+      	]
+     }
+	],
+    "presets": [
+      {
+        "name": "Collection Columns with Products",
+        "category": "Collection",       
+        "blocks": [
+          {
+            "type": "collection_column"
+          },
+          {
+            "type": "collection_column"
+          }          
+        ]
+      }
+    ]
+  }
+{% endschema %} 

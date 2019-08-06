@@ -1,0 +1,248 @@
+<div data-section-id="{{ section.id }}" class="inner sl{{section.settings.navigation}}{% if settings.classic_header and template == 'index' %} classic{% endif %}{% unless section.settings.fullwidth %} page-width{% endunless %}" data-section-type="slideshow-section">
+	{%- if section.blocks.size > 0 -%}
+    	<div class="slideshow-wrapper">
+			<button type="button" class="visually-hidden slideshow__pause" data-id="{{ section.id }}" aria-live="polite">
+        		<span class="slideshow__pause-stop">{% include 'icon-pause' %}<span class="icon__fallback-text">{{ 'sections.slideshow.pause_slideshow' | t }}</span></span>
+        		<span class="slideshow__pause-play">{% include 'icon-play' %}<span class="icon__fallback-text">{{ 'sections.slideshow.play_slideshow' | t }}</span></span>
+      		</button>
+			<div class="slideshow slideshow--{{ section.settings.slideshow_height }}" id="Slideshow-{{ section.id }}" data-autoplay="{{ section.settings.autoplay }}" data-speed="{{ section.settings.autoplay_speed }}">
+        		{%- for block in section.blocks -%}
+          			{%- assign is_background_video = false -%}
+          			{%- if block.type == 'video' -%}
+            			{%- if block.settings.video_type == 'background' or block.settings.video_type =='background-chrome' -%}
+              				{%- assign is_background_video = true -%}
+            			{%- endif -%}
+          			{%- endif -%}
+
+					<div class="slideshow__slide slideshow__slide--{{ block.id }}{% if is_background_video %} slideshow__slide--background-video{% endif %}" {{ block.shopify_attributes }}>
+            			{%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}" class="slideshow__link">{%- endif -%}
+
+            			{%- if block.type == 'video' -%}
+                            {%- if block.settings.video_id != blank -%}<div class="video-loader"></div>{%- endif -%}
+                            {%- unless block.settings.video_type == 'background' -%}
+                                <button type="button" class="text-link slideshow__video-control slideshow__video-control--close" data-controls="SlideshowVideo-{{ block.id }}">
+                                  <i class="ad  ad-times-r"> </i> <span class="icon__fallback-text">{{ 'sections.slideshow.close_video' | t }}</span>
+                                </button>
+                            {%- endunless -%}
+                            {%- if block.settings.video_id != blank -%}
+                                <div id="SlideshowVideo-{{ block.id }}" class="slideshow__video {% if is_background_video %}slideshow__video--background{% endif %} slideshow__video--{{ block.settings.video_type }}" data-id="{{ block.settings.video_id }}" data-type="{{ block.settings.video_type }}" data-slideshow="Slideshow-{{ section.id }}"></div>
+                            {%- endif -%}
+						{%- endif -%}
+
+						<div class="slideshow__image slideImg-{{block.id}} {%- if section.settings.imageffect -%} img-animate {%- endif -%}">
+              				{%- if block.settings.image -%}
+              				<style>
+                				@media only screen and (min-width:767px) { .slideImg-{{block.id}} { background-image:url('{{ block.settings.image | img_url: '1920x' }}'); background-position: {{ block.settings.alignment }}; } }
+								@media only screen and (max-width:767px) { .slideImg-{{block.id}} { background-image:url('{%- if block.settings.mb_image != blank -%}{{ block.settings.mb_image | img_url: '700x' }}{%- else -%}{{ block.settings.image | img_url: '900x' }}{%- endif -%}'); background-position: {{ block.settings.alignment }}; }
+              				</style>
+              				{%- endif -%}
+              				{%- if block.settings.image == blank -%}
+                				<div class="placeholder-background">{% capture current %}{% cycle 1, 2 %}{% endcapture %}{{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}</div>
+							{%- endif -%}
+            			</div>
+            			<div class="slideshow__text-wrap{% if block.settings.title != blank or block.settings.subheading != blank %} slideshow__overlay{% endif %}{% if settings.classic_header and template == 'index' %} classic{% endif %} {{block.settings.vttextalign}}">
+              				<div class="slideshow__text-content {{block.settings.vttextalign}}">
+                				<div class="page-width">
+                  					<div class="wrap-caption {{block.settings.textalign}}">
+                  						{%- unless block.settings.title == blank -%}
+                    					<h2 class="h1 mega-title slideshow__title{% if settings.link != blank %} slideshow__title--has-link{% endif %}">{{ block.settings.title | escape }}</h2>
+                  						{%- endunless -%}
+                  						{%- unless block.settings.subheading == blank -%}
+                    					<span class="mega-subtitle slideshow__subtitle">{{ block.settings.subheading | escape }}</span>
+                  						{%- endunless -%}
+										{%- if block.settings.slide_button_text != blank -%}<span class="btn" >{{ block.settings.slide_button_text }}</span>{%- endif -%}
+
+										{%- if block.type == 'video' -%}
+                    						{%- unless block.settings.video_type == 'background' -%}
+                      						<div class="slideshow__video-control--play-wrapper{% if block.settings.title != blank or block.settings.subheading != blank %} slideshow__video-control--play-wrapper--push{% endif %}">
+                        						<button type="button" class="text-link slideshow__video-control slideshow__video-control--play" data-controls="SlideshowVideo-{{ block.id }}">
+                          							{% include 'icon-play-video' %}<span class="icon__fallback-text">{{ 'sections.slideshow.play_video' | t }}</span>
+                        						</button>
+                      						</div>
+                    						{%- endunless -%}
+                  						{%- endif -%}
+                  					</div>
+                				</div>
+              				</div>
+            			</div>
+            			{%- if block.settings.link != blank -%}</a>{%- endif -%}
+          			</div>
+        		{%- endfor -%}
+			</div>
+		</div>
+	{%- endif -%}
+	{%- if section.blocks.size == 0 -%}<div class="placeholder-noblocks">{{ 'homepage.onboarding.no_content' | t }}</div>{%- endif -%}
+</div>
+
+{% schema %}
+  {
+    "name": "Slideshow",
+    "class": "index-section index-section--flush slideshowOuter",
+    "max_blocks": 4,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "fullwidth",
+        "label": "Full Width",
+        "default": true
+      },
+	  {
+        "type": "checkbox",
+        "id": "autoplay",
+        "label": "Auto-rotate slides",
+        "default": true
+      },
+	  {
+        "type": "checkbox",
+        "id": "imageffect",
+        "label": "Enable Image Animation Effect",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "autoplay_speed",
+        "label": "Change slides every",
+        "options": [
+          { "value": "4000", "label": "4 seconds" },
+		  { "value": "5000", "label": "5 seconds" },
+          { "value": "6000", "label": "6 seconds" },
+          { "value": "7000", "label": "7 seconds" },
+          { "value": "8000", "label": "8 seconds" },
+          { "value": "9000", "label": "9 seconds" },
+          { "value": "10000", "label": "10 seconds" }
+        ],
+        "default": "7000"
+      },
+      {
+        "type": "select",
+        "id": "slideshow_height",
+        "label": "Section height",
+        "default": "small",
+        "options": [
+          {
+            "label": "Small",
+            "value": "small"
+          },
+          {
+            "label": "Medium",
+            "value": "medium"
+          },
+          {
+            "label": "Large",
+            "value": "large"
+          },
+          {
+            "label": "Full Screen",
+            "value": "full"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "navigation",
+        "label": "Navigation Style",
+        "options": [
+          { "value": "arrow", "label": "Left/Right Arrow" },
+		  { "value": "dot", "label": "Pagination Dots" },
+          { "value": "both", "label": "Both" }
+        ],
+        "default": "arrow"
+      },
+	  {
+		"type":"paragraph",
+		"content":"For Best Resoultion recommanded image size: 1900x750(Large), 1900x600(medium) and 1900x450(small). All image must be same sized."
+	  }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+		  {
+            "type": "image_picker",
+            "id": "mb_image",
+            "label": "Mobile Image",
+			"info": "Do not select image here if same image want for mobile and desktop"
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Image alignment",
+            "default": "top",
+            "options": [
+              { "value":"top", "label":"Top" },
+              { "value":"center", "label":"Middle" },
+              { "value":"bottom", "label":"Bottom" }
+            ]
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Image slide"
+          },
+          {
+            "type": "textarea",
+            "id": "subheading",
+            "label": "Subheading",
+            "default": "Tell your brand's story through video and images"
+          },
+         {
+            "type": "text",
+            "id": "slide_button_text",
+            "label": "Slide Button Text",
+ 			"default":"Shop now"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Slide link"
+          },
+          {
+            "type": "select",
+            "id": "textalign",
+            "label": "Text alignment",
+            "default": "center",
+            "options": [
+              { "value":"left", "label":"Left" },
+              { "value":"center", "label":"Center" },
+              { "value":"right", "label":"Right" }
+            ]
+          },
+          {
+            "type": "select",
+            "id": "vttextalign",
+            "label": "Vertical alignment",
+            "default": "middle",
+            "options": [
+              { "value":"top", "label":"Top" },
+              { "value":"middle", "label":"Middle" },
+              { "value":"bottom", "label":"Bottom" }
+            ]
+          }
+        ]
+      }    
+    ],
+    "presets": [{
+      "name": "Slideshow",
+      "category": "Image",
+      "settings": {
+        "autoplay": true,
+        "autoplay_speed": "7000"
+      },
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }]
+  }
+{% endschema %}

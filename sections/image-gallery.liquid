@@ -1,0 +1,805 @@
+{% capture imageGallery %}
+<div class="imgBnrOuter{% if section.settings.hide_mobile %} small--hide{% endif %} {{section.settings.top-offeset}}">
+  	<div class="{% if section.settings.fullwidth %}fullwidth{% else %}page-width{%endif%}">
+     
+      {%- if section.settings.title != blank or section.settings.subtitle != blank %}
+        <div class="section-header text-center">
+          <h2 class="h2">{{ section.settings.title | escape }}</h2>  
+          {%- if section.settings.subtitle != blank -%}
+          <p>{{section.settings.subtitle}}</p>
+          {% endif %}
+       </div>
+      {%- endif -%}
+      
+		{%- for block in section.blocks -%}
+			{%- if block.type == 'style1' -%}
+				<div class="grid" {{ block.shopify_attributes }}>
+					<div class="grid__item medium-up--one-half img-bnr wow fadeIn" data-wow-delay="0ms">
+						<div class="inner {{block.settings.bnr1align}}">{% include 'image-grid', image: block.settings.image1, title: block.settings.text1, link: block.settings.link1, imgSize: '930x620' %}</div>
+					</div>
+					<div class="grid__item one-half medium-up--one-quarter img-bnr wow fadeIn" data-wow-delay="50ms">
+						<div class="inner {{block.settings.bnr2align}}">{% include 'image-grid', image: block.settings.image2, title: block.settings.text2, link: block.settings.link2, imgSize: '460x300' %}</div>
+					</div>
+					<div class="grid__item one-half medium-up--one-quarter img-bnr wow fadeIn" data-wow-delay="100ms">
+						<div class="inner {{block.settings.bnr3align}}">{% include 'image-grid', image: block.settings.image3, title: block.settings.text3, link: block.settings.link3, imgSize: '460x300' %}</div>
+					</div>
+					<div class="grid__item medium-up--one-half img-bnr wow fadeIn" data-wow-delay="150ms">
+						<div class="inner {{block.settings.bnr4align}}">{% include 'image-grid', image: block.settings.image4, title: block.settings.text4, link: block.settings.link4, imgSize: '930x300' %}</div>
+					</div>
+				</div>
+			{%- endif -%}
+
+			{%- if block.type == 'style2' -%}
+				<div class="grid" {{ block.shopify_attributes }}>
+					<div class="grid__item medium-up--one-quarter">
+						<div class="img-bnr wow fadeIn" data-wow-delay="0ms">
+                           	<div class="inner {{block.settings.bnr1align}}">{% include 'image-grid', image: block.settings.image1, title: block.settings.text1, link: block.settings.link1, imgSize: '460x460' %}</div>
+						</div>
+						<div class="img-bnr wow fadeIn" data-wow-delay="50ms">
+                          	<div class="inner {{block.settings.bnr2align}}">{% include 'image-grid', image: block.settings.image2, title: block.settings.text2, link: block.settings.link2, imgSize: '460x460' %}</div>
+						</div>
+					</div>
+					<div class="grid__item medium-up--one-half img-bnr wow fadeIn" data-wow-delay="100ms">
+                      	<div class="inner {{block.settings.bnr3align}}">{% include 'image-grid', image: block.settings.image3, title: block.settings.text3, link: block.settings.link3, imgSize: '930x930' %}</div>
+					</div>
+					<div class="grid__item medium-up--one-quarter">
+						<div class="img-bnr wow fadeIn" data-wow-delay="150ms">
+                          	<div class="inner {{block.settings.bnr4align}}">{% include 'image-grid', image: block.settings.image4, title: block.settings.text4, link: block.settings.link4, imgSize: '460x460' %}</div>
+						</div>
+						<div class="img-bnr wow fadeIn" data-wow-delay="200ms">
+                          	<div class="inner {{block.settings.bnr5align}}">{% include 'image-grid', image: block.settings.image5, title: block.settings.text5, link: block.settings.link5, imgSize: '460x460' %}</div>
+						</div>
+					</div>
+				</div>
+			{%- endif -%}
+
+			{%- if block.type == 'style3' -%}
+				<div class="grid" {{ block.shopify_attributes }}>
+					<div class="grid__item medium-up--one-half img-bnr wow fadeIn" data-wow-delay="0ms">
+                      	<div class="inner {{block.settings.bnr1align}}">{% include 'image-grid', image: block.settings.image1, title: block.settings.text1, link: block.settings.link1, imgSize: '930x930' %}</div>
+					</div>
+					<div class="grid__item medium-up--one-half img-bnr wow fadeIn" data-wow-delay="50ms">
+                      	<div class="inner {{block.settings.bnr2align}}">{% include 'image-grid', image: block.settings.image2, title: block.settings.text2, link: block.settings.link2, imgSize: '930x455' %}</div>
+					</div>
+					<div class="grid__item medium-up--one-half img-bnr wow fadeIn" data-wow-delay="100ms">
+                      	<div class="inner {{block.settings.bnr3align}}">{% include 'image-grid', image: block.settings.image3, title: block.settings.text3, link: block.settings.link3, imgSize: '930x455' %}</div>
+					</div>
+				</div>
+			{%- endif -%}
+
+      		{%- if block.type == 'style4' -%}
+				<div class="grid" {{ block.shopify_attributes }}>
+                  	<div class="grid__item two-thirds medium-up--one-half img-bnr wow fadeIn" data-wow-delay="0ms">
+                      	<div class="inner {{block.settings.bnr1align}}">{% include 'image-grid', image: block.settings.image1, title: block.settings.text1, link: block.settings.link1, imgSize: '930x700' %}</div>
+					</div>
+					<div class="grid__item one-third medium-up--one-quarter img-bnr wow fadeIn" data-wow-delay="50ms">
+						<div class="inner {{block.settings.bnr2align}}">{% include 'image-grid', image: block.settings.image2, title: block.settings.text2, link: block.settings.link2, imgSize: '460x700' %}</div>
+					</div>
+					<div class="grid__item one-half medium-up--one-quarter img-bnr wow fadeIn" data-wow-delay="100ms">
+						<div class="inner {{block.settings.bnr3align}}">{% include 'image-grid', image: block.settings.image3, title: block.settings.text3, link: block.settings.link3, imgSize: '460x340' %}</div>
+					</div>
+                  	<div class="grid__item one-half medium-up--one-quarter img-bnr wow fadeIn" data-wow-delay="150ms">
+                       	<div class="inner {{block.settings.bnr4align}}">{% include 'image-grid', image: block.settings.image4, title: block.settings.text4, link: block.settings.link4, imgSize: '460x340' %}</div>
+					</div>
+				</div>
+			{%- endif -%}
+
+      		{%- if block.type == 'style5' -%}
+				<div class="grid" {{ block.shopify_attributes }}>
+                  	<div class="grid__item medium-up--two-fifths">
+                  		<div class="img-bnr w {{block.settings.bnr1align}}ow fadeIn" data-wow-delay="0ms">
+                      		<div class="inner {{block.settings.bnr1align}}">{% include 'image-grid', image: block.settings.image1, title: block.settings.text1, link: block.settings.link1, imgSize: '712x340' %}</div>
+						</div>
+						<div class="img-bnr wow fadeIn" data-wow-delay="50ms">
+							<div class="inner {{block.settings.bnr2align}}">{% include 'image-grid', image: block.settings.image2, title: block.settings.text2, link: block.settings.link2, imgSize: '712x340' %}</div>
+						</div>
+                  	</div>
+					<div class="grid__item medium-up--three-fifths img-bnr wow fadeIn" data-wow-delay="100ms">
+						<div class="inner {{block.settings.bnr3align}}">{% include 'image-grid', image: block.settings.image3, title: block.settings.text3, link: block.settings.link3, imgSize: '1068x700' %}</div>
+					</div>
+				</div>
+			{%- endif -%}
+		{%- endfor -%}
+        {%- if section.blocks.size == 0 -%}{% include 'no-blocks' %}{%- endif -%}
+	</div>
+</div>
+{% endcapture %}
+{{imageGallery | strip_newlines | remove: "  " | remove: "	" }}
+{% schema %}
+  {
+    "name": "Image Gallery",
+    "class": "index-section imgBanners",
+    "settings": [
+	  {
+         "type": "checkbox",
+		 "id": "fullwidth",
+		 "label": "Full width?",
+		 "default": true
+      },
+	  {
+         "type": "checkbox",
+		 "id": "hide_mobile",
+		 "label": "Hide in mobile?",
+		 "default": true
+      },
+		{
+            "type": "select",
+            "id": "top-offeset",
+            "label": "Top OffSet",
+            "default": "default",
+            "options": [
+              {
+                "value": "default",
+                "label": "Default"
+              },
+              {
+                "value": "small",
+                "label": "Small"
+              },
+			  {
+                "value": "none",
+                "label": "None"
+              }
+			]
+        },
+     {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Gallery Name"
+      },
+     {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Sub Heading",
+        "default": "Describe your products, collection, content etc..."
+      }
+    ],
+    "blocks": [
+      {
+        "type": "style1",
+        "name": "Style 1",
+        "settings": [
+		  {
+			"type":"header",
+			"content":"Image 1"
+		  },
+		  {
+			"type":"image_picker",
+			"id":"image1",
+			"label":"Banner Image"			
+		  },
+		  {
+ 			"type":"textarea",
+			"id":"text1",
+			"label":"Banner Text"
+		  },
+          {
+            "type": "select",
+            "id": "bnr1align",
+            "label": "Text Align",
+            "default": "center",
+            "options": [
+              { "value": "topleft", "label": "Top Left" },
+			  { "value": "topright", "label": "Top Right" },
+              { "value": "center", "label": "center" },
+			  { "value": "btmleft", "label": "Bottom Left" },
+			  { "value": "btmright", "label": "Bottom Right" }
+            ]
+          },
+		  {
+            "type": "url",
+			"id": "link1",
+			"label": "Banner Link"
+          },
+		  {
+			"type":"header",
+			"content":"Image 2"
+		  },
+		  {
+			"type":"image_picker",
+			"id":"image2",
+			"label":"Banner Image"			
+		  },
+		  {
+ 			"type":"textarea",
+			"id":"text2",
+			"label":"Banner Text"
+		  },
+          {
+            "type": "select",
+            "id": "bnr2align",
+            "label": "Text Align",
+            "default": "center",
+            "options": [
+              { "value": "topleft", "label": "Top Left" },
+			  { "value": "topright", "label": "Top Right" },
+              { "value": "center", "label": "center" },
+			  { "value": "btmleft", "label": "Bottom Left" },
+			  { "value": "btmright", "label": "Bottom Right" }
+            ]
+          },
+		  {
+            "type": "url",
+			"id": "link2",
+			"label": "Banner Link"
+          },
+	 	  {
+			"type":"header",
+			"content":"Image 3"
+		  },
+		  {
+			"type":"image_picker",
+			"id":"image3",
+			"label":"Banner Image"			
+		  },
+		  {
+ 			"type":"textarea",
+			"id":"text3",
+			"label":"Banner Text"
+		  },
+          {
+            "type": "select",
+            "id": "bnr3align",
+            "label": "Text Align",
+            "default": "center",
+            "options": [
+              { "value": "topleft", "label": "Top Left" },
+			  { "value": "topright", "label": "Top Right" },
+              { "value": "center", "label": "center" },
+			  { "value": "btmleft", "label": "Bottom Left" },
+			  { "value": "btmright", "label": "Bottom Right" }
+            ]
+          },
+		  {
+            "type": "url",
+			"id": "link3",
+			"label": "Banner Link"
+          },
+		  {
+			"type":"header",
+			"content":"Image 4"
+		  },
+		  {
+			"type":"image_picker",
+			"id":"image4",
+			"label":"Banner Image"			
+		  },
+		  {
+ 			"type":"textarea",
+			"id":"text4",
+			"label":"Banner Text"
+		  },
+          {
+            "type": "select",
+            "id": "bnr4align",
+            "label": "Text Align",
+            "default": "center",
+            "options": [
+              { "value": "topleft", "label": "Top Left" },
+			  { "value": "topright", "label": "Top Right" },
+              { "value": "center", "label": "center" },
+			  { "value": "btmleft", "label": "Bottom Left" },
+			  { "value": "btmright", "label": "Bottom Right" }
+            ]
+          },
+		  {
+            "type": "url",
+			"id": "link4",
+			"label": "Banner Link"
+          }
+        ]
+      },
+	  {
+        "type": "style2",
+        "name": "Style 2",
+        "settings": [
+		  {
+			"type":"header",
+			"content":"Image 1"
+		  },
+		  {
+			"type":"image_picker",
+			"id":"image1",
+			"label":"Banner Image"			
+		  },
+		  {
+ 			"type":"textarea",
+			"id":"text1",
+			"label":"Banner Text"
+		  },
+          {
+            "type": "select",
+            "id": "bnr1align",
+            "label": "Text Align",
+            "default": "center",
+            "options": [
+              { "value": "topleft", "label": "Top Left" },
+			  { "value": "topright", "label": "Top Right" },
+              { "value": "center", "label": "center" },
+			  { "value": "btmleft", "label": "Bottom Left" },
+			  { "value": "btmright", "label": "Bottom Right" }
+            ]
+          },
+		  {
+            "type": "url",
+			"id": "link1",
+			"label": "Banner Link"
+          },
+		  {
+			"type":"header",
+			"content":"Image 2"
+		  },
+		  {
+			"type":"image_picker",
+			"id":"image2",
+			"label":"Banner Image"			
+		  },
+		  {
+ 			"type":"textarea",
+			"id":"text2",
+			"label":"Banner Text"
+		  },
+          {
+            "type": "select",
+            "id": "bnr2align",
+            "label": "Text Align",
+            "default": "center",
+            "options": [
+              { "value": "topleft", "label": "Top Left" },
+			  { "value": "topright", "label": "Top Right" },
+              { "value": "center", "label": "center" },
+			  { "value": "btmleft", "label": "Bottom Left" },
+			  { "value": "btmright", "label": "Bottom Right" }
+            ]
+          },
+		  {
+            "type": "url",
+			"id": "link2",
+			"label": "Banner Link"
+          },
+	 	  {
+			"type":"header",
+			"content":"Image 3"
+		  },
+		  {
+			"type":"image_picker",
+			"id":"image3",
+			"label":"Banner Image"			
+		  },
+		  {
+ 			"type":"textarea",
+			"id":"text3",
+			"label":"Banner Text"
+		  },
+          {
+            "type": "select",
+            "id": "bnr3align",
+            "label": "Text Align",
+            "default": "center",
+            "options": [
+              { "value": "topleft", "label": "Top Left" },
+			  { "value": "topright", "label": "Top Right" },
+              { "value": "center", "label": "center" },
+			  { "value": "btmleft", "label": "Bottom Left" },
+			  { "value": "btmright", "label": "Bottom Right" }
+            ]
+          },
+		  {
+            "type": "url",
+			"id": "link3",
+			"label": "Banner Link"
+          },
+		  {
+			"type":"header",
+			"content":"Image 4"
+		  },
+		  {
+			"type":"image_picker",
+			"id":"image4",
+			"label":"Banner Image"			
+		  },
+		  {
+ 			"type":"textarea",
+			"id":"text4",
+			"label":"Banner Text"
+		  },
+          {
+            "type": "select",
+            "id": "bnr4align",
+            "label": "Text Align",
+            "default": "center",
+            "options": [
+              { "value": "topleft", "label": "Top Left" },
+			  { "value": "topright", "label": "Top Right" },
+              { "value": "center", "label": "center" },
+			  { "value": "btmleft", "label": "Bottom Left" },
+			  { "value": "btmright", "label": "Bottom Right" }
+            ]
+          },
+		  {
+            "type": "url",
+			"id": "link4",
+			"label": "Banner Link"
+          },
+		  {
+			"type":"header",
+			"content":"Image 5"
+		  },
+		  {
+			"type":"image_picker",
+			"id":"image5",
+			"label":"Banner Image"			
+		  },
+		  {
+ 			"type":"textarea",
+			"id":"text5",
+			"label":"Banner Text"
+		  },
+          {
+            "type": "select",
+            "id": "bnr5align",
+            "label": "Text Align",
+            "default": "center",
+            "options": [
+              { "value": "topleft", "label": "Top Left" },
+			  { "value": "topright", "label": "Top Right" },
+              { "value": "center", "label": "center" },
+			  { "value": "btmleft", "label": "Bottom Left" },
+			  { "value": "btmright", "label": "Bottom Right" }
+            ]
+          },
+		  {
+            "type": "url",
+			"id": "link5",
+			"label": "Banner Link"
+          }
+        ]
+      },
+	  {
+        "type": "style3",
+        "name": "Style 3",
+        "settings": [
+		  {
+			"type":"header",
+			"content":"Image 1"
+		  },
+		  {
+			"type":"image_picker",
+			"id":"image1",
+			"label":"Banner Image"
+		  },
+		  {
+ 			"type":"textarea",
+			"id":"text1",
+			"label":"Banner Text"
+		  },
+          {
+            "type": "select",
+            "id": "bnr1align",
+            "label": "Text Align",
+            "default": "center",
+            "options": [
+              { "value": "topleft", "label": "Top Left" },
+			  { "value": "topright", "label": "Top Right" },
+              { "value": "center", "label": "center" },
+			  { "value": "btmleft", "label": "Bottom Left" },
+			  { "value": "btmright", "label": "Bottom Right" }
+            ]
+          },
+		  {
+            "type": "url",
+			"id": "link1",
+			"label": "Banner Link"
+          },
+		  {
+			"type":"header",
+			"content":"Image 2"
+		  },
+		  {
+			"type":"image_picker",
+			"id":"image2",
+			"label":"Banner Image"
+		  },
+		  {
+ 			"type":"textarea",
+			"id":"text2",
+			"label":"Banner Text"
+		  },
+          {
+            "type": "select",
+            "id": "bnr2align",
+            "label": "Text Align",
+            "default": "center",
+            "options": [
+              { "value": "topleft", "label": "Top Left" },
+			  { "value": "topright", "label": "Top Right" },
+              { "value": "center", "label": "center" },
+			  { "value": "btmleft", "label": "Bottom Left" },
+			  { "value": "btmright", "label": "Bottom Right" }
+            ]
+          },
+		  {
+            "type": "url",
+			"id": "link2",
+			"label": "Banner Link"
+          },
+	 	  {
+			"type":"header",
+			"content":"Image 3"
+		  },
+		  {
+			"type":"image_picker",
+			"id":"image3",
+			"label":"Banner Image"
+		  },
+		  {
+ 			"type":"textarea",
+			"id":"text3",
+			"label":"Banner Text"
+		  },
+          {
+            "type": "select",
+            "id": "bnr3align",
+            "label": "Text Align",
+            "default": "center",
+            "options": [
+              { "value": "topleft", "label": "Top Left" },
+			  { "value": "topright", "label": "Top Right" },
+              { "value": "center", "label": "center" },
+			  { "value": "btmleft", "label": "Bottom Left" },
+			  { "value": "btmright", "label": "Bottom Right" }
+            ]
+          },
+		  {
+            "type": "url",
+			"id": "link3",
+			"label": "Banner Link"
+          }
+        ]
+      },
+	  {
+        "type": "style4",
+        "name": "Style 4",
+        "settings": [
+		  {
+			"type":"header",
+			"content":"Image 1"
+		  },
+		  {
+			"type":"image_picker",
+			"id":"image1",
+			"label":"Banner Image"			
+		  },
+		  {
+ 			"type":"textarea",
+			"id":"text1",
+			"label":"Banner Text"
+		  },
+          {
+            "type": "select",
+            "id": "bnr1align",
+            "label": "Text Align",
+            "default": "center",
+            "options": [
+              { "value": "topleft", "label": "Top Left" },
+			  { "value": "topright", "label": "Top Right" },
+              { "value": "center", "label": "center" },
+			  { "value": "btmleft", "label": "Bottom Left" },
+			  { "value": "btmright", "label": "Bottom Right" }
+            ]
+          },
+		  {
+            "type": "url",
+			"id": "link1",
+			"label": "Banner Link"
+          },
+		  {
+			"type":"header",
+			"content":"Image 2"
+		  },
+		  {
+			"type":"image_picker",
+			"id":"image2",
+			"label":"Banner Image"			
+		  },
+		  {
+ 			"type":"textarea",
+			"id":"text2",
+			"label":"Banner Text"
+		  },
+          {
+            "type": "select",
+            "id": "bnr2align",
+            "label": "Text Align",
+            "default": "center",
+            "options": [
+              { "value": "topleft", "label": "Top Left" },
+			  { "value": "topright", "label": "Top Right" },
+              { "value": "center", "label": "center" },
+			  { "value": "btmleft", "label": "Bottom Left" },
+			  { "value": "btmright", "label": "Bottom Right" }
+            ]
+          },
+		  {
+            "type": "url",
+			"id": "link2",
+			"label": "Banner Link"
+          },
+	 	  {
+			"type":"header",
+			"content":"Image 3"
+		  },
+		  {
+			"type":"image_picker",
+			"id":"image3",
+			"label":"Banner Image"			
+		  },
+		  {
+ 			"type":"textarea",
+			"id":"text3",
+			"label":"Banner Text"
+		  },
+          {
+            "type": "select",
+            "id": "bnr3align",
+            "label": "Text Align",
+            "default": "center",
+            "options": [
+              { "value": "topleft", "label": "Top Left" },
+			  { "value": "topright", "label": "Top Right" },
+              { "value": "center", "label": "center" },
+			  { "value": "btmleft", "label": "Bottom Left" },
+			  { "value": "btmright", "label": "Bottom Right" }
+            ]
+          },
+		  {
+            "type": "url",
+			"id": "link3",
+			"label": "Banner Link"
+          },
+		  {
+			"type":"header",
+			"content":"Image 4"
+		  },
+		  {
+			"type":"image_picker",
+			"id":"image4",
+			"label":"Banner Image"			
+		  },
+		  {
+ 			"type":"textarea",
+			"id":"text4",
+			"label":"Banner Text"
+		  },
+          {
+            "type": "select",
+            "id": "bnr4align",
+            "label": "Text Align",
+            "default": "center",
+            "options": [
+              { "value": "topleft", "label": "Top Left" },
+			  { "value": "topright", "label": "Top Right" },
+              { "value": "center", "label": "center" },
+			  { "value": "btmleft", "label": "Bottom Left" },
+			  { "value": "btmright", "label": "Bottom Right" }
+            ]
+          },
+		  {
+            "type": "url",
+			"id": "link4",
+			"label": "Banner Link"
+          }
+        ]
+      },
+	  {
+        "type": "style5",
+        "name": "Style 5",
+        "settings": [
+		  {
+			"type":"header",
+			"content":"Image 1"
+		  },
+		  {
+			"type":"image_picker",
+			"id":"image1",
+			"label":"Banner Image"			
+		  },
+		  {
+ 			"type":"textarea",
+			"id":"text1",
+			"label":"Banner Text"
+		  },
+          {
+            "type": "select",
+            "id": "bnr1align",
+            "label": "Text Align",
+            "default": "center",
+            "options": [
+              { "value": "topleft", "label": "Top Left" },
+			  { "value": "topright", "label": "Top Right" },
+              { "value": "center", "label": "center" },
+			  { "value": "btmleft", "label": "Bottom Left" },
+			  { "value": "btmright", "label": "Bottom Right" }
+            ]
+          },
+		  {
+            "type": "url",
+			"id": "link1",
+			"label": "Banner Link"
+          },
+		  {
+			"type":"header",
+			"content":"Image 2"
+		  },
+		  {
+			"type":"image_picker",
+			"id":"image2",
+			"label":"Banner Image"			
+		  },
+		  {
+ 			"type":"textarea",
+			"id":"text2",
+			"label":"Banner Text"
+		  },
+          {
+            "type": "select",
+            "id": "bnr2align",
+            "label": "Text Align",
+            "default": "center",
+            "options": [
+              { "value": "topleft", "label": "Top Left" },
+			  { "value": "topright", "label": "Top Right" },
+              { "value": "center", "label": "center" },
+			  { "value": "btmleft", "label": "Bottom Left" },
+			  { "value": "btmright", "label": "Bottom Right" }
+            ]
+          },
+		  {
+            "type": "url",
+			"id": "link2",
+			"label": "Banner Link"
+          },
+	 	  {
+			"type":"header",
+			"content":"Image 3"
+		  },
+		  {
+			"type":"image_picker",
+			"id":"image3",
+			"label":"Banner Image"			
+		  },
+		  {
+ 			"type":"textarea",
+			"id":"text3",
+			"label":"Banner Text"
+		  },
+          {
+            "type": "select",
+            "id": "bnr3align",
+            "label": "Text Align",
+            "default": "center",
+            "options": [
+              { "value": "topleft", "label": "Top Left" },
+			  { "value": "topright", "label": "Top Right" },
+              { "value": "center", "label": "center" },
+			  { "value": "btmleft", "label": "Bottom Left" },
+			  { "value": "btmright", "label": "Bottom Right" }
+            ]
+          },
+		  {
+            "type": "url",
+			"id": "link3",
+			"label": "Banner Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image Gallery",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

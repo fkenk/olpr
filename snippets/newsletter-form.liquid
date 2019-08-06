@@ -1,0 +1,32 @@
+{% if settings.mailChimp_newsletter == blank %}
+    {% form 'customer' %}
+        {{ form.errors | default_errors }}
+        {% if form.posted_successfully? %}
+            <p class="form--success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+        {% else %}
+            <div class="input-group">
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <input type="email" name="contact[email]" id="Email" class="input-group__field newsletter__input"
+                     value="{% if customer %}{{ customer.email }}{% endif %}"
+                     placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                     autocorrect="off" autocapitalize="off">
+              <span class="input-group__btn">
+                <button type="submit" class="btn newsletter__submit" name="commit" id="Subscribe">
+                  <span class="newsletter__submit-text--large">{{ 'general.newsletter_form.submit' | t }}</span>
+                </button>
+              </span>
+            </div>
+        {% endif %}
+    {% endform %}
+{% else %}
+	<form role="form" action="{{ settings.mailChimp_newsletter }}" method="post" target="_blank">
+      <div class="input-group">
+        <input type="email" class="input-group__field newsletter__input" name="EMAIL" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}" required>
+        <span class="input-group__btn">
+          <button type="submit" class="btn newsletter__submit" name="commit" id="Subscribe">
+            <span class="newsletter__submit-text--large">{{ 'general.newsletter_form.submit' | t }}</span>
+          </button>
+        </span>
+      </div>
+	</form>
+{% endif %}

@@ -1,0 +1,30 @@
+{%- unless grid_image_width -%}{%- assign grid_image_width = '400x400' -%}{%- endunless -%}
+{%- assign sold_out = true -%}
+{%- assign sold_out_text = 'products.product.sold_out' | t -%}
+{%- if product.available -%}{%- assign sold_out = false -%}{%- endif -%}
+<div class="grid-products">
+	<div id="{{ product.id }}" class="grid-view-item pInfo{% unless product.available %} product-price--sold-out grid-view-item--sold-out{% endunless %}">
+		<a class="grid-view-item__link" href="{{ product.url | within: collection }}">
+			<img class="prodImg" src="{{ product.featured_image.src | img_url: grid_image_width }}" alt="{{ product.featured_image.alt }}">
+			<div class="h4 grid-view-item__title">{{ product.title }}</div>
+			<span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+			{%- unless settings.catalog-mode -%}<div class="grid-view-item__meta">{% include 'product-price' %}</div>{%- endunless -%}
+		</a>
+		{%- unless settings.catalog-mode -%}
+		<div class="action">
+			{%- assign variantCount = product.variants | size -%}
+			<form class="variants" action="/cart/add" method="post">
+  
+			{%- if sold_out == false -%}
+				{%- if variantCount > 1 -%}
+          			<button class="btn" type="button" onclick="window.location.href='{{product.url}}'">{{'products.product.select_options' | t}}</button>
+          		{%- else -%}
+        			<input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+        			<button type="button" id="{{ product.variants[0].id }}" rel="1" class="btn btn-cart">{{ 'products.product.add_to_cart' | t}}</button>
+          		{%- endif -%}
+        	{%- endif -%}
+      		</form>
+    	</div>
+  		{%- endunless -%}
+	</div>
+</div>

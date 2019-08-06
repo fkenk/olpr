@@ -1,0 +1,13 @@
+{%- if shop.customer_accounts_enabled -%}
+<span class="user-menu"><i class="ad ad-user-al" aria-hidden="true"></i></span>
+<ul class="customer-links list-inline">
+	{%- if customer -%}
+		<li><a href="/account/logout"> {{ 'customer.account.logout' | t }}</a></li>
+		<li><a href="/account"> {{ 'customer.account.title' | t }}</a></li>
+	{%- else -%}
+		<li><a href="/account/login">{{ 'customer.login.title' | t }}</a></li>
+  		{% if shop.customer_accounts_optional %}<li><a href="/account/register"> {{ 'customer.register.title' | t }}</a></li>{% endif %}
+	{%- endif -%}
+	{%- if settings.enable_wishlist -%}<li><a href="/pages/wishlist">{{ 'customer.wishlist.title' | t }}</a></li>{%- endif -%}
+</ul>
+{%- endif -%}

@@ -1,0 +1,86 @@
+{{ '//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js' | script_tag }}
+{{ 'jquery.products.min.js' | asset_url | script_tag }}
+
+{% case section.settings.recent_grid_num %}   
+{% when '3' %}
+  {%- assign grid_item_width = 'grid-3' -%}      
+{% when '4' %}
+  {%- assign grid_item_width = 'grid-4' -%}     
+{% when '5' %}
+  {%- assign grid_item_width = 'grid-5' -%}     
+{% endcase %}
+
+<div class="recent-products">
+{% if section.settings.show_viewed_products == true %}	
+ 	 <header class="section-header text-center">
+        <h2><span>{{ section.settings.viewedproduct_title }}</span></h2>
+          {% if section.settings.related_sub_title != blank %}
+          <p class="sub-heading">{{ section.settings.viewedproduct_sub_title}}</p>
+          {% endif %}
+      </header>
+	{%- assign image_size = '350x' -%}
+		{% case section.settings.grid %}
+  			{% when '3' %}{%- assign grid_item_ds = 'large-up--one-third' -%}
+            {% when '4' %}{%- assign grid_item_ds = 'large-up--one-quarter' -%}
+            {% when '5' %}{%- assign grid_item_ds = 'large--one-quarter widescreen--one-fifth' -%}
+            {% when '6' %}{%- assign grid_item_ds = 'large--one-fifth widescreen--one-sixth' -%}
+            {% when '7' %}{%- assign grid_item_ds = 'large--one-fifth widescreen--one-seventh' -%}
+  		{% endcase %}
+
+		{% case section.settings.tablet-grid %}
+  			{% when '2' %}{%- assign grid_item_tb = 'medium--one-half' -%}
+  			{% when '3' %}{%- assign grid_item_tb = 'medium--one-third' -%}
+  			{% when '4' %}{%- assign grid_item_tb = 'medium--one-quarter' -%}
+  		{% endcase %}
+
+		{% case section.settings.mobile-grid %}
+  			{% when '1' %}{%- assign grid_item_mb = 'small--one-whole' -%}
+  			{% when '2' %}{%- assign grid_item_mb = 'small--one-half' -%}
+  			{% when '3' %}{%- assign grid_item_mb = 'small--one-third' -%}
+  		{% endcase %}
+	<!-- dont't delete this div -->
+    <div id="recently-viewed-products" class="grid grid--uniform grid-products"></div>   
+
+    <script id="recently-viewed-product-template"  type="text/x-jquery-tmpl">
+    	{%- if section.settings.product_latyout == 'style3' -%}
+        	<div class="grid__item medium--one-third" id="product-${handle}">
+                <div class="mini-list-item{% unless product.available %} product-price--sold-out grid-view-item--sold-out{% endunless %}  wow fadeIn" data-wow-delay="{{delay_time}}ms">
+                    <div class="mini-view_image"><a href="${url}" class="cy"><img src="${Shopify.Products.resizeImage(featured_image, "large")}" /></a></div>
+                    <div class="details">
+                      <a class="h4 grid-view-item__title" href="${url}">${title}</a>
+                      <div class="grid-view-item__meta"><span class="price product-price__price"><span class="money">${Shopify.formatMoney(price, window.myprice)}</span></span></div>
+                      {%- if section.settings.show_product_review -%}<div class="product-review"><span class="shopify-product-reviews-badge" data-id="${id}"></span></div>{%- endif -%}
+                   </div>
+                </div>
+            </div
+		{%- else -%}
+            <div class="grid__item {{grid_item_mb}} {{grid_item_tb}} {{grid_item_ds}}" id="product-${handle}">
+                <div class="grid-view-item">
+                  <div class="image">
+                      <a href="${url}" class="cy"><img src="${Shopify.Products.resizeImage(featured_image, "large")}" /></a>
+                  </div>
+                  <div class="grid-view-item__meta clearfix">
+                      <a href="${url}" class="grid-view-item__link">
+                        <span class="title h4 grid-view-item__title">${title}</span>
+                        <!--span class="price product-price__price"><span class="money">${Shopify.formatMoney(price, window.myprice)}</span></span-->
+                    </a>
+                  </div>
+                </div>
+            </div>
+        {%- endif -%}
+    </script>
+{% endif %}
+
+<script>
+  window.myprice = {{ shop.money_format | strip_html | json }};
+  Shopify.Products.showRecentlyViewed( { howManyToShow:{{ section.settings.recent_total_product_to_show }} } );
+  Shopify.Products.recordRecentlyViewed();
+
+	$(window).load(function(){
+		{% if settings.show_multiple_currencies %}
+        	currenciesChange("#recently-viewed-products span.money");
+			setTimeout(function(){ currenciesChange("#recently-viewed-products span.money"); }, 3000);
+  		{% endif %}
+    });
+</script>
+</div>

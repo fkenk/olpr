@@ -1,0 +1,18 @@
+<li{% if link.active %} class="active"{% endif %}>
+  	{%- assign label1 = link.title | split: '[label' | last | split: ']' | first | prepend: "nm_label" -%}
+	<a href="{{ link.url }}" class="site-nav">{{ link.title | split: '[label' | first }}{% if link.title contains '[label' %}<span class="lbl {{label1}}">{{ section.settings[label1] }}</span>{% endif %}{%- if link.links != blank -%} <i class="ad ad-plus-l"></i>{%- endif -%}</a>
+  	{%- if link.links != blank -%}
+    <ul>
+		{%- for lvl1 in link.links -%}
+		<li{% if lvl1.active %} class="active"{% endif %}>
+          	{%- assign label2 = lvl1.title | split: '[label' | last | split: ']' | first | prepend: "nm_label" -%}
+			<a href="{{ lvl1.url }}" class="site-nav{% if forloop.last %} last{% endif %}">{{ lvl1.title | split: '[label' | first }}{% if link.title contains '[label' %}<span class="lbl {{label2}}">{{ section.settings[label2] }}</span>{% endif %}{%- if lvl1.links != blank -%}<i class="ad ad-plus-l"></i>{%- endif -%}</a>
+            {%- if lvl1.links != blank -%}
+          		{%- assign label3 = lvl2.title | split: '[label' | last | split: ']' | first | prepend: "nm_label" -%}
+          		<ul>{% for lvl2 in lvl1.links %}<li><a href="{{ lvl2.url }}" class="site-nav child-link{% if forloop.last %} last{% endif %}">{{ lvl2.title | split: '[label' | first }}{% if link.title contains '[label' %}<span class="lbl {{label3}}">{{ section.settings[label3] }}</span>{% endif %}</a></li>{% endfor %}</ul>
+          	{%- endif -%}
+		</li>
+		{%- endfor -%}
+    </ul>
+    {%- endif -%}
+</li>

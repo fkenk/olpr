@@ -1,0 +1,688 @@
+<div class="product-template__container pr{{section.settings.product_latyout}} page-width" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
+  	{%- case section.settings.product_latyout -%}
+		{% when 'style1' %}
+        	{% include 'product-layout1' %}
+		{% when 'style2' %}
+			{% include 'product-layout2' %}
+  		{% when 'style3' %}
+			{% include 'product-layout3' %}
+	{%- endcase -%}
+</div>
+
+<div class="hide">
+    <div id="sizechart">
+    {% assign meta = product.metafields.meta %}
+        {% assign key = 'sizechart' %}
+        {% if meta.sizechart != blank %}
+            {{ meta.sizechart }}
+        {% elsif section.settings.sizechart != blank %}
+                  		<img src="{{ section.settings.sizechart | img_url:'master' }}" alt="" />
+        {% endif %} 
+    </div>
+</div>
+
+<div class="hide">
+    <div id="productInquiry">    
+       {% include 'product-inquiry' %}
+    </div>
+</div>
+
+{% unless product.empty? %}
+  <script type="application/json" id="ProductJson-{{ section.id }}">{{ product | json }}</script>
+{% endunless %}
+
+{%- if section.settings.enable_lightbox -%}
+{{ 'photoswipe.scss.css' | asset_url | stylesheet_tag }}
+{{ 'photoswipe.min.js' | asset_url | script_tag }}
+<script type="text/javascript">
+$(function(){
+	var $pswp = $('.pswp')[0],
+    	image = [],
+		getItems = function() {
+        	var items = [];
+            $('.lightboximages a').each(function() {
+            	var $href   = $(this).attr('href'),
+                	$size   = $(this).data('size').split('x'),
+                    item = {
+                    	src : $href,
+                        w: $size[0],
+                        h: $size[1]
+                    }
+                    items.push(item);
+            });
+			return items;
+		}
+	var items = getItems();
+
+    $.each(items, function(index, value) {
+    	image[index]     = new Image();
+        image[index].src = value['src'];
+    });
+	$('.prlightbox').click(function(event) {
+    	event.preventDefault();
+      
+        var $index = $(".active-thumb").parent().attr('data-slick-index');
+      	$index++;
+      	$index = $index-1;
+
+        var options = {
+			index: $index,
+            bgOpacity: 0.9,
+            showHideOpacity: true
+		}
+        var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
+        lightBox.init();
+	});
+});
+</script>
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true"><div class="pswp__bg"></div><div class="pswp__scroll-wrap"><div class="pswp__container"><div class="pswp__item"></div><div class="pswp__item"></div><div class="pswp__item"></div></div><div class="pswp__ui pswp__ui--hidden"><div class="pswp__top-bar"><div class="pswp__counter"></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button><button class="pswp__button pswp__button--share" title="Share"></button><button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button><button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class="pswp__preloader"><div class="pswp__preloader__icn"><div class="pswp__preloader__cut"><div class="pswp__preloader__donut"></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class="pswp__share-tooltip"></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button><button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class="pswp__caption"><div class="pswp__caption__center"></div></div></div></div></div>
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Product page",
+    "settings": [ 
+       {
+        "type": "select",
+        "id": "product_latyout",
+        "label": "Product Layout",
+        "default": "style1",
+        "options": [
+		  { "value": "style1", "label": "Style 1" },
+          { "value": "style2", "label": "Style 2" },
+		  { "value": "style3", "label": "Style 3" }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_zoom",
+        "label": "Enable Image Zoom",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_lightbox",
+        "label": "Enable Lightbox",
+        "default": true
+      },
+	  {
+        "type": "select",
+        "id": "thumbnail_pos",
+        "label": "Thumbnail Position",
+        "default": "left",
+        "options": [
+		  { "value": "left", "label": "Left" },
+		  { "value": "right", "label": "Right" },
+          { "value": "bottom", "label": "Bottom" }
+        ]
+      },
+	  {
+        "type": "checkbox",
+        "id": "show_product_navigation",
+        "label": "Show Product Navigation?",
+        "default": false
+      },
+ 	  {
+        "type": "checkbox",
+        "id": "show_product_review",
+        "label": "Show Product Review?",
+        "default": true
+      },
+ 	  {
+        "type": "checkbox",
+        "id": "show_saleoff",
+        "label": "Show Discount Saved Badge?",
+        "default": true
+      },	 
+  	  {
+        "type": "checkbox",
+        "id": "show_product_availability",
+        "label": "Show Product Availability?",
+        "default": true
+      },      
+      {
+        "type": "checkbox",
+        "id": "show_product_vendor",
+        "label": "Show Vendor?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_product_sku",
+        "label": "Show Product SKU?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_short_desc",
+        "label": "Show Short Description?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "quantity_msg",
+        "label": "Show Quantity Message?",
+		"info": "Message show when less than 20 items remaining in stock.",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "countdown",
+        "label": "Show Countdown Time?",
+		"info": "Show timer for products that have scheduled date by metafields",
+        "default": true
+      },
+	  {
+        "type": "checkbox",
+        "id": "sizechartlink",
+        "label": "Show Size Chart Link?",
+ 		"info": "Size chart link to open chart data in popup box",
+        "default": true
+      },
+	  {
+        "type": "checkbox",
+        "id": "askaboutproduct",
+        "label": "Show Ask about Product Link?",
+ 		"info": "Open new tab and send email direct to ask about product",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_payment_button",
+        "label": "Show Dynamic Checkout Button?",
+        "info": "Lets customers check out directly using a familiar payment method. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "default": false
+      },		
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show Social Sharing Buttons?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_free_ship",
+        "label": "Show Free Shipping Message?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_estimate_ship",
+        "label": "Show Shipping Estimated Time?",
+        "default": true
+      },
+	  {
+        "type": "checkbox",
+        "id": "show_product_type",
+        "label": "Show Product Type?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_collection",
+        "label": "Show Collections",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_tags",
+        "label": "Show Product Tags?",
+        "default": true
+      },
+	  {
+        "type": "header",       
+        "content": "Variant style"
+      },
+	  {
+        "type": "checkbox",
+        "id": "show_variant_swatches",
+        "label": "Show Variant Swatches?",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "color_type",
+        "label": "Swatch Type",
+        "default": "color",
+		"info":"For swatch image type, image name must same as color name and in lowercase. Use '-' instead of space. Examples (Black = black.png, Navy Blue = navy-blue.png). Upload images on 'settings > files', For Variant Image, You must assign image to each of product variant from 'Products > Product'",
+        "options": [
+          { "value":"color", "label": "Color Swatch" },
+          { "value":"image", "label": "Image Swatch" },
+          { "value":"vrimage", "label": "Variant Image" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "color_size",
+        "label": "Swatch Size",
+        "default": "small",
+        "options": [
+          { "value": "small", "label": "Small" },
+          { "value": "medium", "label": "Medium" },
+          { "value": "large", "label": "Large" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "color_style",
+        "label": "Swatch Style",
+        "default": "rounded",
+        "options": [
+          { "value": "rounded", "label": "Rounded" },
+          { "value": "rectangle", "label": "Square" },
+          { "value": "rounded_rectangle", "label": "Rounded Rectangle" },
+          { "value": "flat", "label": "Flat" }
+        ]
+      },
+	  {
+        "type": "header",       
+        "content": "Fake Orders"
+      },
+      {
+        "type": "checkbox",
+        "id": "fake_orders",
+        "label": "Enable Fake Orders",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "orders",
+        "label": "Max Items",
+        "min": 1,
+        "max": 50,
+        "step": 1,
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "orders_time",
+        "label": "Order time",
+        "min": 5,
+        "max": 48,
+        "step": 1,
+        "default": 24
+      },
+      {
+        "type": "text",
+        "id": "orders_msg",
+        "label": "Orders Message",
+        "default": "[orders] sold in last [hours] hours",
+		"info":"Use '[orders]' for items counts and '[hours]' for hours counts"
+      },
+	  {
+        "type": "header",       
+        "content": "Fake visitors"
+      },
+      {
+        "type": "checkbox",
+        "id": "fake_visitors",
+        "label": "Enable Fake Visitors",
+        "default": false
+      },
+      {
+        "type": "range",
+        "id": "visitors",
+        "label": "Max Visitors",
+        "min": 10,
+        "max": 500,
+        "step": 10,
+        "default": 50
+      },
+      {
+        "type": "range",
+        "id": "visitors_time",
+        "label": "Interval time",
+        "min": 1,
+        "max": 20,
+        "step": 1,
+		"unit": "sec",
+        "default": 5
+      },
+      {
+        "type": "text",
+        "id": "visitors_msg",
+        "label": "Visitors Message",
+        "default": "[visitors] Persons looking for this product",
+		"info":"Use '[visitors]' for show user counts"
+      },
+ 	 {
+            "type": "image_picker",
+            "id": "image_banner",
+            "label": "Payment or security Image",
+		    "info":"i.e. secure payment, shipping offer, Payment options or any other promotional banner"
+      },
+	  {
+        "type": "header",       
+        "content": "Feature points"
+      },
+	  {
+        "type": "checkbox",
+        "id": "show_features",
+        "label": "Show Feature Points?",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "feature1_icon",
+        "label": "Feature 1 Icon"
+      },
+      {
+        "type": "textarea",
+        "id": "feature1_text",
+        "label": "Feature 1 Text",
+        "default": "Feature 1 Text",
+		"info": "you can use <h3>Title</h3>,h4 or h5 tag for headings"
+      },
+      {
+        "type": "image_picker",
+        "id": "feature2_icon",
+        "label": "Feature 2 Icon"
+      },
+      {
+        "type": "textarea",
+        "id": "feature2_text",
+        "label": "Feature 2 Text",
+        "default": "Feature 2 Text",
+		"info": "you can use <h3>Title</h3>,h4 or h5 tag for headings"
+      },
+      {
+        "type": "image_picker",
+        "id": "feature3_icon",
+        "label": "Feature 3 Icon"
+      },
+      {
+        "type": "textarea",
+        "id": "feature3_text",
+        "label": "Feature 3 Text",
+        "default": "Feature 3 Text",
+		"info": "you can use <h3>Title</h3>,h4 or h5 tag for headings"
+      },
+      {
+        "type": "image_picker",
+        "id": "feature4_icon",
+        "label": "Feature 4 Icon"
+      },
+      {
+        "type": "textarea",
+        "id": "feature4_text",
+        "label": "Feature 4 Text",
+        "default": "Feature 4 Text",
+		"info": "you can use <h3>Title</h3>,h4 or h5 tag for headings"
+      },
+	  {
+        "type": "header",       
+        "content": "Product Tabs"
+      },
+	  {
+        "type": "checkbox",
+        "id": "show_product_tabs",
+        "label": "Show Product Tabs",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_tab_1",
+        "label": "Show Tab 1",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "tab_1_title_text",
+        "label": "Tab 1 Button Text",
+        "default": "Product Details",
+		"info":"You dont't need to enter product detail"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_tab_2",
+        "label": "Show Tab 2",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "tab_2_title_text",
+        "label": "Tab 2 Button Text",
+        "default": "Product Reviews",
+		"info":"You dont't need to enter details"
+      },
+{
+        "type": "checkbox",
+        "id": "show_tab_3",
+        "label": "Show Tab 3",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "tab_3_title_text",
+        "label": "Tab 3 Button Text",
+        "default": "Size Chart"		
+      },
+      {
+        "type": "image_picker",
+        "id": "sizechart",
+        "label": "Upload Size Chart Image"
+      },
+       {
+        "type": "checkbox",
+        "id": "show_tab_4",
+        "label": "Show Tab 4",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "tab_4_title_text",
+        "label": "Tab 4 Button Text",
+        "default": "Shipping & Returns"		
+      },   
+     {
+        "type": "textarea",
+        "id": "tab_4_textarea",
+        "label": "Enter tab details"       
+      }, 			
+      {
+        "type": "checkbox",
+        "id": "show_tab_5",
+        "label": "Show Tab 5",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "tab_5_title_text",
+        "label": "Tab 5 Button Text",
+        "default": "Custom Tab"		
+      },     
+      {
+        "type": "textarea",
+        "id": "tab_5_textarea",
+        "label": "Enter tab details"
+      },
+	 {
+        "type": "checkbox",
+        "id": "show_tab_6",
+        "label": "Show Tab 6",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "tab_6_title_text",
+        "label": "Tab 6 Button Text",
+        "default": "Custom Tab"		
+      },     
+      {
+        "type": "textarea",
+        "id": "tab_6_textarea",
+        "label": "Enter tab details"
+      },
+	  { 
+		"type":"header",
+		"content":"Related Product"
+	  },
+      {
+        "type": "checkbox",
+        "id": "show_related_products",
+        "label": "Show Related Products",
+        "default": true
+      },
+	 {
+        "type": "checkbox",
+        "id": "related_products_autoplay",
+        "label": "Carousel Autoplay",
+        "default": true
+      },
+ 	 {
+        "id": "related_title",
+        "type": "text",
+        "label": "Section Title",
+        "default": "Related Products"
+      },
+ 	  {
+        "id": "related_sub_title",
+        "type": "text",
+        "label": "Section Sub title",
+        "default": "You can stop autoplay, increase/decrease aniamtion speed and number of grid to show and products from store admin."
+      },
+ 	 {
+        "type": "select",
+        "id": "slider_related_speed",
+        "label": "Carousel Rotation Speed",
+        "default": "5000",
+        "options": [
+		  { "value": "4000", "label": "4 seconds" },
+          { "value": "5000", "label": "5 seconds" },
+          { "value": "6000", "label": "6 seconds" },
+          { "value": "7000", "label": "7 seconds" },
+          { "value": "8000", "label": "8 seconds" },
+          { "value": "9000", "label": "9 seconds" },
+          { "value": "10000", "label": "10 seconds" }
+        ]
+      },
+	   {
+        "type": "select",
+        "id": "slider_related_animation_speed",
+        "label": "Carousel Animation Speed",
+        "default": "200",
+        "options": [
+		  { "value": "200", "label": "1.5 seconds" },
+		  { "value": "300", "label": "1 seconds" },
+          { "value": "400", "label": "1.5 seconds" },
+          { "value": "250", "label": "2 seconds" }      
+       ]
+      },
+      {
+        "type": "select",
+        "id": "gridstyle",
+        "label": "Grid Style",
+        "default": "style1",
+        "options": [
+          { "value": "style1", "label": "Style 1" },
+          { "value": "style2", "label": "Style 2" },
+          { "value": "style3", "label": "Style 3" }
+        ]
+      },
+	  {
+        "type": "select",
+        "id": "grid",
+        "label": "Desktop",
+        "default": "4",
+        "options": [        
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" },
+          { "value": "5", "label": "5" },
+          { "value": "6", "label": "6" },
+		  { "value": "7", "label": "7" }
+        ]
+      },
+	  {
+        "type": "select",
+        "id": "tablet-grid",
+        "label": "Tablet",
+        "default": "3",
+        "options": [        
+          { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" }
+        ]
+      },
+	  {
+        "type": "select",
+        "id": "mobile-grid",
+        "label": "Mobile",
+        "default": "2",
+        "options": [        
+          { "value": "1", "label": "1" },
+		  { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "related_total_product_to_show",
+        "label": "Number of Product to Show",
+        "default": "8"        
+      },
+	  { 
+		"type":"header",
+		"content":"Recently Viewed Products"
+	 },
+	  {
+        "type": "checkbox",
+        "id": "show_viewed_products",
+        "label": "Show Viewed Products",
+        "default": true
+      },		
+	 {
+        "id": "viewedproduct_title",
+        "type": "text",
+        "label": "Section Title",
+        "default": "Recently Viewed Product"
+      },
+ 	  {
+        "id": "viewedproduct_sub_title",
+        "type": "text",
+        "label": "Section Sub title",
+        "default": "You can control fully on this carousel from store admin as describe in above section"
+      },
+	  {
+        "type": "select",
+        "id": "rc_grid",
+        "label": "Desktop",
+        "default": "5",
+        "options": [        
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" },
+          { "value": "5", "label": "5" },
+          { "value": "6", "label": "6" },
+		  { "value": "7", "label": "7" }
+        ]
+      },
+	  {
+        "type": "select",
+        "id": "rc_tablet-grid",
+        "label": "Tablet",
+        "default": "3",
+        "options": [        
+          { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" }
+        ]
+      },
+	  {
+        "type": "select",
+        "id": "rc_mobile-grid",
+        "label": "Mobile",
+        "default": "2",
+        "options": [        
+          { "value": "1", "label": "1" },
+		  { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "recent_total_product_to_show",
+        "label": "Number of Product to Show",
+        "default": "5"        
+      }
+    ]
+  }
+{% endschema %}

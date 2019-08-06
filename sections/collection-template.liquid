@@ -1,0 +1,457 @@
+{%- if template contains 'list' -%}
+  {%- assign limit = 16 -%}
+{%- else -%}
+  {%- assign limit = section.settings.grid | times: section.settings.rows -%}
+{%- endif -%}
+{%- paginate collection.products by limit -%}
+
+{% assign description_first = collection.description | split: '##' | first %}
+{% assign description_second = collection.description | split: '##' | last %}
+
+<div data-section-id="{{ section.id }}" id="{{ section.id }}" data-section-type="collection-template">
+	<header class="collection-header">
+		{% if section.settings.show_collection_image and collection.image %}
+			<div class="collection-hero">
+        		<div class="collection-hero__image" style="background-image:url({{ collection.image | img_url: '2000x400', crop: 'center' }});"></div>
+        		<div class="collection-hero__title-wrapper"><h1 class="collection-hero__title page-width">{{ collection.title }}</h1></div>
+      		</div>
+      		{% if collection.description != blank %}<div class="collection-description page-width c-image">{{ collection.description | split: '##' | first }}</div>{% endif %}
+    	{% else %}
+        	<div class="page section-header text-center">
+          		<h1>{{ collection.title }}</h1>
+          		{% if collection.description != blank %}<div class="collection-description page-width">{{ collection.description | split: '##' | first }}</div>{% endif %}
+      		</div>
+		{% endif %}
+	</header>
+  	<div class="page-width" id="Collection">
+		<div class="grid">
+          	{% if section.settings.sidebar_position == 'left' %}
+          		{%- assign sidebarPosition = 'right' -%}
+          		{% if template contains 'rightsidebar' %}
+          			{%- assign sidebarPosition = '' -%}
+          		{% endif %}
+          	{% endif %}
+          
+			<!-- Right sidebar -->
+			<div class="grid__item {% unless section.settings.sidebar_position == 'nosidebar' or template contains 'fullwidth' %}medium-up--four-fifths large--three-quarters main-col {% endunless %}{{sidebarPosition}}">
+              	{%- assign image_size = '350x' %}
+				{% case section.settings.grid %}
+                    {% when '3' %}
+                      {%- assign grid_item_ds = 'large-up--one-third' -%}
+                    {% when '4' %}
+                      {%- assign grid_item_ds = 'large-up--one-quarter' -%}
+                    {% when '5' %}
+                      {%- assign grid_item_ds = 'large--one-quarter widescreen--one-fifth' -%}
+                    {% when '6' %}
+                      {%- assign grid_item_ds = 'large--one-fifth widescreen--one-sixth' -%}
+                  	{% when '7' %}
+                      {%- assign grid_item_ds = 'large--one-fifth widescreen--one-seventh' -%}
+                {% endcase %}
+               	{% case section.settings.tablet-grid %}
+                  	{% when '2' %}
+                      {%- assign grid_item_tb = 'medium--one-half' -%}
+                    {% when '3' %}
+                      {%- assign grid_item_tb = 'medium--one-third' -%}
+                    {% when '4' %}
+                      {%- assign grid_item_tb = 'medium--one-quarter' -%}
+                {% endcase %}
+              	{% case section.settings.mobile-grid %}
+                  	{% when '1' %}
+                      {%- assign grid_item_mb = 'small--one-whole' -%}
+                    {% when '2' %}
+                      {%- assign grid_item_mb = 'small--one-half' -%}
+                    {% when '3' %}
+                      {%- assign grid_item_mb = 'small--one-third' -%}
+              {% endcase -%}
+              
+              <div class="productList">
+                
+                {%- comment -%}****	Toolbar **** {%- endcomment -%}
+                {%- unless section.settings.sidebar_position == 'nosidebar' %}
+				<button type="button" class="btn btn-filter medium-up--hide"> {{ 'collections.filters.title_tags' | t}} <i class="fa fa-angle-down" aria-hidden="true"></i> </button>
+                {% endunless -%}
+				<div class="toolbar">{% include 'collection-filter' %}</div>
+
+				{% unless template contains 'list' %}
+				<div class="grid grid--uniform grid-products{% if collection.products_count > 0 %} grid--view-items{% endif %}">
+                  {% for product in collection.products %}
+  {% if product.object_type == 'product' and product.type == 'SHOPSTORM_HIDDEN_PRODUCT' %}{% continue %}{% endif %}
+               					                  
+					<div class="grid__item {{ grid_item_mb }} {{ grid_item_tb }} {{grid_item_ds}}">{% include 'product-card-grid', grid_image_width: image_size %}</div>
+					{% else %}         
+					{% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+					<div class="grid__item {{ grid_item_mb }} {{ grid_item_tb }} {{grid_item_ds}}">
+						<div class="grid grid--uniform"> {% for i in (1..limit) %}
+							<div class="grid__item {{ grid_item_width }}">
+								<div class="grid-view-item">
+                                  <a href="#" class="grid-view-item__link">
+									<div class="grid-view-item__image"> {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+										{{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }} </div>
+									<div class="h4 grid-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+									<div class="grid-view-item__meta"> <span class="product-price__price">$19.99</span> </div>
+								  </a>
+                              	</div>
+							</div>
+							{% endfor %}
+                     	</div>
+					</div>
+					{% else %}
+						{%- assign is_empty_collection = true -%}
+					{% endif %}
+					{% endfor %} 
+              </div>
+				{% endunless %}
+				
+				{% if template contains 'list' %}
+                  <div class="list-view-items"> {% for product in collection.products %}
+  {% if product.object_type == 'product' and product.type == 'SHOPSTORM_HIDDEN_PRODUCT' %}{% continue %}{% endif %}
+
+
+                      {% assign box_animation_time = forloop.index | minus:1 %}
+                      {% assign delay_time = 100 | times : box_animation_time %} <a href="{{ product.url | within: collection }}" class="list-view-item wow fadeInUp" data-wow-delay="{{delay_time}}ms"> {% include 'product-card-list', product: product %} </a> {% else %}
+
+                      {% comment %}
+                      Add default products to help with onboarding for collections/all only.
+
+                      The onboarding styles and products are only loaded if the
+                      store has no products.
+                      {% endcomment %}
+                      {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0%}
+                      {% for i in (1..4) %} <a href="#" class="list-view-item">
+                      <div class="list-view-item__image-column">
+                          <div class="list-view-item__image-wrapper">
+                              <div class="list-view-item__image"> {%- assign placeholder = 'placeholder-product-' | append: i -%}
+                                  {% include placeholder %} </div>
+                          </div>
+                      </div>
+                      <div class="list-view-item__title-column">
+                          <div class="list-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+                      </div>
+                      <div class="list-view-item__price-column"> <span class="product-price__price">$19.99</span> </div>
+                      </a> {% endfor %}
+                      {% else %}
+                      {%- assign is_empty_collection = true -%}
+                      {% endif %}
+                      {% endfor %} 
+                </div>
+				{% endif %}
+              
+				{% if is_empty_collection %}
+				<div class="grid__item small--text-center">
+					<p class="text-center">{{ 'collections.general.no_matches' | t }}</p>
+				</div>
+				{% endif %}
+			</div>
+				{% if paginate.pages > 1 %}
+              		{% if section.settings.pagination == "infinite" or section.settings.pagination == "button" %}
+              			{% if paginate.next %}
+              				<div class="infinitpaginOuter" data-type="{{section.settings.pagination}}">
+              					<div class="infinitpagin">
+                                  	{% if section.settings.pagination == "infinite" %}
+                                  		<a href="{{paginate.next.url}}" class="infinite"><img src="{{ 'ajax-loader.gif' | asset_url }}" alt="{{ 'general.pagination.loading' | t }}" /><p>{{ 'general.pagination.loading' | t }}</p></a>
+                                  	{% else %}
+                                  		<a href="{{paginate.next.url}}" class="btn loadMore">{{ 'general.pagination.loadmore' | t }}</a>
+                                  	{% endif %}
+                              	</div>
+              				</div>
+                        {% endif %}
+              		{% else %}
+              			<hr class="clear" />
+						{% include 'pagination' %}
+              		{% endif %}
+				{% endif %}
+        <div class="collection-desc">
+          <p>{{ description_second }}</p>
+        </div>
+          	</div>
+          
+             <!-- Left sidebar -->
+            {% unless section.settings.sidebar_position == 'nosidebar' or template contains 'fullwidth' %}
+            <div class="grid__item medium-up--one-fifth large--one-quarter sidebar filterbar">{% include 'collection-sidebar' %}</div>
+            {% endunless %}
+		</div>
+	</div>
+  
+</div>
+{% endpaginate %}
+
+{% include 'filter-js' %}
+
+{% schema %}
+  {
+    "name": "Collection pages",
+    "settings": [
+	  {
+        "type": "checkbox",
+        "id": "show_collection_image",
+        "label": "Show collection image?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show product vendors?",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_product_review",
+        "label": "Show product reviews?",
+        "default": false
+      }, 
+      {
+        "type": "checkbox",
+        "id": "sort_enable",
+        "label": "Enable sorting",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "gridstyle",
+        "label": "Grid Style",
+        "default": "style1",
+        "options": [
+          { "value": "style1", "label": "Style 1" },
+          { "value": "style2", "label": "Style 2" },
+          { "value": "style3", "label": "Style 3" }
+        ]
+      },
+	  {
+        "type": "select",
+        "id": "grid",
+        "label": "Desktop",
+        "default": "4",
+        "options": [        
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" },
+          { "value": "5", "label": "5" },
+          { "value": "6", "label": "6" },
+		  { "value": "7", "label": "7" }
+        ]
+      },
+	  {
+        "type": "select",
+        "id": "tablet-grid",
+        "label": "Tablet",
+        "default": "3",
+        "options": [        
+          { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" }
+        ]
+      },
+	  {
+        "type": "select",
+        "id": "mobile-grid",
+        "label": "Mobile",
+        "default": "2",
+        "options": [        
+          { "value": "1", "label": "1" },
+		  { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "rows",
+        "label": "Rows per page (grid only)",
+        "default": "2",
+        "options": [
+          { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" },
+          { "value": "5", "label": "5" },
+		  { "value": "6", "label": "6" },
+		  { "value": "7", "label": "7" },
+		  { "value": "8", "label": "8" },
+		  { "value": "9", "label": "9" },
+		  { "value": "10", "label": "10" }
+			
+        ]
+      },
+      {
+        "type": "select",
+        "id": "pagination",
+        "label": "Pagination type",
+        "default": "button",
+        "options": [
+          { "value": "default", "label": "Default" },
+          { "value": "infinite", "label": "Infinite Scroll" },
+          { "value": "button", "label": "Load more button" }
+        ]
+      },
+ 	 {
+        "type": "select",
+        "id": "sidebar_position",
+        "label": "Sidebar Position",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          },
+		  {
+            "value": "nosidebar",
+            "label": "No Sidebar"
+          }
+        ]
+      }
+    ],
+	"blocks": [
+      {
+        "type": "categories",
+        "name": "Categories",
+        "limit": 1,
+        "settings": [
+         	{ 
+              "type":"text",
+              "id":"title",
+              "label":"Categories",
+              "default":"Categories"
+          	},
+            {
+              "type": "link_list",
+              "id": "side_categories",
+              "label": "Select Categories",
+              "default": "main-menu"
+            }
+        ]
+      },
+	  {
+        "type": "filter_by",
+        "name": "Filter By",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Filter By Title",
+				"default": "Filter By Title",
+                "info": "i.e 'Filter by Size, Filter by Brands'"
+            },
+            {
+                "type": "textarea",
+                "id": "filter_tags",
+                "label": "Add Filter tags",
+                "info": "Separate by a comma, i.e \"Tag1, Tag2, Tag3\"."
+            },
+            {
+              "type": "checkbox",
+              "id": "twocall",
+              "label": "Show List in two column",
+              "default": false
+            }
+      	]
+     },
+     {
+        "type": "by_color",
+        "name": "Filter by Colors",
+        "limit": 1,
+        "settings": [
+         	{ 
+              "type":"text",
+              "id":"title",
+              "label":"Filter by section title",
+              "default":"Filter by Color"
+          	},
+            {
+             "type": "textarea",
+             "id": "filter_tags",
+             "label": "Add Filter tags",
+             "info": "Separate by a comma, i.e \"Black, Red, Blue\"."
+           },
+           {
+             "type": "paragraph",
+			 "content": "Only html color name will work to show color while select Swatch color options. [Find HTML color name here](https:/\/\www.w3schools.com/\colors/\colors_names.asp)"
+           },
+           {
+              "type": "checkbox",
+              "id": "image_swatches",
+              "label": "use image for color swatches",
+              "default": false,
+			  "info": "Image name must same as color name and all in lowercase. Use '-' instead of space. Examples (Black = black.png, Navy Blue = navy-blue.png). Upload images on 'settings > files'"
+           }
+        ]
+     },
+     {
+        "type": "products",
+        "name": "Products",
+		"limit": 1,
+        "settings": [
+         	{ 
+              "type":"text",
+              "id":"title",
+              "label":"Title Text",
+              "default":"Popular Products"
+          	},
+            {
+              "type": "collection",
+              "id": "sidebar_products",
+              "label": "Select Collection"
+            },
+            {
+              "type": "text",
+              "id": "num_of_products",
+              "label": "Number of products to show",
+              "default": "3"
+            },
+			{
+              "type": "checkbox",
+              "id": "side_all_products",
+              "label": "View all products button",
+              "default": false
+            }
+        ]
+      },
+	  {
+        "type": "image_bnr",
+        "name": "Image Banner",
+        "settings": [
+            {
+              "type": "image_picker",
+              "id": "side_bnr_img",
+              "label": "Banner Image"
+            },
+            {
+              "type": "url",
+              "id": "side_bnr_link",
+              "label": "Banner"
+            }
+      	]
+      },
+	  {
+        "type": "static_text",
+        "name": "Static Text",
+        "settings": [
+            { 
+              "type":"text",
+              "id":"title",
+              "label":"Title Text",
+              "default":"Static Block Title"
+          	},
+            {
+              "type": "richtext",
+              "id": "text",
+              "label": "Text",
+              "default": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+            }
+      	]
+      },
+	  {
+        "type": "pr_tags",
+        "name": "Product Tags",
+        "settings": [
+            { 
+              "type":"text",
+              "id":"title",
+              "label":"Product Tags",
+              "default":"Product Tags"
+          	}
+      	]
+      }
+	]
+  }
+{% endschema %}

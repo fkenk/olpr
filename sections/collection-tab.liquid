@@ -1,0 +1,190 @@
+<div class="page-width wow fadeIn" id="{{ section.id }}" data-mb="{{ section.settings.mobile-grid }}" data-tb="{{ section.settings.tablet-grid }}" data-ds="{{ section.settings.grid }}" data-section-id="{{ section.id }}" data-section-type="carousel-section"> 
+	
+   {%- if section.settings.title != blank  or section.settings.subtitle != blank -%}
+    <div class="section-header text-center">
+      <h2 class="h2">{{ section.settings.title | escape }}</h2>  
+      {%- if section.settings.subtitle != blank -%}
+      <p>{{section.settings.subtitle}}</p>
+      {% endif %}
+   </div>
+  {%- endif -%}
+
+	<div class="tabs-listing">
+		<ul class="collection-tabs">
+			{%- for block in section.blocks limit: section.blocks.size -%}
+              {%- if block.settings.tab_name != blank -%}
+              <li><a class="tablink" href="#collection-{{ block.id }}">{{ block.settings.tab_name }}</a></li>
+              {%- endif -%}
+			{%- endfor -%}
+		</ul>
+		<div class="tab-container">
+          	{%- assign image_size = '350x' -%}
+              {%- case section.settings.grid -%}
+                {% when '3' %}{%- assign grid_item_ds = 'large-up--one-third' -%}
+                {% when '4' %}{%- assign grid_item_ds = 'large-up--one-quarter' -%}
+                {% when '5' %}{%- assign grid_item_ds = 'large--one-quarter widescreen--one-fifth' -%}
+                {% when '6' %}{%- assign grid_item_ds = 'large--one-fifth widescreen--one-sixth' -%}
+                {% when '7' %}{%- assign grid_item_ds = 'large--one-fifth widescreen--one-seventh' -%}
+              {%- endcase -%}
+              {%- case section.settings.tablet-grid -%}
+                {% when '2' %}{%- assign grid_item_tb = 'medium--one-half' -%}
+                {% when '3' %}{%- assign grid_item_tb = 'medium--one-third' -%}
+                {% when '4' %}{%- assign grid_item_tb = 'medium--one-quarter' -%}
+              {%- endcase -%}
+              {%- case section.settings.mobile-grid -%}
+                {% when '1' %}{%- assign grid_item_mb = 'small--one-whole' -%}
+                {% when '2' %}{%- assign grid_item_mb = 'small--one-half' -%}
+                {% when '3' %}{%- assign grid_item_mb = 'small--one-third' -%}
+			{%- endcase -%}
+          	{%- for block in section.blocks limit: section.blocks.size %}
+              {%- assign collection = collections[block.settings.collection] -%}
+          		<h3 class="acor-ttl"><a class="tablink" href="#collection-{{ block.id }}">{{ block.settings.tab_name }}</a></h3>
+          		<div id="collection-{{ block.id }}" class="tab-content grid-products"> {% if block.settings.collection != blank %}
+                  <div id="productSlider-{{ block.id }}" class="grid--view-items  productSlider">
+                    {%- for product in collection.products limit: section.settings.rows -%}
+  {% if product.object_type == 'product' and product.type == 'SHOPSTORM_HIDDEN_PRODUCT' %}{% continue %}{% endif %}
+
+                      <div class="grid__item {{ grid_item_mb }} {{ grid_item_tb }} {{grid_item_ds}}">{% include 'product-card-grid', grid_image_width: image_size %}</div>
+                    {%- else -%}
+                      {% for i in (1..section.settings.rows) %}
+                      <div class="grid__item {{ grid_item_mb }} {{ grid_item_tb }} {{grid_item_ds}}">
+                          <div class="grid-view-item">
+                            <a href="#" class="grid-view-item__link">
+                              <div class="grid-view-item__image">{% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}{{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}</div>
+                              <div class="h4 grid-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+                              <div class="grid-view-item__meta">{% include 'product-price' %}</div>
+                            </a>
+                          </div>
+                      </div>
+                      {% endfor %}
+                      {% endfor %}
+                  </div>
+                  {%- else -%}
+                  	<p class="text-center">Please select a collection in Featured Collection to display the products</p>
+                  {%- endif -%}
+              </div>
+			{% endfor -%}
+      	</div>
+	</div>
+</div>
+{% schema %}
+  {
+    "name": "Collection Tabs",
+    "class": "index-section",
+    "max_blocks": 8,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Our Collection"
+      },
+	  {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Sub Heading",
+        "default": "Describe your products, collection, content etc..."
+      },
+      {
+        "type": "select",
+        "id": "gridstyle",
+        "label": "Grid Style",
+        "default": "style1",
+        "options": [
+          { "value": "style1", "label": "Style 1" },
+          { "value": "style2", "label": "Style 2" },
+          { "value": "style3", "label": "Style 3" }
+        ]
+      },
+	  {
+        "type": "select",
+        "id": "grid",
+        "label": "Desktop",
+        "default": "4",
+        "options": [        
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" },
+          { "value": "5", "label": "5" },
+          { "value": "6", "label": "6" },
+		  { "value": "7", "label": "7" }
+        ]
+      },
+	  {
+        "type": "select",
+        "id": "tablet-grid",
+        "label": "Tablet",
+        "default": "3",
+        "options": [        
+          { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" }
+        ]
+      },
+	  {
+        "type": "select",
+        "id": "mobile-grid",
+        "label": "Mobile",
+        "default": "2",
+        "options": [        
+          { "value": "1", "label": "1" },
+		  { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "rows",
+        "label": "Number of Product to show",
+        "default": "8"
+      },
+	  {
+          "type": "checkbox",
+          "id": "show_vendor",
+          "label": "Show product vendors",
+          "default": false
+       },
+ 	  {
+          "type": "checkbox",
+          "id": "show_product_review",
+          "label": "Show product reviews",
+          "default": false
+       }      
+	 ],
+	"blocks": [
+      {
+        "type": "featured_collection_tabs",
+        "name": "Collection",
+        "settings": [
+ 		{
+          "type": "text",
+          "id": "tab_name",
+          "label": "Collection Tab Name",
+          "default": "Tab Name"
+        },
+       	 {
+          "id": "collection",
+          "type": "collection",
+          "label": "Select Collection"
+    	  }          
+      	]
+     }
+	],
+    "presets": [
+      {
+        "name": "Collection Tabs with Products",
+        "category": "Collection",       
+        "blocks": [
+          {
+            "type": "featured_collection_tabs"
+          },
+          {
+            "type": "featured_collection_tabs"
+          },
+          {
+            "type": "featured_collection_tabs"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %} 

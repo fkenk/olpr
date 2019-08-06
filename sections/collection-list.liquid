@@ -1,0 +1,168 @@
+{% capture collectionBox %}
+<div class="collection-box wow fadeIn" id="cs-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="collection-box" data-section-slide="{{ section.settings.grid }}" data-section-slide-tab="{{ section.settings.grid-tab }}" data-section-slide-mobile="{{ section.settings.grid-mobile }}">
+  
+  {%- if section.settings.title != blank  or section.settings.subtitle != blank -%}
+    <div class="section-header text-center">
+      <h2 class="h2">{{ section.settings.title | escape }}</h2>  
+      {%- if section.settings.subtitle != blank -%}<p>{{section.settings.subtitle}}</p>{%- endif -%}
+   </div>
+  {%- endif -%}
+
+  {%- case section.settings.grid -%}
+    {% when '2' %}
+      {%- assign grid_item_width = 'medium-up--one-half' -%}   
+      {%- assign image_size = '800x' -%}
+    {% when '3' %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-third' -%} 
+   	  {%- assign image_size = '530x' -%}
+    {% when '4' %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-third large-up--one-quarter' -%} 
+      {%- assign image_size = '400x' -%}
+    {% when '5' %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-third large-up--one-fifth widescreen--one-fifth' -%}     
+      {%- assign image_size = '350x' -%}
+  	{% when '6' %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-third large-up--one-fifth widescreen--one-sixth' -%}     
+      {%- assign image_size = '350x' -%}
+  {%- endcase -%}
+  
+ 
+  <div class="collection-grid{% unless section.settings.fullwidth %} page-width boxed-width{% endunless %}">
+    <div class="grid">
+      {% for block in section.blocks limit: section.blocks.size %}
+      
+        {%- assign collection_box = forloop.index | minus:1 -%}
+  		{%- assign delay_time = 100 | times : collection_box -%}      
+        <div class="grid__item {{grid_item_width }} item wow fadeIn" data-wow-delay="{{delay_time}}ms" {{ block.shopify_attributes }}>
+          {%- assign collection = collections[block.settings.collection] -%}
+          {% include 'collection-grid-item', collection_image_size: image_size %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if section.blocks.size == 0 %}
+    {% include 'no-blocks' %}
+  {% endif %}
+</div>
+{% endcapture %}
+{{collectionBox | strip_newlines | remove: "  " | remove: "	" }}
+{% schema %}
+  {
+    "name": "Collection List",
+    "class": "index-section",
+    "max_blocks": 12,
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "fullwidth",
+        "label": "Full Width",
+        "default": true
+      },
+	  {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Collection list"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Sub Heading",
+        "default": "Describe your products, collection, content etc..."
+      },
+   {
+        "type": "checkbox",
+        "id": "distitle",
+        "label": "Display Collection name?",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "grid",
+        "label": "Collections per row : Desktop",
+  		"info":"Recommended Image Size: Per row 2 : 800x, Per row 3 : 530x, Per row 4 : 400x, Per row 5 : 350x", 
+        "default": "3",
+        "options": [		  
+          { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" },
+          { "value": "5", "label": "5" },
+          { "value": "6", "label": "6" }
+        ]
+      },
+	 {
+        "type": "select",
+        "id": "grid-tab",
+        "label": "Collections per row : Tablet",  		
+        "default": "2",
+        "options": [
+		  { "value": "1", "label": "1" },
+          { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" },
+          { "value": "5", "label": "5" },
+          { "value": "6", "label": "6" }
+        ]
+      },
+	 {
+        "type": "select",
+        "id": "grid-mobile",
+        "label": "Collections per row : Mobile",  		
+        "default": "2",
+        "options": [
+		  { "value": "1", "label": "1" },
+          { "value": "2", "label": "2" },
+          { "value": "3", "label": "3" },
+          { "value": "4", "label": "4" },
+          { "value": "5", "label": "5" },
+          { "value": "6", "label": "6" }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "featured_collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "label": "Collection",
+            "id": "collection",
+            "type": "collection"
+          },
+		  {
+			"type":"image_picker",
+			"id":"collection_image",
+			"label":"Upload Image"			
+		  },
+		  {
+ 			"type":"text",
+			"id":"collection_name",
+			"label":"Collection Name",
+			"info":"Default will be collection name" 
+		  }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Horizontal List",
+        "category": "Collection",
+        "settings": {
+          "grid": "3"
+        },
+        "blocks": [
+          {
+            "type": "featured_collection"
+          },
+          {
+            "type": "featured_collection"
+          },
+          {
+            "type": "featured_collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

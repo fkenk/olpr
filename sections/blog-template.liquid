@@ -1,0 +1,216 @@
+{% include 'breadcrumb' %}
+
+{% paginate blog.articles by section.settings.number_of_post_to_show %}
+<div class="page-width">
+	<div class="grid">
+		<div class="blog-right grid__item {% unless section.settings.sidebar_position == 'nosidebar' %}medium-up--three-quarters large-up--four-fifths large--three-quarters {% endunless %}{% if section.settings.sidebar_position == 'left' %} right{% endif %}">
+			<div class="custom-search">
+				<form action="/search" method="get" class="input-group search-header search" role="search">
+					<input class="search-header__input search__input input-group__field" type="search" name="q" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}">
+					<span class="input-group__btn"><button class="btnSearch" type="submit"> <i class="ad ad-search-l" aria-hidden="true"></i> </button></span>
+				</form>
+			</div>
+			<div class="{% if section.settings.layout == 'list' %}blog--list-view{% endif %}">
+              	{% if section.settings.layout == 'grid' %}
+				<div class="grid grid--uniform grid--blog"> {% for article in blog.articles %}
+					<div class="grid__item medium-up--one-third">
+                      	{% if article.image %} <a href="{{ article.url }}" class="article__grid-image"> {{ article | img_url: '400x244', crop: 'center' | img_tag: article.title }} </a> {% endif %}
+						<div class="article__grid-meta{% if article.image %} article__grid-meta--has-image{% endif %}">
+							<h2 class="article__title h3"> <a href="{{ article.url }}">{{ article.title }}</a> </h2>
+
+                            {%- if section.settings.blog_show_author -%}
+                            <i class="ad ad-user-ar" aria-hidden="true"></i>
+                          	<span class="article__author">{{ 'blogs.article.by_author' | t: author: article.author }}</span>                             
+                            {%- endif -%}
+
+							{%- if section.settings.blog_show_date -%} 
+                         	<i class="ad ad-clock-r" aria-hidden="true"></i> <span class="article__date"> {{ article.published_at | time_tag: format: 'month_day_year' }} </span> 
+                            {%- endif -%}
+							<div class="rte article__grid-excerpt">
+								{% if article.excerpt.size > 0 %}{{ article.excerpt }}{% else %}{{ article.content | strip_html | truncate: 150 }}{% endif %}
+                          	</div>
+							<ul class="list--inline">
+								<li> <a href="{{ article.url }}" class="btn btn--secondary btn--small"> {{ 'blogs.article.read_more' | t }} </a> </li>
+								{% if blog.comments_enabled? and article.comments_count > 0 %}
+								<li><i class="ad ad-comments-l" aria-hidden="true"></i> <a href="{{ article.url }}#comments" class="btn btn--small btn--link"> {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }} </a> </li>
+								{% endif %}
+							</ul>
+						</div>
+					</div>
+					{% endfor %} </div>
+				{% else %}
+				{% for article in blog.articles %}
+				<div class="article"> 
+					<!-- Article Image --> 
+					{% if article.image %} <a class="article_featured-image" href="{{ article.url }}">{{ article | img_url: '1024x1024' | img_tag: article.title }}</a> {% endif %}
+					<h2 class="h3"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+					<ul class="publish-detail">                      
+						{% if section.settings.blog_show_author %}
+                     	 <li><i class="ad ad-user-ar" aria-hidden="true"></i> {% capture author %}<strong>{{ article.author }}</strong>{% endcapture %} {{ article.author }}</li>
+                        {% endif %}
+                      
+                      	{% if section.settings.blog_show_date %}
+						<li><i class="ad ad-clock-r" aria-hidden="true"></i> {% capture date %}
+							<time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time>
+							{% endcapture %}
+							<time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time>
+						</li>
+                      {% endif %}
+						<li>
+							<ul class="inline-list">
+								{% if blog.comments_enabled? %}
+								<li><i class="ad ad-comments-l" aria-hidden="true"></i> <a href="{{ article.url }}#comments"> {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}</a></li>
+								{% endif %}
+							</ul>
+						</li>
+					</ul>
+					<div class="rte"> {% if article.excerpt.size > 0 %}
+						{{ article.excerpt }}
+						{% else %}
+						<p>{{ article.content | strip_html | truncatewords: 70 }}</p>
+						{% endif %} </div>
+					<p><a href="{{ article.url }}" class="btn btn-secondary btn--small">{{ 'blogs.article.read_more' | t }} <i class="ad ad-caret-right" aria-hidden="true"></i></a></p>
+				</div>
+				<hr>
+				{% endfor %}
+				{% endif %}
+				
+				{% if paginate.pages > 1 %}
+				{% include 'pagination' %}
+				{% endif %} 
+            </div>
+		</div>
+		
+      {% unless section.settings.sidebar_position == 'nosidebar' %}
+		<div class="grid__item medium-up--one-quarter large-up--one-fifth large--one-quarter blog-right sidebar">
+          {% include 'blog-sidebar' %}
+        </div>
+		{% endunless %}
+    </div>
+</div>
+{% endpaginate %}
+
+{% schema %}
+  {
+    "name": "Blog pages",
+    "settings": [
+      {
+        "type": "select",
+        "id": "layout",
+        "label": "Layout",
+        "default": "list",
+        "options": [
+          {
+            "value": "grid",
+            "label": "Grid"
+          },
+          {
+            "value": "list",
+            "label": "List"
+          }
+        ]
+      },
+	  {
+	  	"type":"text",
+		"id":"number_of_post_to_show",
+		"label": "Number of Post to Show per page",
+		"default":"4"
+      },
+  	  {
+        "type": "select",
+        "id": "sidebar_position",
+        "label": "Sidebar Position",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          },
+		  {
+            "value": "nosidebar",
+            "label": "No Sidebar"
+          }
+        ]
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show author",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      },
+	  {
+        "type": "checkbox",
+        "id": "show_category",
+        "label": "Show Category",
+        "default": true
+      },
+     {
+        "type": "text",
+        "id": "category_box_title",
+        "label": "Category Title",
+        "default": "Category"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_recent_posts",
+        "label": "Show Recent Posts",
+        "default": true
+      },
+     {
+        "type": "text",
+        "id": "recent_posts_title",
+        "label": "Recent Posts Title",
+        "default": "Recent Posts"
+      },
+     {
+        "type": "checkbox",
+        "id": "show_banner_ad",
+        "label": "Show Banner",
+        "default": true
+      },
+	 {
+        "type": "image_picker",
+        "id": "sidebar_banner",
+        "label": "Show Banner"       
+      },
+     {
+        "type": "text",
+        "id": "banner_link",
+        "label": "Banner Url"       
+      },
+	  {
+        "type": "checkbox",
+        "id": "show_products",
+        "label": "Show Collection",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "collection_title",
+        "label": "Collection Title",
+        "default": "Trending Now"
+      },
+      {
+        "type": "collection",
+        "id": "sidebar_collection",
+        "label": "Select Collection"        
+      },
+	 {
+        "type": "text",
+        "id": "number_of_prodcut",
+        "label": "Number of Product to Show",
+        "default": "4"
+      }
+    ]
+  }
+{% endschema %} 

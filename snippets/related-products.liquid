@@ -1,0 +1,85 @@
+{% if section.settings.show_related_products == true %}
+<div class="related-product wow fadeIn" data-mb="{{ section.settings.mobile-grid }}" data-tb="{{ section.settings.tablet-grid }}" data-ds="{{ section.settings.grid }}"
+    proRelated-timeout="{{section.settings.slider_related_speed}}" proRelated-aniamtion="{{section.settings.slider_related_animation_speed}}" proRelated-autoplay="{{ section.settings.related_products_autoplay}}">
+    {% assign number_of_related_products_per_row = section.settings.related_grid_num %}
+	{% assign number_of_rows = section.settings.related_total_product_to_show | plus:1 %}
+	{% assign same_vendor = false %}
+	{% assign same_type = false %}
+	{% assign exclusions = 'frontpage,all' | split: ',' %}
+	
+	{% if product.metafields.c_f['Related Products'] %}
+		{% assign collection = collections[product.metafields.c_f['Related Products']] %}
+	{% endif %}
+	
+	{% assign found_a_collection = false %}
+     
+	{% if collection and collection.all_products_count > 1 %}
+        {% unless exclusions contains collection.handle %}{% assign found_a_collection = true %}{% endunless %}
+    {% endif %}
+    {% unless found_a_collection %}
+        {% for c in product.collections limit: number_of_rows %}
+          {% unless exclusions contains c.handle or c.all_products_count < 2 %}
+    	      {% assign found_a_collection = true %}
+        	  {% assign collection = c %}
+          	  {% break %}
+          {% endunless %}
+        {% endfor %}
+    {% endunless %}
+	
+	{% if found_a_collection %} 
+      	{% assign current_product = product %}
+		{%- assign image_size = '350x' -%}
+		{% case section.settings.grid %}
+  			{% when '3' %}{%- assign grid_item_ds = 'large-up--one-third' -%}
+            {% when '4' %}{%- assign grid_item_ds = 'large-up--one-quarter' -%}
+            {% when '5' %}{%- assign grid_item_ds = 'large--one-quarter widescreen--one-fifth' -%}
+            {% when '6' %}{%- assign grid_item_ds = 'large--one-fifth widescreen--one-sixth' -%}
+            {% when '7' %}{%- assign grid_item_ds = 'large--one-fifth widescreen--one-seventh' -%}
+  		{% endcase %}
+
+		{% case section.settings.tablet-grid %}
+  			{% when '2' %}{%- assign grid_item_tb = 'medium--one-half' -%}
+  			{% when '3' %}{%- assign grid_item_tb = 'medium--one-third' -%}
+  			{% when '4' %}{%- assign grid_item_tb = 'medium--one-quarter' -%}
+  		{% endcase %}
+
+		{% case section.settings.mobile-grid %}
+  			{% when '1' %}{%- assign grid_item_mb = 'small--one-whole' -%}
+  			{% when '2' %}{%- assign grid_item_mb = 'small--one-half' -%}
+  			{% when '3' %}{%- assign grid_item_mb = 'small--one-third' -%}
+  		{% endcase %}
+
+		{% capture related_items %}
+        <div class="grid {% if collection.products_count > 0 %} grid--view-items{% endif %} grid-products {% unless section.settings.product_latyout == 'style3' %}productSlider{% else %} grid--uniform{% endunless %}">
+          {% for product in collection.products limit : number_of_rows %}
+  {% if product.object_type == 'product' and product.type == 'SHOPSTORM_HIDDEN_PRODUCT' %}{% continue %}{% endif %}
+
+            {% unless product.handle == current_product.handle %}
+                {% unless same_vendor and current_product.vendor != product.vendor %}
+                    {% unless same_type and current_product.type != product.type %}
+                  	{%- if section.settings.product_latyout == 'style3' -%}
+                      	<div class="grid__item medium--one-third">{% include 'product-mini-list', grid_image_width: image_size %}</div>
+                    {%- else -%}
+                    	<div class="grid__item {{grid_item_mb}} {{grid_item_tb}} {{grid_item_ds}}">{% include 'product-card-grid', grid_image_width: image_size %}</div>
+                    {%- endif -%}
+                    {% endunless %}
+                {% endunless %}
+            {% endunless %}
+          {% endfor %}
+        </div>
+		{% endcapture %}
+      {% assign related_items = related_items | trim %}
+
+      {% unless related_items == blank %}
+        {% unless section.settings.related_title == blank %}
+          <header class="section-header">
+              <h2 class="section-header__title text-center h2"><span>{{ section.settings.related_title }}</span></h2>
+              {% if section.settings.related_sub_title != blank %}<p class="sub-heading">{{ section.settings.related_sub_title}}</p>{% endif %}
+          </header>
+        {% endunless %}  
+      <div class="grid-uniform">{{ related_items }}</div>
+      {% endunless %}  
+  
+	{% endif %} 
+</div>
+{% endif %} 

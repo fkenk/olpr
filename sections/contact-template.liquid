@@ -1,0 +1,232 @@
+<!-- Google Map -->
+
+{% if section.settings.show_google_map %}
+
+  {% if section.settings.api_key %}
+    <script>
+      theme.mapKey = {{ section.settings.api_key | json }};
+    </script>
+  {% endif %}
+
+  <script>
+    theme.strings.addressError = {{ 'sections.map.address_error' | t | json }};
+    theme.strings.addressNoResults = {{ 'sections.map.address_no_results' | t | json }};
+    theme.strings.addressQueryLimit = {{ 'sections.map.address_query_limit_html' | t | json }};
+    theme.strings.authError = {{ 'sections.map.auth_error_html' | t | json }};
+  </script>
+
+<div class="map-section map" data-section-id="{{ section.id }}" data-section-type="map">
+  {% if section.settings.title != blank or section.settings.address != blank %}
+    <div class="page-width">
+      <div class="map-section__overlay-wrapper">
+        <div class="map-section__overlay">
+          {% if section.settings.map_title != blank %}
+            <h3 class="h4">{{ section.settings.map_title | escape }}</h3>
+          {% endif %}
+          {% if section.settings.address != blank %}
+            <div class="rte-setting">{{ section.settings.address }}</div>
+            {% if section.settings.show_button %}
+              <p><a href="https://maps.google.com?daddr={{ section.settings.map_address }}" class="btn btn--secondary btn--small" target="_blank">{{ 'sections.map.get_directions' | t }}</a></p>
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  <a class="map-section__link" href="https://www.google.ca/maps/place/{{ section.settings.map_address }}" target="_blank" aria-label="{{ section.settings.map_address }}"></a>
+  <div class="map-section__container" id="Map-{{ section.id }}" data-address-setting="{{ section.settings.map_address }}"></div>
+</div>
+
+{% endif %}
+
+{% include 'breadcrumb' %}
+<div class="page-width">
+     <!-- Contact form -->
+	<div class="grid">
+	 <div class="grid__item medium-up--two-thirds">
+		<div class="contact-form form-vertical">
+			<div class="page-title">
+              	{% if section.settings.contact_title != blank %}
+					<h1 class="h2">{{ section.settings.contact_title }}</h1>
+				{% else %}
+					<h1>{{ page.title }}</h1>
+				{% endif %}
+          	</div>
+			<div class="rte">
+              	{% if section.settings.contact_text_desc %}{{ section.settings.contact_text_desc }}{% endif %}			
+				{% if page.content.size > 0 %}{{ page.content }}{% endif %}
+          	</div>
+			{% form 'contact' %}
+			
+			{% if form.posted_successfully? %}<p class="note form-success"> {{ 'contact.form.post_success' | t }} </p>{% endif %}
+			
+			{{ form.errors | default_errors }}
+			<div class="grid grid--half-gutters">
+				<div class="grid__item medium-up--one-half"> {% if section.settings.show_labels %}
+					<label for="ContactFormName">{{ 'contact.form.name' | t }}</label>
+					{% endif %}
+					<input type="text" id="ContactFormName" name="contact[name]" placeholder="{{ section.settings.contact_your_name}}"  value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+				</div>
+				<div class="grid__item medium-up--one-half"> {% if section.settings.show_labels %}
+					<label for="ContactFormEmail" class="{% if form.errors contains 'email' %}label--error{% endif %}">{{ 'contact.form.email' | t }}</label>
+					{% endif %}
+					<input type="email" id="ContactFormEmail" name="contact[email]" placeholder="{{ section.settings.contact_your_email}}"  autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" class="{% if form.errors contains 'email' %}input--error{% endif %}">
+				</div>
+			</div>
+			{% if section.settings.show_labels %}
+			<label for="ContactFormPhone">{{ 'contact.form.phone' | t }}</label>
+			{% endif %}
+			<input type="tel" id="ContactFormPhone" name="contact[phone]" pattern="[0-9\-]*" placeholder="{{ section.settings.contact_phone_number}}"  value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+			{% if section.settings.show_labels %}
+			<label for="ContactFormMessage">{{ 'contact.form.message' | t }}</label>
+			{% endif %}
+			<textarea rows="10" id="ContactFormMessage" name="contact[body]" placeholder="{{ section.settings.contact_your_comment}}" >{% if form.body %}{{ form.body }}{% endif %}</textarea>
+			<input type="submit" class="btn" value="{{ 'contact.form.submit' | t }}">
+			{% endform %}
+       </div>
+	</div>
+	
+     <!-- Contact detail -->
+     <div class="grid__item medium-up--one-third">
+       {% if section.settings.show_store_opening %}
+		<div class="open-hours"> {{ section.settings.store_opening_time }} </div>
+		<hr/>
+		{% endif %}    
+		{% if section.settings.Show_location %}
+		<ul class="contact-address">
+				{% if section.settings.contact-address  != blank  %}<li><i class="ad ad-map-marker-al"></i><p>{{ section.settings.contact-address }}</p></li>{% endif %}
+                {% if section.settings.phone  != blank  %}<li class="phone"><i class="ad ad-phone-l"></i><p>{{ section.settings.phone }}</p></li>{% endif %}
+                {% if section.settings.email  != blank  %}<li class="email"><i class="ad ad-envelope-l"></i><p>{{ section.settings.email }}</p></li>{% endif %}
+                          
+		</ul>
+		<hr/>
+		{% endif %}
+		
+		{% if section.settings.Show_Social_media %}
+		<div class="follow-us">{% include 'social-media' %} </div>
+		{% endif %} 
+     </div>
+</div>
+{% schema %}
+  {
+    "name": "Contact Page",
+	"class":"contact-template",
+    "settings": [
+    	{
+        "type": "checkbox",
+        "id": "show_google_map",
+        "label": "Show Google Map?",
+        "default": true
+      },      
+	  {
+        "id": "map_title",
+        "type": "text",
+        "label": "Overlay heading",
+        "default": "Our store"
+      },
+     {
+        "id": "address",
+        "type": "richtext",
+        "label": "Text address and hours",
+        "default": "<p>123 Fake St.<br>Toronto, Canada</p><p>Mon - Fri, 10am - 9pm<br>Saturday, 11am - 9pm<br>Sunday, 11am - 5pm</p>"
+      },
+      {
+        "id": "map_address",
+        "type": "text",
+        "label": "Map address",
+        "info": "Google maps will find the exact location",
+        "default": "80 Spadina Ave, Toronto"
+      },
+		{
+        "id": "show_button",
+        "type": "checkbox",
+        "label": "Show 'Get directions' button",
+        "default": true
+      },
+     {
+        "id": "api_key",
+        "type": "text",
+         "label": "Google Maps API key",
+         "info": "You’ll need to [register a Google Maps API Key](https://help.shopify.com/manual/using-themes/troubleshooting/map-section-api-key) to display the map"
+       },
+      {
+        "type": "text",
+        "id": "contact_title",
+        "label": "Title",
+        "default": "Drop Us A Line"
+      },
+      {
+        "type": "textarea",
+        "id": "contact_text_desc",
+        "label": "Text Description"
+      },
+	 {
+		"type":"checkbox",
+		"id":"show_labels",
+		"label":"Show Labels",
+		"default":false
+	 },
+      {
+        "type": "text",
+        "id": "contact_your_name",
+        "label": "Placeholder text in Your Name"
+      },
+      {
+        "type": "text",
+        "id": "contact_phone_number",
+        "label": "Placeholder text in Your Phone"
+      },
+      {
+        "type": "text",
+        "id": "contact_your_email",
+        "label": "Placeholder text in Your Email"
+      },
+      {
+        "type": "text",
+        "id": "contact_your_comment",
+        "label": "Placeholder text in Your Comment"
+      },
+     {
+        "type": "checkbox",
+        "id": "show_store_opening",
+        "label": "Show Store Time?",
+        "default": true
+     }, 
+ 	{
+        "type": "textarea",
+        "id": "store_opening_time",
+        "label": "Store Time"      
+     }, 
+      {
+        "type": "textarea",
+        "id": "contact-address",
+        "label": "Address",
+        "default": "55 Gallaxy Enque,<br />2568 steet, 23568 NY"
+      },
+      {
+        "type": "text",
+        "id": "phone",
+        "label": "Phone",
+        "default": "(440) 000 000 0000"
+      },
+	  {
+        "type": "text",
+        "id": "email",
+        "label": "Email",
+        "default": "sales@yousite.com"
+      },
+      {
+        "type": "checkbox",
+        "id": "Show_location",
+        "label": "Show Location?",
+        "default": true
+     },       
+       {
+        "type": "checkbox",
+        "id": "Show_Social_media",
+        "label": "Show Social Media?",
+        "default": true
+      }
+	]
+  }
+{% endschema %}

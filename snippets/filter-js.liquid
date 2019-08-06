@@ -1,0 +1,39 @@
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+		check_filters = (function(url){
+			jQuery('.filters .sidebar_widget').each(function(){
+            	var filter = $(this).find("li");
+            	if(filter.length <= 0){
+                	jQuery(this).hide();
+             	}
+          	});
+		  	jQuery('.sidebar_tags input:checkbox').on( "change", function(){
+                var productFilters = jQuery('.sidebar_tags input:checkbox'), 
+                    newTags = [],
+                    url = '';
+   			
+                productFilters.each(function() {
+                    if (jQuery(this).val() && jQuery(this).is(":checked") == true) {
+                        newTags.push(jQuery(this).val());
+                    }
+                });
+
+                if (newTags.length) {
+                    var query = newTags.join('+');
+                    var t = '{{ 'tag' | link_to_tag: 'tag' }}';
+                    url += jQuery(t).attr('href').replace('tag', query);
+                } else {
+                    {% if collection.handle %}
+                        url += '/collections/{{ collection.handle }}'+window.location.search;
+                    {% elsif collection.products.first.type == collection.title %}
+                        url += '{{ collection.title | url_for_type }}'+window.location.search;
+                    {% elsif collection.products.first.vendor == collection.title %}
+                        url += '{{ collection.title | url_for_vendor }}'+window.location.search;
+                    {% endif %}
+                }
+          		ajaxfilter(url);
+            });
+	  	});
+    	check_filters();
+	});
+</script>

@@ -1,0 +1,97 @@
+<div class="page-width wow fadeIn" data-wow-delay="100ms" data-section-id="{{ section.id }}" data-section-type="instagram" data-get="{{ section.settings.instagram_get}}" data-image="{{ section.settings.images_size }}"
+   data-count="{{ section.settings.limit }}" data-tags="{{ section.settings.instagram_tag }}" data-user="{{ section.settings.user-id }}" data-token="{{ section.settings.accessToken }}">
+  <section class="home-instagram wow fadeIn">   
+      <div class="widget-title text-center">   
+          {% if section.settings.instagram_title != blank  or section.settings.subtitle != blank -%}
+            <div class="section-header text-center">
+             <h2 class="h2">{{ section.settings.instagram_title }}</h2>
+             {% if section.settings.instagram_des != blank %}<p class="instagram-des">{{ section.settings.instagram_des }}</p>{% endif %}
+            </div>
+          {% endif %}   
+      </div>    
+      <div id="instafeed" class="im{{ section.settings.images_size }}">
+        {% if section.settings.instagram_button_text != blank and section.settings.instagram_button_link != blank %}
+          <div class="followus">
+               <a href="{{ section.settings.instagram_button_link }}" title="{{ section.settings.instagram_button_text }}" target="_blank" class="btn">{{ section.settings.instagram_button_text }}</a>
+          </div>         
+        {% endif %}
+      </div>
+  </section>
+</div>
+
+{% schema %}
+  {
+    "name": "Instagram",
+    "class":"index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "instagram_title",
+        "label": "Title",
+        "default": "Belle On Instagram"
+      },	 
+      {
+        "type": "text",
+        "id": "instagram_des",
+        "label": "Instagram Description",
+        "default": "Phasellus lorem malesuada ligula pulvinar commodo maecenas suscipit auctom."
+      },	 
+      {
+        "type": "text",
+        "id": "instagram_button_text",
+        "label": "Button Instagram Text",
+        "default": "View Gallery"
+      },
+      {
+        "type": "text",
+        "id": "instagram_button_link",
+        "label": "Button Instagram Link"
+      },
+      {
+        "type": "text",
+        "id": "user-id",
+        "label": "User Id",
+        "default": "5362056112",
+        "info": "Use when Get Image from: 'User'. [Where do I find User ID?](https:\/\/codeofaninja.com\/tools\/find-instagram-user-id)"
+      },
+      {
+        "type": "text",
+        "id": "accessToken",
+        "label": "Access Token",
+        "default": "5362056112.ba4c844.3960df2b3fc54f239207c6cd9bc84cb8",
+        "info": "Use when Get Image. [Where do I find Access Token?](http:\/\/instagram.pixelunion.net\/)"
+      },
+      {
+        "type": "text",
+        "id": "limit",
+        "label": "Limit the number of images to show",
+        "default": "16"
+      },
+      {
+        "type": "select",
+        "id": "images_size",
+        "label": "Resolution of images",
+        "options": [
+          {
+            "value": "thumbnail",
+            "label": "Thumbnail"
+          },
+          {
+            "value": "low_resolution",
+            "label": "Low Resolution"
+          },
+          {
+            "value": "standard_resolution",
+            "label": "Standard Resolution"
+          }
+        ]
+      }      
+    ],   
+    "presets": [
+      {
+        "name": "Instagram",
+        "category": "Image"       
+      }
+    ]
+  }
+{% endschema %}

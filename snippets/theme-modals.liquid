@@ -1,0 +1,91 @@
+{% capture themeModels %}
+<div class="loadingBox"><img src="{{ 'ajax-loader.gif' | asset_url | split: "?" | first }}" alt="Loading..." /></div>
+<div id="errorDrawer" class="modal errorDrawer">
+	<div class="modal-inner">
+		<div class="error-title">{{ 'cart.general.error' | t}}</div>
+		<div class="error-message"></div>
+	</div>
+</div>
+<div id="successDrawer" class="modal successDrawer"> <a href="javascript:void(0)" class="closeDrawer" title="Close"><i class="ad ad-times" aria-hidden="true"></i></a>
+  <p class="prod-img"><img class="modal-prod-img" alt="&nbsp;" src="" /></p>
+  <div class="prod-detail">
+    <p class="modal-prod-name"></p>
+    <p class="msg cartText">{{ 'cart.general.added_in_cart' | t}}</p>
+    <button class="btn btn-secondary btn--small continue-shopping" onclick="javascript:void(0)">{{ 'cart.general.continue_shopping' | t}}</button>
+    <button class="btn btn-secondary btn--small cartText" onclick="window.location='/cart'">{{ 'cart.general.view_cart' | t}}</button>
+  </div>
+</div>
+<div class="modalOverly"></div>
+
+{%- comment -%}****	Newsletter Popup **** {%- endcomment -%}
+{%- if settings.newsletter_popup -%}
+<div class="newsletter-wrap">
+	<div id="newsletter-modal" data-time="{{settings.newsletter_popup_time}}">
+		<button type="button" class="btn closepopup">&times;</button>
+		<!-- Modal content-->
+		<div class="display-table">
+          	{% if settings.newsletter_img != blank %}<div class="display-table-cell width40"><img src="{{ settings.newsletter_img | img_url:'300x' }}" alt="" /></div>{% endif %}
+			<div class="display-table-cell {% if settings.newsletter_img != blank %} width60 {% endif %} text-center">
+				<div class="newsletter-left">
+					<h2>{{settings.newsletter_popup_title }}</h2>
+					<p>{{settings.newsletter_popup_subtitle }} </p>
+					{% include 'newsletter-form' %}
+                    {%- if settings.show_social_icons -%}{% include 'social-media' %}{%- endif -%}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{%- endif -%}
+{% endcapture %}
+{{themeModels | strip_newlines | remove: "  " | remove: "	" }}
+
+{%- comment -%}****	Product Notification **** {%- endcomment -%}
+{%- assign ntCollection = collections[settings.notify_collection] -%}
+{%- assign colections = ntCollection.products -%}
+{%- assign fake_location = settings.notify_location | replace: ' | ', '|' | replace: ' |', '|' | replace: '| ', '|' | split: '|' -%}
+{%- if settings.show_notification and ntCollection.products.size > 0 -%}
+	<div id="prodNotify" class="customized{% if settings.hide_notification_mb %} small--hide{% endif %}">
+      	<a class="closeNotify" href="#"><i class="ad ad-times-l" aria-hidden="true"></i></a>
+    	<a href="{{ntCollection.products.first.url}}" class="imgLink"><img class="pImg" src="{{ntCollection.products.first | img_url: 'small'}}" alt="{{ntCollection.products.first.title}}" /></a>
+		<div class="details">
+        	{%- if settings.notify_msg != blank -%}<p class="msg">{{settings.notify_msg}}</p>{%- endif -%}
+			<p><a href="" class="pname">{{ntCollection.products.first.title}}</a></p>
+			{%- if settings.fake_time -%}<p><span class="time">10</span> {{settings.time_msg}}</p>{%- endif -%}
+			{%- if settings.notify_location != blank -%}<p>{{settings.location_msg}} <span class="location">{{ fake_location[3] }}</span></p>{%- endif -%}
+		</div>
+	</div>
+	<script>
+		$(document).ready(function(){
+        	if ((typeof Shopify) === 'undefined') { Shopify = {}; }
+			Shopify.pnProduct = function(handle, callback) {
+				$.ajax({ url: '/products/' + handle + '.js', dataType: 'json', success: function(data){ callback(data); }, cache:true, timeout: {{settings.notify_display | plus: 700}} });
+			};
+
+			var productsArray = {{ colections | map:'handle' | json }};
+			var curproductIndex = 0;
+    		function productNotify(){
+      			++curproductIndex;
+      			if (curproductIndex >= productsArray.length) { curproductIndex = 0; }
+      			$('#prodNotify').addClass("active");
+				setTimeout(function(){
+            		Shopify.pnProduct(productsArray[curproductIndex],function(data){
+						var fakeTimeOrder = Math.floor((Math.random() * 60) + 1),
+                            {%- if settings.notify_location != blank -%}fklocations = {{ fake_location | json }},rand = Math.floor(Math.random() *{{fake_location.size}}),{% endif %}
+                            pimg = data.featured_image,
+             	 			pimg_path = pimg.replace(/(\.[^\.]*$|$)/, '_small' + '$&');
+						$('#prodNotify .pname').html(data.title).attr('href','/collections/{{ntCollection.handle}}'+data.url);
+                        $('#prodNotify .imgLink').attr('href','/collections/{{ntCollection.handle}}'+data.url);
+                        $('#prodNotify img').attr( { src:pimg_path, alt:data.title } );
+                        $('#prodNotify .time').html(fakeTimeOrder);
+                        {%- if settings.notify_location != blank -%}$('#prodNotify .location').html(fklocations[rand]);{%- endif -%}
+                        $('#prodNotify').removeClass("active");
+					});
+				}, {{settings.notify_display}});
+			}
+			setInterval(productNotify, {{ settings.notify_display | plus: settings.notify_delay | plus: 600}});
+            productNotify();
+            $('.closeNotify').click(function(){ $('#prodNotify').remove(); });
+ 		});
+	</script>
+{% endif %}

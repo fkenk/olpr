@@ -1,0 +1,38 @@
+{% paginate search.results by 20 %}
+
+<div class="page-width">
+	{% if search.results_count == 0 or search.performed == false %}
+    	<div class="empty-page-content text-center">
+      		<h1 class="h2">{{ 'general.search.title' | t }}</h1>
+  	{% else %}
+    	<div class="section-header text-center">
+    		<h1 class="h2">{{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }}</h1>
+	{% endif %}
+    	{% if search.performed and search.results_count == 0 %}
+        	<hr class="hr--small hr--invisible">
+			<p>{{ 'general.search.no_results_html' | t: terms: search.terms }}</p>
+    	{% endif %}
+	</div>
+</div>
+{% if search.performed %}
+		<div data-section-id="collection-template" id="collection-template" data-section-type="collection-template">
+          	<div class="page-width" id="Collection">
+                <div class="productList">
+                    <div class="grid grid--uniform grid-products grid--view-items">
+                        {% for item in search.results %}
+  {% if item.object_type == 'product' and item.type == 'SHOPSTORM_HIDDEN_PRODUCT' %}{% continue %}{% endif %}
+
+                      		{% if item.object_type == 'product' %}
+                        		<div class="grid__item small--one-half medium--one-quarter large-up--one-fifth">{% include 'product-card-grid', product: item, gridStyle: 'style1' %}</div>
+                      		{% else %}
+                      			<div class="grid__item small--one-half medium--one-quarter large-up--one-fifth">{% include 'blog-card-grid', article: item %}</div>
+                      		{% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+          	</div>
+		</div>
+{% if paginate.pages > 1 %}{% include 'pagination' %}{% endif %}
+{% endif %}
+
+{% endpaginate %}

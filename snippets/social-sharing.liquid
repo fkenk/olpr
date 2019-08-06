@@ -1,0 +1,31 @@
+<div class="social-sharing">
+	{%- if settings.share_facebook -%}
+    <a target="_blank" href="//www.facebook.com/sharer.php?u={{ shop.url | append: share_permalink }}" class="btn btn--small btn--secondary btn--share share-facebook" title="{{ 'general.social.alt_text.share_on_facebook' | t }}">
+    	<i class="ad ad-facebook-square"></i> <span class="share-title" aria-hidden="true">{{ 'general.social.share_on_facebook' | t }}</span>
+    </a>
+	{%- endif -%}
+
+	{%- if settings.share_twitter -%}
+    <a target="_blank" href="//twitter.com/share?text={{ share_title | url_param_escape }}&amp;url={{ shop.url | append: share_permalink }}" class="btn btn--small btn--secondary btn--share share-twitter" title="{{ 'general.social.alt_text.share_on_twitter' | t }}">
+    	<i class="ad ad-twitter"></i> <span class="share-title" aria-hidden="true">{{ 'general.social.share_on_twitter' | t }}</span>
+    </a>
+	{%- endif -%}
+
+	{%- if settings.share_google -%}
+    <a href="http://plus.google.com/share?url={{ shop.url | append: share_permalink }}" class="btn btn--small btn--secondary btn--share share-google" title="{{ 'general.social.alt_text.share_on_google' | t }}" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=380,width=660');return false;">
+    	<i class="ad ad-google-plus-g" aria-hidden="true"></i> <span class="share-title" aria-hidden="true">{{ 'general.social.share_on_google' | t }}</span>
+    </a>
+	{%- endif -%}
+
+	{%- if settings.share_pinterest -%}
+    <a target="_blank" href="//pinterest.com/pin/create/button/?url={{ shop.url | append: share_permalink }}&amp;media={{ share_image | img_url: '1024x1024' }}&amp;description={{ share_title | url_param_escape }}" class="btn btn--small btn--secondary btn--share share-pinterest" title="{{ 'general.social.alt_text.share_on_pinterest' | t }}">
+		<i class="ad ad-pinterest"></i> <span class="share-title" aria-hidden="true">{{ 'general.social.share_on_pinterest' | t }}</span>
+    </a>
+	{%- endif -%}
+
+	{%- if settings.share_email -%}
+    <a href="mailto:?subject=Check this {{ shop.url | append: share_permalink }}" class="btn btn--small btn--secondary btn--share share-pinterest" title="{{ 'general.social.alt_text.share_on_email' | t }}" target="_blank">
+		<i class="ad ad-envelope"></i> <span class="share-title" aria-hidden="true">{{ 'general.social.share_on_email' | t }}</span>
+    </a>
+	{%- endif -%}
+</div>

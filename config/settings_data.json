@@ -1,0 +1,1739 @@
+{
+  "current": {
+    "layout_style": "normal",
+    "classic_header": false,
+    "rtl": false,
+    "catalog-mode": false,
+    "top-information-bar": false,
+    "favicon": "shopify:\/\/shop_images\/OLPR_favicon.png",
+    "show_sticky_header": true,
+    "show_sticky_arrow": true,
+    "enable_site_animation": true,
+    "site_animation_mobile": true,
+    "ajax_cart": true,
+    "enable_wishlist": true,
+    "enable_age_varification": false,
+    "enable_birthdate": false,
+    "agevari_popup_bg": "",
+    "free_ship": "199",
+    "free_ship_msg": "Add $, Get Free Shipping",
+    "got_free_ship": "Your order is eligible for FREE Delivery.",
+    "estimate_ship": "4\/10",
+    "estimate_shipping_msg": "Estimated delivery between [startdate] and [enddate].",
+    "secondary_image": true,
+    "show_cart_btn": true,
+    "show_cart_btn_mobile": true,
+    "display_countdown": false,
+    "show_color_swatch": true,
+    "color_type": "color",
+    "color_size": "small",
+    "color_style": "rounded",
+    "pr_lbl": true,
+    "select_label_style": "rectangular",
+    "lbl_txt": "#fff",
+    "sale_lbl": true,
+    "sale_label_style": "salelabel",
+    "lbl_sale_cl": "#ff708e",
+    "pr_label1": "new",
+    "pr_label1_cl": "#000",
+    "pr_label2": "Hot",
+    "pr_label2_cl": "#e9a400",
+    "pr_label3": "Popular",
+    "pr_label3_cl": "#81d53d",
+    "base_font": "poppins_n4",
+    "type_base_size": 13,
+    "header_font": "poppins_n4",
+    "type_header_base_size": 20,
+    "header_case": "uppercase",
+    "section-font-weight": "700",
+    "nav_size": 13,
+    "nav_ttl": 14,
+    "font-weight": "regular",
+    "nav_case": "uppercase",
+    "slide_title": 70,
+    "slide_title_weight": "700",
+    "slide_title_case": "uppercase",
+    "slide_sub_title": 19,
+    "slide_subtitle_weight": "600",
+    "slide_subtitle_case": "none",
+    "page_title_text_size": 18,
+    "product_title_text_size": 18,
+    "color_body_bg": "#fff",
+    "color_body_text": "#555555",
+    "color_text": "#000000",
+    "color_links": "#3bb9ff",
+    "color_borders": "#e8e9eb",
+    "color_text_field": "#fff",
+    "color_text_field_text": "#333333",
+    "color_button": "#3bb9ff",
+    "color_button_text": "#fff",
+    "color_small_button": "#eeeeee",
+    "color_small_button_text": "#000000",
+    "link_btn": "#3bb9ff",
+    "pr_btn": "#3bb9ff",
+    "pr_btn_text": "#ffffff",
+    "color_bg": "#000",
+    "annouance_color_text": "#ffffff",
+    "top_header_clr": "#444444",
+    "top_header_text_clr": "#ffffff",
+    "main_header_bg_clr": "#ffffff",
+    "icons_clr": "#000000",
+    "cart_count": "#ffffff",
+    "cl_navbar_link": "#1e1c1c",
+    "cl_navbar_link_hv": "#3bb9ff",
+    "cl_icons_clr": "#ffffff",
+    "cl_cart_count": "#ffffff",
+    "top_bar_bdr": "#000000",
+    "top_bar_bg_clr": "#000",
+    "top_bar_text_clr": "#eee",
+    "navbar_bg": "rgba(0,0,0,0)",
+    "navbar_link": "#1e1c1c",
+    "navbar_link_hv": "#3bb9ff",
+    "navbar_link_bghv": "rgba(0,0,0,0)",
+    "navbar_bdr": "#fff",
+    "nav_link_lbl": "#ffffff",
+    "nav_link_lbl1": "#f00",
+    "nav_link_lbl2": "#1cb5b5",
+    "nav_link_lbl3": "#7fbf10",
+    "nav_link_lbl4": "#d0a306",
+    "nav_link_lbl5": "#af4de2",
+    "nav_mm_bg": "#fff",
+    "nav_mm_title": "#000",
+    "nav_mm_link": "#000",
+    "nav_mm_link_hv": "#000",
+    "nav_dd_link": "#000",
+    "nav_dd_link_bg": "#fff",
+    "nav_dd_link_hv": "#000000",
+    "nav_dd_divider": "#eeeeee",
+    "nav_dd_link_bghv": "#eee",
+    "mobile_nav_bg": "#ffffff",
+    "navigation_text": "#333333",
+    "border": "#eeeeee",
+    "subnav_color_shade": "darken",
+    "newsletter_bg_clr": "#f9f9f9",
+    "newsletter_text_clr": "#000",
+    "newsletter_border_clr": "#e8e9eb",
+    "newsletter_button_clr": "#000",
+    "newsletter_button_hover_clr": "#444444",
+    "social_icon_colors": "#686868",
+    "footer_bg_clr": "#444444",
+    "footer_top_bdr": "#ffffff",
+    "footer_text_clr": "#eeeeee",
+    "footer_title_clr": "#eeeeee",
+    "footer_border_clr": "#3bb9ff",
+    "icon_colors": "#686868",
+    "scroll_icon_colors": "#000",
+    "color_slideshow_image_overlay": "#000000",
+    "image_slideshow_overlay_opacity": "0.1",
+    "slide_text_clr": "#ffffff",
+    "slide_text_shadow": "rgba(0,0,0,0)",
+    "slide_btn": "#3bb9ff",
+    "slide_btn_txt": "#fff",
+    "display_overlay": false,
+    "slide_overlay_clr": "#ffffff",
+    "display_overlay_border": false,
+    "slide_border_clr": "#000000",
+    "color_image_overlay_text": "#fff",
+    "color_image_overlay": "#000000",
+    "image_overlay_opacity": "0.2",
+    "bnr_ttl": "#000000",
+    "bnr_ttl_bg": "rgba(0,0,0,0)",
+    "pr_tab_txt": "#929292",
+    "pr_tab_bg": "#f6f6f6",
+    "pr_tab_brd": "#eee",
+    "pr_tab_txt_ac": "#929292",
+    "pr_tab_bg_ac": "#f6f6f6",
+    "pr_tab_brd_ac": "#eee",
+    "header_bg_clr": "#f9f9f9",
+    "header_text_clr": "#000",
+    "br_bg": "#f9f9f9",
+    "br_txt": "#111",
+    "color_product_title": "#000",
+    "color_price_text": "#000000",
+    "color_sale_text": "#e95144",
+    "product_tick_color": "#ee8e8e",
+    "product_review_color": "#ff9500",
+    "Products_countdown_text": "#444",
+    "Products_countdown_text_bg": "#fff",
+    "Products_countdown_text_bg_opacity": "0.25",
+    "product_tab_text_color": "#929292",
+    "product_tab_active_text_color": "#31a3a3",
+    "product_zoom_video": "#111",
+    "product_zoom_video_bg": "#eee",
+    "quantity_msg": "#31a3a3",
+    "countdown_text": "#000",
+    "order_text": "#e95144",
+    "visitors_count": "#e95144",
+    "active_swatch_clr": "#31a3a3",
+    "buynow_btn_text": "#fff",
+    "buynow_btn": "#e95144",
+    "social-share-icon": "#222222",
+    "product_detail_tab_border": "#e8e9eb",
+    "product_detail_tab_text_color": "#2e2d2d",
+    "product_detail_tab_active_text_color": "#000",
+    "show_multiple_currencies": false,
+    "currency_format": "money_format",
+    "supported_currencies": "INR GBP CAD USD AUD EUR JPY",
+    "default_currency": "USD",
+    "share_image": "",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_google": true,
+    "share_pinterest": true,
+    "share_email": true,
+    "social_twitter_link": "https:\/\/twitter.com\/olpr_leather",
+    "social_facebook_link": "https:\/\/www.facebook.com\/olpr.leather\/",
+    "social_pinterest_link": "https:\/\/www.pinterest.com\/olprleather\/",
+    "social_instagram_link": "https:\/\/www.instagram.com\/olpr.leather\/",
+    "social_tumblr_link": "",
+    "social_youtube_link": "https:\/\/www.youtube.com\/channel\/UCXFzUkf0PsPIsPIq7V6Qy6w\/featured?",
+    "social_vimeo_link": "",
+    "show_notification": true,
+    "hide_notification_mb": true,
+    "notify_collection": "",
+    "notify_msg": "Someone liked and bought",
+    "fake_time": true,
+    "time_msg": "Minutes Ago",
+    "location_msg": "From",
+    "notify_location": "Singapore | New York | Dubai | Paris | London | Amsterdam | Sydney",
+    "notify_delay": "1000",
+    "notify_display": "4000",
+    "quick_view": true,
+    "quick_view_in_mobile": false,
+    "show_product_availability": true,
+    "show_product_vendor": true,
+    "show_product_sku": false,
+    "show_product_review": false,
+    "show_short_desc": true,
+    "show_variant_swatches": true,
+    "newsletter_popup": true,
+    "show_social_icons": true,
+    "newsletter_popup_time": "5000",
+    "newsletter_img": "",
+    "newsletter_popup_title": "Join Our Mailing List",
+    "newsletter_popup_title_color": "#000000",
+    "newsletter_popup_subtitle": "Sign Up for our exclusive email list and be the first to know about new products and special offers",
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#1990c6",
+    "checkout_button_color": "#1990c6",
+    "checkout_error_color": "#ff6d6d",
+    "show_product_type": false,
+    "image_swatches": false,
+    "type_header_family": "Google_Roboto+Slab_400_sans",
+    "type_base_family": "lato_n4",
+    "disable_newsletter_popup": false,
+    "display_newsletter": true,
+    "socia_icon_color": "#141515",
+    "display_facebook": true,
+    "display_twitter": true,
+    "display_pinterest": true,
+    "display_instagram": true,
+    "display_tumblr": true,
+    "display_youtube": true,
+    "display_vimeo": true,
+    "type_bold_product_titles": false,
+    "social_snapchat_link": "",
+    "is_layout_fullwidth": false,
+    "is_header_fullwidth": true,
+    "header_border_clr": "#e8e9eb",
+    "button_bg_clr": "#ffffff",
+    "button_text_clr": "#888888",
+    "product_filter_heading_clr": "#075159",
+    "is_layout_fullwidth?": true,
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "1560265093879": {
+            "type": "megamenu1",
+            "settings": {
+              "title": "Journals",
+              "url": "#",
+              "mm_linklist": "main-menu",
+              "mmcolumns": "4",
+              "product_ttl": "",
+              "megamenu1_product": "",
+              "megamenu1_image": "",
+              "Image1url": ""
+            }
+          },
+          "1560420836078": {
+            "type": "megamenu2",
+            "settings": {
+              "title": "Covers",
+              "url": "#",
+              "mm_linklist": "covers",
+              "mmcolumns": "3",
+              "megamenu1_image": "",
+              "Image1url": "",
+              "megamenu2_image": "",
+              "Image2url": "",
+              "megamenu3_image": "",
+              "Image3url": ""
+            }
+          },
+          "1561118384092": {
+            "type": "megamenu4",
+            "settings": {
+              "title": "Bags",
+              "url": "#",
+              "mm_linklist": "bags",
+              "mmcolumns": "4",
+              "mm4_bg": "",
+              "mm4_img_position": "right",
+              "mm4_space": "30%"
+            }
+          },
+          "1561118431850": {
+            "type": "megamenu4",
+            "settings": {
+              "title": "Apple",
+              "url": "#",
+              "mm_linklist": "apple",
+              "mmcolumns": "3",
+              "mm4_bg": "",
+              "mm4_img_position": "right",
+              "mm4_space": "30%"
+            }
+          },
+          "1561118459099": {
+            "type": "megamenu4",
+            "settings": {
+              "title": "Aprons",
+              "url": "shopify:\/\/collections\/aprons",
+              "mm_linklist": "aprons",
+              "mmcolumns": "4",
+              "mm4_bg": "",
+              "mm4_img_position": "right",
+              "mm4_space": "30%"
+            }
+          },
+          "1561456304968": {
+            "type": "megamenu1",
+            "settings": {
+              "title": "Accessories",
+              "url": "",
+              "mm_linklist": "accessories",
+              "mmcolumns": "4",
+              "product_ttl": "Featured Product",
+              "megamenu1_product": "",
+              "megamenu1_image": "",
+              "Image1url": ""
+            }
+          },
+          "1561385198667": {
+            "type": "dropdown",
+            "settings": {
+              "title": "About",
+              "url": "#",
+              "mm_linklist": "about"
+            }
+          }
+        },
+        "block_order": [
+          "1560265093879",
+          "1560420836078",
+          "1561118384092",
+          "1561118431850",
+          "1561118459099",
+          "1561456304968",
+          "1561385198667"
+        ],
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/OLPR_Logo_Black_PNG.png",
+          "logo_max_width": "130",
+          "align_logo": "left",
+          "message": false,
+          "message_mobile": false,
+          "message_text": "20% off your very first purchase, use promo code: belle fashion",
+          "message_link": "",
+          "top_header_left_text": "<i class=\"ad ad-envelope\"><\/i> info@olpr.com",
+          "top_header_middle_text": "Worldwide Shipping",
+          "header_case": "uppercase",
+          "menuarrow": true,
+          "menuAlign": "center",
+          "nm_label1": "New",
+          "nm_label2": "Sale",
+          "nm_label3": "Hot",
+          "nm_label4": "Popular",
+          "nm_label5": "New"
+        }
+      },
+      "slideshow": {
+        "type": "slideshow",
+        "blocks": {
+          "1540030158458": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/DSC01971.jpg",
+              "mb_image": "shopify:\/\/shop_images\/DSC01971.jpg",
+              "alignment": "center",
+              "title": "LEATHER DOPP KITS",
+              "subheading": "WITH CUSTOM MONOGRAMMING",
+              "slide_button_text": "Shop Now",
+              "link": "shopify:\/\/collections\/leather-dopp-kits",
+              "textalign": "center",
+              "vttextalign": "bottom"
+            }
+          },
+          "1565010200992": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/green_barista_apron.jpg",
+              "mb_image": "shopify:\/\/shop_images\/green_barista_apron.jpg",
+              "alignment": "center",
+              "title": "STYLISH APRONS",
+              "subheading": "YOU'LL BE HAPPY TO WEAR",
+              "slide_button_text": "Shop now",
+              "link": "shopify:\/\/collections\/aprons",
+              "textalign": "center",
+              "vttextalign": "bottom"
+            }
+          }
+        },
+        "block_order": [
+          "1540030158458",
+          "1565010200992"
+        ],
+        "settings": {
+          "fullwidth": true,
+          "autoplay": true,
+          "imageffect": true,
+          "autoplay_speed": "4000",
+          "slideshow_height": "medium",
+          "navigation": "both"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "1532935558834": {
+            "type": "custom",
+            "settings": {
+              "title": "ABOUT US",
+              "logo": "",
+              "custom-text": "<p>olpr. – custom USA leather brand. You may choose classy and luxurious presents for real leather lovers here. <\/p>\n\n<p><i class=\"ad ad-envelope-l\"><\/i> info@olpr.com<\/p>"
+            }
+          },
+          "1532932009490": {
+            "type": "menu",
+            "settings": {
+              "title": "INFORMATIONS",
+              "menulinks": "footer"
+            }
+          },
+          "1532934965624": {
+            "type": "menu",
+            "settings": {
+              "title": "CUSTOMER SERVICES",
+              "menulinks": "footer-menu-customer-services"
+            }
+          },
+          "1539349801442": {
+            "type": "newsletter",
+            "settings": {
+              "title": "NEWSLETTER",
+              "sub_title": "Enter your email to receive daily news and get 10% off coupon for all items. NO spam, we promise"
+            }
+          }
+        },
+        "block_order": [
+          "1532935558834",
+          "1532932009490",
+          "1532934965624",
+          "1539349801442"
+        ],
+        "settings": {
+          "display_newsletter": false,
+          "title": "<span>sign up for <\/span>newsletter",
+          "show_background": false,
+          "show_socials": false,
+          "copyright_text": "<span>© 2019 olpr. brand<\/span> All Rights Reserved.",
+          "show_payment_icons": true,
+          "payment_img": "",
+          "show_designby": false
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "settings": {
+          "style": "style2",
+          "currency_notes": true,
+          "display_saving": true,
+          "cart_notes_enable": true,
+          "tearm": true,
+          "shippingText": true,
+          "additionalCheckout": true,
+          "payment": "",
+          "shipping_calculator": true,
+          "shipping_calculator_heading": "Get shipping estimates",
+          "shipping_calculator_default_country": "United States",
+          "shipping_calculator_submit_button_label": "Calculate shipping",
+          "shipping_calculator_submit_button_label_disabled": "Calculating..."
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "blocks": {
+          "1532947285782": {
+            "type": "filter_by",
+            "settings": {
+              "title": "Price",
+              "filter_tags": "Under $30,\nUnder $50, \n$50 - $100, \n$100 - $200,\n$200 - $500\n$500 - $800,\nAbove $800",
+              "twocall": false
+            }
+          },
+          "1532947567225": {
+            "type": "by_color",
+            "settings": {
+              "title": "Color",
+              "filter_tags": "Black, Brown, Tan, Blue, Green, Red",
+              "image_swatches": true
+            }
+          },
+          "1563530459429": {
+            "type": "filter_by",
+            "settings": {
+              "title": "Leather Type",
+              "filter_tags": "Horween, Crazy Horse, Italian, Caiman, Floater",
+              "twocall": false
+            }
+          },
+          "1563529636121": {
+            "type": "filter_by",
+            "settings": {
+              "title": "Paper Refill",
+              "filter_tags": "Leuchtturm1917, Moleskine Classic, Moleskine Cahier, Midori, Field Notes",
+              "twocall": false
+            }
+          },
+          "1532947752457": {
+            "type": "filter_by",
+            "settings": {
+              "title": "Size",
+              "filter_tags": "Extra Small, Pocket, Large, Extra Large, A5, A4",
+              "twocall": false
+            }
+          },
+          "1532947863384": {
+            "type": "filter_by",
+            "settings": {
+              "title": "Dimensions, in",
+              "filter_tags": "3 x 4, 5.71 x 8.27, 7.5 x 10, 5 x 8.25, 3.5 x 5.5, 3.75 x 2.5, 4 x 3.25, 3.5 x 4, 4.3 x 3.1, 5 x 3.5, 7.5 x 3.5 x 3.5, 8 x 4 x 4, 18 x 12 x 5, 12 x 16 x 2.5, 12 x 12 x 4, 16.5 x 12 x 4, 17.5 x 15 x 7, 10.5 x 8",
+              "twocall": false
+            }
+          },
+          "1532947884050": {
+            "type": "products",
+            "settings": {
+              "title": "Popular Products",
+              "sidebar_products": "leather-journal",
+              "num_of_products": "4",
+              "side_all_products": false
+            }
+          },
+          "1532947919865": {
+            "type": "image_bnr",
+            "settings": {
+              "side_bnr_img": "shopify:\/\/shop_images\/crazy-horse-tote-bag-chocolate-image-3.jpg",
+              "side_bnr_link": ""
+            }
+          },
+          "1532948004685": {
+            "type": "static_text",
+            "settings": {
+              "title": "Information",
+              "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
+            }
+          },
+          "1532948070424": {
+            "type": "pr_tags",
+            "settings": {
+              "title": "Product Tags"
+            }
+          }
+        },
+        "block_order": [
+          "1532947285782",
+          "1532947567225",
+          "1563530459429",
+          "1563529636121",
+          "1532947752457",
+          "1532947863384",
+          "1532947884050",
+          "1532947919865",
+          "1532948004685",
+          "1532948070424"
+        ],
+        "settings": {
+          "show_collection_image": true,
+          "show_vendor": false,
+          "show_product_review": true,
+          "sort_enable": true,
+          "gridstyle": "style1",
+          "grid": "3",
+          "tablet-grid": "2",
+          "mobile-grid": "2",
+          "rows": "10",
+          "pagination": "button",
+          "sidebar_position": "left"
+        }
+      },
+      "faq-template": {
+        "type": "faq-template",
+        "blocks": {
+          "1537773657963": {
+            "type": "title",
+            "settings": {
+              "title": "Leather"
+            }
+          },
+          "1493994331036": {
+            "type": "faqs",
+            "settings": {
+              "question": "What color choices & finishes do you offer?",
+              "answer": "We have the following leather finishes and colors: Horween Leather - Dublin (natural, chestnut, black), Chromexcel (natural, brown, green, blue ink) and Shell Cordovan (natural, navy); Crazy Horse leather - chocolate, brown, navy, red, wheat, greenish; Italian leather -  brown, blue, cream, red; Caiman leather - black, cobalt, orange"
+            }
+          },
+          "1493994939248": {
+            "type": "faqs",
+            "settings": {
+              "question": "Which type of leather is right for me?",
+              "answer": "If you are looking for distressed, vintage leather with a firm feel, you should go with Horween Dublin leather or Crazy Horse leather. If you prefer smooth and medium-soft leather with a glossy finish, then Horween Chromexcel leather is right for you. Italian leather is the most supple and is the right choice for those who is looking for soft leather. Shell Cordovan and Caiman leathers are the most expensive ones as well as they are the most durable."
+            }
+          },
+          "1493994956959": {
+            "type": "faqs",
+            "settings": {
+              "question": "What is the difference between Horween and Crazy Horse?",
+              "answer": "Horween leather is produced in the USA by the world-famous tannery. Crazy Horse leather is imported from Europe and is cheaper. Both types of leather are of high quality but Horween leather is more durable."
+            }
+          },
+          "1493994983472": {
+            "type": "faqs",
+            "settings": {
+              "question": "How would you recommend caring for the leather\/cleaning leather?",
+              "answer": "Our products are made of naturally tanned leather that requires relatively little care. There is no need for frequent cleaning, and scratches or marks from daily wear and tear can be rubbed or polished out with a dry cloth. It only needs conditioning once or twice per year. Should your product get wet, remove any residual water immediately with a paper towel, pat loosely with paper and allow it to dry naturally.\nPlease note that different leathers will wear differently and may change appearance over time."
+            }
+          },
+          "1537771694777": {
+            "type": "title",
+            "settings": {
+              "title": "Products"
+            }
+          },
+          "1563974387169": {
+            "type": "faqs",
+            "settings": {
+              "question": "Where are olpr. products manufactured?",
+              "answer": "All olpr. items are handmade in the USA in a small family workshop located in Mooresville, North Carolina."
+            }
+          },
+          "1493995005223": {
+            "type": "faqs",
+            "settings": {
+              "question": "Do I have an option between lined paper, graph paper, or blank paper refill for leather journals?",
+              "answer": "All the refills for our leather covers come with lined paper. Unfortunately, we don’t have any other options for them. But it’s possible to order the cover only and use it with your own refill."
+            }
+          },
+          "1493995040471": {
+            "type": "faqs",
+            "settings": {
+              "question": "Can you engrave any of your leather journals?",
+              "answer": "Yes, any of our journals can be engraved"
+            }
+          },
+          "1563950737922": {
+            "type": "faqs",
+            "settings": {
+              "question": "Do you make custom book covers?",
+              "answer": "We can make a custom cover for almost any book. But to be sure in measurements we need to have this book in hand. So if you send it to us, we will gladly make a custom cover for you."
+            }
+          },
+          "1563951665234": {
+            "type": "faqs",
+            "settings": {
+              "question": "Is it possible to have a wider inside flap, so it covers most of the inside cover?",
+              "answer": "Yes, it is possible. Please, contact us via email: info@olpr.com and we will make a custom order for you"
+            }
+          },
+          "1563951690945": {
+            "type": "faqs",
+            "settings": {
+              "question": "Is the cover available without the notebook?",
+              "answer": "Yes, it is possible to order the cover without the notebook. Please, contact us via email: info@olpr.com and we will make a custom order for you"
+            }
+          },
+          "1563951721906": {
+            "type": "faqs",
+            "settings": {
+              "question": "Can you include a pen loop\/pockets\/closure for the journal cover?",
+              "answer": "A pen loop, inside pockets and leather strap closure can be added to any of our journals. Please, contact us via email: info@olpr.com and we will make a custom order for you"
+            }
+          },
+          "1563951744539": {
+            "type": "faqs",
+            "settings": {
+              "question": "Is it refillable? If so what kind is the paper notebook and where can I buy it?",
+              "answer": "All olpr. leather journals are refillable and can be reused with the same type of notebook. It is possible to order the refills on our website in the Notebook Refills section"
+            }
+          },
+          "1563951782539": {
+            "type": "faqs",
+            "settings": {
+              "question": "Is the journal included?",
+              "answer": "All our leather journals come with one lined paper refill. It is also possible to order the additional refills on our website here"
+            }
+          },
+          "1563951812695": {
+            "type": "faqs",
+            "settings": {
+              "question": "I don’t know my wrist size for the watch band how should I proceed with the order?",
+              "answer": "Measure your wrist with flexible tape measurements just below the wrist bone, where you would normally wear the watch. That would be your wrist size. Then select the appropriate wrist size from our watch band size guide"
+            }
+          },
+          "1563951829362": {
+            "type": "faqs",
+            "settings": {
+              "question": "Can you make the watch band for the bigger\/smaller wrist?",
+              "answer": "Yes, it’s possible. You just need to specify your wrist size in a note at checkout"
+            }
+          },
+          "1563951854529": {
+            "type": "faqs",
+            "settings": {
+              "question": "Is the watch band made with double-sided leather?",
+              "answer": "Yes, the watch band is made of two securely fastened pieces of leather"
+            }
+          },
+          "1563951883163": {
+            "type": "faqs",
+            "settings": {
+              "question": "Are the aprons washable?",
+              "answer": "Washing is not recommended for the waxed canvas aprons, as it will breakdown the wax. Only a simple spot clean with just water or mild soap is allowed in this case.\nTo keep the non-waxed canvas apron looking good, it is better to wash it by hand as little as possible, and in cold water. Air drying is best"
+            }
+          },
+          "1563951913952": {
+            "type": "faqs",
+            "settings": {
+              "question": "Can you make custom sizes of table mats and how much they would cost?",
+              "answer": "Custom desk pad sizes are available. Please, contact us by email: info@olpr.com to check the price"
+            }
+          },
+          "1563951942012": {
+            "type": "faqs",
+            "settings": {
+              "question": "Is table mat lined on the backside?",
+              "answer": "No, our table mats come with no lining"
+            }
+          },
+          "1563951969153": {
+            "type": "faqs",
+            "settings": {
+              "question": "What is the lead time for the products?",
+              "answer": "The majority of our products are made to order and it takes approximately 2 business days for handcraft. Some leather bags and backpacks are processed and dispatched within up to two weeks. If you place your order on a weekend, we will start working on it on Monday or on the next working day.\nPlease note the processing time can take longer during busy periods, like the time before Christmas"
+            }
+          },
+          "1563951990500": {
+            "type": "faqs",
+            "settings": {
+              "question": "Are the items hand stitched or machine stitched?",
+              "answer": "Our items are machine stitched"
+            }
+          },
+          "1563952042266": {
+            "type": "title",
+            "settings": {
+              "title": "Personalization"
+            }
+          },
+          "1563952060729": {
+            "type": "faqs",
+            "settings": {
+              "question": "What is the difference between engraving and embossing?",
+              "answer": "Embossing is the process of imprinting a design onto the leather with the help of press form while engraving is the process of burning a design into the leather with the help laser machine."
+            }
+          },
+          "1563952086678": {
+            "type": "faqs",
+            "settings": {
+              "question": "Can you engrave a company logo \/ custom art?",
+              "answer": "We can engrave a company logo or other custom art onto the leather. You will only need to provide the image in vector format. The best file is black and white in any of the format: .ai, .tiff, .eps, .pdf or .eps. The extra charge for logo engraving is 10 USD"
+            }
+          },
+          "1563952114755": {
+            "type": "faqs",
+            "settings": {
+              "question": "Can I have both - name and logo engraved on my item?",
+              "answer": "Yes, it is possible. Please, contact us via email: info@olpr.com and we will make a custom order for you"
+            }
+          },
+          "1563952184821": {
+            "type": "faqs",
+            "settings": {
+              "question": "What are the fonts available?",
+              "answer": "Only Arial font is available for the embossing. The engraving can be made in any of the following fonts: Corsiva, Segoe Script, Alberto Arial and Times New Roman"
+            }
+          },
+          "1563952206919": {
+            "type": "faqs",
+            "settings": {
+              "question": "Are other than Arial font and font size options available for the embossing?",
+              "answer": "Only Arial size is available for embossing. Two size options are possible: up to 3 symbols - 36pt, 10mm - all UPPERCASE; 4 symbols and more - 24pt, UPPERCASE- 7mm; lower case 5mm"
+            }
+          },
+          "1563952268949": {
+            "type": "faqs",
+            "settings": {
+              "question": "Can you add an engraving in bold\/cursive?",
+              "answer": "Sure, we can"
+            }
+          },
+          "1563952291433": {
+            "type": "faqs",
+            "settings": {
+              "question": "What is the character limit for engraving?",
+              "answer": "There are no character limits for the engraving"
+            }
+          },
+          "1563952315637": {
+            "type": "faqs",
+            "settings": {
+              "question": "Is the font size adjusted as necessary or is it one size?",
+              "answer": "We have only two font sizes available for the embossing. In the case of engraving, the font can be adjusted to any size"
+            }
+          },
+          "1563952351317": {
+            "type": "faqs",
+            "settings": {
+              "question": "What does the monogram look like?",
+              "answer": "The monogram is embossed onto the leather with Arial font. We offer 2 different font sizes - Large and Small. The Large size is 36pt or 10mm in height and the Small size is 24pt or 7mm in height. The Large size has a 3-character limit and is available in uppercase only. The small size has a 10-character limit and is available in both upper and lowercases"
+            }
+          },
+          "1563952382975": {
+            "type": "faqs",
+            "settings": {
+              "question": "Is it possible to see a proof before the product is made\/delivered?",
+              "answer": "It is possible. Please, contact us right after you make an order and we will send you a mockup before completion"
+            }
+          },
+          "1563952721628": {
+            "type": "title",
+            "settings": {
+              "title": "Returns and Replacements"
+            }
+          },
+          "1563952736845": {
+            "type": "faqs",
+            "settings": {
+              "question": "Can I return the item that I bought if I don't like it?",
+              "answer": "We accept returns and exchanges within 14 days of receipt. But custom and personalized items are considered a final sale. No returns or exchanges accepted. If something isn’t quite right with your personalized item, please contact us via email: info@olpr.com or click here"
+            }
+          },
+          "1563952873020": {
+            "type": "faqs",
+            "settings": {
+              "question": "I received a non-personalized item and would like to return or exchange it, what should I do?",
+              "answer": "If you have purchased non-personalized item you can return or exchange it within 14 days of receipt. We will provide you with an exchange or refund on the item once it returned to us. The item must have a proof of purchase and be in the same condition as when it was sent to you."
+            }
+          },
+          "1563953024879": {
+            "type": "faqs",
+            "settings": {
+              "question": "I received my order and the item was damaged. What should I do?",
+              "answer": "We are happy to help you with damaged items. Please email pictures, a brief description of the damage and your order number to our email: info@olpr.com. We will follow-up with next steps as soon as possible."
+            }
+          },
+          "1563953075808": {
+            "type": "faqs",
+            "settings": {
+              "question": "The item I received is a much lighter\/darker color than in the picture, was I sent the wrong color?",
+              "answer": "There may be some variation due to the nature of genuine leather and natural dying techniques. Each and every leather item will be slightly different which contributes to its unique beauty."
+            }
+          },
+          "1563974503301": {
+            "type": "faqs",
+            "settings": {
+              "question": "The cover received looks mottled and uneven. While functional, the tanning on it is very blotchy. Is the item defective?",
+              "answer": "We use full grain leather to make our items. This leather type is tanned with soluble natural dyes and come with aniline finish, with no surface pigment or coating. This makes full grain hide the most natural-looking leathers, but also more susceptible to scratching, fading and staining. Natural grain pattern, color variation as well as skin irregularities are inherent in the leather and are considered to be part of the natural beauty of the material."
+            }
+          },
+          "1563974543374": {
+            "type": "title",
+            "settings": {
+              "title": "Shipping"
+            }
+          },
+          "1563974750401": {
+            "type": "faqs",
+            "settings": {
+              "question": "Do you ship internationally?",
+              "answer": "Yes, we do ship internationally. Standard shipping takes from 14 business days. You can also order express shipping for extra charge."
+            }
+          },
+          "1563974554649": {
+            "type": "faqs",
+            "settings": {
+              "question": "How long does shipping normally take?",
+              "answer": "Usually, shipping within US takes 3-5 business days. International shipping takes from 14 business days."
+            }
+          },
+          "1563974587939": {
+            "type": "faqs",
+            "settings": {
+              "question": "Is there any way to rush my order and have it delivered overnight?",
+              "answer": "You can order express or overnight delivery for an extra charge. Please, contact us to our email: info@olpr.com with your order number, if it was already placed, or with the item you want to purchase and your zip code, and we will gladly provide express shipping options available."
+            }
+          },
+          "1563974714566": {
+            "type": "faqs",
+            "settings": {
+              "question": "Do I receive a note when the item is shipped? \/ How can I track my order?",
+              "answer": "Once your order has shipped, you will receive a shipping confirmation email containing your tracking number so that you can track your package."
+            }
+          },
+          "1563974786878": {
+            "type": "faqs",
+            "settings": {
+              "question": "Can I change\/correct shipping address after the order is placed?",
+              "answer": "If you noticed incorrect address in your order, please, contact us via email info@olpr.com with the correct shipping address. If your order was not shipped yet we can still correct the address. If you have already received a shipping confirmation email containing your tracking number, no changes can be applied."
+            }
+          },
+          "1563974808888": {
+            "type": "faqs",
+            "settings": {
+              "question": "Will I have to pay taxes and duties on my international order?",
+              "answer": "Orders shipped outside of the United States may be subject to import taxes, customs duties and fees levied by the destination country. Customs policies vary widely from country to country; you should contact your local customs office for more information."
+            }
+          },
+          "1563974840133": {
+            "type": "faqs",
+            "settings": {
+              "question": "Do you have a store where I can purchase your products?",
+              "answer": "You can visit us at our workshop in Mooresville, NC. Here we have a small showroom with some of our items available in stock."
+            }
+          }
+        },
+        "block_order": [
+          "1537773657963",
+          "1493994331036",
+          "1493994939248",
+          "1493994956959",
+          "1493994983472",
+          "1537771694777",
+          "1563974387169",
+          "1493995005223",
+          "1493995040471",
+          "1563950737922",
+          "1563951665234",
+          "1563951690945",
+          "1563951721906",
+          "1563951744539",
+          "1563951782539",
+          "1563951812695",
+          "1563951829362",
+          "1563951854529",
+          "1563951883163",
+          "1563951913952",
+          "1563951942012",
+          "1563951969153",
+          "1563951990500",
+          "1563952042266",
+          "1563952060729",
+          "1563952086678",
+          "1563952114755",
+          "1563952184821",
+          "1563952206919",
+          "1563952268949",
+          "1563952291433",
+          "1563952315637",
+          "1563952351317",
+          "1563952382975",
+          "1563952721628",
+          "1563952736845",
+          "1563952873020",
+          "1563953024879",
+          "1563953075808",
+          "1563974503301",
+          "1563974543374",
+          "1563974750401",
+          "1563974554649",
+          "1563974587939",
+          "1563974714566",
+          "1563974786878",
+          "1563974808888",
+          "1563974840133"
+        ],
+        "settings": {}
+      },
+      "contact-template": {
+        "type": "contact-template",
+        "settings": {
+          "show_google_map": true,
+          "map_title": "Our workshop",
+          "address": "<p>511 S Church St.<br>Mooresville,&nbsp;NC 28115&nbsp;<\/p>\n<p>Mon - Fri, 9am - 6pm<\/p>",
+          "map_address": "511 S Church St, Mooresville, NC 28115, United States",
+          "show_button": true,
+          "api_key": "AIzaSyDC95LYIsQo0n4RWs9U98y3e8mS0Ky8LFE",
+          "contact_title": "Drop Us A Line",
+          "contact_text_desc": "If you want to find out more about our products, have any enquiries or just to say a quick hello, don't hesitate to contact us :)",
+          "show_labels": false,
+          "contact_your_name": "Name",
+          "contact_phone_number": "Phone Number",
+          "contact_your_email": "Email",
+          "contact_your_comment": "Your Message",
+          "show_store_opening": true,
+          "store_opening_time": "<strong>Opening Hours<\/strong><br>\nMon - Fri : 9am - 6pm",
+          "contact-address": "511 S Church St.\n<br>Mooresville, NC 28115, <br>United States",
+          "phone": "",
+          "email": "info@olpr.com",
+          "Show_location": true,
+          "Show_Social_media": true
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "blocks": {
+          "1553924507482": {
+            "type": "collection",
+            "settings": {
+              "collection": "",
+              "collection_image": ""
+            }
+          },
+          "1553925521929": {
+            "type": "collection",
+            "settings": {
+              "collection": "",
+              "collection_image": ""
+            }
+          },
+          "1553925092268": {
+            "type": "collection",
+            "settings": {
+              "collection": "",
+              "collection_image": ""
+            }
+          },
+          "1553925776609": {
+            "type": "collection",
+            "settings": {
+              "collection": "",
+              "collection_image": ""
+            }
+          },
+          "1553925918852": {
+            "type": "collection",
+            "settings": {
+              "collection": "",
+              "collection_image": ""
+            }
+          },
+          "1553926113575": {
+            "type": "collection",
+            "settings": {
+              "collection": "",
+              "collection_image": ""
+            }
+          },
+          "1553926398736": {
+            "type": "collection",
+            "settings": {
+              "collection": "",
+              "collection_image": ""
+            }
+          },
+          "1553926515930": {
+            "type": "collection",
+            "settings": {
+              "collection": "",
+              "collection_image": ""
+            }
+          }
+        },
+        "block_order": [
+          "1553924507482",
+          "1553925521929",
+          "1553925092268",
+          "1553925776609",
+          "1553925918852",
+          "1553926113575",
+          "1553926398736",
+          "1553926515930"
+        ],
+        "settings": {
+          "page_title": "Spring Summer Collection 2019",
+          "display_type": "selected",
+          "sort": "alphabetical",
+          "grid": "4"
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "layout": "list",
+          "number_of_post_to_show": "4",
+          "sidebar_position": "left",
+          "blog_show_author": true,
+          "blog_show_date": true,
+          "show_category": true,
+          "category_box_title": "Category",
+          "show_recent_posts": true,
+          "recent_posts_title": "Recent Posts",
+          "show_banner_ad": false,
+          "sidebar_banner": "",
+          "banner_link": "",
+          "show_products": true,
+          "collection_title": "Trending Now",
+          "sidebar_collection": "aprons",
+          "number_of_prodcut": "4"
+        }
+      },
+      "lookbook-template": {
+        "type": "lookbook-template",
+        "blocks": {
+          "1494239838404": {
+            "type": "lookbook1",
+            "settings": {
+              "image": "",
+              "url": "#",
+              "title": "Women's Winter wear"
+            }
+          },
+          "1494239974007": {
+            "type": "lookbook1",
+            "settings": {
+              "image": "",
+              "url": "#",
+              "title": "Collection 2017 special"
+            }
+          },
+          "1494240001606": {
+            "type": "lookbook1",
+            "settings": {
+              "image": "",
+              "url": "#",
+              "title": "Summer Collection"
+            }
+          },
+          "1494240023086": {
+            "type": "lookbook1",
+            "settings": {
+              "image": "",
+              "url": "#",
+              "title": "Kids Wear"
+            }
+          },
+          "1494241006851": {
+            "type": "lookbook2",
+            "settings": {
+              "image": "",
+              "url": "#",
+              "title": "Shop Collection"
+            }
+          },
+          "1494241168693": {
+            "type": "lookbook2",
+            "settings": {
+              "image": "",
+              "url": "#",
+              "title": "High Heel Shoes Collection"
+            }
+          },
+          "1494241226929": {
+            "type": "lookbook2",
+            "settings": {
+              "image": "",
+              "url": "#",
+              "title": "Denim Jean's Collection"
+            }
+          },
+          "1494241258389": {
+            "type": "lookbook2",
+            "settings": {
+              "image": "",
+              "url": "#",
+              "title": "Men's Watch New Arrival"
+            }
+          },
+          "1494241326762": {
+            "type": "lookbook2",
+            "settings": {
+              "image": "",
+              "url": "#",
+              "title": "Hot Summer Collection"
+            }
+          },
+          "1494241482971": {
+            "type": "lookbook2",
+            "settings": {
+              "image": "",
+              "url": "#",
+              "title": "Women jackets"
+            }
+          },
+          "1494242856150": {
+            "type": "lookbook1",
+            "settings": {
+              "image": "",
+              "url": "#",
+              "title": "lingerie collection"
+            }
+          }
+        },
+        "block_order": [
+          "1494239838404",
+          "1494239974007",
+          "1494240001606",
+          "1494240023086",
+          "1494241006851",
+          "1494241168693",
+          "1494241226929",
+          "1494241258389",
+          "1494241326762",
+          "1494241482971",
+          "1494242856150"
+        ],
+        "settings": {
+          "layout_style": "lookbook1",
+          "btn_txt": "Shop The Collectons"
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "sidebar_position": "right",
+          "blog_show_author": true,
+          "blog_show_date": true,
+          "show_share_buttons": true,
+          "show_category": true,
+          "category_box_title": "Category",
+          "show_recent_posts": true,
+          "recent_posts_title": "Recent Posts",
+          "show_banner_ad": false,
+          "sidebar_banner": "",
+          "banner_link": "",
+          "show_products": true,
+          "collection_title": "Trending Now",
+          "sidebar_collection": "leather-journal",
+          "number_of_prodcut": "4"
+        }
+      },
+      "about-us": {
+        "type": "about-us",
+        "blocks": {
+          "1537787486018": {
+            "type": "text",
+            "settings": {
+              "title": "To fly as high as you only can",
+              "text": "<p><\/p>\n<p>It&rsquo;s important to us that we know who we are. Our parents encouraged us, from our early childhood in Ukraine, to find our true calling in life. They told us it wouldn&rsquo;t just appear one day; it would take trial and error. As we grew up, we did many interesting things, things we enjoyed, each time thinking we had found our calling. And then something else would come along. It was not until we were grown and had developed more of a sense of who we are that we began to understand that our calling was in creating. By creating, my family and I share who we are with others.<\/p>",
+              "width": "100%",
+              "alignment": "center",
+              "align_text": "center"
+            }
+          },
+          "1537787940921": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/olpr-founders.jpg",
+              "width": "50%",
+              "alignment": "center"
+            }
+          },
+          "1537787539345": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/olpr-leather-goods-manufacturer.jpg",
+              "width": "50%",
+              "alignment": "center"
+            }
+          },
+          "1537788013075": {
+            "type": "text",
+            "settings": {
+              "title": "We Want to Create",
+              "text": "<p>Our master tailor Victor&nbsp;has always been&nbsp;very particular (and now he is even more so). When he was a teen, he always said that he wanted to make the perfect product with a perfectly straight seam. Every time he bought something (e.g., shoes, t-shirts), he checked how it was made, especially how the seams looked. If the seams were not straight, he wouldn&rsquo;t buy it. So Viktor and his straight seams became a joke in our family.<\/p>\n<p>One day, Viktor decided to sew the kind of wallet he had always wanted&mdash;a simple pocket wallet with a straight seam. It was so well made that he sold it the next day. He made another; he sold another. Soon, we were making leather goods for all of our friends. Our goods became so popular that we were invited to the arts markets. We sold everything we made. We had found our calling&mdash;creating leather goods.<\/p>",
+              "width": "50%",
+              "alignment": "center",
+              "align_text": "left"
+            }
+          },
+          "1563959931884": {
+            "type": "text",
+            "settings": {
+              "title": "Our Passion",
+              "text": "<p>Then, as now, people appreciated the straight seam. They recognized us as true leather artisans from our stitching. Only by examining the stitching very closely can you tell where it starts and where it ends, the last row is so perfectly laid over the first. Never is there a loose thread.&nbsp;<\/p>\n<p>The Internet gave us the exciting opportunity to sell our goods outside Ukraine. We could share our passion all over the world. But the distance caused a problem. Shipping to the U. S. could take up to a month. That was not the type of service we wanted to provide, so we moved to North Carolina to be closer to our many American friends who value our handmade leather products.&nbsp;<\/p>\n<p>Our dream has come true. We fashion high-quality leather products with the ideal straight seam that make people happy. We invite you to contact us and tell us your ideas on how an item can become uniquely yours.<\/p>",
+              "width": "50%",
+              "alignment": "center",
+              "align_text": "left"
+            }
+          },
+          "1561126959983": {
+            "type": "video",
+            "settings": {
+              "video_url": "https:\/\/youtu.be\/pc4XzKOOO2Q",
+              "width": "50%",
+              "alignment": "top-middle"
+            }
+          },
+          "1537788147402": {
+            "type": "html",
+            "settings": {
+              "code": "<h3> Contact Us<\/h3>\t\t<ul class=\"contact-address\">\n<li>\n<i class=\"ad ad-map-marker-al\"><\/i>\n<p>145 Silverspring Place,\nMooresville, NC 28117 <\/p>\n<\/li>\n<li class=\"email\"> <i class=\"ad ad-envelope-l\"><\/i>\n<p>info@olpr.com<\/p>\n<\/li>\n<li class=\"envelope\"> <i class=\"ad ad-envelope-l\"><\/i>\n<p> olpr.com<\/p>\n<\/li>\n<\/ul><hr>\n<div class=\"follow-us\">\n<ul class=\"list--inline site-footer__social-icons social-icons\">\n  <li><a class=\"social-icons__link\" href=\"https:\/\/www.facebook.com\/olpr.leather\/\" target=\"_blank\" title=\"olpr. Leather Goods on Facebook\"><i class=\"ad ad-facebook-square\"><\/i> <span class=\"icon__fallback-text\">Facebook<\/span><\/a><\/li>\n  <li><a class=\"social-icons__link\" href=\"https:\/\/twitter.com\/olpr_leather\" target=\"_blank\" title=\"olpr. Leather Goods on Twitter\"><i class=\"ad ad-twitter\"><\/i> <span class=\"icon__fallback-text\">Twitter<\/span><\/a><\/li>\n  \n  <li><a class=\"social-icons__link\" href=\"https:\/\/www.pinterest.com\/olprleather\/\" target=\"_blank\" title=\"olpr. Leather Goods on Pinterest\"><i class=\"ad ad-pinterest\"><\/i> <span class=\"icon__fallback-text\">Pinterest<\/span><\/a><\/li>\n  <li><a class=\"social-icons__link\" href=\"https:\/\/www.instagram.com\/olpr.leather\/\" target=\"_blank\" title=\"olpr. Leather Goods on Instagram\"><i class=\"ad ad-instagram\"><\/i> <span class=\"icon__fallback-text\">Instagram<\/span><\/a><\/li>\n  \n  <li><a class=\"social-icons__link\" href=\"https:\/\/www.youtube.com\/channel\/UCXFzUkf0PsPIsPIq7V6Qy6w\/\" target=\"_blank\" title=\"olpr. Leather Goods on YouTube\"><i class=\"ad ad-youtube\"><\/i> <span class=\"icon__fallback-text\">YouTube<\/span><\/a><\/li>\n<\/ul> <\/div>",
+              "width": "50%"
+            }
+          }
+        },
+        "block_order": [
+          "1537787486018",
+          "1537787940921",
+          "1537787539345",
+          "1537788013075",
+          "1563959931884",
+          "1561126959983",
+          "1537788147402"
+        ],
+        "settings": {
+          "title": ""
+        }
+      },
+      "1540101232520": {
+        "type": "products-slider",
+        "settings": {
+          "title": "Popular Products",
+          "subtitle": "",
+          "collection": "leather-journal",
+          "gridstyle": "style1",
+          "grid": "4",
+          "tablet-grid": "3",
+          "mobile-grid": "2",
+          "rows": "10",
+          "show_vendor": false,
+          "show_product_review": false
+        }
+      },
+      "top-information-bar": {
+        "type": "top-information-bar",
+        "settings": {
+          "topbar": true,
+          "topbarmobile": true
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "product_latyout": "style1",
+          "enable_zoom": true,
+          "enable_lightbox": true,
+          "thumbnail_pos": "left",
+          "show_product_navigation": true,
+          "show_product_review": true,
+          "show_saleoff": true,
+          "show_product_availability": true,
+          "show_product_vendor": false,
+          "show_product_sku": false,
+          "show_short_desc": false,
+          "quantity_msg": false,
+          "countdown": true,
+          "sizechartlink": true,
+          "askaboutproduct": true,
+          "enable_payment_button": false,
+          "show_share_buttons": true,
+          "show_free_ship": false,
+          "show_estimate_ship": false,
+          "show_product_type": false,
+          "show_collection": false,
+          "show_tags": false,
+          "show_variant_swatches": true,
+          "color_type": "color",
+          "color_size": "small",
+          "color_style": "rounded",
+          "fake_orders": false,
+          "orders": 20,
+          "orders_time": 24,
+          "orders_msg": "[orders] sold in last [hours] hours",
+          "fake_visitors": false,
+          "visitors": 50,
+          "visitors_time": 5,
+          "visitors_msg": "[visitors] Persons looking for this product",
+          "image_banner": "",
+          "show_features": false,
+          "feature1_icon": "",
+          "feature1_text": "Feature 1 Text",
+          "feature2_icon": "",
+          "feature2_text": "Feature 2 Text",
+          "feature3_icon": "",
+          "feature3_text": "Feature 3 Text",
+          "feature4_icon": "",
+          "feature4_text": "Feature 4 Text",
+          "show_product_tabs": false,
+          "show_tab_1": true,
+          "tab_1_title_text": "",
+          "show_tab_2": false,
+          "tab_2_title_text": "Product Reviews",
+          "show_tab_3": false,
+          "tab_3_title_text": "Details",
+          "sizechart": "",
+          "show_tab_4": false,
+          "tab_4_title_text": "Shipping & Returns",
+          "tab_4_textarea": "",
+          "show_tab_5": false,
+          "tab_5_title_text": "",
+          "tab_5_textarea": "",
+          "show_tab_6": false,
+          "tab_6_title_text": "Custom Tab",
+          "tab_6_textarea": "",
+          "show_related_products": true,
+          "related_products_autoplay": true,
+          "related_title": "Related Products",
+          "related_sub_title": "You can stop autoplay, increase\/decrease aniamtion speed and number of grid to show and products from store admin.",
+          "slider_related_speed": "5000",
+          "slider_related_animation_speed": "200",
+          "gridstyle": "style1",
+          "grid": "4",
+          "tablet-grid": "3",
+          "mobile-grid": "2",
+          "related_total_product_to_show": "8",
+          "show_viewed_products": true,
+          "viewedproduct_title": "Recently Viewed Product",
+          "viewedproduct_sub_title": "You can control fully on this carousel from store admin as describe in above section",
+          "rc_grid": "4",
+          "rc_tablet-grid": "3",
+          "rc_mobile-grid": "2",
+          "recent_total_product_to_show": "5"
+        }
+      },
+      "1565074180880": {
+        "type": "collection-list",
+        "blocks": {
+          "1565074180880-0": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "leather-journal",
+              "collection_image": "shopify:\/\/shop_images\/custom-leather-journals.jpg",
+              "collection_name": "Leather Journals"
+            }
+          },
+          "1565074180880-1": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "leather-dopp-kits",
+              "collection_image": "shopify:\/\/shop_images\/personalized-leather-dopp-kits.jpg",
+              "collection_name": "Toiletry Bags"
+            }
+          },
+          "1565084061733": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "leather-apple-watch-bands-straps",
+              "collection_image": "shopify:\/\/shop_images\/apple-watch-leather-bands.jpg",
+              "collection_name": "Apple Watch Bands"
+            }
+          }
+        },
+        "block_order": [
+          "1565074180880-0",
+          "1565074180880-1",
+          "1565084061733"
+        ],
+        "settings": {
+          "fullwidth": true,
+          "title": "",
+          "subtitle": "",
+          "distitle": false,
+          "grid": "3",
+          "grid-tab": "3",
+          "grid-mobile": "2"
+        }
+      },
+      "1565074492495": {
+        "type": "featured-blog",
+        "settings": {
+          "title": "Latest Journal Articles",
+          "subtitle": "",
+          "blog": "articles",
+          "post_limit": "4",
+          "blog_show_author": false,
+          "blog_show_date": false,
+          "show_view_all": false
+        }
+      },
+      "1565080425659": {
+        "type": "feature-columns",
+        "blocks": {
+          "1565080425659-0": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": false,
+              "image": "",
+              "title": "Fast Response",
+              "text": "Our online store is open 24\/7 to provide you with high-quality leather goods when you have time to explore our site. Need assistance, leave us a message, and we will get back to you as soon as possible. If you need something urgently, we will do everything possible to help you get it.",
+              "button_label": "",
+              "button_link": ""
+            }
+          },
+          "1565080425659-1": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": false,
+              "image": "",
+              "title": "Huge Variety",
+              "text": "We believe you should always have a choice and do our best to provide you with the huge number of options from which to choose. Whatever product you need, there will be several collections available in OLPR so you can select the most appropriate creation.",
+              "button_label": "",
+              "button_link": ""
+            }
+          },
+          "1565080425659-2": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": false,
+              "image": "",
+              "title": "Unique Designs",
+              "text": "Our talented designers create truly unique works of art. Professional leather artisans add a lot of creativity so that you can enjoy modern and exclusive leather goods that make others ask where you got them.",
+              "button_label": "",
+              "button_link": ""
+            }
+          },
+          "1565080764400": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": false,
+              "image": "",
+              "title": "Full Customization",
+              "text": "All of our handmade leather goods can be personalized and customized according to your wishes. If you’d like to change some details of your potential purchase, don’t hesitate and let us know – we will be happy to help you create a leather product you will truly enjoy.",
+              "button_label": "",
+              "button_link": ""
+            }
+          },
+          "1565080793828": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": false,
+              "image": "",
+              "title": "High Quality Materials",
+              "text": "Our custom leather goods are made of the full-grain Horween leather which has been setting high standards since 1905. It is known for its high quality, reliability, and durability. These unique characteristics of materials make our leather goods truly a luxury.",
+              "button_label": "",
+              "button_link": ""
+            }
+          },
+          "1565080816795": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": false,
+              "image": "",
+              "title": "Made in the USA",
+              "text": "All our personalized leather goods are made in the USA and compliant with the highest standards of quality as well as diverse tastes. You can be 100% sure that any leather product you buy from our store will serve you for a very long time.",
+              "button_label": "",
+              "button_link": ""
+            }
+          }
+        },
+        "block_order": [
+          "1565080425659-0",
+          "1565080425659-1",
+          "1565080425659-2",
+          "1565080764400",
+          "1565080793828",
+          "1565080816795"
+        ],
+        "settings": {
+          "title": "Why People Choose Us",
+          "subtitle": "We work hard to deliver a large variety of high-quality handcrafted leather goods for sale and available at any moment. Our store aims at bringing leather goods to a new level where more people will truly enjoy the process of selection. It shouldn’t be a casual purchase, but an expedition of luxury capped by a price that is more than reasonable. You don’t have to browse through dozens of online stores, everything you might need is right here. Our customers trust us, come and explore the reasons for their trust.",
+          "align_text": "center"
+        }
+      },
+      "1565080949242": {
+        "type": "custom-content",
+        "blocks": {
+          "1565080949242-0": {
+            "type": "text",
+            "settings": {
+              "image": "",
+              "title": "",
+              "text": "<p>We are a small leather goods workshop located in Mooresville, North Carolina. Our workshop is part of the buildings that belonged to the historic Mooresville Cotton Mills. That history inspires us to continue a long tradition of excellence.<\/p>\n<p>Our products are made with absolute care from leather of the highest quality.<\/p>\n<p>We serve our customers with that same care.<\/p>",
+              "btntxt": "",
+              "btnurl": "",
+              "width": "100%",
+              "alignment": "center",
+              "align_text": "center"
+            }
+          }
+        },
+        "block_order": [
+          "1565080949242-0"
+        ],
+        "settings": {
+          "top-offeset": "small",
+          "title": "Handmade Leather Goods",
+          "subtitle": ""
+        }
+      },
+      "1565084544441": {
+        "type": "collection-list",
+        "blocks": {
+          "1565084544441-0": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "leather-bags",
+              "collection_image": "shopify:\/\/shop_images\/leather-backpacks.jpg",
+              "collection_name": "Bags and Backpacks"
+            }
+          },
+          "1565084544441-1": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "aprons",
+              "collection_image": "shopify:\/\/shop_images\/restaurant-aprons_f7f822c3-3905-4f92-9e27-5b8c1ef6fff5.jpg",
+              "collection_name": "Restaurant Aprons"
+            }
+          },
+          "1565084544441-2": {
+            "type": "featured_collection",
+            "settings": {
+              "collection": "leather-desk-pads-and-blotters",
+              "collection_image": "shopify:\/\/shop_images\/leather-desk-pads.jpg",
+              "collection_name": "Leather Desk Pads"
+            }
+          }
+        },
+        "block_order": [
+          "1565084544441-0",
+          "1565084544441-1",
+          "1565084544441-2"
+        ],
+        "settings": {
+          "fullwidth": true,
+          "title": "",
+          "subtitle": "",
+          "distitle": false,
+          "grid": "3",
+          "grid-tab": "3",
+          "grid-mobile": "2"
+        }
+      },
+      "1565085619429": {
+        "type": "custom-content",
+        "blocks": {
+          "1565085619429-0": {
+            "type": "text",
+            "settings": {
+              "image": "",
+              "title": "Behind the scenes",
+              "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+              "btntxt": "Read our story",
+              "btnurl": "shopify:\/\/pages\/our-story",
+              "width": "50%",
+              "alignment": "center",
+              "align_text": "left"
+            }
+          },
+          "1565085619429-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/olpr-founders_7b4333de-0592-451e-84a7-3efa8f7ad442.jpg",
+              "width": "50%"
+            }
+          }
+        },
+        "block_order": [
+          "1565085619429-1",
+          "1565085619429-0"
+        ],
+        "settings": {
+          "top-offeset": "small",
+          "title": "",
+          "subtitle": ""
+        }
+      }
+    },
+    "content_for_index": [
+      "slideshow",
+      "1565080949242",
+      "1565074180880",
+      "1565084544441",
+      "1565080425659",
+      "1565085619429",
+      "1565074492495",
+      "1540101232520"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "color_text": "#3d4246",
+      "color_body_text": "#788188",
+      "color_sale_text": "#7796A8",
+      "color_borders": "#e8e9eb",
+      "color_button": "#7796A8",
+      "color_button_text": "#fff",
+      "color_small_button": "#fff",
+      "color_small_button_text": "#3d4246",
+      "color_text_field": "#fff",
+      "color_text_field_text": "#000",
+      "color_image_overlay_text": "#fff",
+      "color_image_overlay": "#3d4246",
+      "image_overlay_opacity": "0.25",
+      "color_body_bg": "#fff",
+      "type_header_family": "Google_Work+Sans_600_sans",
+      "type_header_base_size": "26px",
+      "type_base_family": "Google_Work+Sans_400_sans",
+      "type_base_size": "16px",
+      "type_bold_product_titles": false,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {}
+        },
+        "hero": {
+          "type": "hero",
+          "settings": {
+            "text_size": "large"
+          }
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slideshow-0": {
+              "type": "image",
+              "settings": {}
+            },
+            "slideshow-1": {
+              "type": "image",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "slideshow-0",
+            "slideshow-1"
+          ],
+          "settings": {}
+        },
+        "feature-row": {
+          "type": "feature-row",
+          "settings": {}
+        },
+        "footer": {
+          "type": "footer",
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "hero",
+        "feature-row",
+        "slideshow"
+      ]
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{% capture logoBar %}
+<div class="page-width wow fadeIn">
+	 {%- if section.settings.title != blank  or section.settings.subtitle != blank -%}
+    <div class="section-header text-center">
+      <h2 class="h2">{{ section.settings.title | escape }}</h2>  
+      {%- if section.settings.subtitle != blank -%}
+      <p>{{section.settings.subtitle}}</p>
+      {% endif %}
+   </div>
+  {%- endif -%}
+	{%- if section.blocks.size > 0 -%}
+        <div class="logo-bar{% if section.settings.title_enable %} logo-bar--large{% endif %} wow fadeIn" data-wow-delay="{{delay_time}}ms">
+          {%- for block in section.blocks -%}
+          
+            {%- assign logo_box = forloop.index | minus:1 -%}
+  		   {%- assign delay_time = 100 | times : logo_box -%}
+          
+            <div class="logo-bar__item{% if section.settings.title_enable %} logo-bar__item--large{% endif %}" {{ block.shopify_attributes }}>
+              {%- if block.settings.link != blank -%}<a href="{{ block.settings.link }}" class="logo-bar__link">{%- endif -%}
+              {%- if block.settings.image != blank -%}
+                {{ block.settings.image | img_url: '160x160', scale: 2 | img_tag: section.settings.image.alt, 'logo-bar__image' }}
+              {%- else -%}
+                {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
+              {%- endif -%}
+              {%- if block.settings.link != blank -%}</a>{%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+	{%- endif -%}
+	{%- if section.blocks.size == 0 -%}{% include 'no-blocks' %}{%- endif -%}
+</div>
+{% endcapture %}
+{{logoBar | strip_newlines | remove: "  " | remove: "	" }}
+
+{% schema %}
+  {
+    "name": "Logo List",
+    "class": "index-section",
+    "max_blocks": 20,
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Logo list"
+      },
+     {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Sub Heading",
+        "default": "Describe your products, collection, content etc..."
+      },
+ 	  {
+        "type": "paragraph",
+        "content": "Upload all logo of same size"        
+      }
+    ],
+    "blocks": [
+      {
+        "type": "logo_image",
+        "name": "Logo",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link",
+            "info": "Optional"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Logo/Brand List",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "logo_image"
+          },
+          {
+            "type": "logo_image"
+          },
+          {
+            "type": "logo_image"
+          },
+          {
+            "type": "logo_image"
+          },
+ 		 {
+            "type": "logo_image"
+          },
+          {
+            "type": "logo_image"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

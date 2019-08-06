@@ -1,0 +1,37 @@
+<div class="contact-form form-vertical">
+  <div class="page-title"><h3>{{ product.title }}</h3></div>
+  {% form 'contact' %}
+  {% if form.posted_successfully? %}<p class="note form--success"> {{ 'contact.form.post_success' | t }} </p>{% endif %}
+  {{ form.errors | default_errors }}
+  <div class="formFeilds">
+    <input type="hidden"  name="contact[product name]" value="{{ product.title }}">  
+    <input type="hidden"  name="contact[product link]" value="{{ product.url }}"> 
+    <input type="text" id="ContactFormName" name="contact[name]" placeholder="{{ 'product_enquiry.form.name' | t }}"  value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}" required>
+    <div class="grid grid--half-gutters">           
+      <div class="grid__item medium-up--one-half">                           
+        <input type="email" id="ContactFormEmail" name="contact[email]" placeholder="{{ 'product_enquiry.form.email' | t }}"  autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" required>
+      </div>                
+      <div class="grid__item medium-up--one-half">   
+        <input required type="tel" id="ContactFormPhone" name="contact[phone]" pattern="[0-9\-]*" placeholder="{{ 'product_enquiry.form.phone' | t }}"  value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+      </div>
+    </div>  
+    <textarea required rows="10" id="ContactFormMessage" name="contact[body]" placeholder="{{ 'product_enquiry.form.message' | t }}" >{% if form.body %}{{ form.body }}{% endif %}</textarea>
+    <input type="submit" class="btn" value="{{ 'product_enquiry.form.submit' | t }}">
+  </div>
+  {% endform %}
+</div>
+
+<script> 
+  $(document).ready(function(){
+    if(location.search.indexOf('contact_posted=true') == 1){
+      	$("#productInquiry .formFeilds").hide();
+      	$.magnificPopup.open({
+          items: {
+            src: '#productInquiry'
+          },
+          type: 'inline'
+        });
+    }
+    //setTimeout(function(){window.history.pushState("", "", location.pathname)}, 100);
+  });
+</script>

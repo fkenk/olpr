@@ -1,0 +1,30 @@
+<div class="wrap-blog">
+	{% if article.image %}
+    	<a href="{{ article.url }}" class="article__grid-image">{{ article | img_url: '400x200',crop:'center' | img_tag: article.title }}</a>
+	{% endif %}
+	<div class="article__grid-meta{% if article.image %} article__grid-meta--has-image{% endif %}">
+    	<div class="wrap-blog-inner">
+            <h2 class="h4 article__title"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+            <ul class="publish-detail">
+            	{% if section.settings.blog_show_author %}
+              		<li><span class="article__author"><i class="fa fa-user" aria-hidden="true"></i> {{article.author}}</span></li>
+              	{% endif %}
+            	{% if section.settings.blog_show_date %}
+              		<li><span class="article__date"> <i class="fa fa-clock-o" aria-hidden="true"></i> {{ article.published_at | time_tag: format: 'month_day_year' }}</span></li>
+              	{% endif %}
+              	{% if blog.comments_enabled? and article.comments_count > 0 %}
+    	          	<li><i class="fa fa-comments" aria-hidden="true"></i> <a href="{{ article.url }}#comments" class="btn-link">{{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}</a></li>
+	            {% endif %}
+            </ul>
+
+            <div class="rte article__grid-excerpt">
+              {% if article.excerpt.size > 0 %}
+                {{ article.excerpt }}
+              {% else %}
+                {{ article.content | strip_html | truncate: 150 }}
+              {% endif %}
+              <a href="{{ article.url }}" class="btn-link">{{ 'blogs.article.read_more' | t }}</a>
+            </div>
+		</div>
+	</div>
+</div>

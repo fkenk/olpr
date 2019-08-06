@@ -1,0 +1,415 @@
+{% capture productcardGrid %}
+{%- assign sold_out = true -%} 
+{%- if product.available -%}{%- assign sold_out = false -%}{%- endif -%}
+{%- assign variantCount = product.variants | size -%}
+
+{%- assign product_box = forloop.index | minus:1 -%}
+{%- assign delay_time = 50 | times : product_box -%}
+{%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+{%- assign img_url1 = product.images[1] | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+<div class="grid-view-item {{section.settings.gridstyle}}{% unless product.available %} product-price--sold-out grid-view-item--sold-out{% endunless %} wow fadeIn" data-wow-delay="{{delay_time}}ms">
+  	{%- if section.settings.gridstyle == 'style1' or gridStyle == 'style1' -%}
+        <div class="grid-view_image">
+            <a class="grid-view-item__link" href="{{ product.url | within: collection }}">    
+                <img class="grid-view-item__image lazyload{% if product.images.size > 1 %} primary{% endif %}" src="{{ product.featured_image | img_url: '50x' }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900]" data-aspectratio="{{ product.featured_image.aspect_ratio }}" data-sizes="auto" alt="{{ product.featured_image.alt | escape }}" />
+                {%- if settings.secondary_image and product.images.size > 1 -%}
+                    <img class="grid-view-item__image lazyload hover" src="{{ product.images[1] | img_url: '50x' }}" data-src="{{ img_url1 }}" data-widths="[180, 360, 540, 720, 900]" data-aspectratio="{{ product.images[1].aspect_ratio }}" data-sizes="auto" alt="{{ product.images[1].alt | escape }}" />
+                {%- endif -%}
+                <i class="ad ad-circle-o-notch ad-spin loading"></i>
+                <img src="" class="grid-view-item__image hover variantImg" alt="" />
+
+                {%- if settings.pr_lbl -%}
+                    <div class="product-labels {{ settings.select_label_style }}">
+                        {%- if product.compare_at_price > product.price and settings.sale_lbl -%}
+                             {% if settings.sale_label_style == "salelabel" %}
+                            	<label class="lbl on-sale">{{ 'products.product.on_sale' | t}}</label>
+                             {% else %}
+                            	<label class="lbl on-sale">-{{ product.compare_at_price_min | minus: product.price | times: 100 | divided_by: product.compare_at_price_min }}%</label>
+                             {% endif %}
+                        {%- endif -%}
+                      
+                        {%- if product.tags contains settings.pr_label1 -%}<label class="lbl pr-label1">{{settings.pr_label1}}</label>{%- endif -%}
+                        {%- if product.tags contains settings.pr_label2 -%}<label class="lbl pr-label2">{{settings.pr_label2}}</label>{%- endif -%}
+                        {%- if product.tags contains settings.pr_label3 -%}<label class="lbl pr-label3">{{settings.pr_label3}}</label>{%- endif -%}
+                    </div>
+                {%- endif -%}
+            </a>
+
+            {%- if sold_out -%}
+                <label class="sold-out"><span>{{ 'products.product.sold_out' | t}}</span></label>
+            {%- else -%}
+                {%- if settings.show_cart_btn and settings.catalog-mode == false -%}
+                    <form class="variants add" action="/cart/add" method="post">
+  
+                        {%- if variantCount > 1 -%}
+                            <button class="btn btn-addto-cart" type="button" onclick="window.location.href='{{product.url}}'">{{ 'products.product.select_options' | t}}</button>
+                        {%- else -%}
+                            <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                            <button type="button" id="{{ product.variants[0].id }}" rel="1" class="btn add-to-cart">{{ 'products.product.add_to_cart' | t}}</button>
+                        {%- endif -%}
+                    </form>
+                {%- endif -%}
+          		
+                <div class="button-set">
+                    {%- if settings.quick_view -%}<a href="{{ product.url | within: collection }}?view=quick_view" title="{{ 'products.product.quick_view' | t}}" rel="nofollow" class="quick-view"><i class="ad ad-search-plus-r"></i></a>{%- endif -%}
+                    {%- include 'wishlist' -%}
+                </div>                  
+            {%- endif -%}
+          	
+          	    <!--countdown-->          	
+                {%- assign meta = product.metafields.meta -%}
+                  {%- assign key = 'countdown' -%}
+                  {%- assign id = 'timer' | append: product.id | append: section.id | replace: '-','' -%}
+                  {%- assign time = meta.countdown  -%}
+                   {%- if settings.display_countdown  and meta.countdown != blank -%}
+                  <div class="saleTime desktop" id="saleTime{{id}}"><span id="{{id}}"></span></div>
+                  <script type="text/javascript">          
+                     var countDownDate{{id}} = new Date("{{time}}").getTime();
+                      var x{{id}} = setInterval(function() {           
+                        var now = new Date().getTime(),	            
+                             distance = countDownDate{{id}} - now,
+                            days = Math.floor(distance / (1000 * 60 * 60 * 24)),
+                            hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                            minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+                            seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                            if(days > 99)
+                            {
+                              days = ("00" + days).substr(-3);
+                            }
+                            else 
+                            {
+                               days = ("00" + days).substr(-2);
+                            }
+                            hours = ("00" + hours).substr(-2);
+                            minutes = ("00" + minutes).substr(-2);
+                            seconds = ("00" + seconds).substr(-2);
+
+                       document.getElementById("{{id}}").innerHTML = "<span class='days'>" + days + "<span>Days</span></span> <span class='hours'>" + hours + "<span>HR</span></span> <span class='minutes'>"
+                              + minutes + "<span>MIN</span></span> <span class='seconds'>" + seconds + "<span>SC</span>";
+
+                          if (distance < 0){
+                            clearInterval(x{{id}});
+                              document.getElementById("saleTime{{id}}").style.display = "none";
+                          }
+                     }, 1000);
+                  </script>
+                  {% endif %}               
+         </div>
+        {%- if section.settings.show_vendor -%}<div class="grid-view-item__vendor">{{ product.vendor | link_to_vendor }}</div>{%- endif -%}
+        <a class="grid-view-item__title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+        {%- unless settings.catalog-mode -%}<div class="grid-view-item__meta">{%- include 'product-price' -%}</div>{%- endunless -%}
+        {%- if section.settings.show_product_review -%}<div class="product-review"><span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span></div>{%- endif -%}
+        {%- if settings.show_color_swatch and product.available -%}{% include 'product-swatches' %}{%- endif -%}
+  		 <div class="timermobile">
+          {%- assign meta = product.metafields.meta -%}
+            {%- assign key = 'countdown' -%}
+            {%- assign id = 'timer1' | append: product.id | append: section.id | replace: '-','' -%}
+            {%- assign time = meta.countdown  -%}
+             {%- if settings.display_countdown  and meta.countdown != blank -%}
+            <div class="saleTime" id="saleTime{{id}}"><span id="{{id}}"></span></div>
+            <script type="text/javascript">          
+               var countDownDate{{id}} = new Date("{{time}}").getTime();
+                var x{{id}} = setInterval(function() {           
+                  var now = new Date().getTime(),	            
+                       distance = countDownDate{{id}} - now,
+                      days = Math.floor(distance / (1000 * 60 * 60 * 24)),
+                      hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                      minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+                      seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                  			if(days > 99)
+                            {
+                              days = ("00" + days).substr(-3);
+                            }
+                            else 
+                            {
+                               days = ("00" + days).substr(-2);
+                            }
+                            hours = ("00" + hours).substr(-2);
+                            minutes = ("00" + minutes).substr(-2);
+                            seconds = ("00" + seconds).substr(-2);
+                 
+                 document.getElementById("{{id}}").innerHTML = "<span class='days'>" + days + "<span>Days</span></span> <span class='hours'>" + hours + "<span>HR</span></span> <span class='minutes'>"
+                        + minutes + "<span>MIN</span></span> <span class='seconds'>" + seconds + "<span>SC</span>";
+
+                    if (distance < 0){
+                      clearInterval(x{{id}});
+                        document.getElementById("saleTime{{id}}").style.display = "none";
+                    }
+               }, 1000);
+            </script>
+            {% endif %}
+       </div>
+  	{%- endif -%}
+  	{%- if section.settings.gridstyle == 'style2' -%}
+        <div class="grid-view_image">
+            <a class="grid-view-item__link" href="{{ product.url | within: collection }}">    
+                <img class="grid-view-item__image lazyload{% if product.images.size > 1 %} primary{% endif %}" src="{{ product.featured_image | img_url: '50x' }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080]" data-aspectratio="{{ product.featured_image.aspect_ratio }}" data-sizes="auto" alt="{{ product.featured_image.alt | escape }}" />
+                {%- if settings.secondary_image and product.images.size > 1 -%}
+                    <img class="grid-view-item__image lazyload hover" src="{{ product.images[1] | img_url: '50x' }}" data-src="{{ img_url1 }}" data-widths="[180, 360, 540, 720, 900, 1080]" data-aspectratio="{{ product.images[1].aspect_ratio }}" data-sizes="auto" alt="{{ product.images[1].alt | escape }}" />
+                {%- endif -%}
+                <i class="ad ad-circle-o-notch ad-spin loading"></i>
+                <img src="" class="grid-view-item__image hover variantImg" alt="" />
+
+                {%- if settings.pr_lbl -%}
+                    <div class="product-labels {{ settings.select_label_style }}">
+                        {%- if product.compare_at_price > product.price and settings.sale_lbl -%}
+                             {% if settings.sale_label_style == "salelabel" %}
+                            	<label class="lbl on-sale">{{ 'products.product.on_sale' | t}}</label>
+                             {% else %}
+                            	<label class="lbl on-sale">-{{ product.compare_at_price_min | minus: product.price | times: 100 | divided_by: product.compare_at_price_min }}%</label>
+                             {% endif %}
+                        {%- endif -%}
+                        {%- if product.tags contains settings.pr_label1 -%}<label class="lbl pr-label1">{{settings.pr_label1}}</label>{%- endif -%}
+                        {%- if product.tags contains settings.pr_label2 -%}<label class="lbl pr-label2">{{settings.pr_label2}}</label>{%- endif -%}
+                        {%- if product.tags contains settings.pr_label3 -%}<label class="lbl pr-label3">{{settings.pr_label3}}</label>{%- endif -%}
+                    </div>
+                {%- endif -%}
+
+                {%- assign meta = product.metafields.meta -%}
+                {%- assign key = 'countdown' -%}
+                {%- assign id = 'timer' | append: product.id | append: section.id | replace: '-','' -%}
+                {%- assign time = meta.countdown  -%}
+                {%- if settings.display_countdown and meta.countdown != blank -%}              		
+                      <div class="saleTime desktop" id="saleTime{{id}}"><span id="{{id}}"></span></div>
+                      <script type="text/javascript">          
+                         var countDownDate{{id}} = new Date("{{time}}").getTime();
+                          var x{{id}} = setInterval(function() {           
+                            var now = new Date().getTime(),	            
+                                 distance = countDownDate{{id}} - now,
+                                days = Math.floor(distance / (1000 * 60 * 60 * 24)),
+                                hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                                minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+                                seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                                if(days > 99)
+                                {
+                                  days = ("00" + days).substr(-3);
+                                }
+                                else 
+                                {
+                                   days = ("00" + days).substr(-2);
+                                }
+                                hours = ("00" + hours).substr(-2);
+                                minutes = ("00" + minutes).substr(-2);
+                                seconds = ("00" + seconds).substr(-2);
+
+                           document.getElementById("{{id}}").innerHTML = "<span class='days'>" + days + "<span>Days</span></span> <span class='hours'>" + hours + "<span>HR</span></span> <span class='minutes'>"
+                                  + minutes + "<span>MIN</span></span> <span class='seconds'>" + seconds + "<span>SC</span>";
+
+                              if (distance < 0){
+                                clearInterval(x{{id}});
+                                  document.getElementById("saleTime{{id}}").style.display = "none";
+                              }
+                         }, 1000);
+                      </script>					
+				{%- endif -%}
+            </a>
+
+            {%- if sold_out -%}
+                <label class="sold-out"><span>{{ 'products.product.sold_out' | t}}</span></label>
+            {%- endif -%}
+            
+			<div class="hoverDetails">
+                {%- if section.settings.show_vendor -%}<div class="grid-view-item__vendor">{{ product.vendor | link_to_vendor }}</div>{%- endif -%}
+                <a class="grid-view-item__title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+                {%- unless settings.catalog-mode -%}<div class="grid-view-item__meta">{%- include 'product-price' -%}</div>{%- endunless -%}
+                {%- if section.settings.show_product_review -%}<div class="product-review"><span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span></div>{%- endif -%}
+                <div class="button-set">
+                    {%- if settings.quick_view -%}<a href="{{ product.url | within: collection }}?view=quick_view" title="{{ 'products.product.quick_view' | t}}" rel="nofollow" class="quick-view"><i class="ad ad-search-plus-r"></i></a>{%- endif -%}
+                    {%- if product.available and settings.show_cart_btn and settings.catalog-mode == false -%}
+                        <form action="/cart/add" method="post">
+  {% include 'product-customizer' %}
+                         
+                            {%- if variantCount > 1 -%}
+                                <button class="btn btn--secondary cartIcon btn-addto-cart" type="button" onclick="window.location.href='{{product.url}}'" title="{{ 'products.product.select_options' | t}}"><i class="ad hicon ad-bag-l" aria-hidden="true"></i></button>
+                            {%- else -%}
+                                <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                                <button type="button" id="{{ product.variants[0].id }}" rel="1" class="btn btn--secondary cartIcon add-to-cart" title="{{ 'products.product.add_to_cart' | t}}"><i class="ad hicon ad-bag-l" aria-hidden="true"></i></button>
+                            {%- endif -%}
+                        </form>
+                    {%- endif -%}
+                  	{%- include 'wishlist' -%}
+                </div>              
+          	</div>
+        </div>
+  		<div class="hoverDetails mobile">
+                {%- if section.settings.show_vendor -%}<div class="grid-view-item__vendor">{{ product.vendor | link_to_vendor }}</div>{%- endif -%}
+                <a class="grid-view-item__title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+                {%- unless settings.catalog-mode -%}<div class="grid-view-item__meta">{%- include 'product-price' -%}</div>{%- endunless -%}
+                {%- if section.settings.show_product_review -%}<div class="product-review"><span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span></div>{%- endif -%}
+                <div class="button-set">
+                    {%- if settings.quick_view -%}<a href="{{ product.url | within: collection }}?view=quick_view" title="{{ 'products.product.quick_view' | t}}" rel="nofollow" class="quick-view"><i class="ad ad-search-plus-r"></i></a>{%- endif -%}
+                    {%- if product.available and settings.show_cart_btn and settings.catalog-mode == false -%}
+                        <form action="/cart/add" method="post">
+  {% include 'product-customizer' %}
+                         
+                            {%- if variantCount > 1 -%}
+                                <button class="btn btn--secondary cartIcon btn-addto-cart" type="button" onclick="window.location.href='{{product.url}}'" title="{{ 'products.product.select_options' | t}}"><i class="ad hicon ad-bag-l" aria-hidden="true"></i></button>
+                            {%- else -%}
+                                <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                                <button type="button" id="{{ product.variants[0].id }}" rel="1" class="btn btn--secondary cartIcon add-to-cart" title="{{ 'products.product.add_to_cart' | t}}"><i class="ad hicon ad-bag-l" aria-hidden="true"></i></button>
+                            {%- endif -%}
+                        </form>
+                    {%- endif -%}
+                  	{%- include 'wishlist' -%}
+                </div>              
+          	</div>
+  
+  		{%- if settings.show_color_swatch and product.available -%}{% include 'product-swatches' %}{%- endif -%}
+  		 <div class="timermobile">
+          {%- assign meta = product.metafields.meta -%}
+            {%- assign key = 'countdown' -%}
+            {%- assign id = 'timer1' | append: product.id | append: section.id | replace: '-','' -%}
+            {%- assign time = meta.countdown  -%}
+             {%- if settings.display_countdown  and meta.countdown != blank -%}
+            <div class="saleTime" id="saleTime{{id}}"><span id="{{id}}"></span></div>
+            <script type="text/javascript">          
+               var countDownDate{{id}} = new Date("{{time}}").getTime();
+                var x{{id}} = setInterval(function() {           
+                  var now = new Date().getTime(),	            
+                       distance = countDownDate{{id}} - now,
+                      days = Math.floor(distance / (1000 * 60 * 60 * 24)),
+                      hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                      minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+                      seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                 document.getElementById("{{id}}").innerHTML = "<span class='days'>" + days + "<span>Days</span></span> <span class='hours'>" + hours + "<span>HR</span></span> <span class='minutes'>"
+                        + minutes + "<span>MIN</span></span> <span class='seconds'>" + seconds + "<span>SC</span>";
+
+                    if (distance < 0){
+                      clearInterval(x{{id}});
+                        document.getElementById("saleTime{{id}}").style.display = "none";
+                    }
+               }, 1000);
+            </script>
+            {% endif %}
+         </div>
+  	{%- endif -%}
+  	{%- if section.settings.gridstyle == 'style3' -%}
+  		<a class="grid-view-item__title" href="{{ product.url | within: collection }}">{{ product.title }}</a>
+        <div class="grid-view_image">
+            <a class="grid-view-item__link" href="{{ product.url | within: collection }}">    
+                <img class="grid-view-item__image lazyload{% if product.images.size > 1 %} primary{% endif %}" src="{{ product.featured_image | img_url: '50x' }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080]" data-aspectratio="{{ product.featured_image.aspect_ratio }}" data-sizes="auto" alt="{{ product.featured_image.alt | escape }}" />
+                {%- if settings.secondary_image and product.images.size > 1 -%}
+                    <img class="grid-view-item__image lazyload hover" src="{{ product.images[1] | img_url: '50x' }}" data-src="{{ img_url1 }}" data-widths="[180, 360, 540, 720, 900, 1080]" data-aspectratio="{{ product.images[1].aspect_ratio }}" data-sizes="auto" alt="{{ product.images[1].alt | escape }}" />
+                {%- endif -%}
+                <i class="ad ad-circle-o-notch ad-spin loading"></i>
+                <img src="" class="grid-view-item__image hover variantImg" alt="" />
+
+                {%- if settings.pr_lbl -%}
+                    <div class="product-labels {{ settings.select_label_style }}">
+                       
+                        {%- if product.compare_at_price > product.price and settings.sale_lbl -%}
+                             {% if settings.sale_label_style == "salelabel" %}
+                            	<label class="lbl on-sale">{{ 'products.product.on_sale' | t}}</label>
+                             {% else %}
+                            	<label class="lbl on-sale">-{{ product.compare_at_price_min | minus: product.price | times: 100 | divided_by: product.compare_at_price_min }}%</label>
+                             {% endif %}
+                        {%- endif -%}
+                      
+                      	{%- if product.tags contains settings.pr_label1 -%}<label class="lbl pr-label1">{{settings.pr_label1}}</label>{%- endif -%}
+                        {%- if product.tags contains settings.pr_label2 -%}<label class="lbl pr-label2">{{settings.pr_label2}}</label>{%- endif -%}
+                        {%- if product.tags contains settings.pr_label3 -%}<label class="lbl pr-label3">{{settings.pr_label3}}</label>{%- endif -%}
+                    </div>
+                {%- endif -%}
+              
+            
+             {%- assign meta = product.metafields.meta -%}
+             {%- assign key = 'countdown' -%}
+             {%- assign id = 'timer' | append: product.id | append: section.id | replace: '-','' -%}
+             {%- assign time = meta.countdown  -%}
+             {%- if settings.display_countdown  and meta.countdown != blank -%}
+            <div class="saleTime desktop" id="saleTime{{id}}"><span id="{{id}}"></span></div>
+            <script type="text/javascript">          
+               var countDownDate{{id}} = new Date("{{time}}").getTime();
+                var x{{id}} = setInterval(function() {           
+                  var now = new Date().getTime(),	            
+                       distance = countDownDate{{id}} - now,
+                      days = Math.floor(distance / (1000 * 60 * 60 * 24)),
+                      hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                      minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+                      seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                 	  if(days > 99)
+                      {
+                      	days = ("00" + days).substr(-3);
+                      }
+                      else 
+                      {
+                         days = ("00" + days).substr(-2);
+                      }
+                      hours = ("00" + hours).substr(-2);
+                      minutes = ("00" + minutes).substr(-2);
+                      seconds = ("00" + seconds).substr(-2);
+                 
+                 document.getElementById("{{id}}").innerHTML = "<span class='days'>" + days + "<span>Days</span></span> <span class='hours'>" + hours + "<span>HR</span></span> <span class='minutes'>"
+                        + minutes + "<span>MIN</span></span> <span class='seconds'>" + seconds + "<span>SC</span>";
+
+                    if (distance < 0){
+                      clearInterval(x{{id}});
+                        document.getElementById("saleTime{{id}}").style.display = "none";
+                    }
+               }, 1000);
+            </script>          
+           {% endif %}
+          </a>
+
+            {%- if sold_out -%}
+                <label class="sold-out"><span>{{ 'products.product.sold_out' | t}}</span></label>
+            {%- endif -%}
+		</div>
+  		<div class="button-set">
+          {%- if settings.quick_view -%}<div class="quckOuter"><a href="{{ product.url | within: collection }}?view=quick_view" title="{{ 'products.product.quick_view' | t}}" rel="nofollow" class="quick-view"><i class="ad ad-search-plus-r"></i></a></div>{%- endif -%}
+            {%- if product.available and settings.show_cart_btn and settings.catalog-mode == false -%}
+            	<form action="/cart/add" method="post">
+  {% include 'product-customizer' %}
+                         
+                	{%- if variantCount > 1 -%}
+                    	<button class="btn btn--secondary cartIcon btn-addto-cart" type="button" onclick="window.location.href='{{product.url}}'" title="{{ 'products.product.select_options' | t}}"><i class="ad hicon ad-bag-l" aria-hidden="true"></i></button>
+                    {%- else -%}
+                    	<input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                        <button type="button" id="{{ product.variants[0].id }}" rel="1" class="btn btn--secondary cartIcon add-to-cart" title="{{ 'products.product.add_to_cart' | t}}"><i class="ad hicon ad-bag-l" aria-hidden="true"></i></button>
+					{%- endif -%}
+				</form>
+			{%- endif -%}
+            {%- include 'wishlist' -%}
+		</div>
+  
+		{%- if settings.show_color_swatch and product.available -%}{% include 'product-swatches' %}{%- endif -%}
+		{%- unless settings.catalog-mode -%}<div class="grid-view-item__meta">{%- include 'product-price' -%}</div>{%- endunless -%}
+		{%- if section.settings.show_product_review -%}<div class="product-review"><span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span></div>{%- endif -%}
+        {%- if section.settings.show_vendor -%}<div class="grid-view-item__vendor">{{ product.vendor | link_to_vendor }}</div>{%- endif -%}
+  		 <div class="timermobile">
+          {%- assign meta = product.metafields.meta -%}
+            {%- assign key = 'countdown' -%}
+            {%- assign id = 'timer1' | append: product.id | append: section.id | replace: '-','' -%}
+            {%- assign time = meta.countdown  -%}
+             {%- if settings.display_countdown  and meta.countdown != blank -%}
+            <div class="saleTime" id="saleTime{{id}}"><span id="{{id}}"></span></div>
+            <script type="text/javascript">          
+               var countDownDate{{id}} = new Date("{{time}}").getTime();
+                var x{{id}} = setInterval(function() {           
+                  var now = new Date().getTime(),	            
+                       distance = countDownDate{{id}} - now,
+                      days = Math.floor(distance / (1000 * 60 * 60 * 24)),
+                      hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                      minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+                      seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                 document.getElementById("{{id}}").innerHTML = "<span class='days'>" + days + "<span>Days</span></span> <span class='hours'>" + hours + "<span>HR</span></span> <span class='minutes'>"
+                        + minutes + "<span>MIN</span></span> <span class='seconds'>" + seconds + "<span>SC</span>";
+
+                    if (distance < 0){
+                      clearInterval(x{{id}});
+                        document.getElementById("saleTime{{id}}").style.display = "none";
+                    }
+               }, 1000);
+            </script>
+            {% endif %}
+         </div>
+  	{%- endif -%}
+</div>
+{% endcapture %}
+{{ productcardGrid | strip_newlines | remove: "  " | remove: "	" }}

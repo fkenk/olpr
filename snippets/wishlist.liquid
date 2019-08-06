@@ -1,0 +1,7 @@
+{%- if settings.enable_wishlist -%}
+<div class="wishlist-btn">
+	<a class="wishlist add-to-wishlist" href="#" rel="{{ product.handle | handleize }}" title="{{ 'customer.wishlist.add_to' | t }}"><i class="ad ad-heart-l"></i> <span>{{ 'customer.wishlist.add_to' | t }}</span></a>
+	<a class="wishlist loading-wishlist" href="#" title="{{ 'customer.wishlist.add_to' | t }}"><i class="ad ad-spinner4 ad-spin"></i></a>
+	<a class="wishlist added-wishlist" href="/pages/wishlist" rel="{{ product.handle }}" title="{{ 'customer.wishlist.available' | t }}"><i class="ad ad-heart"></i> <span>{{ 'customer.wishlist.view' | t }}</span></a>
+</div>
+{%- endif -%}

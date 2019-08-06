@@ -1,0 +1,270 @@
+{% capture siteFooter %}
+{%- assign social_icons = false -%}
+{%- if settings.social_twitter_link != blank or settings.social_facebook_link != blank or settings.social_pinterest_link != blank or settings.social_instagram_link != blank
+	or settings.social_tumblr_link != blank or settings.social_snapchat_link != blank or settings.social_youtube_link != blank or settings.social_vimeo_link != blank
+-%}
+	{%- assign social_icons = true -%}
+{%- endif -%}
+{%- if section.settings.display_newsletter or section.settings.show_socials -%}
+    <div class="newsletter-section{% if section.settings.show_background %} index-section--newsletter-background{% endif %}">
+        <div class="page-width">
+            <div class="display-table">
+                {%- if section.settings.display_newsletter -%}
+                <div class="display-table-cell footer-newsletter">
+                    {%- if section.settings.title != blank -%}<div class="section-header text-center"><label for="Email" class="h2">{{ section.settings.title }}</label></div>{%- endif -%}
+                    {% include 'newsletter-form' %}
+                </div>
+                {%- endif -%}
+                {%- if section.settings.show_socials and social_icons -%}
+                    <div class="display-table-cell {% if section.settings.display_newsletter %}text-right footer-social{% else %}text-center{% endif %}">{% include 'social-media' %}</div>
+                {%- endif -%}
+            </div>
+        </div>
+    </div>   
+{%- endif -%}
+
+<footer class="site-footer" role="contentinfo">
+	<div class="page-width">
+		<div class="grid footer-top">
+        	{%- for block in section.blocks -%}
+            	{%- case section.blocks.size -%}
+                	{% when 1 %}{%- assign column_size = '' -%}
+                  	{% when 2 %}{%- assign column_size = 'medium-up--one-half' -%}
+                  	{% when 3 %}{%- assign column_size = 'medium-up--one-third' -%}
+                  	{% when 4 %}{%- assign column_size = 'medium-up--one-half large-up--one-quarter' -%}
+          			{% when 5 %}{%- assign column_size = 'medium-up--one-third large-up--one-fifth' -%}
+				{%- endcase -%}
+          		{%- capture blockTitle -%}{% if block.settings.title != blank %}<h4 class="h4">{{ block.settings.title }}{% if block.type == 'menu' %}<i class="ad ad-angle-down-l medium-up--hide"></i>{% endif %}</h4>{% endif %}{%- endcapture -%}
+          		{%- capture navigation -%}<ul>{% for link in linklists[block.settings.menulinks].links %}<li><a href="{{ link.url }}">{{ link.title | split: '[' | first }}</a></li>{% endfor %}</ul>{%- endcapture -%}
+
+                {%- case block.type -%}
+                	{%- when 'custom' -%}
+                    	<aside id="nav_menu-{{ block.id }}" class="grid__item {{column_size}} custom-block">
+                       		{{blockTitle}}
+							{% if block.settings.logo %}<p><img src="{{ block.settings.logo | img_url: 'master' }}" alt="{{ block.settings.logo.alt | default: shop.name }}"/></p>{% endif %}
+							<div class="text">{{ block.settings.custom-text }}</div>                 
+                     	</aside>
+                  	{%- when 'menu' -%}
+                    	<aside id="nav_menu-{{ block.id }}" class="grid__item {{column_size}} footer-links">{{blockTitle}}{{navigation}}<hr class="medium-up--hide" /></aside>
+                  	{%- when 'contact' -%}
+                    	<aside id="text-{{ block.id }}" class="grid__item {{column_size}} contact-box">
+							{{blockTitle}}
+	                        {% if block.settings.logo %}<p><img src="{{ block.settings.logo | img_url: 'master' }}" srcset="{{ block.settings.logo | img_url: 'master' }} 1x, {{ block.settings.logo | img_url: 'master', scale: 2 }} 2x" alt="{{ block.settings.logo.alt | default: shop.name }}" /></p>{% endif %}
+                          	<ul class="addressFooter">
+                              	{% if block.settings.address  != blank  %}<li><i class="ad ad-map-marker-al"></i><p>{{ block.settings.address }}</p></li>{% endif %}
+                              	{% if block.settings.phone  != blank  %}<li class="phone"><i class="ad ad-phone-l"></i><p>{{ block.settings.phone }}</p></li>{% endif %}
+                              	{% if block.settings.email  != blank  %}<li class="email"><i class="ad ad-envelope-l"></i><p>{{ block.settings.email }}</p></li>{% endif %}
+                          	</ul>
+                          	{% if block.settings.show_socials %}
+                    	        {% if block.settings.socials_ttl != blank %}<h4 class="h4">{{ block.settings.socials_ttl }}</h4>{% endif %}
+                        	    {% include 'social-media' %}
+							{% endif %} 
+                     	</aside>         			
+					{%- when 'newsletter' -%}
+                    	<aside id="text-{{ block.id }}" class="grid__item {{column_size}} newsletter">
+                        	{{blockTitle}}
+                       		{% if block.settings.sub_title %}<p>{{ block.settings.sub_title }}</p>{% endif %}
+                       		{% include 'newsletter-form' %}
+                     	</aside>
+				{%- endcase -%}
+			{%- endfor -%}
+		</div>
+		<!-- Footer Bottom -->
+      	{%- if section.settings.copyright_text or section.settings.show_payment_icons -%}
+      	<hr />
+		<div class="footer-bottom grid">
+			<div class="grid--table">
+              	{%- if section.settings.copyright_text != blank -%}
+					<div class="grid__item small--text-center{% if section.settings.show_payment_icons %} medium-up--one-half{% else %} medium-up--one-whole text-center{% endif %}">{{ section.settings.copyright_text }} {% if section.settings.show_designby %}<span class="designBy"> | Designed by <a href="https://www.adornthemes.com" target="_blank">AdornThemes</a></span>{% endif %}</div>
+              	{%- endif -%}
+				{%- if section.settings.show_payment_icons -%}
+				<div class="grid__item medium-up--one-half text-right small--text-center">
+					<div class="site-footer__payment-icons">
+                      	{%- if section.settings.payment_img != blank -%}
+                      		<img src="{{ section.settings.payment_img | img_url: 'master' }}" alt="{{ section.settings.logo.alt }}" />
+                      	{%- else -%}
+                          {%- unless shop.enabled_payment_types == empty -%}
+                              {%- assign payment_icons_available = 'amazon_payments,american_express,apple_pay,bitcoin,cirrus,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,interac,jcb,litecoin,maestro,master,paypal,stripe,visa' | split: ',' -%}
+                              <ul class="payment-icons list--inline">{% for type in shop.enabled_payment_types %}{% if payment_icons_available contains type %}<li class="payment-icon">{%- assign icon_name = type | prepend: 'icon-' -%} {% include icon_name %}</li>{% endif %}{% endfor %}</ul>
+                          {%- endunless -%}
+                      	{%- endif -%}
+                  	</div>
+				</div>
+			{%- endif -%}
+          </div>
+      	</div>
+      	{%- endif -%}
+	</div>
+</footer>
+{% endcapture %}
+{{ siteFooter | strip_newlines | remove: "  " | remove: "	" }}
+{% schema %}
+  {
+	"name": "Footer",
+	"settings": [
+    {
+        "type": "checkbox",
+        "id": "display_newsletter",
+        "label": "Display Newsletter",
+        "default": true
+    },
+	{
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Newsletter Signup"
+    },      
+	{
+        "id": "show_background",
+        "type": "checkbox",
+        "label": "Show background",
+        "default": true
+    },      
+	{
+        "id": "show_socials",
+        "type": "checkbox",
+        "label": "Show Social Icons",
+        "default": true
+    },
+	{
+		"type":"header",
+		"content":"copyright"
+	},   
+ 	{
+        "type": "textarea",
+        "id": "copyright_text",
+        "label": "Copyright Text",
+        "default": "© 2017,Belle. All Rights Reserved. Ecommerce Software by Shopify."
+      },
+      {
+        "type": "checkbox",
+        "id": "show_payment_icons",
+        "label": "Show payment icons",
+        "default": false
+      },
+      {
+      	"type": "image_picker",
+        "id": "payment_img",
+        "label": "Payment image",
+		"info": "Use image instead of Payment icons"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_designby",
+        "label": "Show Designed by",
+        "default": true
+      }
+    ],
+	"max_blocks": 5,
+	"blocks": [
+	  {
+        "type": "menu",
+        "name": "Add Menu",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Navigation Title",
+			"default": "Informations"
+          },
+          {
+            "type": "link_list",
+            "id": "menulinks",
+            "label": "Select Navigation",
+            "default": "main-menu"
+          }
+        ]
+      },
+	  {
+        "type": "contact",
+        "name": "Contact Details",
+		"limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+			"default": "Contact Us"
+          },
+          {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Logo image"
+          },
+		  {
+            "type": "textarea",
+            "id": "address",
+            "label": "Address",
+			"default": "55 Gallaxy Enque,<br />2568 steet, 23568 NY"
+          },
+		  {
+            "type": "text",
+            "id": "phone",
+            "label": "Phone",
+			"default": "(440) 000 000 0000"
+          },
+		  {
+            "type": "text",
+            "id": "email",
+            "label": "Email",
+			"default": "sales@yousite.com"
+          },
+      	  {
+			"type":"checkbox",
+			"id":"show_socials",
+			"label":"Show Socials",
+			"default":true
+		  },
+      	  {
+			"type":"text",
+			"id":"socials_ttl",
+			"label":"Socials Title",
+			"default":"Stay Connected"
+		  }
+        ]
+      },
+	  {
+        "type": "custom",
+        "name": "Custom Block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+			"default": "About Us"
+          },
+          {
+            "type": "image_picker",
+            "id": "logo",
+            "label": "Upload image"
+          },
+		  {
+            "type": "textarea",
+            "id": "custom-text",
+            "label": "Text",
+			"default": "Making a profitable ecommerce store is hard work. You can't just open a website and expect people to flood in. If you really want to succeed you have to create traffic"
+          }
+        ]
+      },
+      {
+        "type": "newsletter",
+        "name": "Newsletter signup",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Newsletter"
+          },
+		  {
+            "type": "text",
+            "id": "sub_title",
+            "label": "text",
+			"default": "Enter your email to receive daily news and get 20% off coupon for all items. NO spam, we promise"
+          }
+        ]
+      }
+	]
+  }
+{% endschema %} 

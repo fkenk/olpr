@@ -1,0 +1,38 @@
+{%- if block.settings.collection_image != blank -%}
+	{%- assign collection_image = block.settings.collection_image -%}
+{% elsif collection.image %}
+	{%- assign collection_image = collection.image -%}
+{% elsif collection.products.first %}
+	{%- assign collection_image = collection.products.first -%}
+{%- endif -%}
+{%- assign img_url = collection_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+<div class="collection-grid-item">
+	<a href="{% if collection.empty? %}#{% else %}{{ collection.url }}{% endif %}" class="collection-grid-item__link">       
+    	{%- if collection.empty? -%}
+        	{%- capture current -%}{% cycle 1, 2, 3, 4, 5, 6 %}{%- endcapture -%}
+        	{{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      	{%- else -%}
+      		<img class="lazyload" src="{{ collection_image | img_url: '50x' }}" data-src="{{ img_url }}"
+            	data-widths="[180, 300, 400, 540, 720]" data-aspectratio="{{ collection_image.aspect_ratio }}" data-sizes="auto" alt="{{ collection_image.alt | escape }}" />
+      	{%- endif -%}
+		<div class="collection-grid-item__title-wrapper">     
+		 {%- if section.settings.distitle or block.settings.collection_name != blank %}	
+          <h3 class="collection-grid-item__title btn btn--secondary no-border">
+        		{%- if collection.empty? -%}
+        			{%- if block.settings.collection_name != blank -%}
+        				{{ block.settings.collection_name }}
+            		{%- else -%}
+          		 		{{ 'homepage.onboarding.collection_title' | t }}     
+            		{%- endif -%}
+        		{%- else -%}
+        			{%- if block.settings.collection_name != blank -%}
+        				{{ block.settings.collection_name }}
+            		{%- else -%}
+          				{{ collection.title }}
+            		{%- endif -%}
+        		{%- endif -%}
+      		</h3>
+          {% endif %}
+    	</div>
+	</a>
+</div>

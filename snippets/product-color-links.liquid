@@ -1,0 +1,114 @@
+{% comment %} Always set selected product to first variant {% endcomment %}
+{% assign selected_product = product.variants[0] %}
+{% assign availability = blank %}
+{% assign featured_image = selected_product.featured_image %}
+{% assign product_url = product.url %}
+{% assign product_title = product.title %}
+{% assign part_of_collection = collection_handle %}
+{% assign product_type = product.type | downcase %}
+{% assign first_variant_availability = selected_product.available %}
+{% assign product_tags = product.tags %}
+{% assign is_preorder = false %}
+
+<div class="product_colours">
+  {% for option in product.options %}
+    {% if option == 'Color' %}
+      <label class="header">{{ option }}: <span class="slVariant">{{ selected_product.title | split: ' / ' | first }}</span></label>
+      <div class="product_colours_items">
+        {% assign colors = '' %}
+
+        {% for variant in product.variants %}
+          {% assign colour_title = variant.option1 | downcase | handleize %}
+          {% assign colors_array = colors | split: ',' %}
+          {% unless colors_array contains colour_title %}
+            {% assign colors = colors | append: colour_title | append: ',' %}
+            {% assign swatch_image_url = colour_title | append: '-colour-swatch' | append: '.jpg' %}
+            {% assign variant_image = variant.featured_image | img_url: '1200x700', format: 'pjpg' %}
+            {% assign variant_price = variant.price | money_without_trailing_zeros %}
+            {% assign variant_price_original = variant.compare_at_price | money_without_trailing_zeros %}
+            {% assign variant_id = variant.id %}
+            {% assign variant_availability = variant.available %}
+            {% assign product_title = product.title | split: ' - ' | first | handleize %}
+            {% assign variant_url = product_title | append: '-' | append: colour_title %}
+
+            <a
+              href="{{- variant_url | prepend: '/products/' -}}"
+              title="{{- colour_title -}}"
+              class="product_colour{% if variant == selected_product %} product_colour-active{% endif %}"
+              data-image-src="{{- variant_image -}}"
+              {% if variant_price < variant_price_original %}
+                data-price-sale="{{- variant_price -}}"
+                data-price="{{- variant_price_original -}}"
+              {% else %}
+                data-price="{{- variant_price -}}"
+              {% endif %}
+              data-id="{{- variant_id -}}"
+              data-url="/products/{{ variant_url }}"
+              data-availability="{{- variant_availability -}}"
+              data-preorder="{{- is_preorder -}}"
+              data-button-oos="{{- sold_out_button_text -}}"
+              data-button-atc="{{- add_to_cart_button_text -}}">
+              {%- if section.settings.color_type == "color" -%}
+                <span class="product_colourSwatch product_colourSwatch-small" style="background-color:{{ colour_title | replace: ' ', '' | handle }};"></span>
+              {%- elsif section.settings.color_type == "image" -%}
+                <span class="product_colourSwatch product_colourSwatch-small" style="background-color:{{ colour_title | replace: ' ', '' | handle }};background-image:url({{ colour_title | handle | append: '.png' | file_url | split: "?" | first }});"></span>
+              {%- else -%}
+                <span class="product_colourSwatch product_colourSwatch-small" style="background-image:url({{ variant.image.src | product_img_url: 'small'}});"></span>
+              {%- endif -%}
+            </a>
+          {% endunless %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+{% comment %} <div class="product_sizes">
+  {% for option in product.options %}
+    {% if option == 'Size' %}
+      <label class="header">{{ option }}: <span class="slVariant">{{ selected_product.title | split: ' / ' | last }}</span></label>
+      <div class="product_sizes_items">
+        {% assign sizes = '' %}
+
+        {% for variant in product.variants %}
+          {% assign size_name = variant.option2 %}
+          {% assign size_title = variant.option2 | downcase | handleize %}
+          {% assign sizes_array = sizes | split: ',' %}
+          {% unless sizes_array contains size_title %}
+            {% assign sizes = sizes | append: size_title | append: ',' %}
+            {% assign current_color = selected_product.title | split: ' / ' | first | handleize %}
+            {% assign swatch_image_url = colour_title | append: '-colour-swatch' | append: '.jpg' %}
+            {% assign variant_image = variant.featured_image | img_url: '1200x700', format: 'pjpg' %}
+            {% assign variant_price = variant.price | money_without_trailing_zeros %}
+            {% assign variant_price_original = variant.compare_at_price | money_without_trailing_zeros %}
+            {% assign variant_id = variant.id %}
+            {% assign variant_availability = variant.available %}
+            {% assign product_title = product.title | split: ' - ' | first | handleize %}
+            {% assign variant_url = product_title | append: '-' | append: current_color | append: '-' | append: size_title %}
+
+            <a
+              href="{{- variant_url | within: collection -}}"
+              title="{{- size_title -}}"
+              class="product_size{% if variant == selected_product %} product_size-active{% endif %}"
+              data-image-src="{{- variant_image -}}"
+              {% if variant_price < variant_price_original %}
+                data-price-sale="{{- variant_price -}}"
+                data-price="{{- variant_price_original -}}"
+              {% else %}
+                data-price="{{- variant_price -}}"
+              {% endif %}
+              data-id="{{- variant_id -}}"
+              data-url="/products/{{ variant_url }}"
+              data-availability="{{- variant_availability -}}"
+              data-preorder="{{- is_preorder -}}"
+              data-button-oos="{{- sold_out_button_text -}}"
+              data-button-atc="{{- add_to_cart_button_text -}}">
+
+              <span class="product_sizeSwatch product_sizeSwatch-small">{{ size_name }}</span>
+            </a>
+          {% endunless %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div> {% endcomment %}

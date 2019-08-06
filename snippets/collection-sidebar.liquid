@@ -1,0 +1,109 @@
+<div class="closeFilter medium-up--hide"><i class="ad ad-times-r" aria-hidden="true"></i></div>
+<div class="sidebar_tags">
+{% for block in section.blocks %}
+	{% capture blockTitle %}<div class="widget-title"><span>{{block.settings.title}}</span></div>{% endcapture %}
+	
+	{%- case block.type -%}
+	{% when 'categories' %}
+		<div class="sidebar_widget categories wow fadeIn">
+			{{blockTitle}}
+  			<div class="widget-content">
+    			<ul class="sidebar_categories">{% for link in linklists[block.settings.side_categories].links %}{% include 'mm-links' %}{% endfor %}</ul>
+  			</div>
+		</div>
+	
+	{% when 'filter_by' %}
+		<div class="sidebar_widget filterBox wow fadeIn">
+        	{{blockTitle}}
+			{% assign tags = block.settings.filter_tags | split: ',' %}
+            <ul {% if block.settings.twocall%}class="twoCall"{% endif %}>
+            	{% for filter_t in tags %}
+                	{% assign tag = filter_t | strip %}
+                    {% assign tag_value = tag | handleize %}
+                    {% assign filtertag = forloop.index | minus:1 %}
+                    {% assign filtertagid = 2 | times : filtertag %}
+                    {% if collection.tags contains tag %}
+	                	<li><input type="checkbox" value="{{tag_value}}" id="{{block.id}}-{{filtertagid}}" {% if current_tags contains tag %}checked{% endif %} /><label for="{{block.id}}-{{filtertagid}}"><span><span></span></span>{{tag}}</label></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+		</div>
+
+    {% when 'by_color' %}
+    	<div class="sidebar_widget filterBox wow fadeIn">            
+        	{{blockTitle}}
+           	{% assign tags = block.settings.filter_tags | split: ',' %}
+			<ul class="filter-color">          	     
+				{% for filter_t in tags %}
+                	{% assign tag = filter_t | strip %}
+                    {% assign tag_value = tag | handleize %}
+                    {% assign filtertag = forloop.index | minus:1 %}
+                    {% assign filtertagid = 2 | times : filtertag %}
+                    {% if collection.tags contains tag %}
+                    	<li><input type="checkbox" value="{{ tag_value }}"  id="{{block.id}}-{{ filtertagid }}" {% if current_tags contains tag %}checked{% endif %} /><label for="{{block.id}}-{{filtertagid}}" class="color" title="{{tag}}"><span style="background-color:{{tag_value}}; {% if block.settings.image_swatches %}background-size:cover; background-image:url({{ tag_value | handleize | append: '.png' | file_url | split: "?" | first }});{% endif %}"></span></label></li>
+                    {% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+
+	{% when 'products' %}
+    	<div class="sidebar_widget wow fadeIn">
+        	{{blockTitle}}
+            <div class="widget-content">
+            	{% if block.settings.sidebar_products != blank %}
+                	<div class="list list-sidebar-products">
+                    	<div class="grid">
+                        	{% for product in collections[block.settings.sidebar_products].products limit:block.settings.num_of_products %}
+  {% if product.object_type == 'product' and product.type == 'SHOPSTORM_HIDDEN_PRODUCT' %}{% continue %}{% endif %}
+
+                        		<div class="grid__item">{% include 'product-mini-list', grid_image_width: "100x" %}</div>
+                        	{% endfor %}
+                      	</div>
+                      	{% if block.settings.side_all_products %}
+                    		<div class="text-center"><a href="{{block.settings.sidebar_products}}" class="btn">{{ 'collections.general.view_all' | t}}</a></div>
+                   	  	{% endif %} 
+                  	</div>
+				{% else %}
+					<p>Please select collection from store admin > customize > Collection page > sidebar</p>
+				{% endif %} 
+			</div>
+		</div>
+      
+    {% when 'image_bnr' %}
+      	<div class="sidebar_widget static-banner wow fadeIn">
+        	{% if block.settings.side_bnr_link != blank %}<a href="{{ block.settings.side_bnr_link }}">{% endif %}
+                  {% if block.settings.side_bnr_img != blank %}
+                        {{ block.settings.side_bnr_img | img_url: '300x' | img_tag }}
+                  {% else %}
+                      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+					  {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                  {% endif %}
+            {% if block.settings.side_bnr_link != blank %}</a>{% endif %}
+        </div>
+      	
+	{% when 'static_text' %}
+		<div class="sidebar_widget wow fadeIn">
+    		{{blockTitle}}
+            <div class="widget-content">{% if block.settings.text != blank %}{{ block.settings.text }}{% endif %}</div>
+		</div>
+  	{% when 'pr_tags' %}
+  		<div class="sidebar_widget wow fadeIn">
+			{{blockTitle}}
+    		<div class="widget-content">
+     			{% if collection.all_tags.size > 0 %}
+            		<ul class="product-tags">
+              			{% for tag in collection.all_tags %}
+                			{% if current_tags contains tag %}
+                      			<li class="filter--active">{{ tag | link_to_remove_tag: tag }}</li>
+                      		{% else %}
+                  				<li>{{ tag | link_to_tag: tag }}</li>
+                			{% endif %}
+              			{% endfor %}
+            		</ul>
+      				<span class="btn btn--small btnview">{{ 'general.accessibility.view_all' | t}}</span>
+       			{% endif %}
+    		</div>
+		</div>  
+	{%- endcase -%}
+{% endfor %}
+</div>

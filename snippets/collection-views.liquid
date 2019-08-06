@@ -1,0 +1,28 @@
+<div class="filters-toolbar__item collection-view-as">
+	<button type="button" title="Grid View" class="change-view{% unless template contains 'list' %} change-view--active{% endunless %}" data-view="grid">{{ 'grid.jpg' | asset_url | img_tag }}</button>
+	<button type="button" title="List View" class="change-view{% if template contains 'list' %} change-view--active{% endif %}" data-view="list">{{ 'list.jpg' | asset_url | img_tag }}</button>
+</div>
+<script type="text/javascript">
+  function replaceUrlParam(url, paramName, paramValue) {
+    var pattern = new RegExp('('+paramName+'=).*?(&|$)'),
+        newUrl = url.replace(pattern,'$1' + paramValue + '$2');
+    if ( newUrl == url ) {
+    	newUrl = newUrl + (newUrl.indexOf('?')>0 ? '&' : '?') + paramName + '=' + paramValue;
+    }
+    return newUrl;
+  }
+
+  $(document).ready(function(){
+	$('.change-view').on('click', function(){
+      var view = $(this).data('view'),
+          url = document.URL,
+          hasParams = url.indexOf('?') > -1;
+
+      if (hasParams) {
+		window.location = replaceUrlParam(url, 'view', view);
+      } else {
+        window.location = url + '?view=' + view;
+      }
+    });
+  });
+</script>

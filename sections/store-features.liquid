@@ -1,0 +1,82 @@
+{% capture storeFeatures %}
+<div class="page-width"> 
+	<ul class="display-table store-info">
+		{% for block in section.blocks limit: section.blocks.size %}
+		<li class="display-table-cell"  {{ block.shopify_attributes }}> 
+            {% if section.settings.enable_icons %}<i class="ad {{ block.settings.icons}}" aria-hidden="true" style="color:{{ section.settings.icons_clr }}"></i>{% endif %}
+            {% if block.settings.title %}<h5>{{ block.settings.title}}</h5>{% endif %}
+            {% if block.settings.text %}<span class="sub-text">{{ block.settings.text}}</span>{% endif %} 
+		</li>
+		{% endfor %}
+	</ul>
+	{% if section.blocks.size == 0 %}{% include 'no-blocks' %}{% endif %}
+</div>
+{% endcapture %}
+{{ storeFeatures | strip_newlines | remove: "  " | remove: "	" }}
+{% schema %}
+  {
+    "name": "Store Features",
+    "class": "index-section",   
+	"max_blocks": 4,
+	"settings":[		
+ 		{
+            "type": "checkbox",
+            "id": "enable_icons",
+            "label": "Show Icon",
+            "default": true
+        },
+		{
+            "type": "color",
+            "id": "icons_clr",
+            "label": "Icon color",
+			"default":"#a9a9a9"	
+		}
+	],
+    "blocks": [
+      {
+        "type": "text_block",
+        "name": "Column",
+        "settings": [         
+          {
+            "type": "text",
+            "id": "icons",
+            "label": "Icon class name",
+			"default":"ad-truck-l",
+			"info":"How do i get class name(http://adornthemes.com/ad-icons/)"
+
+		  }, 		 
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Add a title or tagline"
+          },
+          {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default":"<p>Use this text to display your store information</p>"
+          }         
+         
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Store Features",
+        "category": "Store information",
+        "blocks": [
+          {
+            "type": "text_block"
+          },
+          {
+            "type": "text_block"
+          },
+          {
+            "type": "text_block"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}       

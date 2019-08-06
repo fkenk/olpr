@@ -1,0 +1,162 @@
+{%- if section.blocks.size > 0 -%}
+    <ul id="siteNav" class="site-nav {{ settings.font-weight}} {{ section.settings.menuAlign}}{% if section.settings.menuarrow == false %} hidearrow{% endif %}">
+    {% for block in section.blocks %}
+      	{%- assign label = block.settings.title |  split: '[label' | last  | split: ']' | first | prepend: "nm_label" -%}
+      	{%- capture linkLevel1 -%}<a href="{% if block.settings.url != blank %}{{ block.settings.url }}{% else %}#{% endif %}">{{ block.settings.title | split: '[label' | first }} <i class="ad ad-angle-down-l"></i>{% if block.settings.title contains '[label' %}<span class="lbl {{label}}">{{ section.settings[label] }}</span>{% endif %}</a>{%- endcapture -%}
+      	{%- case block.type -%}
+			{%- when 'homelink' -%}
+      			<li class="lvl1"><a href="/">{{ 'general.breadcrumbs.home' | t}}</a></li>
+
+      		{%- when 'single_link' -%}
+      			<li class="lvl1">{{linkLevel1 | replace: '<i class="ad ad-angle-down-l"></i>','' }}</li>
+
+      		{%- when 'megamenu1' -%}
+      			{%- if block.settings.title != blank -%}
+                  <li class="lvl1 parent megamenu">{{linkLevel1}}
+                      <div class="megamenu style1">
+                        <ul class="grid mmWrapper">
+                            {%- assign firstcolumn = 'large-up--three-fifths' -%}
+                          	{%- assign othercolumn = 'large-up--one-fifth' -%}
+                            {%- if block.settings.megamenu1_product == blank and block.settings.megamenu1_image == blank -%}
+                                {% assign firstcolumn = 'large-up--one-whole' %}
+                            {%- elsif block.settings.megamenu1_product == blank or block.settings.megamenu1_image == blank -%}
+                                {% assign firstcolumn = 'large-up--three-quarters' %}
+                          		{% assign othercolumn = 'large-up--one-quarter' %}
+                            {%- endif -%}
+                            <li class="grid__item {{ firstcolumn }}"><ul class="grid">{% for link in linklists[block.settings.mm_linklist].links %}{% include 'mm-links' %}{% endfor %}</ul></li>
+                            {%- if block.settings.megamenu1_product != blank -%}
+                                <li class="grid__item {{othercolumn}} productCol lvl-1">
+                                    <a class="site-nav lvl-1">{{ block.settings.product_ttl }}</a>
+                                    {%- assign product = all_products[block.settings.megamenu1_product] -%}
+                                    {% include 'mm-product' %}
+                                </li>
+                            {%- endif -%}
+                            {%- if block.settings.megamenu1_image != blank -%}<li class="grid__item {{othercolumn}} imageCol"><a href="">{{ block.settings.megamenu1_image | img_url: '450x' | img_tag }}</a></li>{%- endif -%}
+                        </ul>
+                      </div>
+                  </li>
+              {%- endif -%}
+
+			{%- when 'megamenu2' -%}
+      			{%- if block.settings.title != blank -%}
+                    <li class="lvl1 parent megamenu">{{linkLevel1}}
+                        <div class="megamenu style2">
+                            <ul class="grid mmWrapper">
+                                <li class="grid__item one-whole"><ul class="grid">{% for link in linklists[block.settings.mm_linklist].links %}{% include 'mm-links' %}{% endfor %}</ul></li>
+                                {%- capture my_variable -%}{{block.settings.megamenu1_image}} {{block.settings.megamenu2_image}} {{block.settings.megamenu3_image}}{%- endcapture -%}
+                                {%- assign products_array = my_variable | split: ' ' -%}
+                                {%- assign imgcolumns = 'large-up--one-third' -%}
+                                {%- if products_array.size == 2 -%}
+                                     {% assign imgcolumns = 'large-up--one-half' %}
+                                {%- elsif products_array.size == 1 -%}
+                                      {% assign imgcolumns = 'large-up--one-whole' %}
+                                {%- endif -%}
+                                {%- if block.settings.megamenu1_image != blank -%}<li class="grid__item {{ imgcolumns }} imageCol"><a href="{{ block.settings.Image1url }}">{{ block.settings.megamenu1_image | img_url: 'master' | img_tag }}</a></li>{%- endif -%}
+                                {%- if block.settings.megamenu2_image != blank -%}<li class="grid__item {{ imgcolumns }} imageCol"><a href="{{ block.settings.Image2url }}">{{ block.settings.megamenu2_image | img_url: 'master' | img_tag }}</a></li>{%- endif -%}
+                                {%- if block.settings.megamenu3_image != blank -%}<li class="grid__item {{ imgcolumns }} imageCol"><a href="{{ block.settings.Image3url }}">{{ block.settings.megamenu3_image | img_url: 'master' | img_tag }}</a></li>{%- endif -%}
+                            </ul>
+                        </div>
+                    </li>
+                {%- endif -%}
+
+			{%- when 'megamenu3' -%}
+      			{%- if block.settings.title != blank -%}
+                  <li class="lvl1 parent megamenu">{{linkLevel1}}
+                      <div class="megamenu style3">
+                          <ul class="grid mmWrapper">
+                              {%- capture menucolumns -%}{{block.settings.ttl1 | remove: " "}} {{block.settings.ttl2 | remove: " "}} {{block.settings.ttl3 | remove: " "}} {{block.settings.ttl4 | remove: " "}} {{block.settings.ttl5 | remove: " "}}{%- endcapture -%}
+                              {%- assign columnitems = menucolumns | split: ' ' -%}
+                              {%- assign mmcolumns = 'large-up--one-fifth' -%}
+                              {%- assign mm3img = '380x' -%}
+                              {%- if columnitems.size == 4 -%}
+                            	{% assign mmcolumns = 'large-up--one-quarter' %}
+                            	{% assign mm3img = '475x' %}
+                              {% elsif columnitems.size == 3 %}
+                            	{% assign mmcolumns = 'large-up--one-third' %}
+                            	{% assign mm3img = '640x' %}
+                              {% elsif columnitems.size == 2 %}
+                            	{% assign mmcolumns = 'large-up--one-half' %}
+                            	{% assign mm3img = '900x' %}
+                              {% elsif columnitems.size == 1 %}
+                            	{% assign mmcolumns = 'large-up--one-whole' %}
+                            	{% assign mm3img = '1900x' %}
+                              {%- endif -%}
+
+                              {%- if block.settings.ttl1 != blank -%}
+                              <li class="grid__item {{mmcolumns}} lvl-1">
+                                  {%- assign m3label1 = block.settings.ttl1 |  split: '[label' | last  | split: ']' | first | prepend: "nm_label" -%}
+                                  <a href="{% if block.settings.ttlurl1 != blank %}{{ block.settings.ttlurl1 }}{% else %}#{% endif %}" class="lvl-1">{{ block.settings.megamenu1_image | img_url: mm3img | img_tag }}<span class="title">{{ block.settings.ttl1 | split: '[label' | first }} {% if block.settings.ttl1 contains '[label' %}<span class="lbl {{m3label1}}">{{ section.settings[m3label1] }}</span>{% endif %}</span></a>
+                                  <ul>{% for link in linklists[block.settings.mm_linkcol1].links %}<li class="lvl-2{% if link.active %} active{% endif %}"><a href="{{ link.url }}" class="site-nav">{{ link.title }}</a></li>{% endfor %}</ul>
+                              </li>
+                              {%- endif -%}
+                              {%- if block.settings.ttl2 != blank -%}
+                              <li class="grid__item {{mmcolumns}} lvl-1">
+                                  {%- assign m3label2 = block.settings.ttl2 |  split: '[label' | last  | split: ']' | first | prepend: "nm_label" -%}
+                                  <a href="{% if block.settings.ttlurl2 != blank %}{{ block.settings.ttlurl2 }}{% else %}#{% endif %}" class="lvl-1">{{ block.settings.megamenu2_image | img_url: mm3img | img_tag }}<span class="title">{{ block.settings.ttl2 | split: '[label' | first }} {% if block.settings.ttl2 contains '[label' %}<span class="lbl {{m3label2}}">{{ section.settings[m3label2] }}</span>{% endif %}</span></a>
+                                  <ul>{% for link in linklists[block.settings.mm_linkcol2].links %}<li class="lvl-2{% if link.active %} active{% endif %}"><a href="{{ link.url }}" class="site-nav lvl-2">{{ link.title }}</a></li>{% endfor %}</ul>
+                              </li>
+                              {%- endif -%}
+                              {%- if block.settings.ttl3 != blank -%}
+                              <li class="grid__item {{mmcolumns}} lvl-1">
+                                  {%- assign m3label3 = block.settings.ttl3 |  split: '[label' | last  | split: ']' | first | prepend: "nm_label" -%}
+                                  <a href="{% if block.settings.ttlurl3 != blank %}{{ block.settings.ttlurl3 }}{% else %}#{% endif %}" class="lvl-1">{{ block.settings.megamenu3_image | img_url: mm3img | img_tag }}<span class="title">{{ block.settings.ttl3 | split: '[label' | first }} {% if block.settings.ttl3 contains '[label' %}<span class="lbl {{m3label3}}">{{ section.settings[m3label3] }}</span>{% endif %}</span></a>
+                                  <ul>{% for link in linklists[block.settings.mm_linkcol3].links %}<li class="lvl-2{% if link.active %} active{% endif %}"><a href="{{ link.url }}" class="site-nav">{{ link.title }}</a></li>{% endfor %}</ul>
+                              </li>
+                              {%- endif -%}
+                              {%- if block.settings.ttl4 != blank -%}
+                              <li class="grid__item {{mmcolumns}} lvl-1">
+                                  {%- assign m3label4 = block.settings.ttl4 |  split: '[label' | last  | split: ']' | first | prepend: "nm_label" -%}
+                                  <a href="{% if block.settings.ttlurl4 != blank %}{{ block.settings.ttlurl4 }}{% else %}#{% endif %}" class="lvl-1">{{ block.settings.megamenu4_image | img_url: mm3img | img_tag }}<span class="title">{{ block.settings.ttl4 | split: '[label' | first }} {% if block.settings.ttl4 contains '[label' %}<span class="lbl {{m3label4}}">{{ section.settings[m3label4] }}</span>{% endif %}</span></a>
+                                  <ul>{% for link in linklists[block.settings.mm_linkcol4].links %}<li class="lvl-2{% if link.active %} active{% endif %}"><a href="{{ link.url }}" class="site-nav">{{ link.title }}</a></li>{% endfor %}</ul>
+							  </li>
+                              {%- endif -%}
+                              {%- if block.settings.ttl5 != blank -%}
+                              <li class="grid__item {{mmcolumns}} lvl-1">
+                                  {%- assign m3label5 = block.settings.ttl5 |  split: '[label' | last  | split: ']' | first | prepend: "nm_label" -%}
+                                  <a href="{% if block.settings.ttlurl5 != blank %}{{ block.settings.ttlurl5 }}{% else %}#{% endif %}" class="lvl-1">{{ block.settings.megamenu5_image | img_url: mm3img | img_tag }}<span class="title">{{ block.settings.ttl5 | split: '[label' | first }} {% if block.settings.ttl5 contains '[label' %}<span class="lbl {{m3label5}}">{{ section.settings[m3label5] }}</span>{% endif %}</span></a>
+                                  <ul>{% for link in linklists[block.settings.mm_linkcol5].links %}<li class="lvl-2{% if link.active %} active{% endif %}"><a href="{{ link.url }}" class="site-nav">{{ link.title }}</a></li>{% endfor %}</ul>
+                              </li>
+                              {%- endif -%}
+                          </ul>
+                      </div>
+                  </li>
+              {%- endif -%}
+
+      		{%- when 'megamenu4' -%}
+      			{%- if block.settings.title != blank -%}
+                    <li class="lvl1 parent megamenu">{{linkLevel1}}
+                        {%- if linklists[block.settings.mm_linklist].links != blank -%}
+                        <div class="megamenu style4" {% if block.settings.mm4_bg != blank %}style="background-image:url({{block.settings.mm4_bg | img_url: "master"}});background-position:top {{block.settings.mm4_img_position}};padding-{{block.settings.mm4_img_position}}:{{block.settings.mm4_space}};"{% endif %}>
+							<ul class="grid grid--uniform mmWrapper">{% for link in linklists[block.settings.mm_linklist].links %}{%- include 'mm-links' -%}{% endfor %}</ul>
+                        </div>
+                        {%- endif -%}
+                    </li>
+                {%- endif -%}
+
+			{%- when 'megamenu5' -%}
+      			{%- if block.settings.title != blank -%}
+                    <li class="lvl1 parent megamenu">{{linkLevel1}}
+                        <div class="megamenu style5">
+                            <ul class="grid mmWrapper {{block.settings.mm_linkStyle}}">
+                              	{%- for link in linklists[block.settings.mm_linklist].links -%}
+                              		<li class="grid__item large-up--{{block.settings.mmcolumns}} lvl-1">
+                                      	{%- assign navImg = link.title | handleize -%}
+                                    	<a href="{{ link.url }}" class="site-nav lvl-1">
+											{%- if block.settings.mm_linkStyle == "above" -%}<span class="imgOver">{{ link.title }}</span>{%- endif -%}
+                                          	<img src="{{ navImg | append: '.jpg' | file_img_url: '400x' }}" alt="{{ link.title }}" />
+                                          	{%- if block.settings.mm_linkStyle != "above" -%}<span class="imgOver">{{ link.title }}</span>{%- endif -%}
+                                      	</a>
+                              		</li>
+                              	{%- endfor -%}
+                            </ul>
+                        </div>
+                    </li>
+                {%- endif -%}
+
+			{%- when 'dropdown' -%}
+      			{%- if block.settings.title != blank -%}<li class="lvl1 parent dropdown">{{linkLevel1}}<ul class="dropdown">{% for link in linklists[block.settings.mm_linklist].links %}{% include 'mm-dropdown' %}{% endfor %}</ul></li>{%- endif -%}
+
+      	{%- endcase -%}
+    {%- endfor -%}
+    </ul>
+{%- endif -%}
