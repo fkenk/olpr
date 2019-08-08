@@ -7,497 +7,561 @@
 {%- assign product_description_width = 'medium-up--one-half' -%}
   
 {%- if settings.layout_style =="fullwidth" -%}
-  	{%- assign product_image_size = '900x' -%}
+  {%- assign product_image_size = '900x' -%}
 {%- else -%}
-	{%- assign product_image_size = '650x' -%}
+  {%- assign product_image_size = '650x' -%}
 {%- endif -%}
 
 <div class="grid product-single">
-	<div class="grid__item product-single__photos {{section.settings.thumbnail_pos}} {{ product_image_width }}">
-		{%- assign featured_img_src = current_variant.featured_image.src | default: product.featured_image.src -%}
-		{%- assign featured_img_alt = current_variant.featured_image.alt | default: product.featured_image.alt -%}
-		<div class="grid">
-			<div class="grid__item prod-large-img {% if product.images.size > 1 and section.settings.thumbnail_pos != 'bottom' %} medium-up--seven-eighths{% else %} medium-up--one-whole{% endif %}">
-              	<div class="primgSlider">
-                  	{% for image in product.images %}
-                  		{%- assign imgNo = forloop.index0 -%}
-                  		<div class="FeaturedImageZoom-{{ section.id }} product-single__photo{% if product.images.size > 1 %} product-single__photo--has-thumbnails{% endif %}" {% if enable_zoom %}data-zoom="{{ image.src | img_url: product_image_zoom_size }}"{% endif %} data-slide="{{imgNo}}">
-               				<img src="{{ image.src | img_url: product_image_size }}" class="FeaturedImage-{{ section.id }} product-featured-img{% if enable_zoom %} js-zoom-enabled{% endif %}" alt="{{ image.alt | escape }}">
-              			</div>
-       				{% endfor %}
-          			<!--div class="FeaturedImageZoom-{{ section.id }} product-single__photo{% if product.images.size > 1 %} product-single__photo--has-thumbnails{% endif %}" {% if enable_zoom %}data-zoom="{{ featured_img_src | img_url: product_image_zoom_size }}"{% endif %}>
+  <div class="grid__item product-single__photos {{ section.settings.thumbnail_pos }} {{ product_image_width }}">
+    {%- assign featured_img_src = current_variant.featured_image.src | default: product.featured_image.src -%}
+    {%- assign featured_img_alt = current_variant.featured_image.alt | default: product.featured_image.alt -%}
+    <div class="grid">
+      <div
+          class="grid__item prod-large-img {% if product.images.size > 1 and section.settings.thumbnail_pos != 'bottom' %} medium-up--seven-eighths{% else %} medium-up--one-whole{% endif %}">
+        <div class="primgSlider">
+          {% for image in product.images %}
+            {%- assign imgNo = forloop.index0 -%}
+            <div
+                class="FeaturedImageZoom-{{ section.id }} product-single__photo{% if product.images.size > 1 %} product-single__photo--has-thumbnails{% endif %}"
+                {% if enable_zoom %}data-zoom="{{ image.src | img_url: product_image_zoom_size }}"{% endif %}
+                data-slide="{{ imgNo }}">
+              <img src="{{ image.src | img_url: product_image_size }}"
+                   class="FeaturedImage-{{ section.id }} product-featured-img{% if enable_zoom %} js-zoom-enabled{% endif %}"
+                   alt="{{ image.alt | escape }}">
+            </div>
+          {% endfor %}
+          <!--div class="FeaturedImageZoom-{{ section.id }} product-single__photo{% if product.images.size > 1 %} product-single__photo--has-thumbnails{% endif %}" {% if enable_zoom %}data-zoom="{{ featured_img_src | img_url: product_image_zoom_size }}"{% endif %}>
             			<img src="{{ featured_img_src | img_url: product_image_size }}" alt="{{ featured_img_alt }}" id="FeaturedImage-{{ section.id }}" class="product-featured-img{% if enable_zoom %} js-zoom-enabled{% endif %}">
 					</div-->
-              	</div>
-              	
-				{%- if settings.pr_lbl -%}
-				<div class="product-labels">
-					{%- if product.compare_at_price > product.price and settings.sale_lbl -%}<label class="lbl on-sale">{{ 'products.product.on_sale' | t}}</label>{%- endif -%}
-					{%- if product.tags contains settings.pr_label1 -%}<label class="lbl pr-label1">{{settings.pr_label1}}</label>{%- endif -%}
-					{%- if product.tags contains settings.pr_label2 -%}<label class="lbl pr-label2">{{settings.pr_label2}}</label>{%- endif -%}
-					{%- if product.tags contains settings.pr_label3 -%}<label class="lbl pr-label3">{{settings.pr_label3}}</label>{%- endif -%}
-				</div>
-				{%- endif -%}
-                <div class="product-buttons">                              
-                   {%- assign meta = product.metafields.meta -%}
-                    {% assign key = 'video' %}
-                   {%- if meta.video != blank -%}<a href="{{meta.video}}" class="btn popup-video" title="{{ 'products.product.video' | t }}"><i class="ad ad-play-r" aria-hidden="true"></i></a>{%- endif -%}       	
-                  
-                   {%- if section.settings.enable_lightbox -%}
-                        <a href="#" class="btn prlightbox" title="{{ 'products.product.zoom' | t }}"><i class="ad ad-expand-l-arrows" aria-hidden="true"></i></a>
-                   {%- endif -%}    
+        </div>
+
+        {%- if settings.pr_lbl -%}
+          <div class="product-labels">
+            {%- if product.compare_at_price > product.price and settings.sale_lbl -%}<label
+                class="lbl on-sale">{{ 'products.product.on_sale' | t }}</label>{%- endif -%}
+            {%- if product.tags contains settings.pr_label1 -%}<label
+                class="lbl pr-label1">{{ settings.pr_label1 }}</label>{%- endif -%}
+            {%- if product.tags contains settings.pr_label2 -%}<label
+                class="lbl pr-label2">{{ settings.pr_label2 }}</label>{%- endif -%}
+            {%- if product.tags contains settings.pr_label3 -%}<label
+                class="lbl pr-label3">{{ settings.pr_label3 }}</label>{%- endif -%}
+          </div>
+        {%- endif -%}
+        <div class="product-buttons">
+          {%- assign meta = product.metafields.meta -%}
+          {% assign key = 'video' %}
+          {%- if meta.video != blank -%}<a href="{{ meta.video }}" class="btn popup-video"
+                                           title="{{ 'products.product.video' | t }}"><i class="ad ad-play-r"
+                                                                                         aria-hidden="true"></i>
+            </a>{%- endif -%}
+
+          {%- if section.settings.enable_lightbox -%}
+            <a href="#" class="btn prlightbox" title="{{ 'products.product.zoom' | t }}"><i
+                  class="ad ad-expand-l-arrows" aria-hidden="true"></i></a>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.enable_lightbox -%}
+          <div class="lightboximages">{%- for image in product.images -%}<a href="{{ image.src | img_url: 'master' }}"
+                                                                            data-size="{{ image.width }}x{{ image.height }}"></a>{%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%}****  product thumb **** {%- endcomment -%}
+      {%- if product.images.size > 1 -%}
+        <div
+            class="grid__item {% if section.settings.thumbnail_pos != 'bottom' %}medium-up--one-eighth{% endif %} prod-thumbs">
+          {% if product.images.size > 3 %}{%- assign enable_thumbnail_slides = true -%}{% endif %}
+          <div class="thumbnails-wrapper{% if enable_thumbnail_slides == true %} thumbnails-slider--active{% endif %}">
+            <div class="grid product-single__thumbnails product-single__thumbnails-{{ section.id }}"
+                 data-slider="{{ section.settings.thumbnail_pos }}">
+              {% for image in product.images %}
+                {%- assign imgNo = forloop.index0 -%}
+                <div class="grid__item one-fifth product-single__thumbnails-item" data-slide="{{ imgNo }}">
+                  <a href="{{ image.src | img_url: product_image_size }}"
+                     class="text-link product-single__thumbnail product-single__thumbnail--{{ section.id }}{% if featured_img_src ==  image.src %} activeSlide{% endif %}"
+                     {% if enable_zoom %}data-zoom="{{ image.src | img_url: product_image_zoom_size }}"{% endif %}>
+                    <img class="product-single__thumbnail-image" src="{{ image.src | img_url: product_thumb_size }}"
+                         alt="{{ image.alt | escape }}"></a>
                 </div>
-          		{%- if section.settings.enable_lightbox -%}              		
-              		<div class="lightboximages">{%- for image in product.images -%}<a href="{{ image.src | img_url: 'master' }}" data-size="{{image.width}}x{{image.height}}"></a>{%- endfor -%}</div>
-              	{%- endif -%}
-          		</div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+  <div class="grid__item {{ product_description_width }}">
+    <div class="product-single__meta">
+      {%- if section.settings.show_product_vendor -%}
+        <div class="product-vendor">{{ product.vendor | link_to_vendor }}</div>
+      {%- endif -%}
+      <h1 class="product-single__title">{{ product.title }}</h1>
+      {%- comment -%}****  product navigation **** {%- endcomment -%}
+      {% if section.settings.show_product_navigation and collection %}
+        {% if collection.previous_product or collection.next_product %}
+          <div class="product-nav clearfix">
+            {% if collection.previous_product %}<a href="{{ collection.previous_product }}" class="prev"
+                                                   title="Previous"> <i class="ad ad-angle-left-r"
+                                                                        aria-hidden="true"></i></a>{% endif %}
+            {% if collection.next_product %}<a href="{{ collection.next_product }}" class="next" title="Next"> <i
+                  class="ad  ad-angle-right-r" aria-hidden="true"></i></a>{% endif %}
+          </div>
+        {% endif %}
+      {% endif %}
 
-        	{%- comment -%}****	product thumb **** {%- endcomment -%}
-			{%- if product.images.size > 1 -%}
-        		<div class="grid__item {% if section.settings.thumbnail_pos != 'bottom' %}medium-up--one-eighth{% endif %} prod-thumbs">
-          			{% if product.images.size > 3 %}{%- assign enable_thumbnail_slides = true -%}{% endif %}
-					<div class="thumbnails-wrapper{% if enable_thumbnail_slides == true %} thumbnails-slider--active{% endif %}">
-            			<div class="grid product-single__thumbnails product-single__thumbnails-{{ section.id }}" data-slider="{{section.settings.thumbnail_pos}}">
-              				{% for image in product.images %}
-                          	{%- assign imgNo = forloop.index0 -%}
-                			<div class="grid__item one-fifth product-single__thumbnails-item" data-slide="{{imgNo}}">
-                  				<a href="{{ image.src | img_url: product_image_size }}" class="text-link product-single__thumbnail product-single__thumbnail--{{ section.id }}{% if featured_img_src ==  image.src %} activeSlide{% endif %}" {% if enable_zoom %}data-zoom="{{ image.src | img_url: product_image_zoom_size }}"{% endif %}>
-                      				<img class="product-single__thumbnail-image" src="{{ image.src | img_url: product_thumb_size }}" alt="{{ image.alt | escape }}"></a>
-                			</div>
-              				{% endfor %}
-            			</div>
-					</div>
-				</div>
-			{%- endif -%}
-      	</div>
-	</div>
-	<div class="grid__item {{ product_description_width }}">
-		<div class="product-single__meta">
-          	{%- if section.settings.show_product_vendor -%}
-          		<div class="product-vendor">{{ product.vendor | link_to_vendor }}</div>
-           	{%- endif -%}
-        	<h1 class="product-single__title">{{ product.title }}</h1>
-        	{%- comment -%}****	product navigation **** {%- endcomment -%}
-			{% if section.settings.show_product_navigation and collection %}
-          		{% if collection.previous_product or collection.next_product %}
-         		<div class="product-nav clearfix">
-					{% if collection.previous_product %}<a href="{{ collection.previous_product }}" class="prev" title="Previous"> <i class="ad ad-angle-left-r" aria-hidden="true"></i></a>{% endif %}
-			    	{% if collection.next_product %}<a href="{{ collection.next_product }}" class="next" title="Next"> <i class="ad  ad-angle-right-r" aria-hidden="true"></i></a>{% endif %}
-          		</div>
-          		{% endif %}
-        	{% endif %}
-          
-          	<div class="prInfoRow">
-	          	{%- if section.settings.show_product_availability -%}
-          		<div class="product-stock">
-	            	<span class="instock {% unless product.available %}hide{% endunless %}">{{ 'products.product.available' | t }}</span>
-    	        	<span  class="outstock {% if product.available %}hide{% endif %}">{{ 'products.product.unavailable' | t }}</span>
-          		</div>
-           		{%- endif -%}
-    	      	{%- if section.settings.show_product_sku -%}<div class="product-sku">{{ 'products.product.sku' | t }}: <span class="variant-sku">{{ current_variant.sku }}</span></div>{%- endif -%}
-              	{%- if section.settings.show_product_review -%}<div><a class="reviewLink" href="#tab2"><span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span></a></div>{%- endif -%}
-          	</div>
+      <div class="prInfoRow">
+        {%- if section.settings.show_product_availability -%}
+          <div class="product-stock">
+            <span
+                class="instock {% unless product.available %}hide{% endunless %}">{{ 'products.product.available' | t }}</span>
+            <span
+                class="outstock {% if product.available %}hide{% endif %}">{{ 'products.product.unavailable' | t }}</span>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.show_product_sku -%}
+          <div class="product-sku">{{ 'products.product.sku' | t }}: <span
+            class="variant-sku">{{ current_variant.sku }}</span></div>{%- endif -%}
+        {%- if section.settings.show_product_review -%}
+          <div><a class="reviewLink" href="#tab2"><span class="shopify-product-reviews-badge"
+                                                        data-id="{{ product.id }}"></span></a></div>{%- endif -%}
+      </div>
 
-          	{%- unless settings.catalog-mode -%}
-			<p class="product-single__price product-single__price-{{ section.id }}{% unless current_variant.available %} product-price--sold-out{% endunless %}">
-            	{% if current_variant.compare_at_price > current_variant.price %}
-                	<span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-                  	<s id="ComparePrice-{{ section.id }}">{{ current_variant.compare_at_price | money }}</s>
-                  	<span class="product-price__price product-price__price-{{ section.id }} product-price__sale product-price__sale--single">
-                    	<span id="ProductPrice-{{ section.id }}" content="{{ current_variant.price | divided_by: 100.00 }}">{{ current_variant.price | money }}</span>
+      {%- unless settings.catalog-mode -%}
+        <p class="product-single__price product-single__price-{{ section.id }}{% unless current_variant.available %} product-price--sold-out{% endunless %}">
+          {% if current_variant.compare_at_price > current_variant.price %}
+            <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+            <s id="ComparePrice-{{ section.id }}">{{ current_variant.compare_at_price | money }}</s>
+            <span
+                class="product-price__price product-price__price-{{ section.id }} product-price__sale product-price__sale--single">
+                    	<span id="ProductPrice-{{ section.id }}"
+                            content="{{ current_variant.price | divided_by: 100.00 }}">{{ current_variant.price | money }}</span>
                   	</span>
-              		{% if section.settings.show_saleoff %}  
-          			<span class="discount-badge"> <span class="devider">|</span>&nbsp;
-          				<span itemprop="name">{{ 'products.product.you_save' | t}}</span>
+            {% if section.settings.show_saleoff %}
+              <span class="discount-badge"> <span class="devider">|</span>&nbsp;
+          				<span itemprop="name">{{ 'products.product.you_save' | t }}</span>
                         <span id="SaveAmount-{{ section.id }}" class="product-single__save-amount">
                         {{ product.compare_at_price | minus: product.price | money }}
                         </span>
-                        <span class="off">(<span>{{ current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price }}</span>%{{ 'products.product.off' | t}})</span>              	
+                        <span
+                            class="off">(<span>{{ current_variant.compare_at_price | minus: current_variant.price | times: 100 | divided_by: current_variant.compare_at_price }}</span>%{{ 'products.product.off' | t }})</span>
           			</span>
-              		{% endif %}
-              {% else %}
-					<span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
-                	<s id="ComparePrice-{{ section.id }}" class="hide">{{ current_variant.compare_at_price | money }}</s>
-					<span class="product-price__price product-price__price-{{ section.id }}">
-                    	<span id="ProductPrice-{{ section.id }}" content="{{ current_variant.price | divided_by: 100.00 }}">{{ current_variant.price | money }}</span>
-                    	<span class="product-price__sale-label product-price__sale-label-{{ section.id }} hide">{{ 'products.product.on_sale' | t }}</span>
+            {% endif %}
+          {% else %}
+            <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+            <s id="ComparePrice-{{ section.id }}" class="hide">{{ current_variant.compare_at_price | money }}</s>
+            <span class="product-price__price product-price__price-{{ section.id }}">
+                    	<span id="ProductPrice-{{ section.id }}"
+                            content="{{ current_variant.price | divided_by: 100.00 }}">{{ current_variant.price | money }}</span>
+                    	<span
+                          class="product-price__sale-label product-price__sale-label-{{ section.id }} hide">{{ 'products.product.on_sale' | t }}</span>
                   	</span>
-              	{% endif %}
-        	</p>   
-          {%- endunless -%}
+          {% endif %}
+        </p>
+      {%- endunless -%}
 
-			{%- if section.settings.fake_orders -%}
-        		{%- assign ordermsg = section.settings.orders_msg | replace: '[orders]','<strong class="items"></strong>' | replace: '[hours]','<strong class="time"></strong>' -%}
-        		<div class="orderMsg" data-user="{{section.settings.orders}}" data-time="{{section.settings.orders_time}}">{% include 'icon-fire' %} {{ordermsg}}</div>
-      		{%- endif -%}
+      {%- if section.settings.fake_orders -%}
+        {%- assign ordermsg = section.settings.orders_msg | replace: '[orders]','<strong class="items"></strong>' | replace: '[hours]','<strong class="time"></strong>' -%}
+        <div class="orderMsg" data-user="{{ section.settings.orders }}"
+             data-time="{{ section.settings.orders_time }}">{% include 'icon-fire' %} {{ ordermsg }}</div>
+      {%- endif -%}
 
-			{%- comment -%}****	product short description **** {%- endcomment -%}
-        	{% if section.settings.show_short_desc %}
-        		<div class="product-single__description rte">
-          			{% assign meta = product.metafields.meta %}
-            		{% assign key = 'short_des' %}
-            		{% if meta.short_des != blank %}
-              			{{ meta.short_des }}
-            		{% elsif product.empty? %}
-            			{{ 'homepage.onboarding.product_description' | t }}
-          			{% else %}
-          				{{ product.description | strip_html | truncatewords: 40 }}<div class="esc-size-matters-preinstall" id="preinstall-20d654fc4eebc9a34addd48214604bba"></div>
-            		{% endif %}
-         		</div>     
-     <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
-          
-			{% endif %}
-          
-            {% unless template contains "product.pre-order" %}
-			{% if section.settings.quantity_msg and product.variants.first.inventory_management == "shopify" and product.variants.first.inventory_quantity < 20 and product.variants.first.inventory_quantity != 0 %}
-          		{% assign qtyMsg = 'products.product.quantity_message' | t | split: '{{items}}' %}
-          		<div id="quantity_message">{{qtyMsg[0]}} <span class="items">{{product.selected_or_first_available_variant.inventory_quantity}}</span> {{qtyMsg[1]}}</div>
-          		{%- for variant in product.variants -%}<span class="hide" id="pvr-{{ variant.id }}">{{variant.inventory_quantity}}</span>{%- endfor -%}
-          	{% endif %}
-            {% endunless %}
+      {%- comment -%}****  product short description **** {%- endcomment -%}
+      {% if section.settings.show_short_desc %}
+        <div class="product-single__description rte">
+          {% assign meta = product.metafields.meta %}
+          {% assign key = 'short_des' %}
+          {% if meta.short_des != blank %}
+            {{ meta.short_des }}
+            {% elsif product.empty? %}
+            {{ 'homepage.onboarding.product_description' | t }}
+          {% else %}
+            {{ product.description | strip_html | truncatewords: 40 }}
+            <div class="esc-size-matters-preinstall" id="preinstall-20d654fc4eebc9a34addd48214604bba"></div>
+          {% endif %}
+        </div>
+        <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
 
-          	{% assign meta = product.metafields.meta %}
-          	{% assign key = 'countdown' %}
-          	{% if section.settings.countdown and meta.countdown != blank %}
-          		<div id="countdown"></div>
-                <script type="text/javascript">
-                  var countDownDate = new Date("{{ meta.countdown }}").getTime();
-                  var x = setInterval(function() { 
-                      var now = new Date().getTime(),
-                          distance = countDownDate - now,
-                          days = Math.floor(distance / (1000 * 60 * 60 * 24)),
-                          hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-                          minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-                          seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      {% endif %}
 
-                    	 if(days > 99)
-                          {
-                            days = ("00" + days).substr(-3);
-                          }
-                          else 
-                          {
-                            days = ("00" + days).substr(-2);
-                          }
-                          hours = ("00" + hours).substr(-2);
-                          minutes = ("00" + minutes).substr(-2);
-                          seconds = ("00" + seconds).substr(-2);
-                    
-                        document.getElementById("countdown").innerHTML = "<span class='days'>" + days + "<span>Days</span></span> <span class='hours'>" + hours + "<span>Hours</span></span> <span class='minutes'>"
-                            + minutes + "<span>Minutes</span></span> <span class='seconds'>" + seconds + "<span>Seconds</span>";
+      {% unless template contains "product.pre-order" %}
+        {% if section.settings.quantity_msg and product.variants.first.inventory_management == "shopify" and product.variants.first.inventory_quantity < 20 and product.variants.first.inventory_quantity != 0 %}
+          {% assign qtyMsg = 'products.product.quantity_message' | t | split: '{{items}}' %}
+          <div id="quantity_message">{{ qtyMsg[0] }} <span
+                class="items">{{ product.selected_or_first_available_variant.inventory_quantity }}</span> {{ qtyMsg[1] }}
+          </div>
+          {%- for variant in product.variants -%}<span class="hide"
+                                                       id="pvr-{{ variant.id }}">{{ variant.inventory_quantity }}</span>{%- endfor -%}
+        {% endif %}
+      {% endunless %}
 
-                        if (distance < 0) {
-                          clearInterval(x);
-                          document.getElementById("countdown").style.display = "none";
-                        }
-                   }, 1000);
-                </script>
-			{% endif %}
-		          	
-          	{%- comment -%}****	product variants **** {%- endcomment -%}
-          	{%- if section.settings.show_variant_swatches -%}
-          	{%- assign hidedropdown = " hidedropdown" -%}
-          	{%- endif -%}
-          	{%- assign formclass = 'product-form product-form-' | append: section.id | append: hidedropdown -%}
-          	{% form 'product', product, class: formclass %}
-  
-				{% unless product.options.size == 1 and product.variants[0].title == 'Default Title' %}
-                	{% for option in product.options_with_values %}
-                    <div class="selector-wrapper js product-form__item">
-                    	<label {% if option.name == 'default' %}class="label--hidden" {% endif %}for="SingleOptionSelector-{{ forloop.index0 }}">{{ option.name }}</label>
-                      	<select class="single-option-selector single-option-selector-{{ section.id }} product-form__input selectbox" id="SingleOptionSelector-{{ forloop.index0 }}" data-index="option{{ forloop.index }}">
-                        {% for value in option.values %}<option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>{% endfor %}
-                      	</select>                      	
-                    </div>
-                  	{% endfor %}
-                {% endunless %}
+      {% assign meta = product.metafields.meta %}
+      {% assign key = 'countdown' %}
+      {% if section.settings.countdown and meta.countdown != blank %}
+        <div id="countdown"></div>
+        <script type="text/javascript">
+            var countDownDate = new Date("{{ meta.countdown }}").getTime();
+            var x = setInterval(function () {
+                var now = new Date().getTime(),
+                    distance = countDownDate - now,
+                    days = Math.floor(distance / (1000 * 60 * 60 * 24)),
+                    hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                    minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+                    seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-                <select name="id" id="ProductSelect-{{ section.id }}" data-section="{{ section.id }}" class="product-form__variants selectbox no-js">
-                	{% for variant in product.variants %}
-                    	{%- if variant.available -%}
-                      		<option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }}</option>
-                    	{%- else -%}
-                      		<option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
-                    	{%- endif -%}
-                  	{% endfor %}
-                </select>
-                {% include 'product-customizer' %}
-            	{%- comment -%}****	product swatches **** {%- endcomment -%}
-                {% if section.settings.show_variant_swatches and product.available and product.variants.size > 0 and product.variants[0].title != 'Default Title' %}
-                   	{% include 'product-color-links' %}
-										 {% for option in product.options %}{% include 'swatch' with option %}{% endfor %}
-				{% endif %}
-                      
-      			{% if section.settings.sizechartlink or section.settings.askaboutproduct %}
-     			 <p class="infolinks"> 
-                   {% if section.settings.sizechartlink %}                                       
-                   		<a href="#sizechart" class="sizelink btn"> {{'products.product.size_guide' | t}}</a>
-                   {% endif %}
-                   {% if section.settings.askaboutproduct %}
-                   		<a href="#productInquiry" class="emaillink btn"> {{'products.product.product_enquiry' | t}}</a>
-                   {% endif %}
-      			 </p>                
-       			{% endif %}
-      
-				{%- comment -%}****	add to cart **** {%- endcomment -%}
-          		{%- unless settings.catalog-mode -%}
-           		<div class="product-action clearfix">
-              		<div class="product-form__item--quantity">
-                		<div class="wrapQtyBtn">
-                  			<div class="qtyField">
-                              	<a class="qtyBtn minus" href="javascript:void(0);"><i class="ad ad-minus-r"></i></a>
-                                <input type="text" id="Quantity" name="quantity" value="1" class="product-form__input qty" />
-                                <a class="qtyBtn plus" href="javascript:void(0);"><i class="ad ad-plus-r"></i></a>
-                  			</div>
-                		</div>
-              		</div>
-                   {% if template contains "product.pre-order" %}
-                  	<div class="product-form__item--submit">
-                		<button type="submit" name="add" id="AddToCart-{{ section.id }}" {% unless current_variant.available %}disabled="disabled"{% endunless %} class="btn product-form__cart-submit{% if product.options.size == 1 and product.variants[0].title == 'Default Title' %} product-form__cart-submit--small{% endif %}">
-                  			<span id="AddToCartText">{{ 'products.product.pre_order_now' | t | json | remove: '"' }}</span>
-                        </button>
-              		</div>
-                  {% else %}
-					<div class="product-form__item--submit">
-                		<button type="submit" name="add" id="AddToCart-{{ section.id }}" {% unless current_variant.available %}disabled="disabled"{% endunless %} class="btn product-form__cart-submit{% if product.options.size == 1 and product.variants[0].title == 'Default Title' %} product-form__cart-submit--small{% endif %}">
-                  			<span id="AddToCartText-{{ section.id }}">{%- unless current_variant.available -%}{{ 'products.product.unavailable' | t }}{%- else -%}{{ 'products.product.add_to_cart' | t }}{%- endunless -%}</span>
-                		</button>
-              		</div>
-                  {% endif %}
-                  	{%- if section.settings.enable_payment_button -%}{% if product.metafields.product_customizer == empty %}{{ form | payment_button }}{% endif %}{%- endif -%}
-            	</div>
-          		{%- endunless -%}
-			{% endform %}
-      
-			<div class="display-table shareRow">
-	         	<div class="display-table-cell {% unless section.settings.show_share_buttons == false %}medium-up--one-third{% endunless %}">{% include 'wishlist' %}</div>
-	         	{%- if section.settings.show_share_buttons -%}
-    		      	<div class="display-table-cell text-right">{% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}</div>
-         		{%- endif -%}
-        	</div>
-      
-      		{%- if section.settings.show_free_ship -%}
-          		{%- if settings.free_ship != blank and settings.free_ship_msg != blank -%}
-	               	<p id="freeShipMsg" class="freeShipMsg" data-price="{{settings.free_ship}}"><i class="ad ad-truck-line"></i> {{settings.free_ship_msg | replace: '$','<b class="freeShip"></b>' }}</p>
-                 	<p id="freeShipclaim" class="freeShipMsg"><i class="ad ad-truck-line"></i> {{settings.got_free_ship }}</p>
-				{%- endif -%}
-          	{%- endif -%}
-          
-          	{%- if section.settings.show_estimate_ship -%}
-          		{% assign meta = product.metafields.meta %}
-          		{% assign key = 'shipping' %}
-          		{%- if meta.shipping != blank %}
-          			{%- assign days = meta.shipping | split: "/" -%}
-          		{%- else %}
-          			{%- assign days = settings.estimate_ship | split: "/" -%}
-          		{%- endif %}
-          		{%- if settings.estimate_shipping_msg != blank -%}
-          			<p class="shippingMsg"><i class="ad ad-clock"></i> {{settings.estimate_shipping_msg | replace:'[startdate]','<b id="fromDate"></b>' | replace:'[enddate]','<b id="toDate"></b>' }}</p>
-          		{%- endif -%}
-                {{ '//cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js' | script_tag }}
-                <script>
-                  var fromDate = Date.today().addDays({{days[0]}});
-                  var toDate = Date.today().addDays({{days[1]}});
-                  if (fromDate.is().saturday() || fromDate.is().sunday()) { 
-                    if (fromDate.is().sunday()){ 
-						toDate = toDate.addDays(1);
-                    } else if (fromDate.is().saturday()) {
-                      	toDate = toDate.addDays(2);
-                    }
-                    fromDate = fromDate.next().monday();
-                  }
-                  if (toDate.is().saturday() || toDate.is().sunday()) { 
-                      toDate = toDate.next().monday();
-                  }
-                  document.getElementById('fromDate').innerHTML = fromDate.toString('ddd. MMM d');
-                  document.getElementById('toDate').innerHTML = toDate.toString('ddd. MMM d');
-                </script>
-          	{%- endif -%}
-          
-        	{%- if section.settings.fake_visitors -%}
-        		{%- assign visitormsg = section.settings.visitors_msg | replace: '[visitors]','<i class="ad ad-users-l" aria-hidden="true"></i> <strong class="uersView"></strong>' -%}
-        		<div class="userViewMsg" data-user="{{section.settings.visitors}}" data-time="{{section.settings.visitors_time | times:1000}}">{{visitormsg}}</div>
-      		{%- endif -%}
+                if (days > 99) {
+                    days = ("00" + days).substr(-3);
+                } else {
+                    days = ("00" + days).substr(-2);
+                }
+                hours = ("00" + hours).substr(-2);
+                minutes = ("00" + minutes).substr(-2);
+                seconds = ("00" + seconds).substr(-2);
 
-      	   {% if section.settings.image_banner != blank %}         
-           <p class="safecheckout"> {{ section.settings.image_banner | img_url: 'master' | img_tag}}</p>
-           {% endif %}
-      
-          	<div class="product-info">
-           		{%- if section.settings.show_product_type -%}
-          			<p class="product-type"><span class="lbl">{{ 'products.product.type' | t }}:</span> {{ product.type | link_to_type }}</p>
-           		{%- endif -%}
+                document.getElementById("countdown").innerHTML = "<span class='days'>" + days + "<span>Days</span></span> <span class='hours'>" + hours + "<span>Hours</span></span> <span class='minutes'>"
+                    + minutes + "<span>Minutes</span></span> <span class='seconds'>" + seconds + "<span>Seconds</span>";
 
-                {% assign found_a_collection = false %}
-                {% if collection and collection.all_products_count > 1 %}
-                    {%- unless exclusions contains collection.handle -%}{% assign found_a_collection = true %}{%- endunless -%}
-                {% endif %}
-                {% unless found_a_collection %}
-                    {% for c in product.collections %}
-                        {% unless exclusions contains c.handle or c.all_products_count < 2 %}
-                            {% assign found_a_collection = true %}
-                            {% assign collection = c %}
-                            {% break %}
-                        {% endunless %}
-                    {% endfor %}
-                {% endunless %}
-                {% if section.settings.show_collection and found_a_collection %}
-                <p class="product-cat">
-                    <span class="lbl">{{ 'products.product.collection' | t }}: </span>
-                    {%- for c in product.collections limit:10 -%}
-                        {% unless exclusions contains c.handle or c.all_products_count < 2 %}{{ c.title | link_to: c.url }} {% endunless %}
-                    {%- endfor -%}
-                </p>
-                {% endif %}
+                if (distance < 0) {
+                    clearInterval(x);
+                    document.getElementById("countdown").style.display = "none";
+                }
+            }, 1000);
+        </script>
+      {% endif %}
 
-                {% if section.settings.show_tags and product.tags.size > 0 %}
-                <p class="product-tags">
-                  <span class="lbl">{{ 'products.product.tags' | t }}: </span>
-                  {%- for collection in product.collections limit:1 -%}
-                    {%- for tag in product.tags limit:10 -%}
-                        <a href="{{ collection.url }}?constraint={{ tag | handle }}">{{ tag | remove:'type ' | remove:'Type ' }}</a>{% unless forloop.last %},{% endunless %}
-                    {%- endfor -%}
-                  {%- endfor -%}
-                </p>
-                {% endif %}
+      {%- comment -%}****  product variants **** {%- endcomment -%}
+      {%- if section.settings.show_variant_swatches -%}
+        {%- assign hidedropdown = " hidedropdown" -%}
+      {%- endif -%}
+      {%- assign formclass = 'product-form product-form-' | append: section.id | append: hidedropdown -%}
+      {% form 'product', product, class: formclass %}
+
+        {% unless product.options.size == 1 and product.variants[0].title == 'Default Title' %}
+          {% for option in product.options_with_values %}
+            <div class="selector-wrapper js product-form__item">
+              <label {% if option.name == 'default' %}class="label--hidden"
+                     {% endif %}for="SingleOptionSelector-{{ forloop.index0 }}">{{ option.name }}</label>
+              <select
+                  class="single-option-selector single-option-selector-{{ section.id }} product-form__input selectbox"
+                  id="SingleOptionSelector-{{ forloop.index0 }}" data-index="option{{ forloop.index }}">
+                {% for value in option.values %}
+                  <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>{% endfor %}
+              </select>
+            </div>
+          {% endfor %}
+        {% endunless %}
+
+        <select name="id" id="ProductSelect-{{ section.id }}" data-section="{{ section.id }}"
+                class="product-form__variants selectbox no-js">
+          {% for variant in product.variants %}
+            {%- if variant.available -%}
+              <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %}
+                  value="{{ variant.id }}">{{ variant.title }}</option>
+            {%- else -%}
+              <option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+            {%- endif -%}
+          {% endfor %}
+        </select>
+        {%- comment -%}****  product swatches **** {%- endcomment -%}
+        {% if section.settings.show_variant_swatches and product.available and product.variants.size > 0 and product.variants[0].title != 'Default Title' %}
+          {% include 'product-color-links' %}
+          {% for option in product.options %}{% include 'swatch' with option %}{% endfor %}
+        {% endif %}
+
+        {% include 'product-customizer' %}
+
+
+        {% if section.settings.sizechartlink or section.settings.askaboutproduct %}
+          <p class="infolinks">
+            {% if section.settings.sizechartlink %}
+              <a href="#sizechart" class="sizelink btn"> {{ 'products.product.size_guide' | t }}</a>
+            {% endif %}
+            {% if section.settings.askaboutproduct %}
+              <a href="#productInquiry" class="emaillink btn"> {{ 'products.product.product_enquiry' | t }}</a>
+            {% endif %}
+          </p>
+        {% endif %}
+
+        {%- comment -%}****  add to cart **** {%- endcomment -%}
+        {%- unless settings.catalog-mode -%}
+          <div class="product-action clearfix">
+            <div class="product-form__item--quantity">
+              <div class="wrapQtyBtn">
+                <div class="qtyField">
+                  <a class="qtyBtn minus" href="javascript:void(0);"><i class="ad ad-minus-r"></i></a>
+                  <input type="text" id="Quantity" name="quantity" value="1" class="product-form__input qty"/>
+                  <a class="qtyBtn plus" href="javascript:void(0);"><i class="ad ad-plus-r"></i></a>
+                </div>
               </div>
-		</div>
-	</div>
+            </div>
+            {% if template contains "product.pre-order" %}
+              <div class="product-form__item--submit">
+                <button type="submit" name="add" id="AddToCart-{{ section.id }}"
+                        {% unless current_variant.available %}disabled="disabled"{% endunless %}
+                        class="btn product-form__cart-submit{% if product.options.size == 1 and product.variants[0].title == 'Default Title' %} product-form__cart-submit--small{% endif %}">
+                  <span id="AddToCartText">{{ 'products.product.pre_order_now' | t | json | remove: '"' }}</span>
+                </button>
+              </div>
+            {% else %}
+              <div class="product-form__item--submit">
+                <button type="submit" name="add" id="AddToCart-{{ section.id }}"
+                        {% unless current_variant.available %}disabled="disabled"{% endunless %}
+                        class="btn product-form__cart-submit{% if product.options.size == 1 and product.variants[0].title == 'Default Title' %} product-form__cart-submit--small{% endif %}">
+                  <span
+                      id="AddToCartText-{{ section.id }}">{%- unless current_variant.available -%}{{ 'products.product.unavailable' | t }}{%- else -%}{{ 'products.product.add_to_cart' | t }}{%- endunless -%}</span>
+                </button>
+              </div>
+            {% endif %}
+            {%- if section.settings.enable_payment_button -%}{% if product.metafields.product_customizer == empty %}{{ form | payment_button }}{% endif %}{%- endif -%}
+          </div>
+        {%- endunless -%}
+      {% endform %}
+
+      <div class="display-table shareRow">
+        <div
+            class="display-table-cell {% unless section.settings.show_share_buttons == false %}medium-up--one-third{% endunless %}">{% include 'wishlist' %}</div>
+        {%- if section.settings.show_share_buttons -%}
+          <div
+              class="display-table-cell text-right">{% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}</div>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.show_free_ship -%}
+        {%- if settings.free_ship != blank and settings.free_ship_msg != blank -%}
+          <p id="freeShipMsg" class="freeShipMsg" data-price="{{ settings.free_ship }}"><i
+                class="ad ad-truck-line"></i> {{ settings.free_ship_msg | replace: '$','<b class="freeShip"></b>' }}</p>
+          <p id="freeShipclaim" class="freeShipMsg"><i class="ad ad-truck-line"></i> {{ settings.got_free_ship }}</p>
+        {%- endif -%}
+      {%- endif -%}
+
+      {%- if section.settings.show_estimate_ship -%}
+        {% assign meta = product.metafields.meta %}
+        {% assign key = 'shipping' %}
+        {%- if meta.shipping != blank %}
+          {%- assign days = meta.shipping | split: "/" -%}
+        {%- else %}
+          {%- assign days = settings.estimate_ship | split: "/" -%}
+        {%- endif %}
+      {%- if settings.estimate_shipping_msg != blank -%}
+        <p class="shippingMsg"><i
+              class="ad ad-clock"></i> {{ settings.estimate_shipping_msg | replace:'[startdate]','<b id="fromDate"></b>' | replace:'[enddate]','<b id="toDate"></b>' }}
+        </p>
+      {%- endif -%}
+        {{ '//cdnjs.cloudflare.com/ajax/libs/datejs/1.0/date.min.js' | script_tag }}
+        <script>
+            var fromDate = Date.today().addDays({{ days[0] }});
+            var toDate = Date.today().addDays({{ days[1] }});
+            if (fromDate.is().saturday() || fromDate.is().sunday()) {
+                if (fromDate.is().sunday()) {
+                    toDate = toDate.addDays(1);
+                } else if (fromDate.is().saturday()) {
+                    toDate = toDate.addDays(2);
+                }
+                fromDate = fromDate.next().monday();
+            }
+            if (toDate.is().saturday() || toDate.is().sunday()) {
+                toDate = toDate.next().monday();
+            }
+            document.getElementById('fromDate').innerHTML = fromDate.toString('ddd. MMM d');
+            document.getElementById('toDate').innerHTML = toDate.toString('ddd. MMM d');
+        </script>
+      {%- endif -%}
+
+      {%- if section.settings.fake_visitors -%}
+        {%- assign visitormsg = section.settings.visitors_msg | replace: '[visitors]','<i class="ad ad-users-l" aria-hidden="true"></i> <strong class="uersView"></strong>' -%}
+        <div class="userViewMsg" data-user="{{ section.settings.visitors }}"
+             data-time="{{ section.settings.visitors_time | times:1000 }}">{{ visitormsg }}</div>
+      {%- endif -%}
+
+      {% if section.settings.image_banner != blank %}
+        <p class="safecheckout"> {{ section.settings.image_banner | img_url: 'master' | img_tag }}</p>
+      {% endif %}
+
+      <div class="product-info">
+        {%- if section.settings.show_product_type -%}
+          <p class="product-type"><span
+                class="lbl">{{ 'products.product.type' | t }}:</span> {{ product.type | link_to_type }}</p>
+        {%- endif -%}
+
+        {% assign found_a_collection = false %}
+        {% if collection and collection.all_products_count > 1 %}
+          {%- unless exclusions contains collection.handle -%}{% assign found_a_collection = true %}{%- endunless -%}
+        {% endif %}
+        {% unless found_a_collection %}
+          {% for c in product.collections %}
+            {% unless exclusions contains c.handle or c.all_products_count < 2 %}
+            {% assign found_a_collection = true %}
+            {% assign collection = c %}
+            {% break %}
+            {% endunless %}
+          {% endfor %}
+        {% endunless %}
+        {% if section.settings.show_collection and found_a_collection %}
+          <p class="product-cat">
+            <span class="lbl">{{ 'products.product.collection' | t }}: </span>
+            {%- for c in product.collections limit:10 -%}
+              {% unless exclusions contains c.handle or c.all_products_count < 2 %}{{ c.title | link_to: c.url }} {% endunless %}
+            {%- endfor -%}
+          </p>
+        {% endif %}
+
+        {% if section.settings.show_tags and product.tags.size > 0 %}
+          <p class="product-tags">
+            <span class="lbl">{{ 'products.product.tags' | t }}: </span>
+            {%- for collection in product.collections limit:1 -%}
+              {%- for tag in product.tags limit:10 -%}
+                <a
+                href="{{ collection.url }}?constraint={{ tag | handle }}">{{ tag | remove:'type ' | remove:'Type ' }}</a>{% unless forloop.last %},{% endunless %}
+              {%- endfor -%}
+            {%- endfor -%}
+          </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
 </div>
 {%- if section.settings.show_features -%}
-  	{%- capture featurecolumns -%}{{section.settings.feature1_text | remove: " "}} {{section.settings.feature2_text | remove: " "}} {{section.settings.feature3_text | remove: " "}} {{section.settings.feature4_text | remove: " "}}{%- endcapture -%}
-    {%- assign columnitems = featurecolumns | split: ' ' -%}
-    {%- assign prfcolumns = 'medium-up--one-half large-up--one-quarter' -%}
-    {%- if columnitems.size == 3 -%}
-	    {% assign prfcolumns = 'medium-up--one-half large-up--one-third' %}
+  {%- capture featurecolumns -%}{{ section.settings.feature1_text | remove: " " }} {{ section.settings.feature2_text | remove: " " }} {{ section.settings.feature3_text | remove: " " }} {{ section.settings.feature4_text | remove: " " }}{%- endcapture -%}
+  {%- assign columnitems = featurecolumns | split: ' ' -%}
+  {%- assign prfcolumns = 'medium-up--one-half large-up--one-quarter' -%}
+  {%- if columnitems.size == 3 -%}
+    {% assign prfcolumns = 'medium-up--one-half large-up--one-third' %}
     {%- elsif columnitems.size == 2 -%}
-    	{% assign prfcolumns = 'medium-up--one-half' %}
+    {% assign prfcolumns = 'medium-up--one-half' %}
     {%- elsif columnitems.size == 1 -%}
-	    {% assign prfcolumns = 'one-whole' %}
-    {%- endif -%}
-	<div class="grid prFeatures">
-      	{%- if section.settings.feature1_icon != blank or section.settings.feature1_text != blank -%}
-      	<div class="grid__item {{prfcolumns}} feature">
-          	{%- if section.settings.feature1_icon != blank -%}{{ section.settings.feature1_icon | img_url:'50x' | img_tag }}{%- endif %}
-          	{%- if section.settings.feature1_text != blank -%}<div class="details">{{section.settings.feature1_text}}</div>{%- endif %}
-      	</div>
-      	{%- endif %}
-      	{%- if section.settings.feature2_icon != blank or section.settings.feature2_text != blank -%}
-      	<div class="grid__item {{prfcolumns}} feature">
-          	{%- if section.settings.feature2_icon != blank -%}{{ section.settings.feature2_icon | img_url:'50x' | img_tag }}{%- endif %}
-          	{%- if section.settings.feature2_text != blank -%}<div class="details">{{section.settings.feature2_text}}</div>{%- endif %}
-      	</div>
-      	{%- endif %}
-      	{%- if section.settings.feature3_icon != blank or section.settings.feature3_text != blank -%}
-      	<div class="grid__item {{prfcolumns}} feature">
-          	{%- if section.settings.feature3_icon != blank -%}{{ section.settings.feature3_icon | img_url:'50x' | img_tag }}{%- endif %}
-          	{%- if section.settings.feature3_text != blank -%}<div class="details">{{section.settings.feature3_text}}</div>{%- endif %}
-      	</div>
-      	{%- endif %}
-      	{%- if section.settings.feature4_icon != blank or section.settings.feature4_text != blank -%}
-      	<div class="grid__item {{prfcolumns}} feature">
-          	{%- if section.settings.feature4_icon != blank -%}{{ section.settings.feature4_icon | img_url:'50x' | img_tag }}{%- endif %}
-          	{%- if section.settings.feature4_text != blank -%}<div class="details">{{section.settings.feature4_text}}</div>{%- endif %}
-      	</div>
-      	{%- endif %}
-	</div>
+    {% assign prfcolumns = 'one-whole' %}
+  {%- endif -%}
+  <div class="grid prFeatures">
+    {%- if section.settings.feature1_icon != blank or section.settings.feature1_text != blank -%}
+      <div class="grid__item {{ prfcolumns }} feature">
+        {%- if section.settings.feature1_icon != blank -%}{{ section.settings.feature1_icon | img_url:'50x' | img_tag }}{%- endif %}
+        {%- if section.settings.feature1_text != blank -%}
+          <div class="details">{{ section.settings.feature1_text }}</div>{%- endif %}
+      </div>
+    {%- endif %}
+    {%- if section.settings.feature2_icon != blank or section.settings.feature2_text != blank -%}
+      <div class="grid__item {{ prfcolumns }} feature">
+        {%- if section.settings.feature2_icon != blank -%}{{ section.settings.feature2_icon | img_url:'50x' | img_tag }}{%- endif %}
+        {%- if section.settings.feature2_text != blank -%}
+          <div class="details">{{ section.settings.feature2_text }}</div>{%- endif %}
+      </div>
+    {%- endif %}
+    {%- if section.settings.feature3_icon != blank or section.settings.feature3_text != blank -%}
+      <div class="grid__item {{ prfcolumns }} feature">
+        {%- if section.settings.feature3_icon != blank -%}{{ section.settings.feature3_icon | img_url:'50x' | img_tag }}{%- endif %}
+        {%- if section.settings.feature3_text != blank -%}
+          <div class="details">{{ section.settings.feature3_text }}</div>{%- endif %}
+      </div>
+    {%- endif %}
+    {%- if section.settings.feature4_icon != blank or section.settings.feature4_text != blank -%}
+      <div class="grid__item {{ prfcolumns }} feature">
+        {%- if section.settings.feature4_icon != blank -%}{{ section.settings.feature4_icon | img_url:'50x' | img_tag }}{%- endif %}
+        {%- if section.settings.feature4_text != blank -%}
+          <div class="details">{{ section.settings.feature4_text }}</div>{%- endif %}
+      </div>
+    {%- endif %}
+  </div>
 {%- endif -%}
   
-{%- comment -%}****	product tabs **** {%- endcomment -%}
-	<div class="tabs-listing wow fadeIn">
-    	{%- if section.settings.show_product_tabs -%}
-		<ul class="product-tabs">
-          {% if section.settings.show_tab_1 %}
-          <li><a class="tablink" href="#tab1">{{ section.settings.tab_1_title_text }}</a></li>
-          {% endif %}
+{%- comment -%}****  product tabs **** {%- endcomment -%}
+<div class="tabs-listing wow fadeIn">
+  {%- if section.settings.show_product_tabs -%}
+    <ul class="product-tabs">
+      {% if section.settings.show_tab_1 %}
+        <li><a class="tablink" href="#tab1">{{ section.settings.tab_1_title_text }}</a></li>
+      {% endif %}
 
-          {% if section.settings.show_tab_2 %}
-          <li><a class="tablink" href="#tab2">{{ section.settings.tab_2_title_text }}</a></li>
-          {% endif %}
+      {% if section.settings.show_tab_2 %}
+        <li><a class="tablink" href="#tab2">{{ section.settings.tab_2_title_text }}</a></li>
+      {% endif %}
 
-          {% if section.settings.show_tab_3 %}
-          <li><a class="tablink" href="#tab3">{{ section.settings.tab_3_title_text }}</a></li>
-          {% endif %}
+      {% if section.settings.show_tab_3 %}
+        <li><a class="tablink" href="#tab3">{{ section.settings.tab_3_title_text }}</a></li>
+      {% endif %}
 
-          {% if section.settings.show_tab_4 %}
-          <li><a class="tablink" href="#tab4">{{ section.settings.tab_4_title_text }}</a></li>
-          {% endif %}
+      {% if section.settings.show_tab_4 %}
+        <li><a class="tablink" href="#tab4">{{ section.settings.tab_4_title_text }}</a></li>
+      {% endif %}
 
-           {% if section.settings.show_tab_5 %}
-           <li><a class="tablink" href="#tab5">{{ section.settings.tab_5_title_text }}</a></li>
-           {% endif %}
-          
-            {% if section.settings.show_tab_6 %}
-          	<li><a class="tablink" href="#tab6">{{ section.settings.tab_6_title_text }}</a></li>
-            {% endif %}
-        </ul>
-		{%- endif -%}
-        <div class="tab-container{% unless section.settings.show_product_tabs %} noTabs{% endunless %}">
-        	{% if section.settings.show_tab_1 %}
-          		{%- if section.settings.show_product_tabs -%}
-          			<h3 class="acor-ttl active"><a class="tablink" href="#tab1">{{ section.settings.tab_1_title_text }}</a></h3>
-          		{%- else -%}
-          			<h3 class="h2">{{ section.settings.tab_1_title_text }}</h3>
-          		{%- endif -%}
-       			<div id="tab1" class="tab-content">
-              		<div class="product-description rte">{{ product.description }}<div class="esc-size-matters-preinstall" id="preinstall-1148923c1db923b72fe7e30db54ce1e1"></div></div>        
-            	</div>
-     
-           	{% endif %}
-			{% if section.settings.show_tab_2 %}          	
-          		{%- if section.settings.show_product_tabs -%}
-                	<h3 class="acor-ttl"><a class="tablink" href="#tab2">{{ section.settings.tab_2_title_text }}</a></h3>
-              	{%- else -%}
-                	<h3 class="h2">{{ section.settings.tab_2_title_text }}</h3>
-              	{%- endif -%}
-       		  	<div id="tab2" class="tab-content">
-                	<div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div> 
-              	</div>	          	
-          	{% endif %}
+      {% if section.settings.show_tab_5 %}
+        <li><a class="tablink" href="#tab5">{{ section.settings.tab_5_title_text }}</a></li>
+      {% endif %}
 
-          	{% if section.settings.show_tab_3 %}
-          		{%- if section.settings.show_product_tabs -%}
-                	<h3 class="acor-ttl"><a class="tablink" href="#tab3">{{ section.settings.tab_3_title_text }}</a></h3>
-              	{%- else -%}
-                	<h3 class="h2">{{ section.settings.tab_3_title_text }}</h3>
-              	{%- endif -%}
-       			<div id="tab3" class="tab-content">
-              		{% assign meta = product.metafields.meta %}
-              		{% assign key = 'sizechart' %}
-              		{% if meta.sizechart != blank %}
-                		{{ meta.sizechart }}
-              		{% elsif section.settings.sizechart != blank %}
-                  		<img src="{{ section.settings.sizechart | img_url:'master' }}" alt="" />
-              		{% endif %} 
-          		</div>
-          	{% endif %}
+      {% if section.settings.show_tab_6 %}
+        <li><a class="tablink" href="#tab6">{{ section.settings.tab_6_title_text }}</a></li>
+      {% endif %}
+    </ul>
+  {%- endif -%}
+  <div class="tab-container{% unless section.settings.show_product_tabs %} noTabs{% endunless %}">
+    {% if section.settings.show_tab_1 %}
+      {%- if section.settings.show_product_tabs -%}
+        <h3 class="acor-ttl active"><a class="tablink" href="#tab1">{{ section.settings.tab_1_title_text }}</a></h3>
+      {%- else -%}
+        <h3 class="h2">{{ section.settings.tab_1_title_text }}</h3>
+      {%- endif -%}
+      <div id="tab1" class="tab-content">
+        <div class="product-description rte">{{ product.description }}
+          <div class="esc-size-matters-preinstall" id="preinstall-1148923c1db923b72fe7e30db54ce1e1"></div>
+        </div>
+      </div>
 
-          	{% if section.settings.show_tab_4 %}
-          		{%- if section.settings.show_product_tabs -%}
-                	<h3 class="acor-ttl"><a class="tablink" href="#tab4">{{ section.settings.tab_4_title_text }}</a></h3>
-              	{%- else -%}
-                	<h3 class="h2">{{ section.settings.tab_4_title_text }}</h3>
-              	{%- endif -%}
-				<div id="tab4" class="tab-content">{{ section.settings.tab_4_textarea }}</div>
-          	{% endif %}
+    {% endif %}
+    {% if section.settings.show_tab_2 %}
+      {%- if section.settings.show_product_tabs -%}
+        <h3 class="acor-ttl"><a class="tablink" href="#tab2">{{ section.settings.tab_2_title_text }}</a></h3>
+      {%- else -%}
+        <h3 class="h2">{{ section.settings.tab_2_title_text }}</h3>
+      {%- endif -%}
+      <div id="tab2" class="tab-content">
+        <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
+      </div>
+    {% endif %}
 
-			{% if section.settings.show_tab_5 %}
-          		{%- if section.settings.show_product_tabs -%}
-                	<h3 class="acor-ttl"><a class="tablink" href="#tab5">{{ section.settings.tab_5_title_text }}</a></h3>
-              	{%- else -%}
-                	<h3 class="h2">{{ section.settings.tab_5_title_text }}</h3>
-              	{%- endif -%}
-				<div id="tab5" class="tab-content">{{ section.settings.tab_5_textarea }}</div>
-          	{% endif %}
+    {% if section.settings.show_tab_3 %}
+      {%- if section.settings.show_product_tabs -%}
+        <h3 class="acor-ttl"><a class="tablink" href="#tab3">{{ section.settings.tab_3_title_text }}</a></h3>
+      {%- else -%}
+        <h3 class="h2">{{ section.settings.tab_3_title_text }}</h3>
+      {%- endif -%}
+      <div id="tab3" class="tab-content">
+        {% assign meta = product.metafields.meta %}
+        {% assign key = 'sizechart' %}
+        {% if meta.sizechart != blank %}
+          {{ meta.sizechart }}
+          {% elsif section.settings.sizechart != blank %}
+          <img src="{{ section.settings.sizechart | img_url:'master' }}" alt=""/>
+        {% endif %}
+      </div>
+    {% endif %}
 
-			{% if section.settings.show_tab_6 %}
-          		{%- if section.settings.show_product_tabs -%}
-                	<h3 class="acor-ttl"><a class="tablink" href="#tab6">{{ section.settings.tab_6_title_text }}</a></h3>
-              	{%- else -%}
-                	<h3 class="h2">{{ section.settings.tab_6_title_text }}</h3>
-              	{%- endif -%}
-				<div id="tab6" class="tab-content">{{ section.settings.tab_6_textarea }}</div>
-          	{% endif %}
-    	</div>
-	</div>
+    {% if section.settings.show_tab_4 %}
+      {%- if section.settings.show_product_tabs -%}
+        <h3 class="acor-ttl"><a class="tablink" href="#tab4">{{ section.settings.tab_4_title_text }}</a></h3>
+      {%- else -%}
+        <h3 class="h2">{{ section.settings.tab_4_title_text }}</h3>
+      {%- endif -%}
+      <div id="tab4" class="tab-content">{{ section.settings.tab_4_textarea }}</div>
+    {% endif %}
+
+    {% if section.settings.show_tab_5 %}
+      {%- if section.settings.show_product_tabs -%}
+        <h3 class="acor-ttl"><a class="tablink" href="#tab5">{{ section.settings.tab_5_title_text }}</a></h3>
+      {%- else -%}
+        <h3 class="h2">{{ section.settings.tab_5_title_text }}</h3>
+      {%- endif -%}
+      <div id="tab5" class="tab-content">{{ section.settings.tab_5_textarea }}</div>
+    {% endif %}
+
+    {% if section.settings.show_tab_6 %}
+      {%- if section.settings.show_product_tabs -%}
+        <h3 class="acor-ttl"><a class="tablink" href="#tab6">{{ section.settings.tab_6_title_text }}</a></h3>
+      {%- else -%}
+        <h3 class="h2">{{ section.settings.tab_6_title_text }}</h3>
+      {%- endif -%}
+      <div id="tab6" class="tab-content">{{ section.settings.tab_6_textarea }}</div>
+    {% endif %}
+  </div>
+</div>
 {% include 'related-products' %}
 {% include 'recent-viewed' %}
