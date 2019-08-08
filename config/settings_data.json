@@ -331,6 +331,18 @@
               "Image1url": ""
             }
           },
+          "1565191278429": {
+            "type": "megamenu4",
+            "settings": {
+              "title": "Hides",
+              "url": "shopify:\/\/collections\/leather-hides",
+              "mm_linklist": "hides",
+              "mmcolumns": "4",
+              "mm4_bg": "",
+              "mm4_img_position": "right",
+              "mm4_space": "30%"
+            }
+          },
           "1561385198667": {
             "type": "dropdown",
             "settings": {
@@ -347,6 +359,7 @@
           "1561118431850",
           "1561118459099",
           "1561456304968",
+          "1565191278429",
           "1561385198667"
         ],
         "settings": {
@@ -497,7 +510,7 @@
             "type": "by_color",
             "settings": {
               "title": "Color",
-              "filter_tags": "Black, Brown, Tan, Blue, Green, Red",
+              "filter_tags": "Black, \nBrown, \nTan, \nBlue, \nGreen, \nRed,\nNavy,\nCamel",
               "image_swatches": true
             }
           },
@@ -529,7 +542,7 @@
             "type": "filter_by",
             "settings": {
               "title": "Dimensions, in",
-              "filter_tags": "3 x 4, 5.71 x 8.27, 7.5 x 10, 5 x 8.25, 3.5 x 5.5, 3.75 x 2.5, 4 x 3.25, 3.5 x 4, 4.3 x 3.1, 5 x 3.5, 7.5 x 3.5 x 3.5, 8 x 4 x 4, 18 x 12 x 5, 12 x 16 x 2.5, 12 x 12 x 4, 16.5 x 12 x 4, 17.5 x 15 x 7, 10.5 x 8",
+              "filter_tags": "3 x 4, \n5.71 x 8.27, \n7.5 x 10, \n5 x 8.25, \n3.5 x 5.5, \n3.75 x 2.5, \n4 x 3.25, \n3.5 x 4, \n4.3 x 3.1, \n5 x 3.5, \n7.5 x 3.5 x 3.5, \n8 x 4 x 4, \n18 x 12 x 5, \n12 x 16 x 2.5, \n12 x 12 x 4, \n16.5 x 12 x 4, \n17.5 x 15 x 7, \n10.5 x 8,\n4 x 4 x 5,\n8.7 x 5.5 x 5.9,\n3.7 x 4.3 x 4,\n7.1 x 5.9 x 7.1,\n3.6 x 3.2 x 3.6,\n2 x 2.1 x 2,\n2 x 1.6 x 2,\n3.6 x 3.6 x 3,\n4.9 x 5.9 x 4.9,\n4.4 x 5.5 x 4.4,",
               "twocall": false
             }
           },
@@ -1007,57 +1020,85 @@
           "1553924507482": {
             "type": "collection",
             "settings": {
-              "collection": "",
-              "collection_image": ""
+              "collection": "leather-journal",
+              "collection_image": "shopify:\/\/shop_images\/horween-leather-padfolio-pofessional-natural-image.jpg"
             }
           },
           "1553925521929": {
             "type": "collection",
             "settings": {
-              "collection": "",
-              "collection_image": ""
+              "collection": "leather-apple-watch-bands-straps",
+              "collection_image": "shopify:\/\/shop_images\/horween-blue-iwatch-band-image-3.jpg"
             }
           },
           "1553925092268": {
             "type": "collection",
             "settings": {
-              "collection": "",
-              "collection_image": ""
+              "collection": "leather-bags",
+              "collection_image": "shopify:\/\/shop_images\/crazy-horse-backpack-city-brown-image.jpg"
             }
           },
           "1553925776609": {
             "type": "collection",
             "settings": {
-              "collection": "",
-              "collection_image": ""
+              "collection": "leather-dopp-kits",
+              "collection_image": "shopify:\/\/shop_images\/horween-dopp-kit-natural-image.jpg"
             }
           },
           "1553925918852": {
             "type": "collection",
             "settings": {
-              "collection": "",
-              "collection_image": ""
+              "collection": "aprons",
+              "collection_image": "shopify:\/\/shop_images\/canvas-and-leather-apron-black-image.jpg"
             }
           },
           "1553926113575": {
             "type": "collection",
             "settings": {
-              "collection": "",
-              "collection_image": ""
+              "collection": "leather-wallets",
+              "collection_image": "shopify:\/\/shop_images\/horween-slim-bifold-wallet-chestnut-image-2.jpg"
             }
           },
           "1553926398736": {
             "type": "collection",
             "settings": {
-              "collection": "",
-              "collection_image": ""
+              "collection": "leather-passport-holders-covers",
+              "collection_image": "shopify:\/\/shop_images\/horween-passport-cover-chestnut-image-2.jpg"
             }
           },
           "1553926515930": {
             "type": "collection",
             "settings": {
-              "collection": "",
-              "collection_image": ""
+              "collection": "leather-camera-straps",
+              "collection_image": "shopify:\/\/shop_images\/horween-camera-strap-premium-blue-image.jpg"
+            }
+          },
+          "1565161384110": {
+            "type": "collection",
+            "settings": {
+              "collection": "leather-cigar-cases",
+              "collection_image": "shopify:\/\/shop_images\/horween-cigar-wallet-chestnut-image-2.jpg"
+            }
+          },
+          "1565161486412": {
+            "type": "collection",
+            "settings": {
+              "collection": "leather-lunch-bags",
+              "collection_image": "shopify:\/\/shop_images\/green-canvas-lunch-bag-brown-image-2.jpg"
+            }
+          },
+          "1565161576585": {
+            "type": "collection",
+            "settings": {
+              "collection": "leather-watch-cases-and-rolls",
+              "collection_image": "shopify:\/\/shop_images\/horween-watch-case-chestnut-image-2.jpg"
+            }
+          },
+          "1565162055189": {
+            "type": "collection",
+            "settings": {
+              "collection": "leather-portfolios",
+              "collection_image": "shopify:\/\/shop_images\/chocolate-portfolio-opened-image.jpg"
             }
           }
         },
@@ -1069,7 +1110,11 @@
           "1553925918852",
           "1553926113575",
           "1553926398736",
-          "1553926515930"
+          "1553926515930",
+          "1565161384110",
+          "1565161486412",
+          "1565161576585",
+          "1565162055189"
         ],
         "settings": {
           "page_title": "Spring Summer Collection 2019",
@@ -1081,8 +1126,8 @@
       "blog-template": {
         "type": "blog-template",
         "settings": {
-          "layout": "list",
-          "number_of_post_to_show": "4",
+          "layout": "grid",
+          "number_of_post_to_show": "12",
           "sidebar_position": "left",
           "blog_show_author": true,
           "blog_show_date": true,
@@ -1307,21 +1352,6 @@
           "title": ""
         }
       },
-      "1540101232520": {
-        "type": "products-slider",
-        "settings": {
-          "title": "Popular Products",
-          "subtitle": "",
-          "collection": "leather-journal",
-          "gridstyle": "style1",
-          "grid": "4",
-          "tablet-grid": "3",
-          "mobile-grid": "2",
-          "rows": "10",
-          "show_vendor": false,
-          "show_product_review": false
-        }
-      },
       "top-information-bar": {
         "type": "top-information-bar",
         "settings": {
@@ -1345,7 +1375,7 @@
           "show_short_desc": false,
           "quantity_msg": false,
           "countdown": true,
-          "sizechartlink": true,
+          "sizechartlink": false,
           "askaboutproduct": true,
           "enable_payment_button": false,
           "show_share_buttons": true,
@@ -1396,7 +1426,7 @@
           "show_related_products": true,
           "related_products_autoplay": true,
           "related_title": "Related Products",
-          "related_sub_title": "You can stop autoplay, increase\/decrease aniamtion speed and number of grid to show and products from store admin.",
+          "related_sub_title": "",
           "slider_related_speed": "5000",
           "slider_related_animation_speed": "200",
           "gridstyle": "style1",
@@ -1406,11 +1436,11 @@
           "related_total_product_to_show": "8",
           "show_viewed_products": true,
           "viewedproduct_title": "Recently Viewed Product",
-          "viewedproduct_sub_title": "You can control fully on this carousel from store admin as describe in above section",
+          "viewedproduct_sub_title": "",
           "rc_grid": "4",
           "rc_tablet-grid": "3",
           "rc_mobile-grid": "2",
-          "recent_total_product_to_show": "5"
+          "recent_total_product_to_show": "4"
         }
       },
       "1565074180880": {
@@ -1447,7 +1477,7 @@
           "1565084061733"
         ],
         "settings": {
-          "fullwidth": true,
+          "fullwidth": false,
           "title": "",
           "subtitle": "",
           "distitle": false,
@@ -1612,7 +1642,7 @@
           "1565084544441-2"
         ],
         "settings": {
-          "fullwidth": true,
+          "fullwidth": false,
           "title": "",
           "subtitle": "",
           "distitle": false,
@@ -1624,6 +1654,13 @@
       "1565085619429": {
         "type": "custom-content",
         "blocks": {
+          "1565085619429-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/olpr-founders_7b4333de-0592-451e-84a7-3efa8f7ad442.jpg",
+              "width": "66%"
+            }
+          },
           "1565085619429-0": {
             "type": "text",
             "settings": {
@@ -1632,16 +1669,9 @@
               "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
               "btntxt": "Read our story",
               "btnurl": "shopify:\/\/pages\/our-story",
-              "width": "50%",
+              "width": "33%",
               "alignment": "center",
               "align_text": "left"
-            }
-          },
-          "1565085619429-1": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/olpr-founders_7b4333de-0592-451e-84a7-3efa8f7ad442.jpg",
-              "width": "50%"
             }
           }
         },
@@ -1654,6 +1684,36 @@
           "title": "",
           "subtitle": ""
         }
+      },
+      "1565159207963": {
+        "type": "products-slider",
+        "settings": {
+          "title": "Apple Watch Bands",
+          "subtitle": "",
+          "collection": "leather-apple-watch-bands-straps",
+          "gridstyle": "style1",
+          "grid": "4",
+          "tablet-grid": "3",
+          "mobile-grid": "2",
+          "rows": "8",
+          "show_vendor": false,
+          "show_product_review": false
+        }
+      },
+      "1565159416471": {
+        "type": "products-slider",
+        "settings": {
+          "title": "Leather Journals",
+          "subtitle": "",
+          "collection": "leather-journal",
+          "gridstyle": "style1",
+          "grid": "4",
+          "tablet-grid": "3",
+          "mobile-grid": "2",
+          "rows": "8",
+          "show_vendor": false,
+          "show_product_review": false
+        }
       }
     },
     "content_for_index": [
@@ -1661,10 +1721,11 @@
       "1565080949242",
       "1565074180880",
       "1565084544441",
+      "1565159207963",
+      "1565159416471",
       "1565080425659",
       "1565085619429",
-      "1565074492495",
-      "1540101232520"
+      "1565074492495"
     ]
   },
   "presets": {
