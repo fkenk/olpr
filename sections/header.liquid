@@ -20,7 +20,7 @@
         		{%- if section.settings.top_header_left_text != blank -%}<p class="top-header_left-text"> {{ section.settings.top_header_left_text }}</p>{%- endif -%}
       		</div>
       		<div class="grid__item text-center">{%- if section.settings.top_header_middle_text != blank -%}<p class="top-header_middle-text"> {{ section.settings.top_header_middle_text }}</p>{%- endif -%}</div>
-      		<div class="grid__item text-right">{%- include 'customer-links' -%}</div>
+
 		</div>
 	</div>
 
@@ -33,9 +33,9 @@
   	{%- endcapture -%}
 	{%- comment -%}****	Main Header **** {%- endcomment -%}
 	<div class="header-wrap{% if settings.classic_header and template == 'index' %} classicHeader{% endif %}">
-		<header class="grid grid--no-gutters grid--table b-gutter-size site-header{% if section.settings.align_logo == 'left' %} border-bottom logo--left{% else %} logo--center{% endif %}" role="banner">    
+		<header class="grid grid--no-gutters grid--table b-gutter-size site-header{% if section.settings.align_logo == 'left' %} logo--left{% else %} logo--center{% endif %}" role="banner">
 				{%- comment -%}****	Mobile Icon **** {%- endcomment -%}
-              	<div class="grid__item one-eighth mobile--one-third large-up--hide"><button type="button" class="btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open hidden-md hidden-lg"><i class="ad hicon ad-bars-r"></i><i class="ad hicon ad-times-l"></i><span class="icon__fallback-text">{{ 'layout.navigation.toggle' | t }}</span></button></div>
+              	<div class="grid__item one-quarter mobile--one-third large-up--hide"><button type="button" class="btn--link site-header__menu js-mobile-nav-toggle mobile-nav--open hidden-md hidden-lg"><i class="ad hicon ad-bars-r"></i><i class="ad hicon ad-times-l"></i><span class="icon__fallback-text">{{ 'layout.navigation.toggle' | t }}</span></button></div>
 
 				{%- comment -%}****	logo center - search **** {%- endcomment -%}
 				{%- if section.settings.align_logo == 'center' -%}
@@ -60,9 +60,10 @@
 				{%- endif -%}
 
 				{%- comment -%}****	Logo left - cart, search **** {%- endcomment -%}
-				<div class="grid__item one-sixth mobile--one-third medium-up--one-sixth text-right site-header__icons-wrapper">
+				<div class="grid__item one-quarter mobile--one-third text-right site-header__icons-wrapper">
 					<div class="site-header__search{% if section.settings.align_logo == 'center' %} large-up--hide{% endif %}">{{searchBtn}}</div>
 					{%- unless settings.catalog-mode -%}{% include 'mini-cart' %}{%- endunless -%}
+          <div class="site-header__account">{%- include 'customer-links' -%}</div>
 				</div>  
 		</header>
 		<!-- logo center - navigation -->

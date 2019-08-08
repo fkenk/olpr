@@ -4486,9 +4486,46 @@ h1.product-single__title {
 .site-header {
   background-color: $color-body;
   position: relative;
-  @include media-query($small) {
-    border-bottom: 1px solid $color-border;
+  .customer-links {
+    z-index: 222;
+    display: none;
+    position: absolute;
+    right: -10px;
+    top: 27px;
+    margin: 0;
+    width: 140px;
+    background: #fff;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+
+    li {
+      display: block;
+      text-align: left;
+      margin: 0;
+
+      &:not(:first-child) {
+        border-top: 1px solid #ddd;
+      }
+
+      a {
+        color: $color-body-text;
+        padding: 10px;
+        display: block;
+      }
+    }
   }
+
+  .user-menu {
+    .ad {
+      color: white;
+      font-size: 22px;
+    }
+  }
+}
+
+.site-header__account {
+  position: relative;
+  display: inline-block;
+  margin-left: 15px;
 }
 
 .site-header__logo {
@@ -4827,6 +4864,7 @@ h1.product-single__title {
 
 /// Mobile Search Bar
 .search-bar {
+  z-index: 1001;
   border: 1px solid $color-border;
   background-color: #fff;
   padding: 0 ($gutter-site);
@@ -6861,18 +6899,26 @@ $toolbar-height-small: 30px;
 }
 
 .site-header {
-  background-color: {{ settings.main_header_bg_clr }};
+  background-color: rgba(0, 0, 0, 0.8);
 
   .hicon {
-    color: {{settings.icons_clr }};
+    color: white;
     font-size: 19px;
     @include media-query($small) {
       font-size: 16px;
     }
   }
 }
+.template-index {
+  #shopify-section-header {
+    position: relative;
+    z-index: 1000;
+    margin-bottom: -80px;
+  }
+}
 
 .top-header {
+  display: none;
   padding-top: 10px;
   padding-bottom: 10px;
   background: {{settings.top_header_clr}};
@@ -6900,27 +6946,6 @@ $toolbar-height-small: 30px;
 
   .top-header_left-text {
     display: inline;
-  }
-
-  .customer-links {
-    margin-right: -10px;
-
-    li {
-      display: inline-block;
-      margin-right: 10px;
-
-      a:hover {
-        opacity: 0.7;
-      }
-    }
-  }
-
-  .user-menu {
-    display: none;
-
-    .ad {
-      font-size: 19px;
-    }
   }
 
   &.uppercase {
@@ -9891,7 +9916,7 @@ h1.product-single__title {
       }
 
       > a {
-        color: {{ settings.navbar_link}};
+        color: white;
         padding: 0 20px;
         text-transform: {{settings.nav_case}};
         line-height: 40px;
@@ -10970,33 +10995,6 @@ h2.sub-title {
     padding: 0 8px;
   }
 
-  .top-header .customer-links {
-    z-index: 222;
-    display: none;
-    position: absolute;
-    right: -10px;
-    top: 27px;
-    margin: 0;
-    width: 140px;
-    background: #fff;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-
-    li {
-      display: block;
-      text-align: left;
-      margin: 0;
-
-      &:not(:first-child) {
-        border-top: 1px solid #ddd;
-      }
-
-      a {
-        color: $color-body-text;
-        padding: 10px;
-        display: block;
-      }
-    }
-  }
   .top-header {
     .phoneCol {
       width: 50%;
