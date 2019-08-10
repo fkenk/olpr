@@ -4538,7 +4538,6 @@ h1.product-single__title {
 }
 
 .site-header__logo {
-  padding: 15px 0;
   margin: 0;
 
   .logo-align--center & {
@@ -4550,6 +4549,10 @@ h1.product-single__title {
     display: block;
   }
 
+  @include media-query($large-up) {
+    padding: 4px 0;
+    width: 108px;
+  }
 }
 
 .site-header__logo-link {
