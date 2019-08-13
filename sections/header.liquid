@@ -52,7 +52,7 @@
 				</div>
 				{%- comment -%}****	Logo left - navigation **** {%- endcomment -%}
 				{%- if section.settings.align_logo == 'left' -%}
-					<nav class="grid__item" id="AccessibleNav" role="navigation">
+					<nav class="grid__item mobile--one-third" id="AccessibleNav" role="navigation">
 						<!-- for mobile -->
 						<div class="h2 site-header__logo mobileview">{{siteLogo}}</div>
         	  			{% include 'navigation' %}
@@ -60,7 +60,7 @@
 				{%- endif -%}
 
 				{%- comment -%}****	Logo left - cart, search **** {%- endcomment -%}
-				<div class="grid__item one-quarter mobile--one-third text-right site-header__icons-wrapper">
+				<div class="grid__item one-fifth mobile--one-third text-right site-header__icons-wrapper">
 					<div class="site-header__search{% if section.settings.align_logo == 'center' %} large-up--hide{% endif %}">{{searchBtn}}</div>
 					{%- unless settings.catalog-mode -%}{% include 'mini-cart' %}{%- endunless -%}
           <div class="site-header__account">{%- include 'customer-links' -%}</div>
