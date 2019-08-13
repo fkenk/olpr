@@ -2107,20 +2107,40 @@ theme.Product = (function() {
     $('.product-tabs li:first-child').addClass("active");
 	$('.tab-container h3:first-child + .tab-content').show();
 
-    
-    $(".reviewLink").on('click', function(e){
+
+    $(".reviewLink").on('click', function (e) {
       e.preventDefault();
-        $(".product-tabs li").removeClass("active");
-      	$(".reviewtab").addClass("active");
-        var tab = $(this).attr("href");
-        $(".tab-content").not(tab).css("display", "none");
-        $(tab).fadeIn();
-      	var tabposition = $("#tab2").offset();
-      	if($(window).width()<767) {
-          $("html, body").animate({ scrollTop: tabposition.top-50 }, 700);
-        } else{
-          $("html, body").animate({ scrollTop: tabposition.top-80 }, 700);
-        }
+      $(".product-tabs li").removeClass("active");
+      $(".reviewtab").addClass("active");
+      var tab = $(this).attr("href");
+      $(".tab-content").not(tab).css("display", "none");
+      $(tab).fadeIn();
+      $('.shogun-tabs > li').removeClass("shogun-tab-active");
+      var $reviewTab = $('.shogun-tabs > li:nth-child(3)'),
+          $reviwTabParent = $('.shogun-tabs > li:nth-child(3)').parent();
+
+      var isRounded = $reviwTabParent.hasClass("shogun-rounded");
+
+      if (isRounded) $reviwTabParent.find(".shogun-tab-border").remove();
+      if (isRounded) $reviewTab.append('<div class="shogun-tab-border" />');
+      $reviewTab.addClass("shogun-tab-active");
+      debugger
+      var $panes = $reviewTab
+          .parent()
+          .parent()
+          .children()
+          .last()
+          .children(".shogun-tab-content")
+      $panes.removeClass("shogun-tab-active")
+      $($panes[$reviewTab.index()]).addClass("shogun-tab-active")
+
+      var tabposition = $(tab).offset();
+
+      if ($(window).width() < 767) {
+        $("html, body").animate({scrollTop: tabposition.top - 50}, 700);
+      } else {
+        $("html, body").animate({scrollTop: tabposition.top - 80}, 700);
+      }
     });
     
     $('.sizelink').magnificPopup({
