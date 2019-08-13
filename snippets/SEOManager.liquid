@@ -1,6 +1,6 @@
 
 {% comment %}
- SEO Manager - v6.1.4
+ SEO Manager - v6.1.5
  Copyright (c) venntov
  https://venntov.com / http://SEOManager.com
  Josh Highland
@@ -11,75 +11,75 @@
  permission is obtained from venntov. If violated, legal action
  will be taken. Just don't do it.
 {% endcomment %}
-{% capture VHUAGVEDSU %} {% endcapture %} {%- assign ZFUOGOEIEZ = shop.metafields.SEOMetaManager.globalConfig -%} {%- assign LUXUYQANXN = ZFUOGOEIEZ | remove: "{"| remove: "}" -%} {%- assign PJONDPPADQ = LUXUYQANXN | split: ',"' -%} {%- for YHZQVMCXLZ in PJONDPPADQ -%} {%- assign VTXGGQWQRW = YHZQVMCXLZ | remove: '"' -%} {%- assign SEUEJHMOLG = VTXGGQWQRW | split: ":" -%} {%- case SEUEJHMOLG[0] -%} {%- when 'product_title_template' -%} {%- assign NTTTEJMVUB = SEUEJHMOLG[1] -%} {%- when 'product_title_template_force' -%} {%- assign DGPLJWWNTQ = SEUEJHMOLG[1] -%} {%- when 'product_noindex_follow' -%} {%- assign FLOZJSISYD = SEUEJHMOLG[1] -%} {%- when 'collection_title_template' -%} {%- assign LPQAFFDRKU = SEUEJHMOLG[1] -%} {%- when 'collection_title_template_force' -%} {%- assign YNFDCHSWHA = SEUEJHMOLG[1] -%} {%- when 'collection_noindex_follow' -%} {%- assign PNQIOAXFPA = SEUEJHMOLG[1] -%} {%- when 'page_title_template' -%} {%- assign FGDARMNYOE = SEUEJHMOLG[1] -%} {%- when 'page_title_template_force' -%} {%- assign FIZGEUIHXE = SEUEJHMOLG[1] -%} {%- when 'page_noindex_follow' -%} {%- assign CTWQPYWDUB = SEUEJHMOLG[1] -%} {%- when 'blog_title_template' -%} {%- assign OBCQEHNISD = SEUEJHMOLG[1] -%} {%- when 'blog_title_template_force' -%} {%- assign HWQRYONAOP = SEUEJHMOLG[1] -%} {%- when 'blog_noindex_follow' -%} {%- assign BLQBLWCMQL = SEUEJHMOLG[1] -%} {%- when 'hidePageNumber' -%} {%- assign HTBKWIAOTC = SEUEJHMOLG[1] -%} {%- when 'google_notranslate' -%} {%- assign IQXKLWNIWF = SEUEJHMOLG[1] -%} {%- when 'google_unavailable_after_globalDisabled' -%} {%- assign SICHYTRNZQ = SEUEJHMOLG[1] -%} {%- when 'google_nositelinkssearchbox' -%} {%- assign QOKLUSJJWN = SEUEJHMOLG[1] -%} {%- when 'show_keywordsMeta' -%} {%- assign BGSSKZQNSV = SEUEJHMOLG[1] -%} {%- when 'metaRedirect_globalDisabled' -%} {%- assign ILTMGXEWOZ = SEUEJHMOLG[1] -%} {%- endcase -%} {%- endfor -%} {%- if template contains 'index' -%} {%- assign RHZZYHWZKY = 'shop' -%} {%- assign YSFLYAEHDT = shop.metafields.SEOMetaManager -%} {%- assign KGGAMLUXUH = 'yes' -%} {%- assign NUVXEJHKQD = 'homepage' -%} {%- assign RRDYZPBUKP = shop.metafields.SEOMetaManager.config_homepage -%} {%- elsif template contains 'product' -%} {%- assign RHZZYHWZKY = 'product' -%} {%- assign YSFLYAEHDT = product.metafields.SEOMetaManager -%} {%- assign CEZVLFGTLF = NTTTEJMVUB -%} {%- assign PJHUMLXPGC = DGPLJWWNTQ -%} {%- if FLOZJSISYD == 'yes' -%} {%- assign JEIYAKMUBW = 'yes' -%} {%- endif -%} {%- elsif template contains 'page' -%} {%- assign RHZZYHWZKY = 'page' -%} {%- assign YSFLYAEHDT = page.metafields.SEOMetaManager -%} {%- assign CEZVLFGTLF = FGDARMNYOE -%} {%- assign PJHUMLXPGC = FIZGEUIHXE -%} {%- if CTWQPYWDUB == 'yes' -%} {%- assign JEIYAKMUBW = 'yes' -%} {%- endif -%} {%- elsif template contains 'list-collections' -%} {%- assign RHZZYHWZKY = 'shop' -%} {%- assign YSFLYAEHDT = shop.metafields.SEOMetaManager -%} {%- assign KGGAMLUXUH = 'yes' -%} {%- assign NUVXEJHKQD = 'collectionsALL' -%} {%- assign RRDYZPBUKP = shop.metafields.SEOMetaManager.config_collectionsAll -%} {%- assign RBVXRORKTR = 'yes' -%} {%- elsif template contains 'collection' -%} {%- assign RHZZYHWZKY = 'collection' -%} {%- assign YSFLYAEHDT = collection.metafields.SEOMetaManager -%} {%- if collection.title == 'Products' -%} {%- assign YSFLYAEHDT = shop.metafields.SEOMetaManager -%} {%- assign RBVXRORKTR = 'yes' -%} {%- endif -%} {%- if collection.handle == 'all' -%} {%- assign YSFLYAEHDT = shop.metafields.SEOMetaManager -%} {%- assign RBVXRORKTR = 'yes' -%} {%- endif -%} {%- assign CEZVLFGTLF = LPQAFFDRKU -%} {%- assign PJHUMLXPGC = YNFDCHSWHA -%} {%- if PNQIOAXFPA == 'yes' -%} {%- assign JEIYAKMUBW = 'yes' -%} {%- endif -%} {%- elsif template contains 'article' -%} {%- assign RHZZYHWZKY = 'article' -%} {%- assign YSFLYAEHDT = article.metafields.SEOMetaManager -%} {%- assign CEZVLFGTLF = OBCQEHNISD -%} {%- assign PJHUMLXPGC = HWQRYONAOP -%} {%- if BLQBLWCMQL == 'yes' -%} {%- assign JEIYAKMUBW = 'yes' -%} {%- endif -%} {%- elsif template contains 'blog' -%} {%- assign RHZZYHWZKY = 'blog' -%} {%- assign YSFLYAEHDT = blog.metafields.SEOMetaManager -%} {%- elsif template contains 'search' -%} {%- assign RHZZYHWZKY = 'shop' -%} {%- assign YSFLYAEHDT = shop.metafields.SEOMetaManager -%} {%- assign KGGAMLUXUH = 'yes' -%} {%- assign NUVXEJHKQD = 'search' -%} {%- assign RRDYZPBUKP = shop.metafields.SEOMetaManager.config_search -%} {%- elsif template contains '404' -%} {%- assign RHZZYHWZKY = 'shop' -%} {%- assign YSFLYAEHDT = shop.metafields.SEOMetaManager -%} {%- assign KGGAMLUXUH = 'yes' -%} {%- assign NUVXEJHKQD = 'page404' -%} {%- assign RRDYZPBUKP = shop.metafields.SEOMetaManager.config_404 -%} {%- elsif template contains 'cart' -%} {%- assign XRAUEDEWDF = 'no' -%} {%- assign MPEXFDTJPA = 'no' -%} {%- elsif template contains 'cart' -%} {%- assign XRAUEDEWDF = 'no' -%} {%- assign MPEXFDTJPA = 'no' -%} {%- elsif template contains 'customers' -%} {%- assign XRAUEDEWDF = 'no' -%} {%- assign MPEXFDTJPA = 'no' -%} {%- else -%} <!-- NO OBJECT - {{ template }} --> {%- endif -%} {%- assign IYNXZGKSQY = 'NewCondition' -%} {%- if KGGAMLUXUH == 'yes' -%} {%- assign BPDGHCAGJE = RRDYZPBUKP -%} {%- else -%} {%- if RBVXRORKTR == 'yes' -%} {%- assign BPDGHCAGJE = shop.metafields.SEOMetaManager.config_collectionsAll -%} {%- else -%} {% assign BPDGHCAGJE = YSFLYAEHDT.config -%} {%- endif -%} {%- endif -%} {%- assign CPOZEYKYDM = BPDGHCAGJE | remove: "{"| remove: "}" -%} {%- assign PJONDPPADQ = CPOZEYKYDM | split: ',"' -%} {%- for YHZQVMCXLZ in PJONDPPADQ -%} {%- assign VTXGGQWQRW = YHZQVMCXLZ | remove: '"' -%} {%- assign SEUEJHMOLG = VTXGGQWQRW | split: ":" -%} {%- assign WZQGMVVBCH = SEUEJHMOLG[0] -%} {%- assign XMIWDSNTOU = SEUEJHMOLG[1] | replace: '%3A', ':' | replace: '\/', '/' -%} {%- case WZQGMVVBCH -%} {%- when 'title_template_force' -%} {%- assign OQCTFOPRWJ = XMIWDSNTOU -%} {%- when 'robots_index' -%} {%- assign XRAUEDEWDF = XMIWDSNTOU -%} {%- when 'robots_follow' -%} {%- assign MPEXFDTJPA = XMIWDSNTOU -%} {%- when 'robots_noimageindex' -%} {%- assign CVPJXXJHKU = XMIWDSNTOU -%} {%- when 'robots_noarchive' -%} {%- assign MGNLFRUPJA = XMIWDSNTOU -%} {%- when 'robots_nosnippet' -%} {%- assign MYLVPAJABL = XMIWDSNTOU -%} {%- when 'google_notranslate' -%} {%- assign IQXKLWNIWF = XMIWDSNTOU -%} {%- when 'google_unavailable_after' -%} {%- assign KWMLDCSJFH = XMIWDSNTOU -%} {%- when 'google_unavailable_after_date' -%} {%- assign WDAKYDBHNW = XMIWDSNTOU -%} {%- when 'metaRedirect_enabled' -%} {%- assign TJIHZNCAWE = XMIWDSNTOU -%} {%- when 'metaRedirect_url' -%} {%- assign RMZZUPGPNQ = XMIWDSNTOU -%} {%- when 'itemCondition' -%} {%- assign IYNXZGKSQY = XMIWDSNTOU -%} {%- when 'pinterest_nopin' -%} {%- assign JRLWLZAUGI = XMIWDSNTOU -%} {%- endcase -%} {%- endfor -%} {%- if RHZZYHWZKY == 'product' -%} {%- if ILTMGXEWOZ == 'yes' -%} {%- else -%} {%- if TJIHZNCAWE == 'yes' -%} {%- if product.available != true -%} <meta HTTP-EQUIV="refresh" CONTENT="0;URL={{ RMZZUPGPNQ }}"> {%- endif -%} {%- endif -%} {%- endif -%} {%- endif -%} {%- assign HLCEUXHRFV = page_title -%} {%- if RBVXRORKTR == 'yes' -%} {%- if YSFLYAEHDT.title_collectionsAll == empty or YSFLYAEHDT.title_collectionsAll == nil -%} {%- assign HLCEUXHRFV = page_title -%} {%- else -%} {%- assign HLCEUXHRFV = YSFLYAEHDT.title_collectionsAll -%} {%- endif -%} {%- endif -%} {%- assign SDJGPELKMX = page_description -%} {%- if RBVXRORKTR == 'yes' -%} {%- if YSFLYAEHDT.description_collectionsAll == empty or YSFLYAEHDT.description_collectionsAll == nil -%} {%- assign SDJGPELKMX = page_description -%} {%- else -%} {%- assign SDJGPELKMX = YSFLYAEHDT.description_collectionsAll -%} {%- endif -%} {%- endif -%} {%- if BGSSKZQNSV == 'yes' -%} {%- assign PHKFDOPMEH = YSFLYAEHDT.keywords -%} {%- endif -%} {%- capture WGYRIEDKED -%}{{ current_tags }}{%- endcapture -%} {%- for OMTURHVOEZ in collection.all_tags -%} {%- if WGYRIEDKED == OMTURHVOEZ -%} {%- capture HLCEUXHRFV -%}{{ HLCEUXHRFV }} - {{ OMTURHVOEZ }}{%- endcapture -%} {%- capture YYIETKDECQ -%}title_{{ OMTURHVOEZ | slice: 0, 24 }}{%- endcapture -%} {%- capture DPEZPHWWVX -%}description_{{ OMTURHVOEZ | slice: 0, 18 }}{%- endcapture -%} {%- capture GRISNLIEDP -%}noindex_{{ OMTURHVOEZ | slice: 0, 22 }}{%- endcapture -%} {%- assign ARYCVBCFDQ = "false" -%} {%- for YHZQVMCXLZ in YSFLYAEHDT -%} {%- capture WZQGMVVBCH -%}{{ YHZQVMCXLZ | first }}{%- endcapture -%} {%- capture BMOOUPJDBU -%}{{ YHZQVMCXLZ | last }}{%- endcapture -%} {%- if WZQGMVVBCH == YYIETKDECQ -%} {%- assign HLCEUXHRFV = BMOOUPJDBU -%} {%- assign ARYCVBCFDQ = "true" -%} {%- elsif WZQGMVVBCH == DPEZPHWWVX -%} {%- assign SDJGPELKMX = BMOOUPJDBU -%} {%- assign ARYCVBCFDQ = "true" -%} {%- elsif WZQGMVVBCH == GRISNLIEDP -%} {%- assign JEIYAKMUBW = BMOOUPJDBU -%} {%- endif -%} {%- endfor -%} {%- if ARYCVBCFDQ == "false" -%} {%- capture YYIETKDECQ -%}title_{{ OMTURHVOEZ | slice: 0, 24 | downcase | handleize }}{%- endcapture -%} {%- capture DPEZPHWWVX -%}description_{{ OMTURHVOEZ | slice: 0, 18 | downcase | handleize }}{%- endcapture -%} {%- capture GRISNLIEDP -%}noindex_{{ OMTURHVOEZ | slice: 0, 22 | downcase | handleize }}{%- endcapture -%} {%- for YHZQVMCXLZ in YSFLYAEHDT -%} {%- capture WZQGMVVBCH -%}{{ YHZQVMCXLZ | first }}{%-endcapture-%} {%- capture BMOOUPJDBU -%}{{ YHZQVMCXLZ | last }}{%- endcapture -%} {%- if WZQGMVVBCH == YYIETKDECQ -%} {%- assign HLCEUXHRFV = BMOOUPJDBU -%} {%- elsif WZQGMVVBCH == DPEZPHWWVX -%} {%- assign SDJGPELKMX = BMOOUPJDBU -%} {%- elsif WZQGMVVBCH == GRISNLIEDP -%} {%- assign JEIYAKMUBW = BMOOUPJDBU -%} {%- endif -%} {%- endfor -%} {%- endif -%} {%- assign PJHUMLXPGC = 'no' -%} {%- assign OQCTFOPRWJ = 'no' -%} {%- break -%} {%- endif -%} {%- endfor -%} {%- if KGGAMLUXUH == 'yes' -%} {%- capture ZXWLQPXGQG -%}title_{{ NUVXEJHKQD }}{%- endcapture -%} {%- capture XIYOUGVODD -%}description_{{ NUVXEJHKQD }}{%- endcapture -%} {%- for YHZQVMCXLZ in YSFLYAEHDT -%} {%- capture WZQGMVVBCH -%}{{ YHZQVMCXLZ | first }}{%-endcapture-%} {%- capture BMOOUPJDBU -%}{{ YHZQVMCXLZ | last }}{%- endcapture -%} {%- if WZQGMVVBCH == ZXWLQPXGQG -%} {%- assign HLCEUXHRFV = BMOOUPJDBU -%} {%- elsif WZQGMVVBCH == XIYOUGVODD -%} {%- assign SDJGPELKMX = BMOOUPJDBU -%} {% endif %} {%- endfor -%} {%- endif -%} {%- if PJHUMLXPGC == 'yes' or OQCTFOPRWJ == 'yes' -%} {%- assign RQNZGRTNCY = [RHZZYHWZKY].price | money | strip_html -%} {%- assign FYTKOSMDFT = [RHZZYHWZKY].price_max | money | strip_html -%} {%- assign XBNJIRAHIE = [RHZZYHWZKY].price_min | money | strip_html -%} {%- assign CZLQSXZELF = CEZVLFGTLF | replace: '##title##', [RHZZYHWZKY].title -%} {%- assign CZLQSXZELF = CZLQSXZELF | replace: '##seotitle##', page_title -%} {%- assign CZLQSXZELF = CZLQSXZELF | replace: '##price##', RQNZGRTNCY -%} {%- assign CZLQSXZELF = CZLQSXZELF | replace: '##price_max##', FYTKOSMDFT -%} {%- assign CZLQSXZELF = CZLQSXZELF | replace: '##price_min##', XBNJIRAHIE -%} {%- assign CZLQSXZELF = CZLQSXZELF | replace: '##type##', [RHZZYHWZKY].type -%} {%- assign CZLQSXZELF = CZLQSXZELF | replace: '##vendor##', [RHZZYHWZKY].vendor -%} {%- assign CZLQSXZELF = CZLQSXZELF | replace: '##author##', [RHZZYHWZKY].author -%} {%- assign CZLQSXZELF = CZLQSXZELF | replace: '##shopname##', shop.name -%} {%- assign HLCEUXHRFV = CZLQSXZELF -%} {%- endif -%} {%- unless HTBKWIAOTC == "yes" -%} {%- if current_page > 1 -%} {% capture HLCEUXHRFV %}{{ HLCEUXHRFV }} | {{ current_page }}{% endcapture %} {%- endif -%} {%- endunless -%}
-<!-- SEO Manager 6.1.4 -->
+{% capture WKZBIGQXFV %} {% endcapture %} {%- assign KJQIRDANWF = shop.metafields.SEOMetaManager.globalConfig -%} {%- assign IZDHWSJVSK = KJQIRDANWF | remove: "{"| remove: "}" -%} {%- assign OGVFODTWKJ = IZDHWSJVSK | split: ',"' -%} {%- for CMOQRYESHI in OGVFODTWKJ -%} {%- assign EUVMXVQYTH = CMOQRYESHI | remove: '"' -%} {%- assign FJYYETGDSK = EUVMXVQYTH | split: ":" -%} {%- case FJYYETGDSK[0] -%} {%- when 'product_title_template' -%} {%- assign DDTGZBBLXY = FJYYETGDSK[1] -%} {%- when 'product_title_template_force' -%} {%- assign FHYWCAACQR = FJYYETGDSK[1] -%} {%- when 'product_noindex_follow' -%} {%- assign QMIVANKXOC = FJYYETGDSK[1] -%} {%- when 'collection_title_template' -%} {%- assign BQZCORPAIS = FJYYETGDSK[1] -%} {%- when 'collection_title_template_force' -%} {%- assign CJROFVAUKJ = FJYYETGDSK[1] -%} {%- when 'collection_noindex_follow' -%} {%- assign LXEOHIXURH = FJYYETGDSK[1] -%} {%- when 'page_title_template' -%} {%- assign MWYXLPACDM = FJYYETGDSK[1] -%} {%- when 'page_title_template_force' -%} {%- assign EIXLZPZXNT = FJYYETGDSK[1] -%} {%- when 'page_noindex_follow' -%} {%- assign LTICTYCAIX = FJYYETGDSK[1] -%} {%- when 'blog_title_template' -%} {%- assign LMPUATPNRH = FJYYETGDSK[1] -%} {%- when 'blog_title_template_force' -%} {%- assign AROCYFDMUG = FJYYETGDSK[1] -%} {%- when 'blog_noindex_follow' -%} {%- assign WUBFVROKHQ = FJYYETGDSK[1] -%} {%- when 'hidePageNumber' -%} {%- assign ASRRXRRGFQ = FJYYETGDSK[1] -%} {%- when 'google_notranslate' -%} {%- assign LSFCUGCEXQ = FJYYETGDSK[1] -%} {%- when 'google_unavailable_after_globalDisabled' -%} {%- assign LSFASVATQC = FJYYETGDSK[1] -%} {%- when 'google_nositelinkssearchbox' -%} {%- assign NSBXRREWKZ = FJYYETGDSK[1] -%} {%- when 'show_keywordsMeta' -%} {%- assign TZWEMDSNAW = FJYYETGDSK[1] -%} {%- when 'metaRedirect_globalDisabled' -%} {%- assign TTXSREJMKD = FJYYETGDSK[1] -%} {%- endcase -%} {%- endfor -%} {%- if template contains 'index' -%} {%- assign BFYIAZEDJO = 'shop' -%} {%- assign JPFXPEVJBG = shop.metafields.SEOMetaManager -%} {%- assign QJZLJNSCZI = 'yes' -%} {%- assign NXDSGWCGTF = 'homepage' -%} {%- assign OJISLRKJFA = shop.metafields.SEOMetaManager.config_homepage -%} {%- elsif template contains 'product' -%} {%- assign BFYIAZEDJO = 'product' -%} {%- assign JPFXPEVJBG = product.metafields.SEOMetaManager -%} {%- assign HZCATJITUN = DDTGZBBLXY -%} {%- assign QULUMXBYBV = FHYWCAACQR -%} {%- if QMIVANKXOC == 'yes' -%} {%- assign UWOCUHUCEB = 'yes' -%} {%- endif -%} {%- elsif template contains 'page' -%} {%- assign BFYIAZEDJO = 'page' -%} {%- assign JPFXPEVJBG = page.metafields.SEOMetaManager -%} {%- assign HZCATJITUN = MWYXLPACDM -%} {%- assign QULUMXBYBV = EIXLZPZXNT -%} {%- if LTICTYCAIX == 'yes' -%} {%- assign UWOCUHUCEB = 'yes' -%} {%- endif -%} {%- elsif template contains 'list-collections' -%} {%- assign BFYIAZEDJO = 'shop' -%} {%- assign JPFXPEVJBG = shop.metafields.SEOMetaManager -%} {%- assign QJZLJNSCZI = 'yes' -%} {%- assign NXDSGWCGTF = 'collectionsALL' -%} {%- assign OJISLRKJFA = shop.metafields.SEOMetaManager.config_collectionsAll -%} {%- assign LGRKLQJDKW = 'yes' -%} {%- elsif template contains 'collection' -%} {%- assign BFYIAZEDJO = 'collection' -%} {%- assign JPFXPEVJBG = collection.metafields.SEOMetaManager -%} {%- if collection.title == 'Products' -%} {%- assign JPFXPEVJBG = shop.metafields.SEOMetaManager -%} {%- assign LGRKLQJDKW = 'yes' -%} {%- endif -%} {%- if collection.handle == 'all' -%} {%- assign JPFXPEVJBG = shop.metafields.SEOMetaManager -%} {%- assign LGRKLQJDKW = 'yes' -%} {%- endif -%} {%- assign HZCATJITUN = BQZCORPAIS -%} {%- assign QULUMXBYBV = CJROFVAUKJ -%} {%- if LXEOHIXURH == 'yes' -%} {%- assign UWOCUHUCEB = 'yes' -%} {%- endif -%} {%- elsif template contains 'article' -%} {%- assign BFYIAZEDJO = 'article' -%} {%- assign JPFXPEVJBG = article.metafields.SEOMetaManager -%} {%- assign HZCATJITUN = LMPUATPNRH -%} {%- assign QULUMXBYBV = AROCYFDMUG -%} {%- if WUBFVROKHQ == 'yes' -%} {%- assign UWOCUHUCEB = 'yes' -%} {%- endif -%} {%- elsif template contains 'blog' -%} {%- assign BFYIAZEDJO = 'blog' -%} {%- assign JPFXPEVJBG = blog.metafields.SEOMetaManager -%} {%- elsif template contains 'search' -%} {%- assign BFYIAZEDJO = 'shop' -%} {%- assign JPFXPEVJBG = shop.metafields.SEOMetaManager -%} {%- assign QJZLJNSCZI = 'yes' -%} {%- assign NXDSGWCGTF = 'search' -%} {%- assign OJISLRKJFA = shop.metafields.SEOMetaManager.config_search -%} {%- elsif template contains '404' -%} {%- assign BFYIAZEDJO = 'shop' -%} {%- assign JPFXPEVJBG = shop.metafields.SEOMetaManager -%} {%- assign QJZLJNSCZI = 'yes' -%} {%- assign NXDSGWCGTF = 'page404' -%} {%- assign OJISLRKJFA = shop.metafields.SEOMetaManager.config_404 -%} {%- elsif template contains 'cart' -%} {%- assign TLSSMHOPVN = 'no' -%} {%- assign SJKQLQSLAX = 'no' -%} {%- elsif template contains 'cart' -%} {%- assign TLSSMHOPVN = 'no' -%} {%- assign SJKQLQSLAX = 'no' -%} {%- elsif template contains 'customers' -%} {%- assign TLSSMHOPVN = 'no' -%} {%- assign SJKQLQSLAX = 'no' -%} {%- else -%} <!-- NO OBJECT - {{ template }} --> {%- endif -%} {%- assign AROXRHTSYC = 'NewCondition' -%} {%- if QJZLJNSCZI == 'yes' -%} {%- assign AWCALMWAJR = OJISLRKJFA -%} {%- else -%} {%- if LGRKLQJDKW == 'yes' -%} {%- assign AWCALMWAJR = shop.metafields.SEOMetaManager.config_collectionsAll -%} {%- else -%} {% assign AWCALMWAJR = JPFXPEVJBG.config -%} {%- endif -%} {%- endif -%} {%- assign YFXJNHVDHB = AWCALMWAJR | remove: "{"| remove: "}" -%} {%- assign OGVFODTWKJ = YFXJNHVDHB | split: ',"' -%} {%- for CMOQRYESHI in OGVFODTWKJ -%} {%- assign EUVMXVQYTH = CMOQRYESHI | remove: '"' -%} {%- assign FJYYETGDSK = EUVMXVQYTH | split: ":" -%} {%- assign TVPPHXGJDB = FJYYETGDSK[0] -%} {%- assign TGTFJHQNSP = FJYYETGDSK[1] | replace: '%3A', ':' | replace: '\/', '/' -%} {%- case TVPPHXGJDB -%} {%- when 'title_template_force' -%} {%- assign KCRQCXQKED = TGTFJHQNSP -%} {%- when 'robots_index' -%} {%- assign TLSSMHOPVN = TGTFJHQNSP -%} {%- when 'robots_follow' -%} {%- assign SJKQLQSLAX = TGTFJHQNSP -%} {%- when 'robots_noimageindex' -%} {%- assign ZWTUMJGHZJ = TGTFJHQNSP -%} {%- when 'robots_noarchive' -%} {%- assign WTBCBUDYTZ = TGTFJHQNSP -%} {%- when 'robots_nosnippet' -%} {%- assign WBWZFLVZIB = TGTFJHQNSP -%} {%- when 'google_notranslate' -%} {%- assign LSFCUGCEXQ = TGTFJHQNSP -%} {%- when 'google_unavailable_after' -%} {%- assign MUZPANNQZN = TGTFJHQNSP -%} {%- when 'google_unavailable_after_date' -%} {%- assign SYMTUGVLLF = TGTFJHQNSP -%} {%- when 'metaRedirect_enabled' -%} {%- assign QOQXANMDZR = TGTFJHQNSP -%} {%- when 'metaRedirect_url' -%} {%- assign YSAFVFUSRK = TGTFJHQNSP -%} {%- when 'itemCondition' -%} {%- assign AROXRHTSYC = TGTFJHQNSP -%} {%- when 'pinterest_nopin' -%} {%- assign FUCGHHVXXU = TGTFJHQNSP -%} {%- endcase -%} {%- endfor -%} {%- if BFYIAZEDJO == 'product' -%} {%- if TTXSREJMKD == 'yes' -%} {%- else -%} {%- if QOQXANMDZR == 'yes' -%} {%- if product.available != true -%} <meta HTTP-EQUIV="refresh" CONTENT="0;URL={{ YSAFVFUSRK }}"> {%- endif -%} {%- endif -%} {%- endif -%} {%- endif -%} {%- assign JVYZLHFJMM = page_title -%} {%- if LGRKLQJDKW == 'yes' -%} {%- if JPFXPEVJBG.title_collectionsAll == empty or JPFXPEVJBG.title_collectionsAll == nil -%} {%- assign JVYZLHFJMM = page_title -%} {%- else -%} {%- assign JVYZLHFJMM = JPFXPEVJBG.title_collectionsAll -%} {%- endif -%} {%- endif -%} {%- assign EKZKGBVAOX = page_description -%} {%- if LGRKLQJDKW == 'yes' -%} {%- if JPFXPEVJBG.description_collectionsAll == empty or JPFXPEVJBG.description_collectionsAll == nil -%} {%- assign EKZKGBVAOX = page_description -%} {%- else -%} {%- assign EKZKGBVAOX = JPFXPEVJBG.description_collectionsAll -%} {%- endif -%} {%- endif -%} {%- if TZWEMDSNAW == 'yes' -%} {%- assign CZVYMQPUDC = JPFXPEVJBG.keywords -%} {%- endif -%} {%- capture GZYDCNRETA -%}{{ current_tags }}{%- endcapture -%} {%- for KDCBXGLUAX in collection.all_tags -%} {%- if GZYDCNRETA == KDCBXGLUAX -%} {%- capture JVYZLHFJMM -%}{{ JVYZLHFJMM }} - {{ KDCBXGLUAX }}{%- endcapture -%} {%- capture YTOVAZBIKP -%}title_{{ KDCBXGLUAX | slice: 0, 24 }}{%- endcapture -%} {%- capture CJIRJILDBV -%}description_{{ KDCBXGLUAX | slice: 0, 18 }}{%- endcapture -%} {%- capture KMOLKRQXYC -%}noindex_{{ KDCBXGLUAX | slice: 0, 22 }}{%- endcapture -%} {%- assign PSHALRRJYN = "false" -%} {%- for CMOQRYESHI in JPFXPEVJBG -%} {%- capture TVPPHXGJDB -%}{{ CMOQRYESHI | first }}{%- endcapture -%} {%- capture NZXHPQQGCL -%}{{ CMOQRYESHI | last }}{%- endcapture -%} {%- if TVPPHXGJDB == YTOVAZBIKP -%} {%- assign JVYZLHFJMM = NZXHPQQGCL -%} {%- assign PSHALRRJYN = "true" -%} {%- elsif TVPPHXGJDB == CJIRJILDBV -%} {%- assign EKZKGBVAOX = NZXHPQQGCL -%} {%- assign PSHALRRJYN = "true" -%} {%- elsif TVPPHXGJDB == KMOLKRQXYC -%} {%- assign UWOCUHUCEB = NZXHPQQGCL -%} {%- endif -%} {%- endfor -%} {%- if PSHALRRJYN == "false" -%} {%- capture YTOVAZBIKP -%}title_{{ KDCBXGLUAX | slice: 0, 24 | downcase | handleize }}{%- endcapture -%} {%- capture CJIRJILDBV -%}description_{{ KDCBXGLUAX | slice: 0, 18 | downcase | handleize }}{%- endcapture -%} {%- capture KMOLKRQXYC -%}noindex_{{ KDCBXGLUAX | slice: 0, 22 | downcase | handleize }}{%- endcapture -%} {%- for CMOQRYESHI in JPFXPEVJBG -%} {%- capture TVPPHXGJDB -%}{{ CMOQRYESHI | first }}{%-endcapture-%} {%- capture NZXHPQQGCL -%}{{ CMOQRYESHI | last }}{%- endcapture -%} {%- if TVPPHXGJDB == YTOVAZBIKP -%} {%- assign JVYZLHFJMM = NZXHPQQGCL -%} {%- elsif TVPPHXGJDB == CJIRJILDBV -%} {%- assign EKZKGBVAOX = NZXHPQQGCL -%} {%- elsif TVPPHXGJDB == KMOLKRQXYC -%} {%- assign UWOCUHUCEB = NZXHPQQGCL -%} {%- endif -%} {%- endfor -%} {%- endif -%} {%- assign QULUMXBYBV = 'no' -%} {%- assign KCRQCXQKED = 'no' -%} {%- break -%} {%- endif -%} {%- endfor -%} {%- if QJZLJNSCZI == 'yes' -%} {%- capture HGGAEILECR -%}title_{{ NXDSGWCGTF }}{%- endcapture -%} {%- capture KIONTDQGKJ -%}description_{{ NXDSGWCGTF }}{%- endcapture -%} {%- for CMOQRYESHI in JPFXPEVJBG -%} {%- capture TVPPHXGJDB -%}{{ CMOQRYESHI | first }}{%-endcapture-%} {%- capture NZXHPQQGCL -%}{{ CMOQRYESHI | last }}{%- endcapture -%} {%- if TVPPHXGJDB == HGGAEILECR -%} {%- assign JVYZLHFJMM = NZXHPQQGCL -%} {%- elsif TVPPHXGJDB == KIONTDQGKJ -%} {%- assign EKZKGBVAOX = NZXHPQQGCL -%} {% endif %} {%- endfor -%} {%- endif -%} {%- if QULUMXBYBV == 'yes' or KCRQCXQKED == 'yes' -%} {%- assign QQLLGOVOYU = [BFYIAZEDJO].price | money | strip_html -%} {%- assign HIPDETQYMG = [BFYIAZEDJO].price_max | money | strip_html -%} {%- assign CEDRDZNFCR = [BFYIAZEDJO].price_min | money | strip_html -%} {%- assign IDHBEPHTCK = HZCATJITUN | replace: '##title##', [BFYIAZEDJO].title -%} {%- assign IDHBEPHTCK = IDHBEPHTCK | replace: '##seotitle##', page_title -%} {%- assign IDHBEPHTCK = IDHBEPHTCK | replace: '##price##', QQLLGOVOYU -%} {%- assign IDHBEPHTCK = IDHBEPHTCK | replace: '##price_max##', HIPDETQYMG -%} {%- assign IDHBEPHTCK = IDHBEPHTCK | replace: '##price_min##', CEDRDZNFCR -%} {%- assign IDHBEPHTCK = IDHBEPHTCK | replace: '##type##', [BFYIAZEDJO].type -%} {%- assign IDHBEPHTCK = IDHBEPHTCK | replace: '##vendor##', [BFYIAZEDJO].vendor -%} {%- assign IDHBEPHTCK = IDHBEPHTCK | replace: '##author##', [BFYIAZEDJO].author -%} {%- assign IDHBEPHTCK = IDHBEPHTCK | replace: '##shopname##', shop.name -%} {%- assign JVYZLHFJMM = IDHBEPHTCK -%} {%- endif -%} {%- unless ASRRXRRGFQ == "yes" -%} {%- if current_page > 1 -%} {% capture JVYZLHFJMM %}{{ JVYZLHFJMM }} | {{ current_page }}{% endcapture %} {%- endif -%} {%- endunless -%}
+<!-- SEO Manager 6.1.5 -->
 <meta name='seomanager' content='6.1' />
-<title>{{ HLCEUXHRFV | escape_once }}</title>
-<meta name='description' content='{{ SDJGPELKMX | escape_once }}' />
-{%- if BGSSKZQNSV == 'yes' -%}
-{{ VHUAGVEDSU }}
-<meta name='keywords' content='{{ PHKFDOPMEH | escape_once }}' />
+<title>{{ JVYZLHFJMM | escape_once }}</title>
+<meta name='description' content='{{ EKZKGBVAOX | escape_once }}' />
+{%- if TZWEMDSNAW == 'yes' -%}
+{{ WKZBIGQXFV }}
+<meta name='keywords' content='{{ CZVYMQPUDC | escape_once }}' />
 {%- endif -%}
-{%- if JEIYAKMUBW == 'yes' -%}
-{{ VHUAGVEDSU }}
+{%- if UWOCUHUCEB == 'yes' -%}
+{{ WKZBIGQXFV }}
 <meta name="robots" content="noindex">
 <meta name="robots" content="follow">
 {%- else -%}
-{%- if XRAUEDEWDF == 'no' -%}
-{{ VHUAGVEDSU }}
+{%- if TLSSMHOPVN == 'no' -%}
+{{ WKZBIGQXFV }}
 <meta name="robots" content="noindex">
 {%- else -%}
-{{ VHUAGVEDSU }}
+{{ WKZBIGQXFV }}
 <meta name="robots" content="index">
 {%- endif -%}
-{%- if MPEXFDTJPA == 'no' -%}
-{{ VHUAGVEDSU }}
+{%- if SJKQLQSLAX == 'no' -%}
+{{ WKZBIGQXFV }}
 <meta name="robots" content="nofollow">
 {%- else -%}
-{{ VHUAGVEDSU }}
+{{ WKZBIGQXFV }}
 <meta name="robots" content="follow">
 {%- endif -%}
 {%- endif -%}
-{%- if CVPJXXJHKU == 'yes' -%}
-{{ VHUAGVEDSU }}
+{%- if ZWTUMJGHZJ == 'yes' -%}
+{{ WKZBIGQXFV }}
 <meta name="robots" content="noimageindex">
 {%- endif -%}
-{%- if MGNLFRUPJA == 'yes' -%}
-{{ VHUAGVEDSU }}
+{%- if WTBCBUDYTZ == 'yes' -%}
+{{ WKZBIGQXFV }}
 <meta name="robots" content="noarchive">
 {%- endif -%}
-{%- if MYLVPAJABL == 'yes' -%}
-{{ VHUAGVEDSU }}
+{%- if WBWZFLVZIB == 'yes' -%}
+{{ WKZBIGQXFV }}
 <meta name="robots" content="nosnippet">
 {%- endif -%}
-{%- if IQXKLWNIWF == 'yes' -%}
-{{ VHUAGVEDSU }}
+{%- if LSFCUGCEXQ == 'yes' -%}
+{{ WKZBIGQXFV }}
 <meta name="google" content="notranslate" />
 {%- endif -%}
-{%- if SICHYTRNZQ == 'yes' -%}
-{%- elsif KWMLDCSJFH == 'yes' -%}
-{{ VHUAGVEDSU }}
-<meta name="googlebot" content="unavailable_after: {{ WDAKYDBHNW }} UTC" />
+{%- if LSFASVATQC == 'yes' -%}
+{%- elsif MUZPANNQZN == 'yes' -%}
+{{ WKZBIGQXFV }}
+<meta name="googlebot" content="unavailable_after: {{ SYMTUGVLLF }} UTC" />
 {%- endif -%}
-{%- if JRLWLZAUGI == 'yes' -%}
-{{ VHUAGVEDSU }}
+{%- if FUCGHHVXXU == 'yes' -%}
+{{ WKZBIGQXFV }}
 <meta name="pinterest" content="nopin" />
 {%- endif -%}
-{%- assign DNJSTOVHQF = 'yes' -%} {%- assign KWPWKYLAAC = 'yes' -%} {%- assign QUWNPFEAYE = 'Store' -%} {%- assign XLPJAELULK = 'no' -%} {%- assign ZVJWWRNHYJ = '' -%} {%- assign SVXIHIDHXN = 'yes' -%} {%- assign AILEBATIPS = 'yes' -%} {%- assign KWNAJXUEJS = 'automatic' -%} {%- assign SPBDSVVAQJ = 'yes' -%} {%- assign GQQJWPRFCR = "" -%} {%- assign CRKFQHGRQV = shop.metafields.SEOMetaManager.knowledgeGraphConfig -%} {%- assign OZFVCOJVWX = CRKFQHGRQV | remove: "{"| remove: "}" -%} {%- assign PJONDPPADQ = OZFVCOJVWX | split: ',"' -%} {%- for YHZQVMCXLZ in PJONDPPADQ -%} {%- assign VTXGGQWQRW = YHZQVMCXLZ | remove: '"' -%} {%- assign SEUEJHMOLG = VTXGGQWQRW | split: ":" -%} {%- assign WZQGMVVBCH = SEUEJHMOLG[0] -%} {%- assign XMIWDSNTOU = SEUEJHMOLG[1] | replace: '%3A', ':' | replace: '\/', '/' | replace: '%2F', '/' | replace: '%2B', '+' -%} {%- case WZQGMVVBCH -%} {%- when 'facebook' -%} {%- assign GQQJWPRFCR = GQQJWPRFCR | append: ', "' | append: XMIWDSNTOU | append: '"' -%} {%- when 'twitter' -%} {%- assign GQQJWPRFCR = GQQJWPRFCR | append: ', "' | append: XMIWDSNTOU | append: '"' -%} {%- when 'instagram' -%} {%- assign GQQJWPRFCR = GQQJWPRFCR | append: ', "' | append: XMIWDSNTOU | append: '"' -%} {%- when 'pinterest' -%} {%- assign GQQJWPRFCR = GQQJWPRFCR | append: ', "' | append: XMIWDSNTOU | append: '"' -%} {%- when 'youtube' -%} {%- assign GQQJWPRFCR = GQQJWPRFCR | append: ', "' | append: XMIWDSNTOU | append: '"' -%} {%- when 'googleplus' -%} {%- assign GQQJWPRFCR = GQQJWPRFCR | append: ', "' | append: XMIWDSNTOU | append: '"' -%} {%- when 'linkedin' -%} {%- assign GQQJWPRFCR = GQQJWPRFCR | append: ', "' | append: XMIWDSNTOU | append: '"' -%} {%- when 'JSONLD_enable' -%} {%- assign DNJSTOVHQF = XMIWDSNTOU -%} {%- when 'JSONLD_showLocalBusiness' -%} {%- assign KWPWKYLAAC = XMIWDSNTOU -%} {%- when 'JSONLD_customerServicePhone' -%} {%- assign AQQDKBVTTI = XMIWDSNTOU -%} {%- when 'JSONLD_techSupportPhone' -%} {%- assign KXGKZCAUVW = XMIWDSNTOU -%} {%- when 'JSONLD_salesPhone' -%} {%- assign WDLGQOIBVH = XMIWDSNTOU -%} {%- when 'JSONLD_businessType' -%} {%- assign QUWNPFEAYE = XMIWDSNTOU -%} {%- when 'JSONLD_brand' -%} {%- assign KHKHKLAUTR = XMIWDSNTOU -%} {%- when 'JSONLD_openingHours' -%} {%- assign VOHRYAMAFK = XMIWDSNTOU -%} {%- when 'JSONLD_map' -%} {%- assign TKHFUGHWWT = XMIWDSNTOU -%} {%- when 'JSONLD_priceRange' -%} {%- assign RIWGKTTBKZ = XMIWDSNTOU -%} {%- when 'JSONLD_phone' -%} {%- assign VCJVHPAWDO = XMIWDSNTOU -%} {%- when 'JSONLD_address' -%} {%- assign UCSJSJAPWL = XMIWDSNTOU -%} {%- when 'JSONLD_city' -%} {%- assign EOSTCYKOCV = XMIWDSNTOU -%} {%- when 'JSONLD_province' -%} {%- assign NLENOQXBRW = XMIWDSNTOU -%} {%- when 'JSONLD_zip' -%} {%- assign LAAIXNGEWE = XMIWDSNTOU -%} {%- when 'JSONLD_country' -%} {%- assign ZVJWWRNHYJ = XMIWDSNTOU -%} {%- when 'JSONLD_showProducts' -%} {%- assign SVXIHIDHXN = XMIWDSNTOU -%} {%- when 'JSONLD_showReviews' -%} {%- assign AILEBATIPS = XMIWDSNTOU -%} {%- when 'JSONLD_reviewProvider' -%} {%- assign KWNAJXUEJS = XMIWDSNTOU -%} {%- when 'JSONLD_showArticles' -%} {%- assign SPBDSVVAQJ = XMIWDSNTOU -%} {%- when 'JSONLD_alternativeName' -%} {%- assign CTOGBHGXOW = XMIWDSNTOU -%} {%- endcase -%} {%- endfor -%} {%- assign GQQJWPRFCR = GQQJWPRFCR | remove_first: ', ' -%}
-{%- assign UCEMIXTYVJ = shop.metafields.SEOMetaManager.googleVerify -%}
-{% unless UCEMIXTYVJ == blank %}
-{{ UCEMIXTYVJ }}
+{%- assign IYFLBRCNJX = 'yes' -%} {%- assign TGRPVNLNDN = 'yes' -%} {%- assign IQRBUKGEDU = 'Store' -%} {%- assign REURYUUNUE = 'no' -%} {%- assign XLUCTDDQDS = '' -%} {%- assign LODXZAXITE = 'yes' -%} {%- assign VJKJFYHNFH = 'yes' -%} {%- assign IPYKCEKJUS = 'automatic' -%} {%- assign OBJYLYULNT = 'yes' -%} {%- assign ZJSHVFSWND = "" -%} {%- assign OBXCKVUVPB = shop.metafields.SEOMetaManager.knowledgeGraphConfig -%} {%- assign YTTGVWTAZO = OBXCKVUVPB | remove: "{"| remove: "}" -%} {%- assign OGVFODTWKJ = YTTGVWTAZO | split: ',"' -%} {%- for CMOQRYESHI in OGVFODTWKJ -%} {%- assign EUVMXVQYTH = CMOQRYESHI | remove: '"' -%} {%- assign FJYYETGDSK = EUVMXVQYTH | split: ":" -%} {%- assign TVPPHXGJDB = FJYYETGDSK[0] -%} {%- assign TGTFJHQNSP = FJYYETGDSK[1] | replace: '%3A', ':' | replace: '\/', '/' | replace: '%2F', '/' | replace: '%2B', '+' -%} {%- case TVPPHXGJDB -%} {%- when 'facebook' -%} {%- assign ZJSHVFSWND = ZJSHVFSWND | append: ', "' | append: TGTFJHQNSP | append: '"' -%} {%- when 'twitter' -%} {%- assign ZJSHVFSWND = ZJSHVFSWND | append: ', "' | append: TGTFJHQNSP | append: '"' -%} {%- when 'instagram' -%} {%- assign ZJSHVFSWND = ZJSHVFSWND | append: ', "' | append: TGTFJHQNSP | append: '"' -%} {%- when 'pinterest' -%} {%- assign ZJSHVFSWND = ZJSHVFSWND | append: ', "' | append: TGTFJHQNSP | append: '"' -%} {%- when 'youtube' -%} {%- assign ZJSHVFSWND = ZJSHVFSWND | append: ', "' | append: TGTFJHQNSP | append: '"' -%} {%- when 'googleplus' -%} {%- assign ZJSHVFSWND = ZJSHVFSWND | append: ', "' | append: TGTFJHQNSP | append: '"' -%} {%- when 'linkedin' -%} {%- assign ZJSHVFSWND = ZJSHVFSWND | append: ', "' | append: TGTFJHQNSP | append: '"' -%} {%- when 'JSONLD_enable' -%} {%- assign IYFLBRCNJX = TGTFJHQNSP -%} {%- when 'JSONLD_showLocalBusiness' -%} {%- assign TGRPVNLNDN = TGTFJHQNSP -%} {%- when 'JSONLD_customerServicePhone' -%} {%- assign FMQMWYVNKU = TGTFJHQNSP -%} {%- when 'JSONLD_techSupportPhone' -%} {%- assign YJWLXYCUCC = TGTFJHQNSP -%} {%- when 'JSONLD_salesPhone' -%} {%- assign SYGAUGRJHF = TGTFJHQNSP -%} {%- when 'JSONLD_businessType' -%} {%- assign IQRBUKGEDU = TGTFJHQNSP -%} {%- when 'JSONLD_brand' -%} {%- assign WKFIXHRDKN = TGTFJHQNSP -%} {%- when 'JSONLD_openingHours' -%} {%- assign CFUTFUQAPC = TGTFJHQNSP -%} {%- when 'JSONLD_map' -%} {%- assign VYXWNIKOBW = TGTFJHQNSP -%} {%- when 'JSONLD_priceRange' -%} {%- assign GXJJLZRJZZ = TGTFJHQNSP -%} {%- when 'JSONLD_phone' -%} {%- assign VWKEUCUCUC = TGTFJHQNSP -%} {%- when 'JSONLD_address' -%} {%- assign RNVKWAXQYH = TGTFJHQNSP -%} {%- when 'JSONLD_city' -%} {%- assign AKSXPQBERK = TGTFJHQNSP -%} {%- when 'JSONLD_province' -%} {%- assign MJXMEGBSLN = TGTFJHQNSP -%} {%- when 'JSONLD_zip' -%} {%- assign JQWOPQAFWR = TGTFJHQNSP -%} {%- when 'JSONLD_country' -%} {%- assign XLUCTDDQDS = TGTFJHQNSP -%} {%- when 'JSONLD_showProducts' -%} {%- assign LODXZAXITE = TGTFJHQNSP -%} {%- when 'JSONLD_showReviews' -%} {%- assign VJKJFYHNFH = TGTFJHQNSP -%} {%- when 'JSONLD_reviewProvider' -%} {%- assign IPYKCEKJUS = TGTFJHQNSP -%} {%- when 'JSONLD_showArticles' -%} {%- assign OBJYLYULNT = TGTFJHQNSP -%} {%- when 'JSONLD_alternativeName' -%} {%- assign UKMCNVPSRZ = TGTFJHQNSP -%} {%- endcase -%} {%- endfor -%} {%- assign ZJSHVFSWND = ZJSHVFSWND | remove_first: ', ' -%}
+{%- assign VINBEKWICZ = shop.metafields.SEOMetaManager.googleVerify -%}
+{% unless VINBEKWICZ == blank %}
+{{ VINBEKWICZ }}
 {% endunless %}
-{%- unless DNJSTOVHQF == "no" -%}
- {%- if RHZZYHWZKY == 'shop' -%}
+{%- unless IYFLBRCNJX == "no" -%}
+ {%- if BFYIAZEDJO == 'shop' -%}
  <!-- JSON-LD support -->
  <script type="application/ld+json">
  {
  "@context": "https://schema.org",
  "@type": "WebSite",
  "name": {{ shop.name | json }},
- {%- unless CTOGBHGXOW == blank -%}
- "alternateName": "{{ CTOGBHGXOW }}",
+ {%- unless UKMCNVPSRZ == blank -%}
+ "alternateName": "{{ UKMCNVPSRZ }}",
  {%- endunless -%}
  "url": "https://{{ shop.domain }}",
  "potentialAction": {
@@ -100,53 +100,53 @@
  ,"image": "https://{{ shop.metafields.SEOMetaManager.knowledgeGraphLogo | remove: "\" }}"
  {%- endunless -%}
  ,"contactPoint": [
- {%- unless AQQDKBVTTI == blank -%}
+ {%- unless FMQMWYVNKU == blank -%}
  { "@type": "ContactPoint",
- "telephone": {{ AQQDKBVTTI | json }},
+ "telephone": {{ FMQMWYVNKU | json }},
  "contactType": "customer service"
  }
  {%- endunless -%}
- {%- unless KXGKZCAUVW == blank -%}
+ {%- unless YJWLXYCUCC == blank -%}
  ,{ "@type": "ContactPoint",
- "telephone": {{ KXGKZCAUVW | json }},
+ "telephone": {{ YJWLXYCUCC | json }},
  "contactType": "technical support"
  }
  {%- endunless -%}
- {%- unless WDLGQOIBVH == blank -%}
+ {%- unless SYGAUGRJHF == blank -%}
  ,{ "@type": "ContactPoint",
- "telephone": {{ WDLGQOIBVH | json }},
+ "telephone": {{ SYGAUGRJHF | json }},
  "contactType": "sales"
  }
  {%- endunless -%}
  ]
- {%- unless GQQJWPRFCR == blank -%}
+ {%- unless ZJSHVFSWND == blank -%}
  ,"sameAs" : [
- {{ GQQJWPRFCR }}
+ {{ ZJSHVFSWND }}
  ]
  {%- endunless -%}
  }
  </script>
- {%- unless KWPWKYLAAC == "no" -%}
+ {%- unless TGRPVNLNDN == "no" -%}
  <script type="application/ld+json">
  {
  "@context": "https://schema.org",
- "@type": "{{ QUWNPFEAYE }}",
+ "@type": "{{ IQRBUKGEDU }}",
  "name": {{ shop.name | json }},
  "url": "https://{{ shop.domain }}",
  "description": {{ shop.description | json }}
  {%- unless shop.metafields.SEOMetaManager.knowledgeGraphLogo == blank -%}
  ,"image": "https://{{ shop.metafields.SEOMetaManager.knowledgeGraphLogo | remove: "\" }}"
  {%- endunless -%}
- {%- unless VCJVHPAWDO == blank -%}
- ,"telephone": "{{ VCJVHPAWDO }}"
+ {%- unless VWKEUCUCUC == blank -%}
+ ,"telephone": "{{ VWKEUCUCUC }}"
  {%- endunless -%}
- {%- unless KHKHKLAUTR == blank -%}
+ {%- unless WKFIXHRDKN == blank -%}
  ,"brand": {
  "@type": "Brand",
- "name": "{{ KHKHKLAUTR }}"
+ "name": "{{ WKFIXHRDKN }}"
  }
  {%- endunless -%}
- {%- unless XLPJAELULK == 'no' -%}
+ {%- unless REURYUUNUE == 'no' -%}
  ,"openingHoursSpecification": [
  {%- unless JSONLD_hours_mo_open == "closed" -%}
  {
@@ -206,11 +206,11 @@
  {%- endunless -%}
  ]
  {%- endunless -%}
- {%- unless TKHFUGHWWT == blank -%}
- ,"hasMap": "{{ TKHFUGHWWT }}"
+ {%- unless VYXWNIKOBW == blank -%}
+ ,"hasMap": "{{ VYXWNIKOBW }}"
  {%- endunless -%}
- {%- unless RIWGKTTBKZ == blank -%}
- ,"priceRange": "{{ RIWGKTTBKZ }}"
+ {%- unless GXJJLZRJZZ == blank -%}
+ ,"priceRange": "{{ GXJJLZRJZZ }}"
  {%- endunless -%}
  ,"geo": {
  "@type": "GeoCoordinates",
@@ -219,18 +219,18 @@
  }
  ,"address": {
  "@type": "PostalAddress",
- "streetAddress": "{{ UCSJSJAPWL | default: shop.address.street }}",
- "addressLocality": "{{ EOSTCYKOCV | default: shop.address.city }}",
- "addressRegion": "{{ NLENOQXBRW | default: shop.address.province }}",
- "postalCode": "{{ LAAIXNGEWE | default: shop.address.zip }}",
- "addressCountry": "{{ ZVJWWRNHYJ | default: shop.address.country }}"
+ "streetAddress": "{{ RNVKWAXQYH | default: shop.address.street }}",
+ "addressLocality": "{{ AKSXPQBERK | default: shop.address.city }}",
+ "addressRegion": "{{ MJXMEGBSLN | default: shop.address.province }}",
+ "postalCode": "{{ JQWOPQAFWR | default: shop.address.zip }}",
+ "addressCountry": "{{ XLUCTDDQDS | default: shop.address.country }}"
  }
  }
  </script>
  {%- endunless -%}
  {%- endif -%}
- {%- if RHZZYHWZKY == 'product' -%}
- {%- unless SVXIHIDHXN == "no" -%}
+ {%- if BFYIAZEDJO == 'product' -%}
+ {%- unless LODXZAXITE == "no" -%}
  <script type="application/ld+json">
  {
  "@context": "https://schema.org",
@@ -257,35 +257,35 @@
  "image": "https:{{ product.featured_image | product_img_url: 'master' }}",
  {%- endif -%}
  "offers": [
- {%- for HEIJTJDZGW in product.variants -%}
+ {%- for DMHIAJOJKH in product.variants -%}
  {
  "@type": "Offer",
- {%- if HEIJTJDZGW.available == true -%}
- {%- assign HQOEHINBUJ = "InStock" -%}
+ {%- if DMHIAJOJKH.available == true -%}
+ {%- assign IUSVAKZUTN = "InStock" -%}
  {%- else -%}
- {%- assign HQOEHINBUJ = "OutOfStock" -%}
+ {%- assign IUSVAKZUTN = "OutOfStock" -%}
  {%- endif -%}
- "availability": "https://schema.org/{{ HQOEHINBUJ }}",
+ "availability": "https://schema.org/{{ IUSVAKZUTN }}",
  "priceCurrency": "{{ shop.currency }}",
- "price": "{{ HEIJTJDZGW.price | money_without_currency | remove: "," }}",
+ "price": "{{ DMHIAJOJKH.price | money_without_currency | remove: "," }}",
  "priceValidUntil": {{ "today" | date: '%s' | plus: 31536000 | date: "%Y-%m-%d" | json }},
- "itemCondition": "https://schema.org/{{ IYNXZGKSQY }}",
- "url": {{ canonical_url | append: HEIJTJDZGW.url | json }},
- "image": "https:{{ HEIJTJDZGW.image | default: product.featured_image | img_url: 'master' }}",
- "mpn": {{ HEIJTJDZGW.sku | default: HEIJTJDZGW.id | json }},
- {%- if HEIJTJDZGW.sku != blank -%}
- "sku": {{ HEIJTJDZGW.sku | json }},
+ "itemCondition": "https://schema.org/{{ AROXRHTSYC }}",
+ "url": {{ canonical_url | append: DMHIAJOJKH.url | json }},
+ "image": "https:{{ DMHIAJOJKH.image | default: product.featured_image | img_url: 'master' }}",
+ "mpn": {{ DMHIAJOJKH.sku | default: DMHIAJOJKH.id | json }},
+ {%- if DMHIAJOJKH.sku != blank -%}
+ "sku": {{ DMHIAJOJKH.sku | json }},
  {%- else -%}
- "sku": "{{ HEIJTJDZGW.id }}",
+ "sku": "{{ DMHIAJOJKH.id }}",
  {%- endif -%}
- {%- if HEIJTJDZGW.barcode.size == 12 -%}
- "gtin12": {{ HEIJTJDZGW.barcode | json }},
+ {%- if DMHIAJOJKH.barcode.size == 12 -%}
+ "gtin12": {{ DMHIAJOJKH.barcode | json }},
  {% endif %}
- {%- if HEIJTJDZGW.barcode.size == 13 -%}
- "gtin13": {{ HEIJTJDZGW.barcode | json }},
+ {%- if DMHIAJOJKH.barcode.size == 13 -%}
+ "gtin13": {{ DMHIAJOJKH.barcode | json }},
  {%- endif -%}
- {%- if HEIJTJDZGW.barcode.size == 14 -%}
- "gtin14": {{ HEIJTJDZGW.barcode | json }},
+ {%- if DMHIAJOJKH.barcode.size == 14 -%}
+ "gtin14": {{ DMHIAJOJKH.barcode | json }},
  {%- endif -%}
  "seller": {
  "@type": "Organization",
@@ -295,101 +295,101 @@
  {%- unless forloop.last -%},{% endunless -%}
  {%- endfor -%}]
  {%- unless JSONLD_hideReviews == "yes" -%}
- {%- case KWNAJXUEJS -%}
+ {%- case IPYKCEKJUS -%}
  {%- when 'eggviews' -%}
- {%- assign DEUEVYEGGX = product.metafields.eggviews.reviews_average -%}
- {%- assign YALAMIUGNR = product.metafields.eggviews.reviews_count -%}
+ {%- assign SUQFCZTDBU = product.metafields.eggviews.reviews_average -%}
+ {%- assign CDTIXRWDRX = product.metafields.eggviews.reviews_count -%}
  {%- when 'judgeme' -%}
  {%- when 'kudobuzz' -%}
- {%- assign DEUEVYEGGX = product.metafields.kudobuzz.review_rating -%}
- {%- assign YALAMIUGNR = product.metafields.kudobuzz.reviews_count -%}
+ {%- assign SUQFCZTDBU = product.metafields.kudobuzz.review_rating -%}
+ {%- assign CDTIXRWDRX = product.metafields.kudobuzz.reviews_count -%}
  {%- when 'loox' -%}
- {%- assign DEUEVYEGGX = product.metafields.loox.avg_rating -%}
- {%- assign YALAMIUGNR = product.metafields.loox.num_reviews -%}
+ {%- assign SUQFCZTDBU = product.metafields.loox.avg_rating -%}
+ {%- assign CDTIXRWDRX = product.metafields.loox.num_reviews -%}
  {%- when 'okendo' -%}
- {%- assign DEUEVYEGGX = product.metafields.okendo.RatingAndReviewAverageValue -%}
- {%- assign YALAMIUGNR = product.metafields.okendo.RatingAndReviewCount -%}
+ {%- assign SUQFCZTDBU = product.metafields.okendo.RatingAndReviewAverageValue -%}
+ {%- assign CDTIXRWDRX = product.metafields.okendo.RatingAndReviewCount -%}
  {%- when 'opinew' -%}
- {%- assign DEUEVYEGGX = product.metafields.opinew.reviews_rich_snippet | split: 'ratingValue" content="' | last | split: '"' |first | plus: 0 -%}
- {%- assign YALAMIUGNR = product.metafields.opinew.reviews_rich_snippet | split: 'ratingCount" content="' | last | split: '"' |first | plus: 0 -%}
+ {%- assign SUQFCZTDBU = product.metafields.opinew.reviews_rich_snippet | split: 'ratingValue" content="' | last | split: '"' |first | plus: 0 -%}
+ {%- assign CDTIXRWDRX = product.metafields.opinew.reviews_rich_snippet | split: 'ratingCount" content="' | last | split: '"' |first | plus: 0 -%}
  {%- when 'orankl' -%}
- {%- assign DEUEVYEGGX = product.metafields.orankl.rating -%}
- {%- assign YALAMIUGNR = product.metafields.orankl.review_count -%}
+ {%- assign SUQFCZTDBU = product.metafields.orankl.rating -%}
+ {%- assign CDTIXRWDRX = product.metafields.orankl.review_count -%}
  {%- when 'reviewsio' -%}
- {%- assign DEUEVYEGGX = product.metafields.reviewscouk.rating -%}
- {%- assign YALAMIUGNR = product.metafields.reviewscouk.total -%}
+ {%- assign SUQFCZTDBU = product.metafields.reviewscouk.rating -%}
+ {%- assign CDTIXRWDRX = product.metafields.reviewscouk.total -%}
  {%- when 'rivio' -%}
- {%- assign DEUEVYEGGX = product.metafields.reevio.reviews_average -%}
- {%- assign YALAMIUGNR = product.metafields.reevio.reviews_count -%}
+ {%- assign SUQFCZTDBU = product.metafields.reevio.reviews_average -%}
+ {%- assign CDTIXRWDRX = product.metafields.reevio.reviews_count -%}
  {%- when 'ryviu' -%}
- {%- assign DEUEVYEGGX = product.metafields.ryviu.reviews | split: 'ratingValue" content="' | last | split: '"' |first | plus: 0 -%}
- {%- assign YALAMIUGNR = product.metafields.ryviu.reviews | split: 'reviewCount" content="' | last | split: '"' |first | plus: 0 -%}
+ {%- assign SUQFCZTDBU = product.metafields.ryviu.reviews | split: 'ratingValue" content="' | last | split: '"' |first | plus: 0 -%}
+ {%- assign CDTIXRWDRX = product.metafields.ryviu.reviews | split: 'reviewCount" content="' | last | split: '"' |first | plus: 0 -%}
  {%- when 'shopifyreviews' -%}
- {%- assign DEUEVYEGGX = product.metafields.spr.reviews | split: 'ratingValue" content="' | last | split: '"' |first | plus: 0 -%}
- {%- assign YALAMIUGNR = product.metafields.spr.reviews | split: 'reviewCount" content="' | last | split: '"' |first | plus: 0 -%}
+ {%- assign SUQFCZTDBU = product.metafields.spr.reviews | split: 'ratingValue" content="' | last | split: '"' |first | plus: 0 -%}
+ {%- assign CDTIXRWDRX = product.metafields.spr.reviews | split: 'reviewCount" content="' | last | split: '"' |first | plus: 0 -%}
  {%- when 'socialshopwave' -%}
- {%- assign DEUEVYEGGX = product.metafields.ssw.avg_rate -%}
- {%- assign YALAMIUGNR = product.metafields.ssw.count_rate -%}
+ {%- assign SUQFCZTDBU = product.metafields.ssw.avg_rate -%}
+ {%- assign CDTIXRWDRX = product.metafields.ssw.count_rate -%}
  {%- when 'stampedio' -%}
- {%- assign DEUEVYEGGX = product.metafields.stamped.reviews_average -%}
- {%- assign YALAMIUGNR = product.metafields.stamped.reviews_count -%}
+ {%- assign SUQFCZTDBU = product.metafields.stamped.reviews_average -%}
+ {%- assign CDTIXRWDRX = product.metafields.stamped.reviews_count -%}
  {%- when 'superreviews' -%}
- {%- assign DEUEVYEGGX = product.metafields.reviewapp.reviews | split: '"average" itemprop="ratingValue">' | last | split: '</span>' |first | plus: 0 -%}
- {%- assign YALAMIUGNR = product.metafields.reviewapp.reviews | split: '"votes" itemprop="ratingCount">' | last | split: "</span>" | first | plus: 0 -%}
+ {%- assign SUQFCZTDBU = product.metafields.reviewapp.reviews | split: '"average" itemprop="ratingValue">' | last | split: '</span>' |first | plus: 0 -%}
+ {%- assign CDTIXRWDRX = product.metafields.reviewapp.reviews | split: '"votes" itemprop="ratingCount">' | last | split: "</span>" | first | plus: 0 -%}
  {%- when 'trust' -%}
- {%- assign DEUEVYEGGX = product.metafields.vnreviews.ratingValue -%}
- {%- assign YALAMIUGNR = product.metafields.vnreviews.reviewCount -%}
+ {%- assign SUQFCZTDBU = product.metafields.vnreviews.ratingValue -%}
+ {%- assign CDTIXRWDRX = product.metafields.vnreviews.reviewCount -%}
  {%- when 'yotpo' -%}
- {%- assign DEUEVYEGGX = product.metafields.yotpo.reviews_average -%}
- {%- assign YALAMIUGNR = product.metafields.yotpo.reviews_count -%}
+ {%- assign SUQFCZTDBU = product.metafields.yotpo.reviews_average -%}
+ {%- assign CDTIXRWDRX = product.metafields.yotpo.reviews_count -%}
  {%- when 'yotpo_free' -%}
  {%- else -%}
  {%- if product.metafields.yotpo.reviews_count and product.metafields.yotpo.reviews_count != "0" -%}
- {%- assign DEUEVYEGGX = product.metafields.yotpo.reviews_average -%}
- {%- assign YALAMIUGNR = product.metafields.yotpo.reviews_count -%}
+ {%- assign SUQFCZTDBU = product.metafields.yotpo.reviews_average -%}
+ {%- assign CDTIXRWDRX = product.metafields.yotpo.reviews_count -%}
  {%- endif -%}
  {%- if product.metafields.kudobuzz.review_rating and product.metafields.kudobuzz.reviews_count != "0" -%}
- {%- assign DEUEVYEGGX = product.metafields.kudobuzz.review_rating -%}
- {%- assign YALAMIUGNR = product.metafields.kudobuzz.reviews_count -%}
+ {%- assign SUQFCZTDBU = product.metafields.kudobuzz.review_rating -%}
+ {%- assign CDTIXRWDRX = product.metafields.kudobuzz.reviews_count -%}
  {%- endif -%}
  {%- if product.metafields.loox.num_reviews and product.metafields.loox.num_reviews != "0" -%}
- {%- assign DEUEVYEGGX = product.metafields.loox.avg_rating -%}
- {%- assign YALAMIUGNR = product.metafields.loox.num_reviews -%}
+ {%- assign SUQFCZTDBU = product.metafields.loox.avg_rating -%}
+ {%- assign CDTIXRWDRX = product.metafields.loox.num_reviews -%}
  {%- endif -%}
  {%- if product.metafields.okendo.RatingAndReviewAverageValue and product.metafields.okendo.RatingAndReviewAverageValue != "0" -%}
- {%- assign DEUEVYEGGX = product.metafields.okendo.RatingAndReviewAverageValue -%}
- {%- assign YALAMIUGNR = product.metafields.okendo.RatingAndReviewCount -%}
+ {%- assign SUQFCZTDBU = product.metafields.okendo.RatingAndReviewAverageValue -%}
+ {%- assign CDTIXRWDRX = product.metafields.okendo.RatingAndReviewCount -%}
  {%- endif -%}
  {%- if product.metafields.orankl.RatingAndReviewAverageValue and product.metafields.orankl.RatingAndReviewAverageValue != "0" -%}
- {%- assign DEUEVYEGGX = product.metafields.orankl.rating -%}
- {%- assign YALAMIUGNR = product.metafields.orankl.review_count -%}
+ {%- assign SUQFCZTDBU = product.metafields.orankl.rating -%}
+ {%- assign CDTIXRWDRX = product.metafields.orankl.review_count -%}
  {%- endif -%}
  {%- if product.metafields.reviewscouk.rating and product.metafields.reviewscouk.rating != "0" -%}
- {%- assign DEUEVYEGGX = product.metafields.reviewscouk.rating -%}
- {%- assign YALAMIUGNR = product.metafields.reviewscouk.total -%}
+ {%- assign SUQFCZTDBU = product.metafields.reviewscouk.rating -%}
+ {%- assign CDTIXRWDRX = product.metafields.reviewscouk.total -%}
  {%- endif -%}
  {%- if product.metafields.reevio.reviews_average and product.metafields.reevio.reviews_count != "0" -%}
- {%- assign DEUEVYEGGX = product.metafields.reevio.reviews_average -%}
- {%- assign YALAMIUGNR = product.metafields.reevio.reviews_count -%}
+ {%- assign SUQFCZTDBU = product.metafields.reevio.reviews_average -%}
+ {%- assign CDTIXRWDRX = product.metafields.reevio.reviews_count -%}
  {%- endif -%}
  {%- if product.metafields.ssw.count_rate and product.metafields.ssw.count_rate != "0" -%}
- {%- assign DEUEVYEGGX = product.metafields.ssw.avg_rate -%}
- {%- assign YALAMIUGNR = product.metafields.ssw.count_rate -%}
+ {%- assign SUQFCZTDBU = product.metafields.ssw.avg_rate -%}
+ {%- assign CDTIXRWDRX = product.metafields.ssw.count_rate -%}
  {%- endif -%}
  {%- if product.metafields.stamped.reviews_average and product.metafields.stamped.reviews_count != "0" -%}
- {%- assign DEUEVYEGGX = product.metafields.stamped.reviews_average -%}
- {%- assign YALAMIUGNR = product.metafields.stamped.reviews_count -%}
+ {%- assign SUQFCZTDBU = product.metafields.stamped.reviews_average -%}
+ {%- assign CDTIXRWDRX = product.metafields.stamped.reviews_count -%}
  {%- endif -%}
  {%- if product.metafields.vnreviews.ratingValue and product.metafields.vnreviews.reviewCount != "0" -%}
- {%- assign DEUEVYEGGX = product.metafields.vnreviews.ratingValue -%}
- {%- assign YALAMIUGNR = product.metafields.vnreviews.reviewCount -%}
+ {%- assign SUQFCZTDBU = product.metafields.vnreviews.ratingValue -%}
+ {%- assign CDTIXRWDRX = product.metafields.vnreviews.reviewCount -%}
  {%- endif -%}
  {%- endcase -%}
-     {%- if DEUEVYEGGX != nil and YALAMIUGNR != nil -%}
+     {%- if SUQFCZTDBU != nil and CDTIXRWDRX != nil -%}
  ,"aggregateRating": {
  "@type": "AggregateRating",
- "ratingValue": {{ DEUEVYEGGX }},
- "ratingCount": {{ YALAMIUGNR }}
+ "ratingValue": {{ SUQFCZTDBU }},
+ "ratingCount": {{ CDTIXRWDRX }}
  }
  {%- endif -%}
  {%- endunless -%}
@@ -397,8 +397,8 @@
  </script>
  {%- endunless -%}
  {%- endif -%}
- {%- if RHZZYHWZKY == 'article' -%}
- {%- unless SPBDSVVAQJ == "no" -%}
+ {%- if BFYIAZEDJO == 'article' -%}
+ {%- unless OBJYLYULNT == "no" -%}
  <script type="application/ld+json">
  {
  "@context": "https://schema.org",
@@ -426,8 +426,8 @@
  "@type": "ImageObject",
  {%- if article.image -%}
  "url": "https:{{ article | img_url: '1024x1024' }}",
-{%- else -%} {%- assign EJOCGBCGYE = article.content | escape -%} {%- if EJOCGBCGYE contains '&lt;img' -%} {%- assign EJOCGBCGYE = EJOCGBCGYE | split: 'src=&quot;' -%} {%- assign EJOCGBCGYE = EJOCGBCGYE[1] | split: '&quot;' -%} {%- assign EJOCGBCGYE = EJOCGBCGYE[0] | remove: '//cdn' -%} {%- assign EJOCGBCGYE = EJOCGBCGYE | remove: 'http:http://' -%} {%- assign EJOCGBCGYE = EJOCGBCGYE | remove: 'https:' -%} {%- assign EJOCGBCGYE = EJOCGBCGYE | prepend: 'https://cdn' -%} {%- capture KCVOEDHUHT -%}_1024x1024.{%- endcapture -%} {%- assign JUHIZSXBJK = 'pico icon thumb small compact medium large grande 1024x1024 2048x2048' | split:' ' -%} {%- for GMOXZJKJCB in JUHIZSXBJK -%} {%- capture XGWKNGLDPK -%}_{{ GMOXZJKJCB }}.{%- endcapture -%} {%- assign EJOCGBCGYE = EJOCGBCGYE | replace:search,replacement -%} {%- endfor -%}
- "url": "{{ EJOCGBCGYE }}",
+{%- else -%} {%- assign YHBVUGPDUW = article.content | escape -%} {%- if YHBVUGPDUW contains '&lt;img' -%} {%- assign YHBVUGPDUW = YHBVUGPDUW | split: 'src=&quot;' -%} {%- assign YHBVUGPDUW = YHBVUGPDUW[1] | split: '&quot;' -%} {%- if YHBVUGPDUW contains 'cdn.shopify.com' -%} {%- assign YHBVUGPDUW = YHBVUGPDUW[0] | remove: '//cdn' -%} {%- assign YHBVUGPDUW = YHBVUGPDUW | remove: 'http:http://' -%} {%- assign YHBVUGPDUW = YHBVUGPDUW | remove: 'https:' -%} {%- assign YHBVUGPDUW = YHBVUGPDUW | prepend: 'https://cdn' -%} {%- else -%} {%- assign YHBVUGPDUW = YHBVUGPDUW[0] -%} {%- endif -%} {%- capture ETFGZRCOUC -%}_1024x1024.{%- endcapture -%} {%- assign UCOYHGZWOY = 'pico icon thumb small compact medium large grande 1024x1024 2048x2048' | split:' ' -%} {%- for CCRJFOSLBN in UCOYHGZWOY -%} {%- capture QLWNIKRRNF -%}_{{ CCRJFOSLBN }}.{%- endcapture -%} {%- assign YHBVUGPDUW = YHBVUGPDUW | replace:search,replacement -%} {%- endfor -%}
+ "url": "{{ YHBVUGPDUW }}",
  {%- else -%}
  "url": "https://cdn.shopify.com/s/images/admin/no-image-grande.gif",
  {%- endif -%}
@@ -445,4 +445,4 @@
  {%- endif -%}
 {%- endunless -%}
 {% comment %} ROM 8:31 {% endcomment %}
-<!-- end: SEO Manager 6.1.4 -->
+<!-- end: SEO Manager 6.1.5 -->

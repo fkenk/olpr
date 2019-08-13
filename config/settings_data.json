@@ -7,11 +7,11 @@
     "top-information-bar": false,
     "favicon": "shopify:\/\/shop_images\/OLPR_favicon.png",
     "show_sticky_header": true,
-    "show_sticky_arrow": true,
+    "show_sticky_arrow": false,
     "enable_site_animation": true,
     "site_animation_mobile": true,
     "ajax_cart": true,
-    "enable_wishlist": true,
+    "enable_wishlist": false,
     "enable_age_varification": false,
     "enable_birthdate": false,
     "agevari_popup_bg": "",
@@ -456,7 +456,7 @@
             "type": "newsletter",
             "settings": {
               "title": "NEWSLETTER",
-              "sub_title": "Enter your email to receive daily news and get 10% off coupon for all items. NO spam, we promise"
+              "sub_title": "Enter your email to receive our news and get 10% off coupon for all items. NO spam, we promise"
             }
           }
         },
@@ -471,8 +471,8 @@
           "title": "<span>sign up for <\/span>newsletter",
           "show_background": false,
           "show_socials": false,
-          "copyright_text": "<span>© 2019 olpr. brand<\/span> All Rights Reserved.",
-          "show_payment_icons": true,
+          "copyright_text": "<span>© 2019 olpr. Leather Goods<\/span> All Rights Reserved.",
+          "show_payment_icons": false,
           "payment_img": "",
           "show_designby": false
         }
@@ -1666,7 +1666,7 @@
             "settings": {
               "image": "",
               "title": "Behind the scenes",
-              "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>",
+              "text": "<p>Find out more about olpr. and where the idea came from.<\/p>",
               "btntxt": "Read our story",
               "btnurl": "shopify:\/\/pages\/our-story",
               "width": "33%",
