@@ -2116,8 +2116,8 @@ theme.Product = (function() {
       $(".tab-content").not(tab).css("display", "none");
       $(tab).fadeIn();
       $('.shogun-tabs > li').removeClass("shogun-tab-active");
-      var $reviewTab = $('.shogun-tabs > li:nth-child(3)'),
-          $reviwTabParent = $('.shogun-tabs > li:nth-child(3)').parent();
+      var $reviewTab = $(".shogun-tabs > li:contains('Reviews')"),
+          $reviwTabParent = $(".shogun-tabs > li:contains('Reviews')").parent();
 
       var isRounded = $reviwTabParent.hasClass("shogun-rounded");
 
