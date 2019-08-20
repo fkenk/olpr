@@ -20,8 +20,13 @@
 
                 if (newTags.length) {
                     var query = newTags.join('+');
-                    var t = '{{ 'tag' | link_to_tag: 'tag' }}';
-                    url += jQuery(t).attr('href').replace('tag', query);
+                    {% if collection.handle %}
+                      url += '/collections/{{ collection.handle }}/'+query;
+                    {% elsif collection.products.first.type == collection.title %}
+                      url += '{{ collection.title | url_for_type }}'+query;
+                    {% elsif collection.products.first.vendor == collection.title %}
+                      url += '{{ collection.title | url_for_vendor }}'+query;
+                    {% endif %}
                 } else {
                     {% if collection.handle %}
                         url += '/collections/{{ collection.handle }}'+window.location.search;
