@@ -31,9 +31,12 @@
         </thead>
         <tbody>
           {% for line_item in order.line_items %}
-          <tr id="{{ line_item.key }}" class="responsive-table__row" >
+          <tr id="{{ line_item.key }}" class="responsive-table__row" style="{% include 'product-customizer-helper' with 'hide-pricing-item-row', item: line_item %}">
             <td data-label="{{ 'customer.order.product' | t }}">
               {{ line_item.title | link_to: line_item.product.url }}
+              
+              {% include 'product-customizer-helper', item: line_item %}
+              
               {% if line_item.fulfillment %}
                 <div class="note">
                   {%- assign created_at = line_item.fulfillment.created_at | date: format: 'month_day_year' -%}
@@ -45,9 +48,10 @@
               {% endif %}
             </td>
             <td data-label="{{ 'customer.order.sku' | t }}">{{ line_item.sku }}</td>
-            <td data-label="{{ 'customer.order.price' | t }}">{{ line_item.price | money }}</td>
+            <td data-label="{{ 'customer.order.price' | t }}">{% include 'product-customizer-helper' with 'item-price', item: line_item, items: order.line_items %}</td>
             <td data-label="{{ 'customer.order.quantity' | t }}">{{ line_item.quantity }}</td>
-            <td data-label="{{ 'customer.order.total' | t }}">{{ line_item.quantity | times: line_item.price | money }}</td>
+            <td data-label="{{ 'customer.order.total' | t }}">{% capture item_price %}{% include 'product-customizer-helper' with 'item-price', item: line_item, items: order.line_items, raw: true %}{% endcapture %}
+	{{ line_item.quantity | times: item_price | money }}</td>
           </tr>
           {% endfor %}
         </tbody>

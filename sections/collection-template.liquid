@@ -75,7 +75,8 @@
 				{% unless template contains 'list' %}
 				<div class="grid grid--uniform grid-products{% if collection.products_count > 0 %} grid--view-items{% endif %}">
                   {% for product in collection.products %}
-  {% if product.object_type == 'product' and product.type == 'SHOPSTORM_HIDDEN_PRODUCT' %}{% continue %}{% endif %}
+                    
+                    {% if product.object_type == 'product' and product.type == 'SHOPSTORM_HIDDEN_PRODUCT' %}{% continue %}{% endif %}
                					                  
 					<div class="grid__item {{ grid_item_mb }} {{ grid_item_tb }} {{grid_item_ds}}">{% include 'product-card-grid', grid_image_width: image_size %}</div>
 					{% else %}         
@@ -103,8 +104,9 @@
 				{% endunless %}
 				
 				{% if template contains 'list' %}
-                  <div class="list-view-items"> {% for product in collection.products %}
-  {% if product.object_type == 'product' and product.type == 'SHOPSTORM_HIDDEN_PRODUCT' %}{% continue %}{% endif %}
+                  <div class="list-view-items"> 
+                  {% for product in collection.products %}
+                      {% if product.object_type == 'product' and product.type == 'SHOPSTORM_HIDDEN_PRODUCT' %}{% continue %}{% endif %}
 
 
                       {% assign box_animation_time = forloop.index | minus:1 %}

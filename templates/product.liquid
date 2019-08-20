@@ -1,9 +1,9 @@
 {% include 'shogun-products', content: product %}
 {{product.metafields.shogun.above}}
-                   {% if product.type  == 'SHOPSTORM_HIDDEN_PRODUCT' %}
-                     Product is not available
-                     {% break %}
-                   {% endif %}
+{% if product.type  == 'SHOPSTORM_HIDDEN_PRODUCT' %}
+	Product is not available
+	{% break %}
+{% endif %}
 
 {% include 'breadcrumb' %}
 {% section 'product-template' %}

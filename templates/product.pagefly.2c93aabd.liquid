@@ -1,10 +1,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400|Oswald:400|Roboto:400,300,500|Bree+Serif:400|Droid+Serif:400|Mrs+Saint+Delafield:400|Rubik:400|Tinos:400|Poppins:400|Open+Sans:400|Archivo+Narrow:400|Rochester:400|Playfair+Display:400|Raleway:400|Permanent+Marker:400"><link rel="stylesheet" href="https://cdn.pagefly.io/pagefly/2.2.2/css/main-style.css?t=2019-07-08-11"><link rel="stylesheet" href="{{ 'pagefly.2c93aabd.scss.css' | asset_url }}">
 		  <div class="__pf" id="__pf"><div class="pf-96ea8683 sc-hwwEjo kIFSBP" data-pf-type="Body"><div class="pf-ad518f30 sc-kUaPvJ gjMMZr" data-pf-type="Layout"><div class="pf-117e0d38 sc-jqIZGH dSAqKF" data-pf-type="ProductPreview">{% include 'shogun-products', content: product %}
 {{product.metafields.shogun.above}}
-                   {% if product.type  == 'SHOPSTORM_HIDDEN_PRODUCT' %}
-                     Product is not available
-                     {% break %}
-                   {% endif %}
+{% if product.type  == 'SHOPSTORM_HIDDEN_PRODUCT' %}
+	Product is not available
+	{% break %}
+{% endif %}
 
 {% include 'breadcrumb' %}
 {% section 'product-template' %}

@@ -25,7 +25,7 @@
     "show_cart_btn_mobile": true,
     "display_countdown": false,
     "show_color_swatch": true,
-    "color_type": "color",
+    "color_type": "image",
     "color_size": "small",
     "color_style": "rounded",
     "pr_lbl": true,
@@ -43,7 +43,7 @@
     "base_font": "poppins_n4",
     "type_base_size": 13,
     "header_font": "poppins_n4",
-    "type_header_base_size": 20,
+    "type_header_base_size": 21,
     "header_case": "uppercase",
     "section-font-weight": "700",
     "nav_size": 13,
@@ -206,8 +206,8 @@
     "show_product_review": false,
     "show_short_desc": true,
     "show_variant_swatches": true,
-    "newsletter_popup": true,
-    "show_social_icons": true,
+    "newsletter_popup": false,
+    "show_social_icons": false,
     "newsletter_popup_time": "5000",
     "newsletter_img": "",
     "newsletter_popup_title": "Join Our Mailing List",
@@ -260,7 +260,7 @@
               "title": "Journals",
               "url": "#",
               "mm_linklist": "main-menu",
-              "mmcolumns": "4",
+              "mmcolumns": "3",
               "product_ttl": "",
               "megamenu1_product": "",
               "megamenu1_image": "",
@@ -385,6 +385,20 @@
       "slideshow": {
         "type": "slideshow",
         "blocks": {
+          "1565792500402": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/olpr-leather-goods.jpg",
+              "mb_image": "shopify:\/\/shop_images\/olpr-leather-goods.jpg",
+              "alignment": "center",
+              "title": "FREE PERSONALIZATION",
+              "subheading": "ON ALL LEATHER JOURNALS. LIMITED TO 3 LETTERS",
+              "slide_button_text": "Shop now",
+              "link": "shopify:\/\/collections\/leather-journal",
+              "textalign": "center",
+              "vttextalign": "middle"
+            }
+          },
           "1540030158458": {
             "type": "image",
             "settings": {
@@ -415,6 +429,7 @@
           }
         },
         "block_order": [
+          "1565792500402",
           "1540030158458",
           "1565010200992"
         ],
@@ -451,26 +466,18 @@
               "title": "CUSTOMER SERVICES",
               "menulinks": "footer-menu-customer-services"
             }
-          },
-          "1539349801442": {
-            "type": "newsletter",
-            "settings": {
-              "title": "NEWSLETTER",
-              "sub_title": "Enter your email to receive our news and get 10% off coupon for all items. NO spam, we promise"
-            }
           }
         },
         "block_order": [
           "1532935558834",
           "1532932009490",
-          "1532934965624",
-          "1539349801442"
+          "1532934965624"
         ],
         "settings": {
-          "display_newsletter": false,
+          "display_newsletter": true,
           "title": "<span>sign up for <\/span>newsletter",
-          "show_background": false,
-          "show_socials": false,
+          "show_background": true,
+          "show_socials": true,
           "copyright_text": "<span>© 2019 olpr. Leather Goods<\/span> All Rights Reserved.",
           "show_payment_icons": false,
           "payment_img": "",
@@ -542,7 +549,7 @@
             "type": "filter_by",
             "settings": {
               "title": "Dimensions, in",
-              "filter_tags": "3 x 4, \n5.71 x 8.27, \n7.5 x 10, \n5 x 8.25, \n3.5 x 5.5, \n3.75 x 2.5, \n4 x 3.25, \n3.5 x 4, \n4.3 x 3.1, \n5 x 3.5, \n7.5 x 3.5 x 3.5, \n8 x 4 x 4, \n18 x 12 x 5, \n12 x 16 x 2.5, \n12 x 12 x 4, \n16.5 x 12 x 4, \n17.5 x 15 x 7, \n10.5 x 8,\n4 x 4 x 5,\n8.7 x 5.5 x 5.9,\n3.7 x 4.3 x 4,\n7.1 x 5.9 x 7.1,\n3.6 x 3.2 x 3.6,\n2 x 2.1 x 2,\n2 x 1.6 x 2,\n3.6 x 3.6 x 3,\n4.9 x 5.9 x 4.9,\n4.4 x 5.5 x 4.4,",
+              "filter_tags": "3 x 4, \n2.5 x 4.25,\n5.71 x 8.27, \n7.5 x 10, \n5 x 8.25, \n3.5 x 5.5, \n3.75 x 2.5, \n4 x 3.25, \n3.5 x 4, \n4.3 x 3.1, \n5 x 3.5, \n7.5 x 3.5 x 3.5, \n8 x 4 x 4, \n18 x 12 x 5, \n12 x 16 x 2.5, \n12 x 12 x 4, \n16.5 x 12 x 4, \n17.5 x 15 x 7, \n10.5 x 8,\n4 x 4 x 5,\n8.7 x 5.5 x 5.9,\n3.7 x 4.3 x 4,\n7.1 x 5.9 x 7.1,\n3.6 x 3.2 x 3.6,\n2 x 2.1 x 2,\n2 x 1.6 x 2,\n3.6 x 3.6 x 3,\n4.9 x 5.9 x 4.9,\n4.4 x 5.5 x 4.4,",
               "twocall": false
             }
           },
@@ -554,26 +561,6 @@
               "num_of_products": "4",
               "side_all_products": false
             }
-          },
-          "1532947919865": {
-            "type": "image_bnr",
-            "settings": {
-              "side_bnr_img": "shopify:\/\/shop_images\/crazy-horse-tote-bag-chocolate-image-3.jpg",
-              "side_bnr_link": ""
-            }
-          },
-          "1532948004685": {
-            "type": "static_text",
-            "settings": {
-              "title": "Information",
-              "text": "<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.<\/p>"
-            }
-          },
-          "1532948070424": {
-            "type": "pr_tags",
-            "settings": {
-              "title": "Product Tags"
-            }
           }
         },
         "block_order": [
@@ -583,10 +570,7 @@
           "1563529636121",
           "1532947752457",
           "1532947863384",
-          "1532947884050",
-          "1532947919865",
-          "1532948004685",
-          "1532948070424"
+          "1532947884050"
         ],
         "settings": {
           "show_collection_image": true,
@@ -997,7 +981,7 @@
           "address": "<p>511 S Church St.<br>Mooresville,&nbsp;NC 28115&nbsp;<\/p>\n<p>Mon - Fri, 9am - 6pm<\/p>",
           "map_address": "511 S Church St, Mooresville, NC 28115, United States",
           "show_button": true,
-          "api_key": "AIzaSyDC95LYIsQo0n4RWs9U98y3e8mS0Ky8LFE",
+          "api_key": "AIzaSyDg61e5r2WkQFH1shxgWUnaxtp6-gRgygw",
           "contact_title": "Drop Us A Line",
           "contact_text_desc": "If you want to find out more about our products, have any enquiries or just to say a quick hello, don't hesitate to contact us :)",
           "show_labels": false,
@@ -1385,7 +1369,7 @@
           "show_collection": false,
           "show_tags": false,
           "show_variant_swatches": true,
-          "color_type": "color",
+          "color_type": "image",
           "color_size": "small",
           "color_style": "rounded",
           "fake_orders": false,
@@ -1714,6 +1698,21 @@
           "show_vendor": false,
           "show_product_review": false
         }
+      },
+      "1566288248839": {
+        "type": "products-slider",
+        "settings": {
+          "title": "Leather Desk Pads",
+          "subtitle": "",
+          "collection": "leather-desk-pads-and-blotters",
+          "gridstyle": "style1",
+          "grid": "4",
+          "tablet-grid": "3",
+          "mobile-grid": "2",
+          "rows": "8",
+          "show_vendor": false,
+          "show_product_review": false
+        }
       }
     },
     "content_for_index": [
@@ -1723,6 +1722,7 @@
       "1565084544441",
       "1565159207963",
       "1565159416471",
+      "1566288248839",
       "1565080425659",
       "1565085619429",
       "1565074492495"

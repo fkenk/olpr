@@ -20,7 +20,8 @@
                 <div class="productList">
                     <div class="grid grid--uniform grid-products grid--view-items">
                         {% for item in search.results %}
-  {% if item.object_type == 'product' and item.type == 'SHOPSTORM_HIDDEN_PRODUCT' %}{% continue %}{% endif %}
+                            
+                            {% if item.object_type == 'product' and item.type == 'SHOPSTORM_HIDDEN_PRODUCT' %}{% continue %}{% endif %}
 
                       		{% if item.object_type == 'product' %}
                         		<div class="grid__item small--one-half medium--one-quarter large-up--one-fifth">{% include 'product-card-grid', product: item, gridStyle: 'style1' %}</div>

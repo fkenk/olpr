@@ -4,7 +4,6 @@
 <head>
 {% include 'ninjacoderz_sitemap_noindex' %}
   {% include 'sizechartsrelentless' %}
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
@@ -12,7 +11,7 @@
   <link rel="canonical" href="{{ canonical_url }}">
   {%- if settings.favicon != blank -%}<link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">{%- endif -%}
 
-{% include 'SEOManager' %}
+  {% include 'SEOManager' %}
 
   {% include 'social-meta-tags' %}
   
@@ -68,7 +67,8 @@
 <!--Gem_Page_Header_Script-->
 {% include 'gem-app-header-scripts' %}
 <!--End_Gem_Page_Header_Script-->
-</head>
+     <meta name="google-site-verification" content="Qv_pGu6sYDbhPp4OJprfG1u5u3_uPC_lwHUusofIV2E" />    
+    </head>
 <body class="template-{{ template | split: '.' | first }}{%if settings.rtl %} rtl{% endif %}">
   {%- if settings.enable_age_varification -%}  
   	{% include 'age-check' %}

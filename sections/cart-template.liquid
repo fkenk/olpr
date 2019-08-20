@@ -26,6 +26,7 @@
                             {% for option in item.product.options %}{{ option }}: {{ item.variant.options[forloop.index0] }}<br />{% endfor %}
                         </div>
                         {% endunless %}
+                        
                         {% include 'product-customizer-helper' %}
 
                         {% comment %}
@@ -55,7 +56,7 @@
                         </div>
                     </td>
                     <td class="cart__update-wrapper cart-flex-item text-right">
-                        <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="btn btn--secondary cart__remove medium-up--hide"><i class="ad ad-times-r" aria-hidden="true"></i></a>
+                        <a href="{% include 'product-customizer-helper' with 'remove-from-cart-href' %}" class="btn btn--secondary cart__remove medium-up--hide {% include 'product-customizer-helper' with 'remove-from-cart-class' %}"><i class="ad ad-times-r" aria-hidden="true"></i></a>
                         <div class="cart__qty">
                             <label for="updates_{{ item.key }}" class="cart__qty-label">{{ 'cart.label.quantity' | t }}</label>
                             <div class="qtyField">
@@ -68,7 +69,7 @@
                     </td>
                     <td class="text-right small--hide">
                         {% if item.original_line_price != item.line_price %}
-                            <div class="cart-item__original-price"><s>{{ item.original_line_price | money }}</s></div>
+                            <div class="cart-item__original-price"><s>{% include 'product-customizer-helper' with 'item-line-price', items: cart.items %}</s></div>
                         {% endif %}
                         <div>{% include 'product-customizer-helper' with 'item-line-price', items: cart.items %}</div>
                         {% for discount in item.discounts %}<div class="cart-item__discount">{{ discount.title }}</div>{% endfor %}
