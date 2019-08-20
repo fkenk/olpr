@@ -23,9 +23,9 @@
                     {% if collection.handle %}
                       url += '/collections/{{ collection.handle }}/'+query;
                     {% elsif collection.products.first.type == collection.title %}
-                      url += '{{ collection.title | url_for_type }}'+query;
+                      url += '{{ collection.title | url_for_type }}&'+query;
                     {% elsif collection.products.first.vendor == collection.title %}
-                      url += '{{ collection.title | url_for_vendor }}'+query;
+                      url += '{{ collection.title | url_for_vendor }}&'+query;
                     {% endif %}
                 } else {
                     {% if collection.handle %}
