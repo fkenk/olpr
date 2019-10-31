@@ -1,0 +1,45 @@
+{% if template contains 'product' %}
+  <script type="text/javascript">
+    var json_product = {{ product | json }};
+  </script>
+  <script>
+    var ecomm_prodid= '{{product.variants.first.sku}}';
+  </script>
+  <script type="text/javascript">
+    var google_tag_params = {
+      ecomm_prodid: ecomm_prodid,
+      ecomm_pagetype: 'product',
+      ecomm_totalvalue: parseFloat('{{ product.price | money_without_currency | remove: ","}}')
+    };
+  </script>
+{% elsif template contains 'collection' %}
+  <script type="text/javascript">
+    var google_tag_params = {
+      ecomm_pagetype: 'category'
+    };
+  </script>
+{% elsif template contains 'cart' %}
+  <script type="text/javascript">
+    var google_tag_params = {
+      ecomm_pagetype: 'cart'
+    };
+  </script>
+{% elsif template contains 'search' %}
+  <script type="text/javascript">
+    var google_tag_params = {
+      ecomm_pagetype: 'searchresults'
+    };
+  </script>
+{% elsif template contains 'index' %}
+  <script type="text/javascript">
+    var google_tag_params = {
+      ecomm_pagetype: 'home'
+    };
+  </script>
+{% else %}
+  <script type="text/javascript">
+    var google_tag_params = {
+      ecomm_pagetype: 'other'
+    };
+  </script>
+{% endif %}
