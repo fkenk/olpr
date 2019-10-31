@@ -10,10 +10,17 @@
   <meta name="theme-color" content="{{ settings.color_button }}">
   <link rel="canonical" href="{{ canonical_url }}">
   {%- if settings.favicon != blank -%}<link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">{%- endif -%}
-
+  
+ {% if request.path contains '/tag' %}
+ <meta name="robots" content="noindex" />
+ {% endif %}
+  
+  {% if current_tags %} <meta name="robots" content="noindex"> {% endif %}
+  
   {% include 'SEOManager' %}
 
   {% include 'social-meta-tags' %}
+  
   
   <!-- main js -->
   <!--[if (lte IE 9) ]>{{ 'match-media.min.js' | asset_url | script_tag }}<![endif]-->
@@ -66,9 +73,24 @@
   {% include 'shogun-head' %}
 <!--Gem_Page_Header_Script-->
 {% include 'gem-app-header-scripts' %}
-<!--End_Gem_Page_Header_Script-->
-     <meta name="google-site-verification" content="Qv_pGu6sYDbhPp4OJprfG1u5u3_uPC_lwHUusofIV2E" />    
-    </head>
+<!--End_Gem_Page_Header_Script-->       
+     <meta name="google-site-verification" content="Qv_pGu6sYDbhPp4OJprfG1u5u3_uPC_lwHUusofIV2E" />
+      <meta name="msvalidate.01" content="681A1FE907416FE39835F330EC793BD4" />
+    
+    <meta name="yandex-verification" content="6daea91cfa36977f" />
+    <meta name="p:domain_verify" content="122a9b131d2e4b0ab6ee3967f2bc5f74"/>
+    
+    <!-- BEGIN PLERDY CODE -->
+<script type="text/javascript" defer>
+    var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    var _site_hash_code = "3ec01ed255f0c39bfe468eae5419e439";
+    var _suid = 4830;
+    </script>
+<script type="text/javascript" defer src="https://a.plerdy.com/public/js/click/main.js"></script>
+<!-- END PLERDY CODE -->
+    
+{% include 'gsf-conversion-pixels' %}
+</head>
 <body class="template-{{ template | split: '.' | first }}{%if settings.rtl %} rtl{% endif %}">
   {%- if settings.enable_age_varification -%}  
   	{% include 'age-check' %}
@@ -138,5 +160,6 @@
 <!--Gem_Page_Footer_Script-->
 {% include 'gem-app-footer-scripts' %}
 <!--End_Gem_Page_Footer_Script-->
+{% include 'uploadkit' %}
 </body>
 </html>

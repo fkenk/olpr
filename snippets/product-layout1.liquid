@@ -1,15 +1,15 @@
 {%- assign current_variant = product.selected_or_first_available_variant -%}
-{%- assign product_thumb_size = '120x' -%}
+{%- assign product_thumb_size = '170x' -%}
 {%- assign product_image_zoom_size = '1500x1500' -%}
 {%- assign enable_zoom = section.settings.enable_zoom -%}
 
-{%- assign product_image_width = 'medium-up--one-half' -%}
-{%- assign product_description_width = 'medium-up--one-half' -%}
+{%- assign product_image_width = 'medium-up--three-fifths' -%}
+{%- assign product_description_width = 'medium-up--two-fifths' -%}
   
 {%- if settings.layout_style =="fullwidth" -%}
   {%- assign product_image_size = '900x' -%}
 {%- else -%}
-  {%- assign product_image_size = '650x' -%}
+  {%- assign product_image_size = '900x' -%}
 {%- endif -%}
 
 <div class="grid product-single">
@@ -270,6 +270,7 @@
         {% endif %}
 
         {% include 'product-customizer' %}
+		<div class="w3-product-options" data-product-id="{{product.id}}" data-tags="{{ product.tags | join: ", " }}"></div>
 
 
         {% if section.settings.sizechartlink or section.settings.askaboutproduct %}

@@ -15,7 +15,7 @@
                 </thead>
                 <tbody>
                 {% for item in cart.items %}
-                <tr class="cart__row border-bottom line{{ forloop.index }} cart-flex{% if forloop.first %} border-top{% endif %}" style="{% include 'product-customizer-helper' with 'hide-pricing-item-row' %}" {% include 'product-customizer-helper' with 'cart-row-data' %}>
+                <tr class="cart__row border-bottom line{{ forloop.index }} cart-flex{% if forloop.first %} border-top{% endif %} {% include 'w3-product-options', step:'item_row_class' %}" style="{% include 'product-customizer-helper' with 'hide-pricing-item-row' %}" {% include 'product-customizer-helper' with 'cart-row-data' %}>
                     <td class="cart__image-wrapper cart-flex-item"><a href="{{ item.url | within: collections.all }}"><img class="cart__image" src="{{ item | img_url: '100x' }}" alt="{{ item.title | escape }}"></a></td>
                     <td class="cart__meta small--text-left cart-flex-item">
                         <div class="list-view-item__title">
@@ -72,6 +72,8 @@
                             <div class="cart-item__original-price"><s>{% include 'product-customizer-helper' with 'item-line-price', items: cart.items %}</s></div>
                         {% endif %}
                         <div>{% include 'product-customizer-helper' with 'item-line-price', items: cart.items %}</div>
+                      {% include 'w3-product-options', step:'money_line' %}
+
                         {% for discount in item.discounts %}<div class="cart-item__discount">{{ discount.title }}</div>{% endfor %}
                     </td>
                     <td class="small--hide"><a href="{% include 'product-customizer-helper' with 'remove-from-cart-href' %}" class="{% include 'product-customizer-helper' with 'remove-from-cart-class' %}" class="btn btn--secondary cart__remove" title="Remove tem"><i class="ad ad-times-r" aria-hidden="true"></i></a></td>

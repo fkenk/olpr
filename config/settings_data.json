@@ -30,16 +30,16 @@
     "color_style": "rounded",
     "pr_lbl": true,
     "select_label_style": "rectangular",
-    "lbl_txt": "#fff",
+    "lbl_txt": "#ffffff",
     "sale_lbl": true,
-    "sale_label_style": "salelabel",
-    "lbl_sale_cl": "#ff708e",
-    "pr_label1": "new",
-    "pr_label1_cl": "#000",
+    "sale_label_style": "discountlable",
+    "lbl_sale_cl": "#ee0334",
+    "pr_label1": "New",
+    "pr_label1_cl": "#3bb9ff",
     "pr_label2": "Hot",
-    "pr_label2_cl": "#e9a400",
-    "pr_label3": "Popular",
-    "pr_label3_cl": "#81d53d",
+    "pr_label2_cl": "#fff90e",
+    "pr_label3": "Top",
+    "pr_label3_cl": "#f8670a",
     "base_font": "poppins_n4",
     "type_base_size": 13,
     "header_font": "poppins_n4",
@@ -53,7 +53,7 @@
     "slide_title": 70,
     "slide_title_weight": "700",
     "slide_title_case": "uppercase",
-    "slide_sub_title": 19,
+    "slide_sub_title": 18,
     "slide_subtitle_weight": "600",
     "slide_subtitle_case": "none",
     "page_title_text_size": 18,
@@ -178,7 +178,7 @@
     "share_image": "",
     "share_facebook": true,
     "share_twitter": true,
-    "share_google": true,
+    "share_google": false,
     "share_pinterest": true,
     "share_email": true,
     "social_twitter_link": "https:\/\/twitter.com\/olpr_leather",
@@ -203,7 +203,7 @@
     "show_product_availability": true,
     "show_product_vendor": true,
     "show_product_sku": false,
-    "show_product_review": false,
+    "show_product_review": true,
     "show_short_desc": true,
     "show_variant_swatches": true,
     "newsletter_popup": false,
@@ -260,7 +260,7 @@
               "title": "Journals",
               "url": "#",
               "mm_linklist": "main-menu",
-              "mmcolumns": "3",
+              "mmcolumns": "4",
               "product_ttl": "",
               "megamenu1_product": "",
               "megamenu1_image": "",
@@ -309,8 +309,8 @@
           "1561118459099": {
             "type": "megamenu4",
             "settings": {
-              "title": "Aprons",
-              "url": "shopify:\/\/collections\/aprons",
+              "title": "Hospitality",
+              "url": "#",
               "mm_linklist": "aprons",
               "mmcolumns": "4",
               "mm4_bg": "",
@@ -416,8 +416,8 @@
           "1565010200992": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/green_barista_apron.jpg",
-              "mb_image": "shopify:\/\/shop_images\/green_barista_apron.jpg",
+              "image": "shopify:\/\/shop_images\/waxed-canvas-barber-aprons.jpg",
+              "mb_image": "shopify:\/\/shop_images\/waxed-canvas-barber-aprons.jpg",
               "alignment": "center",
               "title": "STYLISH APRONS",
               "subheading": "YOU'LL BE HAPPY TO WEAR",
@@ -430,8 +430,8 @@
         },
         "block_order": [
           "1565792500402",
-          "1540030158458",
-          "1565010200992"
+          "1565010200992",
+          "1540030158458"
         ],
         "settings": {
           "fullwidth": true,
@@ -517,7 +517,7 @@
             "type": "by_color",
             "settings": {
               "title": "Color",
-              "filter_tags": "Black, \nBrown, \nTan, \nBlue, \nGreen, \nRed,\nNavy,\nCamel",
+              "filter_tags": "Black, \nBrown, \nTan, \nBlue, \nGreen, \nRed,\nNavy,\nCamel,\nPowder",
               "image_swatches": true
             }
           },
@@ -533,7 +533,7 @@
             "type": "filter_by",
             "settings": {
               "title": "Paper Refill",
-              "filter_tags": "Leuchtturm1917, Moleskine Classic, Moleskine Cahier, Midori, Field Notes",
+              "filter_tags": "Leuchtturm1917, \nMoleskine Classic, \nMoleskine Cahier, \nMoleskine Volant,\nMoleskine Folio Professional,\nMidori, \nField Notes",
               "twocall": false
             }
           },
@@ -549,17 +549,8 @@
             "type": "filter_by",
             "settings": {
               "title": "Dimensions, in",
-              "filter_tags": "3 x 4, \n2.5 x 4.25,\n5.71 x 8.27, \n7.5 x 10, \n5 x 8.25, \n3.5 x 5.5, \n3.75 x 2.5, \n4 x 3.25, \n3.5 x 4, \n4.3 x 3.1, \n5 x 3.5, \n7.5 x 3.5 x 3.5, \n8 x 4 x 4, \n18 x 12 x 5, \n12 x 16 x 2.5, \n12 x 12 x 4, \n16.5 x 12 x 4, \n17.5 x 15 x 7, \n10.5 x 8,\n4 x 4 x 5,\n8.7 x 5.5 x 5.9,\n3.7 x 4.3 x 4,\n7.1 x 5.9 x 7.1,\n3.6 x 3.2 x 3.6,\n2 x 2.1 x 2,\n2 x 1.6 x 2,\n3.6 x 3.6 x 3,\n4.9 x 5.9 x 4.9,\n4.4 x 5.5 x 4.4,",
+              "filter_tags": "3 x 4, \n2.5 x 4.25,\n5.71 x 8.27, \n7.5 x 10, \n5 x 8.25, \n3.5 x 5.5, \n3.75 x 2.5, \n4 x 3.25, \n3.5 x 4, \n4.3 x 3.1, \n5 x 3.5, \n7.5 x 3.5 x 3.5, \n8 x 4 x 4, \n18 x 12 x 5, \n12 x 16 x 2.5, \n12 x 12 x 4, \n16.5 x 12 x 4, \n17.5 x 15 x 7, \n10.5 x 8,\n4 x 4 x 5,\n8.7 x 5.5 x 5.9,\n3.7 x 4.3 x 4,\n7.1 x 5.9 x 7.1,\n3.6 x 3.2 x 3.6,\n2 x 2.1 x 2,\n2 x 1.6 x 2,\n3.6 x 3.6 x 3,\n4.9 x 5.9 x 4.9,\n4.4 x 5.5 x 4.4,\n4.25 x 2.75",
               "twocall": false
-            }
-          },
-          "1532947884050": {
-            "type": "products",
-            "settings": {
-              "title": "Popular Products",
-              "sidebar_products": "leather-journal",
-              "num_of_products": "4",
-              "side_all_products": false
             }
           }
         },
@@ -569,8 +560,7 @@
           "1563530459429",
           "1563529636121",
           "1532947752457",
-          "1532947863384",
-          "1532947884050"
+          "1532947863384"
         ],
         "settings": {
           "show_collection_image": true,
@@ -581,7 +571,7 @@
           "grid": "3",
           "tablet-grid": "2",
           "mobile-grid": "2",
-          "rows": "10",
+          "rows": "7",
           "pagination": "button",
           "sidebar_position": "left"
         }
@@ -1359,7 +1349,7 @@
           "show_short_desc": false,
           "quantity_msg": false,
           "countdown": true,
-          "sizechartlink": false,
+          "sizechartlink": true,
           "askaboutproduct": true,
           "enable_payment_button": false,
           "show_share_buttons": true,
@@ -1373,7 +1363,7 @@
           "color_size": "small",
           "color_style": "rounded",
           "fake_orders": false,
-          "orders": 20,
+          "orders": 5,
           "orders_time": 24,
           "orders_msg": "[orders] sold in last [hours] hours",
           "fake_visitors": false,
@@ -1491,7 +1481,7 @@
               "enable_image": false,
               "image": "",
               "title": "Fast Response",
-              "text": "Our online store is open 24\/7 to provide you with high-quality leather goods when you have time to explore our site. Need assistance, leave us a message, and we will get back to you as soon as possible. If you need something urgently, we will do everything possible to help you get it.",
+              "text": "Our online leather goods store is open 24\/7 to provide you with high-quality leather products when you have time to explore our site. Need assistance, leave us a message, and we will get back to you as soon as possible. If you need something urgently, we will do everything possible to help you get it.",
               "button_label": "",
               "button_link": ""
             }
@@ -1513,7 +1503,7 @@
               "enable_image": false,
               "image": "",
               "title": "Unique Designs",
-              "text": "Our talented designers create truly unique works of art. Professional leather artisans add a lot of creativity so that you can enjoy modern and exclusive leather goods that make others ask where you got them.",
+              "text": "Our talented designers create truly unique works of art. Professional leather artisans add a lot of creativity so that you can enjoy modern and exclusive products that make others ask where you got them.",
               "button_label": "",
               "button_link": ""
             }
@@ -1574,7 +1564,7 @@
             "settings": {
               "image": "",
               "title": "",
-              "text": "<p>We are a small leather goods workshop located in Mooresville, North Carolina. Our workshop is part of the buildings that belonged to the historic Mooresville Cotton Mills. That history inspires us to continue a long tradition of excellence.<\/p>\n<p>Our products are made with absolute care from leather of the highest quality.<\/p>\n<p>We serve our customers with that same care.<\/p>",
+              "text": "<p><strong>We are a small leather goods workshop<\/strong> <strong>located in Mooresville, North Carolina.<\/strong> Our workshop is part of the buildings that belonged to the historic Mooresville Cotton Mills. That history inspires us to continue a long tradition of excellence.<\/p>\n<p>Our products are made with absolute care from leather of the highest quality.<\/p>\n<p>We serve our customers with that same care.<\/p>\n<p>Discover our large selection of women's and men's leather goods!<\/p>",
               "btntxt": "",
               "btnurl": "",
               "width": "100%",
@@ -1587,7 +1577,7 @@
           "1565080949242-0"
         ],
         "settings": {
-          "top-offeset": "small",
+          "top-offeset": "default",
           "title": "Handmade Leather Goods",
           "subtitle": ""
         }
@@ -1721,8 +1711,8 @@
       "1565074180880",
       "1565084544441",
       "1565159207963",
-      "1565159416471",
       "1566288248839",
+      "1565159416471",
       "1565080425659",
       "1565085619429",
       "1565074492495"
