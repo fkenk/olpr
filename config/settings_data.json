@@ -214,7 +214,7 @@
     "newsletter_popup_title_color": "#000000",
     "newsletter_popup_subtitle": "Sign Up for our exclusive email list and be the first to know about new products and special offers",
     "checkout_header_image": "",
-    "checkout_logo_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/OLPR_Logo_Black_PNG.png",
     "checkout_logo_position": "left",
     "checkout_logo_size": "medium",
     "checkout_body_background_image": "",
@@ -224,8 +224,8 @@
     "checkout_sidebar_background_color": "#fafafa",
     "checkout_heading_font": "Helvetica Neue",
     "checkout_body_font": "Helvetica Neue",
-    "checkout_accent_color": "#1990c6",
-    "checkout_button_color": "#1990c6",
+    "checkout_accent_color": "#3bb9ff",
+    "checkout_button_color": "#3bb9ff",
     "checkout_error_color": "#ff6d6d",
     "show_product_type": false,
     "image_swatches": false,
@@ -399,20 +399,6 @@
               "vttextalign": "middle"
             }
           },
-          "1540030158458": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/DSC01971.jpg",
-              "mb_image": "shopify:\/\/shop_images\/DSC01971.jpg",
-              "alignment": "center",
-              "title": "LEATHER DOPP KITS",
-              "subheading": "WITH CUSTOM MONOGRAMMING",
-              "slide_button_text": "Shop Now",
-              "link": "shopify:\/\/collections\/leather-dopp-kits",
-              "textalign": "center",
-              "vttextalign": "bottom"
-            }
-          },
           "1565010200992": {
             "type": "image",
             "settings": {
@@ -423,6 +409,20 @@
               "subheading": "YOU'LL BE HAPPY TO WEAR",
               "slide_button_text": "Shop now",
               "link": "shopify:\/\/collections\/aprons",
+              "textalign": "center",
+              "vttextalign": "bottom"
+            }
+          },
+          "1540030158458": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/DSC01971.jpg",
+              "mb_image": "shopify:\/\/shop_images\/DSC01971.jpg",
+              "alignment": "center",
+              "title": "LEATHER DOPP KITS",
+              "subheading": "WITH CUSTOM MONOGRAMMING",
+              "slide_button_text": "Shop Now",
+              "link": "shopify:\/\/collections\/leather-dopp-kits",
               "textalign": "center",
               "vttextalign": "bottom"
             }
@@ -529,6 +529,14 @@
               "twocall": false
             }
           },
+          "1573047096538": {
+            "type": "filter_by",
+            "settings": {
+              "title": "Fabric Type",
+              "filter_tags": "Canvas, Waxed Canvas, Denim",
+              "twocall": false
+            }
+          },
           "1563529636121": {
             "type": "filter_by",
             "settings": {
@@ -558,6 +566,7 @@
           "1532947285782",
           "1532947567225",
           "1563530459429",
+          "1573047096538",
           "1563529636121",
           "1532947752457",
           "1532947863384"
@@ -1104,18 +1113,18 @@
           "number_of_post_to_show": "12",
           "sidebar_position": "left",
           "blog_show_author": true,
-          "blog_show_date": true,
-          "show_category": true,
+          "blog_show_date": false,
+          "show_category": false,
           "category_box_title": "Category",
-          "show_recent_posts": true,
+          "show_recent_posts": false,
           "recent_posts_title": "Recent Posts",
           "show_banner_ad": false,
           "sidebar_banner": "",
           "banner_link": "",
           "show_products": true,
           "collection_title": "Trending Now",
-          "sidebar_collection": "aprons",
-          "number_of_prodcut": "4"
+          "sidebar_collection": "leather-apple-watch-bands-straps-1",
+          "number_of_prodcut": "6"
         }
       },
       "lookbook-template": {
@@ -1239,13 +1248,13 @@
           "category_box_title": "Category",
           "show_recent_posts": true,
           "recent_posts_title": "Recent Posts",
-          "show_banner_ad": false,
+          "show_banner_ad": true,
           "sidebar_banner": "",
           "banner_link": "",
           "show_products": true,
           "collection_title": "Trending Now",
           "sidebar_collection": "leather-journal",
-          "number_of_prodcut": "4"
+          "number_of_prodcut": "6"
         }
       },
       "about-us": {
@@ -1351,7 +1360,7 @@
           "countdown": true,
           "sizechartlink": true,
           "askaboutproduct": true,
-          "enable_payment_button": false,
+          "enable_payment_button": true,
           "show_share_buttons": true,
           "show_free_ship": false,
           "show_estimate_ship": false,
@@ -1370,7 +1379,7 @@
           "visitors": 50,
           "visitors_time": 5,
           "visitors_msg": "[visitors] Persons looking for this product",
-          "image_banner": "",
+          "image_banner": "shopify:\/\/shop_images\/3__page-0001.jpg",
           "show_features": false,
           "feature1_icon": "",
           "feature1_text": "Feature 1 Text",
@@ -1525,7 +1534,7 @@
               "enable_image": false,
               "image": "",
               "title": "High Quality Materials",
-              "text": "Our custom leather goods are made of the full-grain Horween leather which has been setting high standards since 1905. It is known for its high quality, reliability, and durability. These unique characteristics of materials make our leather goods truly a luxury.",
+              "text": "Our custom leather goods are made of the full-grain Horween leather which has been setting high standards since 1905. It is known for its high quality, reliability, and durability. These unique characteristics of materials make our products truly a luxury.",
               "button_label": "",
               "button_link": ""
             }
@@ -1552,7 +1561,7 @@
         ],
         "settings": {
           "title": "Why People Choose Us",
-          "subtitle": "We work hard to deliver a large variety of high-quality handcrafted leather goods for sale and available at any moment. Our store aims at bringing leather goods to a new level where more people will truly enjoy the process of selection. It shouldn’t be a casual purchase, but an expedition of luxury capped by a price that is more than reasonable. You don’t have to browse through dozens of online stores, everything you might need is right here. Our customers trust us, come and explore the reasons for their trust.",
+          "subtitle": "We work hard to deliver a large variety of high-quality handcrafted products for sale and available at any moment. Our store aims at bringing custom items to a new level where more people will truly enjoy the process of selection. It shouldn’t be a casual purchase, but an expedition of luxury capped by a price that is more than reasonable. You don’t have to browse through dozens of online stores, everything you might need is right here. Our customers trust us, come and explore the reasons for their trust.",
           "align_text": "center"
         }
       },
