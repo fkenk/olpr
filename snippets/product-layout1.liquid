@@ -498,8 +498,6 @@
     {% if section.settings.show_tab_1 %}
       {%- if section.settings.show_product_tabs -%}
         <h3 class="acor-ttl active"><a class="tablink" href="#tab1">{{ section.settings.tab_1_title_text }}</a></h3>
-      {%- else -%}
-        <h3 class="h2">{{ section.settings.tab_1_title_text }}</h3>
       {%- endif -%}
       <div id="tab1" class="tab-content">
         <div class="product-description rte">{{ product.description }}
